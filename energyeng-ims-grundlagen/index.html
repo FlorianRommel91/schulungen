@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IMS-Grundschulung ISO 9001 / 14001 / 45001 – EnergyEng GmbH</title>
+<style>
+  :root{
+    --rot:#EA3223; --orange:#F26B43; --schwarz:#111; --grau:#5b5b5b; --hell:#f5f4f2; --linie:#e2e0dc;
+    --gruen:#2e8b57; --gelb:#e0a800; --weiss:#fff; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--schwarz);background:var(--hell);line-height:1.55;font-size:17px}
+  header.top{background:var(--weiss);border-bottom:1px solid var(--linie);position:sticky;top:0;z-index:20}
+  .top-inner{max-width:1040px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .top-inner img{height:34px}
+  .top-inner .titel{font-weight:700;font-size:15px;flex:1;min-width:200px}
+  .fortschritt{height:6px;background:var(--linie);border-radius:3px;overflow:hidden;width:100%}
+  .fortschritt > div{height:100%;background:linear-gradient(90deg,var(--rot),var(--orange));width:0%;transition:width .4s}
+  main{max-width:1040px;margin:0 auto;padding:24px 20px 80px}
+  .hero{background:var(--schwarz);color:#fff;border-radius:var(--radius);padding:44px 40px;margin-bottom:28px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,var(--orange),var(--rot));opacity:.9}
+  .hero *{position:relative}
+  .hero .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#ffb9a8;font-weight:600}
+  .hero h1{font-size:clamp(28px,4.5vw,44px);margin:8px 0 12px;line-height:1.1}
+  .hero p{max-width:620px;font-size:18px;color:#e6e6e6;margin:0 0 20px}
+  .hero .meta{font-size:13px;color:#bdbdbd}
+  .btn{display:inline-block;-webkit-appearance:none;appearance:none;font-family:inherit;background:var(--rot);color:#fff;border:0;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;transition:transform .1s,background .2s}
+  .btn:hover{background:#c9271b;transform:translateY(-1px)}
+  .btn.sekundaer{background:#fff;color:var(--schwarz);border:2px solid var(--schwarz)}
+  .btn.sekundaer:hover{background:var(--hell)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  nav.module{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:34px}
+  nav.module a{background:#fff;border:1px solid var(--linie);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--schwarz);font-size:14px;display:flex;gap:10px;align-items:center;transition:border .2s}
+  nav.module a:hover{border-color:var(--rot)}
+  nav.module a .nr{width:26px;height:26px;border-radius:50%;background:var(--schwarz);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+  nav.module a.fertig .nr{background:var(--gruen)}
+  section.modul{background:#fff;border-radius:var(--radius);padding:36px 40px;margin-bottom:28px;border:1px solid var(--linie);scroll-margin-top:90px}
+  section.modul .kap{color:var(--rot);font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase}
+  section.modul h2{margin:6px 0 18px;font-size:30px;line-height:1.15}
+  section.modul h3{font-size:19px;margin:28px 0 10px}
+  p.lead{font-size:19px;color:#333}
+  .karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .karte{background:var(--hell);border-radius:12px;padding:18px 18px 16px;border-left:5px solid var(--orange)}
+  .karte.rot{border-left-color:var(--rot)} .karte.gruen{border-left-color:var(--gruen)} .karte.schwarz{border-left-color:var(--schwarz)} .karte.grau{border-left-color:#bbb}
+  .karte > b{display:block;margin-bottom:6px;font-size:16px}
+  .karte p{margin:0;font-size:15px;color:#333}
+  .karte .icon{font-size:26px;margin-bottom:8px}
+  .merke{background:#fff4f2;border:1px solid #ffd2ca;border-radius:12px;padding:16px 20px;margin:18px 0;display:flex;gap:14px;align-items:flex-start}
+  .merke .i{font-size:24px}
+  .merke b{color:var(--rot)}
+  .zweispalt{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+  @media(max-width:720px){.zweispalt{grid-template-columns:1fr} section.modul{padding:26px 20px} .hero{padding:32px 24px}}
+  .box{border:1px solid var(--linie);border-radius:12px;padding:18px 20px}
+  .box.ja{background:#f0faf3;border-color:#bfe6cc} .box.nein{background:#fff4f2;border-color:#ffd2ca}
+  .box h4{margin:0 0 10px;font-size:17px}
+  .box ul{margin:0;padding-left:20px} .box li{margin-bottom:6px;font-size:15px}
+  /* Schritte */
+  .schritte{counter-reset:s;display:grid;gap:14px;margin:18px 0}
+  .schritt{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;background:var(--hell);border-radius:12px;padding:18px}
+  .schritt .n{counter-increment:s;width:44px;height:44px;border-radius:50%;background:var(--rot);color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+  .schritt .n:before{content:counter(s)}
+  .schritt > div > b{font-size:18px;display:block;margin-bottom:4px}
+  .schritt p{margin:0 0 6px;font-size:15px}
+  .schritt ul{margin:4px 0 0;padding-left:18px;font-size:15px}
+  /* Sprechblasen */
+  .sprech{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  @media(max-width:720px){.sprech{grid-template-columns:1fr}}
+  .bubble{border-radius:14px;padding:14px 16px;font-size:15px;position:relative}
+  .bubble.gut{background:#eef8f1;border:1px solid #bfe6cc} .bubble.schlecht{background:#fff0ee;border:1px solid #ffd2ca}
+  .bubble .lab{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:6px}
+  .bubble.gut .lab{color:var(--gruen)} .bubble.schlecht .lab{color:var(--rot)}
+  /* Flow */
+  .flow{display:flex;flex-direction:column;gap:0;margin:20px 0;align-items:stretch}
+  .flow .node{background:#fff;border:2px solid var(--schwarz);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+  .flow .node.start{background:var(--schwarz);color:#fff}
+  .flow .node.du{border-color:var(--rot);background:#fff7f5}
+  .flow .node.ent{border-style:dashed;border-color:var(--orange);background:#fff9f4}
+  .flow .node.end{background:#eef8f1;border-color:var(--gruen)}
+  .flow .node b{display:block;font-size:16px}
+  .flow .node span.t{font-size:14px;color:#333}
+  .flow .node .wer{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--hell);white-space:nowrap;color:#333}
+  .flow .node.du .wer{background:var(--rot);color:#fff}
+  .flow .pfeil{text-align:center;color:var(--grau);font-size:22px;line-height:1;padding:4px 0}
+  .flow .pfeil small{display:block;font-size:12px;color:var(--grau)}
+  .abzweig{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.abzweig{grid-template-columns:1fr}}
+  .abzweig .lab{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;text-align:center;color:var(--grau);margin-bottom:6px}
+  /* Tabelle */
+  .tabwrap{overflow-x:auto;margin:16px 0}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;background:#fff}
+  th,td{border:1px solid var(--linie);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--schwarz);color:#fff;font-weight:600}
+  tr:nth-child(even) td{background:#fafaf9}
+  td .tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700}
+  .tag.offen{background:#fff0ee;color:var(--rot)} .tag.bearb{background:#fff6e5;color:#a86b00} .tag.abg{background:#eef8f1;color:var(--gruen)}
+  .register th{font-size:12.5px;white-space:nowrap}
+  .register td{font-size:13px;min-width:120px}
+  /* Sortier-Übung */
+  .sortier{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0}
+  .fall{background:#fff;border:2px solid var(--linie);border-radius:12px;padding:14px 16px;font-size:15px}
+  .fall .frage{margin-bottom:10px;min-height:48px}
+  .fall .wahl{display:flex;gap:8px}
+  .fall button{flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--schwarz);background:#fff;cursor:pointer;font-weight:600;font-size:14px}
+  .fall button:hover{background:var(--hell)}
+  .fall.richtig{border-color:var(--gruen);background:#f4fbf6} .fall.falsch{border-color:var(--rot);background:#fff6f4}
+  .fall .erkl{font-size:13.5px;margin-top:10px;color:#333;display:none}
+  .fall.richtig .erkl,.fall.falsch .erkl{display:block}
+  .fall.richtig .wahl,.fall.falsch .wahl{display:none}
+  .fall .ergebnis{font-weight:700;font-size:14px;margin-top:8px;display:none}
+  .fall.richtig .ergebnis{display:block;color:var(--gruen)} .fall.falsch .ergebnis{display:block;color:var(--rot)}
+  /* Szenarien / Quiz */
+  .szenario{border:1px solid var(--linie);border-radius:12px;padding:20px 22px;margin:16px 0;background:#fff}
+  .szenario .sit{font-size:16px;margin-bottom:12px}
+  .szenario .sit b{display:block;font-size:17px;margin-bottom:4px}
+  .opt{display:block;width:100%;text-align:left;background:var(--hell);border:2px solid var(--hell);border-radius:10px;padding:12px 14px;margin:8px 0;cursor:pointer;font-size:15px;font-family:inherit;line-height:1.4}
+  .opt:hover{border-color:#bbb}
+  .opt.richtig{border-color:var(--gruen);background:#eef8f1}
+  .opt.falsch{border-color:var(--rot);background:#fff0ee}
+  .opt[disabled]{cursor:default}
+  .feedback{display:none;margin-top:10px;padding:12px 14px;border-radius:10px;font-size:14.5px}
+  .feedback.show{display:block}
+  .feedback.ok{background:#eef8f1;border:1px solid #bfe6cc} .feedback.nok{background:#fff0ee;border:1px solid #ffd2ca}
+  .quiz-ergebnis{display:none;margin-top:20px;padding:22px;border-radius:12px;background:var(--schwarz);color:#fff}
+  .quiz-ergebnis.show{display:block}
+  .quiz-ergebnis .zahl{font-size:44px;font-weight:800;line-height:1}
+  .quiz-ergebnis .zahl small{font-size:18px;font-weight:400;color:#bbb}
+  /* Merkkarte */
+  .merkkarte{background:var(--schwarz);color:#fff;border-radius:var(--radius);padding:34px 40px}
+  .merkkarte h2{margin:0 0 6px;font-size:28px}
+  .merkkarte ol{counter-reset:m;list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+  .merkkarte li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;font-size:17px}
+  .merkkarte li:before{counter-increment:m;content:counter(m);width:32px;height:32px;border-radius:50%;background:var(--rot);display:flex;align-items:center;justify-content:center;font-weight:800}
+  .kontakt{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+  @media(max-width:720px){.kontakt{grid-template-columns:1fr} .merkkarte{padding:26px 22px}}
+  .kontakt div{background:#222;border-radius:10px;padding:14px 16px;font-size:15px}
+  .kontakt b{display:block;color:#ffb9a8;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+  .platzhalter{background:#fff3cd;color:#5c4400;padding:1px 6px;border-radius:4px;font-size:13px}
+  .fuss{text-align:center;color:var(--grau);font-size:13px;margin-top:40px}
+  .modul-ende{margin-top:26px;padding-top:18px;border-top:1px dashed var(--linie);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .modul-ende label{font-size:15px;display:flex;align-items:center;gap:8px;cursor:pointer}
+  .modul-ende input{width:20px;height:20px;accent-color:var(--gruen)}
+  .quelle{font-size:13px;color:var(--grau);margin-top:6px}
+  @media print{
+    header.top{position:static} .btn,.modul-ende,nav.module,.fortschritt{display:none!important}
+    section.modul,.hero,.merkkarte{break-inside:avoid;border:1px solid #ccc;box-shadow:none}
+    body{background:#fff;font-size:13px} .hero{color:#000;background:#eee} .hero:before{display:none} .hero p,.hero .meta,.hero .kicker{color:#222}
+    .fall .wahl{display:none} .fall .erkl{display:block} .feedback{display:block}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZYAAADWCAIAAAB9tTMZAAAAAXNSR0IArs4c6QAAAIRlWElmTU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAADcAAAAAQAAANwAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAAZagAwAEAAAAAQAAANYAAAAAG0gk+gAAAAlwSFlzAAAh1QAAIdUBBJy0nQAAPmhJREFUeAHtnQfcHkXx+BNEQQVFkCZRgiEIKqj0LpCghF6FgFQpoUoP/GkhQVE6oQWESA1FigkgBBADxFAFEpqogA0UEBSw0EL+3/edH8vmyt7c3fNceZnL5/Pmnr3Z2dnZ3dnZ2dnZ/rNmzepnj3HAOGAcaCcH5mgn2Ua1ccA4YBzo4YCJMOsHxgHjQIs5YCKsxY1npBsHjAMmwqwPGAeMAy3mgImwFjeekW4cMA6YCLM+YBwwDrSYAybCWtx4RrpxwDhgIsz6gHHAONBiDpgIa3HjGenGAeOAiTDrA8YB40CLOWAirMWNZ6QbB4wDJsKsDxgHjAMt5oCJsBY3npFuHDAOmAizPmAcMA60mAMmwlrceEa6ccA4YCLM+oBxwDjQYg6YCGtx4xnpxgHjgIkw6wPGAeNAizlgIqzFjWekGweMAybCrA8YB4wDLeaAibAWN56RbhwwDpgIsz5gHDAOtJgDJsJa3HhGunHAOGAizPqAccA40GIOmAhrceMZ6cYB44CJMOsDxgHjQIs5YCKsxY1npBsHjAMmwqwPGAeMAy3mgImwFjeekW4cMA6YCLM+YBwwDrSYAybCWtx4RrpxwDhgIsz6gHGgWRyYNWtWswhqNjVzNps8o8440HoOvPfee2eeeeb06dPnmCOkMbzzzjsbbbTRNttsEwZrPTs6XQETYZ3mqOEzDszOgRdffHH8+PGPP/747MkJvz772c9uvfXWCR8sKZ0DoWkhPZd9MQ4YB7QcuOeee/76179qoOebb77+vY8G2GCEAybCrCcYB7rIgbfeeuviiy/+17/+lSmbWD8OGDDgIx/5SBep6YuoTYT1xVa1OjWGAxMnTpwyZYqQE7bTf+Yzn/nqV7/aGMJbQ4iJsNY0lRHaOg48+uijJ5988v/+9z8oD8svAL7+9a8PHDiwdXWsneC+KcIyu0uE78DnzRLB0Md+znpvVj929tuzud+lFizQK3pY1/sgv/baa6+HHnpI0zdYZrIdudBCC2mADcbnQN/ckaRDUMk333zzP//5z3//+1+2qzFJ8JftbT5hdPj4xz8+55xzzjXXXPPMM8+8884r8D5f6n2H1Ndee+3f//7322/1/Hv33Xfn/Micc3987o997GNQy4qj2wT3n6OHgTxoEJABD6Hh7bffhjBGNaUL9zDcfLL3+cQnPiHwNf4VnmB1evXVV//5z39CGw0NzbDr05/+NJt9BWgTnHQeOEBfAht8gAn8Bdvcc88NH8R6xfunPvUp+ADrgLzlllvGjBkzY8YMMGjk4HLLLfed73xHiitA54c5S18TYXQydn/++Mc/PvPMM08++eSf/vSnv//97wxCxBndToYfHYUOxzP//POjui+99NKDBw9eYoklFl98cXqh9AaB1PcM4F944QX6eqAXIkAZ78y0Uccfpu1eiQGFf/jDH5566immboinIj1S7O23Z86cyTiZa+655vnkPBD8ta99bYUVVvjyl7/8hS98QU+hHhKxRdG///3vIYYHZr749xcZwyJMZUCKCGMmWGSRRSADHg4aNAg2LrbYYoXFGdz729/+JtNMGrWUzrYdDRcBgO209a9//eubbroJ1r3yyisiXMCJCPviF7+4ySabbLHFFvGMETzuJ2IIJvA8/fTTzz333J///Gfa94033gAhLQKRNCJFMKnwILYWmH+BwUsOHrzU4M9//vO/+tWvLrnkEoDBJuxyaBNfmEe///3v0zGoAm0d6EIuO2gpF+ZDg0vM9YIg/stf/kKWzOIoC5hFF12UIZOriGqAVVNENaSULAW9/fbbb7/jjjvocPQ8MUAocdJCn/vc5xiKiAb6+nrrrZe3Z7z++uubbbbZ888/H+gQ9PtVV1317LPPRilwhMlgePWVVydOmjhp0iRqwWgh0QEkvtB9GZZDhgzZaaedVl555USYvIkIUEQADJw2bRpjiUd0DSUeOAYDkbCrrbbaBhtssPrqq0cldRYi6r7jjjuGpwGGE86fP/jBD3xkL7/88rhx4yZcMeHp3z2dJjKQtrfddtuaa67pZ4y/M2fceeed995779SpU2lN5r9cHSmOMJBCV4FapOoZZ5zx3e9+F8k7YsQInMgCXchhIyO96Pjj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" alt="energy.eng">
+    <div class="titel">IMS-Grundschulung · ISO 9001 / 14001 / 45001</div>
+    <div class="fortschritt"><div id="fortschritt"></div></div>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="start">
+    <div class="kicker">Integriertes Managementsystem · ISO 9001 / 14001 / 45001</div>
+    <h1>Unser Managementsystem: Was es ist und was es für dich bedeutet</h1>
+    <p>EnergyEng lässt sich nach drei ISO-Normen zertifizieren: Qualität, Umwelt und Arbeitsschutz. Das klingt nach Papier, ist aber vor allem eine Beschreibung davon, wie wir arbeiten. Diese Grundschulung erklärt in etwa 30 Minuten, warum wir das machen, wer wofür verantwortlich ist, wo du unsere Dokumente findest und welche Regeln im Alltag auf der Baustelle und im Büro für dich gelten.</p>
+    <a class="btn" href="#m1">Schulung starten</a>
+    <div class="meta" style="margin-top:18px">Grundlage: M01 Managementhandbuch · M02 IMS-Politik · M03 Organigramm · QF16 IMS-Ziele · QP09 Meldewege · Stand 09/2026 · © EnergyEng GmbH</div>
+  </div>
+
+  <nav class="module" id="modulnav">
+    <a href="#m1" data-m="1"><span class="nr">1</span>Warum das Ganze?</a>
+    <a href="#m2" data-m="2"><span class="nr">2</span>Drei Normen, ein System</a>
+    <a href="#m3" data-m="3"><span class="nr">3</span>Politik, Ziele, Rollen</a>
+    <a href="#m4" data-m="4"><span class="nr">4</span>Dokumente &amp; Prozesse</a>
+    <a href="#m5" data-m="5"><span class="nr">5</span>Arbeitsschutz im Alltag</a>
+    <a href="#m6" data-m="6"><span class="nr">6</span>Umwelt im Alltag</a>
+    <a href="#m7" data-m="7"><span class="nr">7</span>Qualität im Alltag</a>
+    <a href="#m8" data-m="8"><span class="nr">8</span>Melden &amp; Audit</a>
+    <a href="#m9" data-m="9"><span class="nr">9</span>Abschlusstest</a>
+  </nav>
+
+  <!-- ===================== MODUL 1 ===================== -->
+  <section class="modul" id="m1">
+    <div class="kap">Modul 1</div>
+    <h2>Warum ein Managementsystem?</h2>
+    <p class="lead">Ein Managementsystem ist keine Bürokratie-Übung. Es beschreibt, wie wir bei EnergyEng arbeiten, und sorgt dafür, dass wir es auch so tun, egal wer gerade auf welcher Baustelle steht.</p>
+    <div class="karten">
+      <div class="karte rot"><div class="icon">🤝</div><b>Unsere Kunden verlangen es</b><p>Netzbetreiber und Bauherren vergeben Aufträge zunehmend nur an zertifizierte Dienstleister. Das Zertifikat ist unser Nachweis, dass wir Qualität, Umwelt und Sicherheit im Griff haben.</p></div>
+      <div class="karte"><div class="icon">🦺</div><b>Sicherheit ist unser Kerngeschäft</b><p>Freileitungsbau, Arbeiten in der Höhe, Alleinarbeit, lange Fahrten: Unsere Tätigkeiten sind gefährlich. Ein System, das Gefährdungen erkennt und Regeln festlegt, schützt dich ganz konkret.</p></div>
+      <div class="karte schwarz"><div class="icon">🔁</div><b>Gleiche Qualität, immer</b><p>Der Kunde soll dieselbe Leistung bekommen, egal welcher Kollege oder welche Kollegin vor Ort ist. Dafür brauchen wir beschriebene Abläufe statt Wissen, das nur in Köpfen steckt.</p></div>
+      <div class="karte gruen"><div class="icon">📈</div><b>Besser werden</b><p>Fehler, Beinaheunfälle und Kundenrückmeldungen werden erfasst und ausgewertet. Aus Einzelfällen werden Muster, aus Mustern Verbesserungen. Nur was gemeldet wird, kann verbessert werden.</p></div>
+    </div>
+    <h3>So funktioniert jedes Managementsystem: der PDCA-Kreis</h3>
+    <div class="schritte">
+      <div class="schritt"><div class="n"></div><div><b>Planen (Plan)</b><p>Ziele festlegen, Risiken bewerten, Abläufe beschreiben. Bei uns: IMS-Politik, Ziele in QF16, Gefährdungsbeurteilungen, Anweisungen QP01 bis QP16.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Umsetzen (Do)</b><p>Nach den Abläufen arbeiten, Formulare nutzen, Nachweise erzeugen. Das ist dein Alltag: Einsatz vor Ort, Berichte, Meldungen.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Prüfen (Check)</b><p>Kennzahlen auswerten, interne Audits, Management-Review einmal im Jahr. Kommt raus, was wir geplant haben?</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Verbessern (Act)</b><p>Maßnahmen aus Audits, Reklamationen, Vorfällen und Vorschlägen umsetzen. Alles landet im IMS-Maßnahmenregister QF25 und wird nachverfolgt.</p></div></div>
+    </div>
+    <div class="merke"><div class="i">💡</div><div><b>Was das für dich heißt:</b> Du musst keine Norm auswendig lernen. Du musst wissen, wo unsere Regeln stehen, sie anwenden und Abweichungen melden. Den Rest, also Register, Audits und Auswertungen, übernimmt die Managementbeauftragte mit der Geschäftsführung.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="1"> Modul 1 verstanden</label><a class="btn sekundaer" href="#m2">Weiter zu Modul 2 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 2 ===================== -->
+  <section class="modul" id="m2">
+    <div class="kap">Modul 2</div>
+    <h2>Drei Normen, ein System</h2>
+    <p class="lead">Wir führen kein Qualitätssystem, kein Umweltsystem und kein Arbeitsschutzsystem nebeneinander, sondern ein <b>integriertes Managementsystem (IMS)</b>: ein Handbuch, eine Politik, ein Satz Anweisungen, ein Audit.</p>
+    <div class="karten">
+      <div class="karte rot"><div class="icon">✅</div><b>ISO 9001:2015 · Qualität</b><p>Der Kunde bekommt, was vereinbart ist, vollständig und termingerecht. Dafür: klare Prozesse, geprüfte Qualifikation, saubere Dokumentation, Umgang mit Reklamationen, Messung der Kundenzufriedenheit.</p></div>
+      <div class="karte gruen"><div class="icon">🌍</div><b>ISO 14001:2026 · Umwelt</b><p>Wir kennen unsere Umweltauswirkungen und verringern sie. Bei uns vor allem: Fahrten und Kraftstoff, Abfall, mögliche Vorfälle auf der Baustelle (Öl, Kraftstoff). Dazu die Einhaltung aller Umweltvorschriften.</p></div>
+      <div class="karte schwarz"><div class="icon">🦺</div><b>ISO 45001:2018 · Arbeitsschutz</b><p>Verletzungen und arbeitsbedingte Erkrankungen vermeiden. Dafür: Gefährdungsbeurteilungen, Unterweisungen, PSA, Notfallvorsorge, und ganz wichtig: die Beteiligung von euch als Beschäftigte.</p></div>
+    </div>
+    <h3>Übung: Welche Norm steckt dahinter?</h3>
+    <p style="font-size:15px;color:#333">Ordne jede Situation der passenden Norm zu. Du bekommst sofort die Auflösung.</p>
+    <div class="sortier" id="sortier">
+      <div class="fall" data-antwort="Q"><div class="frage">Im Wochenbericht fehlen die Fotos zu drei Masten, der Auftraggeber fragt nach.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button><button data-w="A">Arbeitsschutz</button></div><div class="ergebnis"></div><div class="erkl">Vollständige Dokumentation ist eine Kundenanforderung: Qualität (ISO 9001). Bei Beanstandung durch den Kunden wird daraus eine Reklamation.</div></div>
+      <div class="fall" data-antwort="U"><div class="frage">Der Tankkarten-Report wird monatlich ausgewertet und der CO₂-Ausstoß berechnet.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button><button data-w="A">Arbeitsschutz</button></div><div class="ergebnis"></div><div class="erkl">Kraftstoff und Fahrleistung sind unser größter Umweltaspekt. Die Kennzahl steht in QF16 (ISO 14001).</div></div>
+      <div class="fall" data-antwort="A"><div class="frage">Vor dem Aufstieg am Mast prüfst du Gurt, Steigschutz und die Sicherung deines Werkzeugs.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button><button data-w="A">Arbeitsschutz</button></div><div class="ergebnis"></div><div class="erkl">Arbeiten in der Höhe: Gefährdungsbeurteilung und PSA, also Arbeitsschutz (ISO 45001).</div></div>
+      <div class="fall" data-antwort="Q"><div class="frage">Nach Projektende bewertet der Kunde unsere Leistung im Fragebogen QF10.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button><button data-w="A">Arbeitsschutz</button></div><div class="ergebnis"></div><div class="erkl">Kundenzufriedenheit messen ist eine Anforderung der ISO 9001. Die Ergebnisse gehen ins Management-Review.</div></div>
+      <div class="fall" data-antwort="U"><div class="frage">Unter dem Bagger des bauausführenden Unternehmens siehst du eine Öllache im Erdreich.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button><button data-w="A">Arbeitsschutz</button></div><div class="ergebnis"></div><div class="erkl">Umweltvorfall: sofort an Auftraggeber bzw. Bauleitung und die Geschäftsführung melden, bei Gefahr für Boden oder Gewässer auch an die Behörde (ISO 14001, QP09).</div></div>
+      <div class="fall" data-antwort="A"><div class="frage">Eine Kollegin arbeitet allein im Homeoffice und hat laut Gefährdungsbeurteilung das Telefon griffbereit.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button><button data-w="A">Arbeitsschutz</button></div><div class="ergebnis"></div><div class="erkl">Alleinarbeit ist eine eigene Gefährdungsbeurteilung: Arbeitsschutz (ISO 45001). Hilfe rufen können ist die zentrale Maßnahme.</div></div>
+    </div>
+    <div class="merke"><div class="i">🔗</div><div><b>Oft hängt alles zusammen.</b> Ein Subunternehmer ohne PSA ist ein Arbeitsschutzthema, wird vom Kunden beanstandet (Qualität) und fließt in die Lieferantenbewertung ein. Deshalb ein integriertes System.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="2"> Modul 2 verstanden</label><a class="btn sekundaer" href="#m3">Weiter zu Modul 3 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 3 ===================== -->
+  <section class="modul" id="m3">
+    <div class="kap">Modul 3</div>
+    <h2>Politik, Ziele und Rollen</h2>
+    <p class="lead">Die IMS-Politik (M02) ist die Selbstverpflichtung der Geschäftsführung, unterschrieben von Ismail Calgan am 30.07.2026. Im Audit solltest du ihre Kernaussagen mit eigenen Worten wiedergeben können.</p>
+    <h3>Die Kernaussagen der IMS-Politik</h3>
+    <div class="karten">
+      <div class="karte"><b>Risikobasiert arbeiten</b><p>Risiken und Chancen für Qualität, Umwelt und Arbeitsschutz werden systematisch bewertet, besonders beim Personaleinsatz auf Baustellen der Netzbetreiber.</p></div>
+      <div class="karte"><b>Messbare Ziele</b><p>Wir setzen uns Ziele für alle drei Bereiche, prüfen sie regelmäßig und entwickeln das System daraus weiter.</p></div>
+      <div class="karte"><b>Anforderungen einhalten</b><p>Gesetze, Vorschriften (ArbSchG, BetrSichV, DGUV), Verträge und Anforderungen unserer Kunden gelten für uns verbindlich.</p></div>
+      <div class="karte"><b>Verantwortung der Geschäftsführung</b><p>Die Geschäftsführung trägt die Gesamtverantwortung und stellt Personal, Zeit, Technik und Geld für das System bereit.</p></div>
+      <div class="karte"><b>Bewusstsein und Kompetenz</b><p>Qualität, Umwelt und Sicherheit sind Sache aller. Schulungen wie Steigschulung oder Elektrofachkraft-Unterweisung halten die Kompetenz aktuell.</p></div>
+      <div class="karte"><b>Kontinuierliche Verbesserung</b><p>Ergebnisse aus Messungen, Vorfällen, Audits und Reviews führen zu Verbesserungen. Stillstand ist keine Option.</p></div>
+    </div>
+    <h3>Unsere IMS-Ziele 2026 (QF16) und dein Beitrag</h3>
+    <div class="tabwrap"><table>
+      <tr><th style="width:38%">Ziel</th><th>Was du dazu beitragen kannst</th></tr>
+      <tr><td><b>Erstzertifizierung</b> des integrierten Managementsystems</td><td>Diese Schulung machen, Regeln anwenden, im Audit offen und ehrlich antworten.</td></tr>
+      <tr><td><b>Null meldepflichtige Arbeitsunfälle</b></td><td>Gefährdungsbeurteilungen kennen, PSA tragen, unsichere Situationen stoppen und melden.</td></tr>
+      <tr><td><b>Vollständige Qualifikation und Unterweisung</b> aller Beschäftigten</td><td>Nachweise (Steigschulung, Sicherheitspass, Erste-Hilfe-Kurs, G41) rechtzeitig erneuern und abgeben.</td></tr>
+      <tr><td><b>Beinaheunfälle melden und auswerten</b></td><td>Jeden Beinaheunfall noch am selben Tag melden, auch wenn nichts passiert ist. Das ist ausdrücklich erwünscht.</td></tr>
+      <tr><td><b>Kraftstoffverbrauch und Fahrleistung</b> erfassen und reduzieren</td><td>Tankkarte korrekt nutzen, Kilometerstand beim Tanken angeben, Fahrten bündeln.</td></tr>
+      <tr><td><b>Kundenzufriedenheit steigern</b></td><td>Verlässlich vor Ort sein, sauber kommunizieren, Rückmeldungen des Kunden weitergeben.</td></tr>
+      <tr><td><b>Qualität und Vollständigkeit der Bauüberwachungsdokumentation</b></td><td>Berichte vollständig, mit allen Fotos und Protokollen, fristgerecht abgeben.</td></tr>
+      <tr><td><b>Beauftragte benennen, betriebsärztliche Betreuung</b> sicherstellen</td><td>Termine der arbeitsmedizinischen Vorsorge wahrnehmen, Ersthelfer-Auffrischung alle zwei Jahre.</td></tr>
+    </table></div>
+    <h3>Wer ist wer im IMS?</h3>
+    <div class="tabwrap"><table>
+      <tr><th style="width:30%">Rolle</th><th>Aufgabe</th></tr>
+      <tr><td><b>Geschäftsführung</b><br><span style="font-size:13px;color:#555">Ismail Calgan</span></td><td>Oberste Leitung des IMS, verantwortlich für Arbeitssicherheit (VBG-Kompetenzzentren-Modell), Freigabe von Politik, Zielen und Gefährdungsbeurteilungen. Wird bei jedem Notfall informiert.</td></tr>
+      <tr><td><b>Managementbeauftragte (IMS)</b><br><span style="font-size:13px;color:#555">Johanna Scholz</span></td><td>Pflegt das System: Dokumentenlenkung, Register (Reklamationen, Maßnahmen, Vorfälle), Rechtskataster, interne Audits, Management-Review. Deine erste Ansprechpartnerin für alle Meldungen und Fragen zum IMS.</td></tr>
+      <tr><td><b>Prozessverantwortung Projekte</b><br><span style="font-size:13px;color:#555">Sebastian Streifling</span></td><td>Projektabwicklung im Tagesgeschäft, Umweltaspekte, interner Auditor, Vertretung der Managementbeauftragten.</td></tr>
+      <tr><td><b>Administration, Einkauf, HR</b><br><span style="font-size:13px;color:#555">Hilal Calgan</span></td><td>Alle Bestellungen laufen über sie (Bestellanforderung QF27), Verwaltung, Personalunterlagen, Brandschutzhelferin.</td></tr>
+      <tr><td><b>Fachliche Führung Montage, Arbeitsschutz</b><br><span style="font-size:13px;color:#555">Dominic Ziesler</span></td><td>Sicherheitsthemen und Gefährdungsbeurteilungen auf der Baustelle, Notfallvorsorge, Ersthelfer, Arbeitnehmervertreter für Arbeitsschutzfragen.</td></tr>
+      <tr><td><b>Ersthelfer und Brandschutzhelfer</b></td><td>Werden je Baustelle bzw. Einsatzort benannt. Jede Person mit gültigem Erste-Hilfe-Kurs kann Ersthelfer sein.</td></tr>
+      <tr><td><b>Du</b><br><span style="font-size:13px;color:#555">auch als Freelancer oder Subunternehmer</span></td><td>Regeln kennen und anwenden, Nachweise aktuell halten, Abweichungen und Vorfälle melden, Verbesserungen vorschlagen.</td></tr>
+    </table></div>
+    <p class="quelle">Quelle: M03 Organigramm, QP12 Anhang 1 Notfallkontakte. Vertretungen stehen im Organigramm.</p>
+    <div class="modul-ende"><label><input type="checkbox" data-done="3"> Modul 3 verstanden</label><a class="btn sekundaer" href="#m4">Weiter zu Modul 4 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 4 ===================== -->
+  <section class="modul" id="m4">
+    <div class="kap">Modul 4</div>
+    <h2>Unsere Dokumente und Prozesse</h2>
+    <p class="lead">Alle IMS-Dokumente liegen im SharePoint-Ordner „Integriertes Managementsystem“. Drei Buchstaben reichen, um dich zurechtzufinden.</p>
+    <div class="karten">
+      <div class="karte schwarz"><b>M · Managementdokumente</b><p>Der Rahmen: <b>M01</b> Managementhandbuch, <b>M02</b> IMS-Politik, <b>M03</b> Organigramm, <b>M04</b> Kontext der Organisation, <b>M05</b> Prozesslandkarte.</p></div>
+      <div class="karte rot"><b>QP · Anweisungen (Prozesse)</b><p>Wie etwas abläuft, 16 Stück. Für dich am wichtigsten: <b>QP04</b> Ressourcen, <b>QP06</b> Einkauf, <b>QP07</b> Dienstleistungserbringung, <b>QP09</b> Reklamationen und Meldewege, <b>QP12</b> Notfallvorsorge, <b>QP14</b> Beteiligung im Arbeitsschutz.</p></div>
+      <div class="karte"><b>QF · Formulare und Register</b><p>Was ausgefüllt wird: <b>QF01</b> Dokumentenverzeichnis (die Übersicht über alles), <b>QF07</b> Schulungsmatrix, <b>QF10</b> Kundenzufriedenheit, <b>QF22</b> PSA- und Inventarliste, <b>QF27</b> Bestellanforderung, Register QF18 / QF25 / QF26.</p></div>
+    </div>
+    <h3>Unser Kernprozess: vom Auftrag bis zur Abnahme</h3>
+    <div class="flow">
+      <div class="node start"><div><b>Anfrage und Auftrag des Netzbetreibers</b><span class="t" style="color:#ddd">Anforderungen an Personal, Qualifikation und Leistung werden geklärt und bestätigt (QP05 Vertrieb)</span></div><span class="wer" style="background:#333;color:#fff">Vertrieb / GF</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node"><div><b>Auftrags- und Qualifikationsprüfung</b><span class="t">Benötigte Nachweise (Sicherheitspass, Steigschulung, Elektrofachkraft) werden mit der Qualifikationsmatrix QF03 abgeglichen</span></div><span class="wer">Projektleitung</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node"><div><b>Personaleinsatzplanung</b><span class="t">Geeignetes, verfügbares Personal wird zugeteilt (QP04, Schulungsmatrix QF07). Ohne gültige Nachweise kein Einsatz</span></div><span class="wer">Projektleitung</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Durchführung vor Ort</b><span class="t">Einweisung und Sicherheitsunterweisung, dann Bauüberwachung bzw. Baukontrolle nach Auftrag. Grundlage: Gefährdungsbeurteilung, PSA, Arbeitsanweisungen, Vorgaben des Auftraggebers (QP07)</span></div><span class="wer">Du</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Dokumentation und Abnahme</b><span class="t">Berichte, Fotos, Protokolle vollständig abgeben; Rückmeldung an den Kunden; Abweichungen melden</span></div><span class="wer">Du + Projektleitung</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node end"><div><b>Kundenzufriedenheit und Verbesserung</b><span class="t">Feedback über QF10, Reklamationen über QF18, Auswertung im Management-Review</span></div><span class="wer">Managementbeauftragte</span></div>
+    </div>
+    <div class="zweispalt">
+      <div class="box"><h4>🛒 So läuft eine Bestellung</h4><p style="font-size:15px;margin:0">Du brauchst Material, PSA oder ein Arbeitsmittel? Bestellanforderung <b>QF27</b> ausfüllen, Freigabe abwarten, dann bestellt <b>Hilal</b> zentral. Keine Bestellungen auf eigene Faust. Ausgegebene PSA und Geräte stehen in der Liste QF22.</p></div>
+      <div class="box"><h4>📁 Regeln für Dokumente (QP01)</h4><ul><li>Nur die <b>freigegebene Version</b> aus dem IMS-Ordner nutzen. Keine eigenen Kopien auf dem Laptop, die veralten.</li><li>Kein Dokument selbst ändern. Änderungswunsch an die Managementbeauftragte, sie lenkt die neue Version.</li><li>Ausgefüllte Formulare sind <b>Nachweise</b>: vollständig, lesbar, mit Datum und Name, am vorgesehenen Ort abgelegt.</li><li>Unklar, welches Dokument gilt? QF01 Dokumentenverzeichnis nachsehen oder fragen.</li></ul></div>
+    </div>
+    <div class="merke"><div class="i">📌</div><div><b>Neue Prozesse kommen schrittweise.</b> Sobald ein Prozess fertig ist, wird er in den IMS-Ordner übernommen und ihr werdet per E-Mail informiert. Danach gilt: erst lesen, bei Fragen die Fragerunde nutzen, dann arbeiten wir alle danach.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="4"> Modul 4 verstanden</label><a class="btn sekundaer" href="#m5">Weiter zu Modul 5 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 5 ===================== -->
+  <section class="modul" id="m5">
+    <div class="kap">Modul 5</div>
+    <h2>Arbeitsschutz im Alltag</h2>
+    <p class="lead">Unser wichtigstes Ziel: null meldepflichtige Arbeitsunfälle. Fünf Regeln, die für jeden Einsatz gelten.</p>
+    <div class="schritte">
+      <div class="schritt"><div class="n"></div><div><b>Gefährdungsbeurteilung kennen, bevor du loslegst</b><p>Für unsere Tätigkeiten gibt es Gefährdungsbeurteilungen: Baustelle und Freileitungsbau, Arbeiten in der Höhe (Steigen und Prüfen), Alleinarbeit, Fahrtätigkeit, Bildschirmarbeit. Sie beschreiben die Gefahren und die Schutzmaßnahmen. Du bekommst sie bereitgestellt und bestätigst, dass du sie gelesen hast.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Nur mit gültiger Unterweisung und Qualifikation</b><p>Steigschulung, Sicherheitspass, Erste-Hilfe-Kurs (alle zwei Jahre), arbeitsmedizinische Vorsorge wie G41: alles steht in der Schulungsmatrix QF07. Läuft ein Nachweis ab, sprich das rechtzeitig an. Ohne gültigen Nachweis kein Einsatz auf der Baustelle.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>PSA vollständig und geprüft</b><p>Helm, Sicherheitsschuhe, Warnkleidung, bei Höhenarbeit Gurt und Steigschutz mit gültiger Prüfung. Ausgabe wird in QF22 dokumentiert. Defekte oder abgelaufene PSA sofort aussondern und melden, Ersatz über die Bestellanforderung.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Regeln des Auftraggebers gelten zusätzlich</b><p>Baustellenordnung, Einweisung des Netzbetreibers, Freischaltung und Sicherheitsregeln vor Ort ersetzen unsere Regeln nicht, sie kommen dazu. Im Zweifel gilt die strengere Regel.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Unsicher heißt: stoppen und melden</b><p>Du darfst und sollst eine Arbeit unterbrechen, wenn sie dir unsicher erscheint. Beinaheunfälle und unsichere Situationen meldest du noch am selben Arbeitstag an die Bauleitung vor Ort und die Managementbeauftragte. Niemand hat dadurch Nachteile, im Gegenteil: das ist eines unserer Ziele.</p></div></div>
+    </div>
+    <div class="zweispalt">
+      <div class="box nein"><h4>🚨 Wenn doch etwas passiert</h4><ul><li><b>Notruf 112</b>, Erste Hilfe leisten, Unfallstelle sichern.</li><li>Ersthelfer und Bauleitung vor Ort informieren, anschließend die <b>Geschäftsführung</b>.</li><li>Jede Erste-Hilfe-Leistung ins <b>Verbandbuch QF28</b>, auch bei kleinen Verletzungen.</li><li>Bericht QF19 und Eintrag QF26 macht die Managementbeauftragte; bei mehr als drei Tagen Ausfall geht die Unfallanzeige an die VBG.</li><li>Bei Absturz oder Hängetrauma: Rettung nach dem Rettungskonzept der Baustelle.</li></ul></div>
+      <div class="box ja"><h4>🗣️ Du hast ein Wort mitzureden</h4><ul><li>Mindestens halbjährlich gibt es eine <b>Arbeitsschutzbesprechung</b> (Protokoll QF14) mit Geschäftsführung, Arbeitsschutz und Arbeitnehmervertreter.</li><li>Anliegen zum Arbeitsschutz kannst du jederzeit formlos an die Geschäftsführung oder Dominic Ziesler richten, auf Wunsch anonym über den Arbeitnehmervertreter.</li><li>Änderungen an Gefährdungsbeurteilungen werden mit den Betroffenen besprochen.</li><li>Die arbeitsmedizinische Betreuung läuft über das Kompetenzzentrum der VBG.</li></ul></div>
+    </div>
+    <div class="merke"><div class="i">📱</div><div><b>Alleinarbeit:</b> Wer allein arbeitet, ob im Homeoffice oder allein auf der Baustelle, muss Hilfe rufen können. Telefon geladen und griffbereit, Kollegen wissen, wo du bist. Das steht so in der Gefährdungsbeurteilung Alleinarbeit.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="5"> Modul 5 verstanden</label><a class="btn sekundaer" href="#m6">Weiter zu Modul 6 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 6 ===================== -->
+  <section class="modul" id="m6">
+    <div class="kap">Modul 6</div>
+    <h2>Umwelt im Alltag</h2>
+    <p class="lead">Wir bauen nicht selbst, wir überwachen. Trotzdem haben wir Umweltauswirkungen, und die stehen im Register Umweltaspekte QF11. Die wichtigsten kennst du aus deinem Alltag.</p>
+    <div class="karten">
+      <div class="karte gruen"><div class="icon">🚗</div><b>Fahrten und Kraftstoff</b><p>Unser größter Umweltaspekt. Der Verbrauch wird monatlich aus dem Tankkarten-Report ausgewertet und in CO₂ umgerechnet (QF16). Ziel: erfassen und reduzieren.</p></div>
+      <div class="karte"><div class="icon">🛢️</div><b>Vorfälle auf der Baustelle</b><p>Öl- oder Kraftstoffaustritt, Gefährdung von Boden oder Gewässer: auch wenn ein anderes Unternehmen es verursacht hat, sind wir als Vertreter des Bauherrn in der Pflicht, es zu melden.</p></div>
+      <div class="karte"><div class="icon">♻️</div><b>Abfall</b><p>Auf der Baustelle gilt das Abfallkonzept des Auftraggebers. Im Büro: Papier sparen, digital ablegen, Wertstoffe trennen.</p></div>
+      <div class="karte schwarz"><div class="icon">📜</div><b>Bindende Verpflichtungen</b><p>Umweltrecht und Kundenvorgaben stehen im Kataster QF20. Ob wir sie einhalten, wird regelmäßig bewertet (QP15 Compliance-Bewertung).</p></div>
+    </div>
+    <h3>Deine Regeln</h3>
+    <div class="zweispalt">
+      <div class="box ja"><h4>✅ So machen wir es</h4><ul><li>Nur die dir zugeordnete <b>Tankkarte</b> nutzen; <b>Kilometerstand beim Tanken angeben</b>, wo das Terminal es abfragt. Nur so lässt sich der Verbrauch je Fahrzeug auswerten.</li><li>Fahrten bündeln, Fahrgemeinschaften bei gleicher Baustelle, Videocall statt Anfahrt, wo es die Aufgabe zulässt.</li><li>Umweltvorfall: <b>sofort telefonisch</b> an Auftraggeber bzw. Bauleitung und Geschäftsführung, schriftliche Bestätigung im Anschluss.</li><li>Auffälligkeiten beim bauausführenden Unternehmen (undichte Maschinen, Lagerung von Gefahrstoffen) im Bericht dokumentieren.</li></ul></div>
+      <div class="box nein"><h4>❌ Besser nicht</h4><ul><li>Tankkarte eines Kollegen benutzen oder Kilometerstand „ungefähr“ eintragen.</li><li>Einen Ölfleck ignorieren, weil „der Bagger nicht unserer ist“.</li><li>Abfall auf der Baustelle im nächstbesten Container entsorgen.</li></ul></div>
+    </div>
+    <div class="merke"><div class="i">🌱</div><div><b>Warum das zählt:</b> Umweltziele sind Teil unserer Zertifizierung, und Auftraggeber fragen zunehmend nach dem CO₂-Fußabdruck ihrer Dienstleister. Saubere Daten aus dem Tankkarten-Report sind die Basis dafür.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="6"> Modul 6 verstanden</label><a class="btn sekundaer" href="#m7">Weiter zu Modul 7 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 7 ===================== -->
+  <section class="modul" id="m7">
+    <div class="kap">Modul 7</div>
+    <h2>Qualität im Alltag</h2>
+    <p class="lead">Unser Kunde ist der Netzbetreiber oder Bauherr. Unsere Leistung ist Bauüberwachung, Baukontrolle und Projektsteuerung. Qualität heißt bei uns vor allem: verlässlich vor Ort, sauber dokumentiert, klar kommuniziert.</p>
+    <div class="karten">
+      <div class="karte rot"><div class="icon">📷</div><b>Dokumentation</b><p>Wochenberichte, Protokolle, Fotos je Mast oder Abschnitt: vollständig, nachvollziehbar, pünktlich. Das ist das Produkt, das der Kunde von uns bekommt.</p></div>
+      <div class="karte"><div class="icon">⏱️</div><b>Verlässlichkeit</b><p>Baustelle besetzt, wenn es vereinbart ist. Bei Krankheit oder Verzug sofort Bescheid geben, damit die Vertretung greift.</p></div>
+      <div class="karte"><div class="icon">💬</div><b>Kommunikation und Auftreten</b><p>Du bist auf der Baustelle das Gesicht von EnergyEng. Klare Rückmeldungen, korrektes Auftreten, vollständige PSA.</p></div>
+      <div class="karte schwarz"><div class="icon">🧾</div><b>Subunternehmer und Lieferanten</b><p>Wer für uns arbeitet, wird nach QP06 freigegeben und bewertet (QF24). Abweichungen von Subunternehmern gehen ins Reklamationsregister und in die Bewertung.</p></div>
+    </div>
+    <h3>Rückmeldungen des Kunden: drei Wege</h3>
+    <div class="tabwrap"><table>
+      <tr><th style="width:26%">Was</th><th>Wie wir damit umgehen</th></tr>
+      <tr><td><b>Kundenzufriedenheit</b></td><td>Nach Projektende oder jährlich bewertet uns der Kunde mit dem Fragebogen <b>QF10</b>. Die Ergebnisse werden im Management-Review ausgewertet. Wenn du Lob oder Kritik vom Kunden hörst: weitergeben.</td></tr>
+      <tr><td><b>Reklamationen</b></td><td>Jede Beanstandung, die Nacharbeit, erneute Prüfung, Terminverschiebung oder Zusatzaufwand auslöst. Aufnehmen, keine Zusagen, bis zum nächsten Arbeitstag an die Managementbeauftragte. Ausführlich in der eigenen <a href="https://florianrommel91.github.io/schulungen/energyeng-reklamationsmanagement/" target="_blank" rel="noopener">Schulung Kundenreklamationsmanagement</a>.</td></tr>
+      <tr><td><b>Verbesserungsvorschläge</b></td><td>Von dir oder vom Kunden: formlos im Teammeeting, per E-Mail oder im Gespräch an Geschäftsführung oder Managementbeauftragte. Sie landen im IMS-Maßnahmenregister <b>QF25</b> und werden nachverfolgt.</td></tr>
+    </table></div>
+    <div class="zweispalt">
+      <div class="box"><h4>🔍 Interne Audits (QP08)</h4><p style="font-size:15px;margin:0">Einmal im Jahr prüfen wir uns selbst: Wird nach den Anweisungen gearbeitet, stimmen die Nachweise? Auditoren sind Kolleginnen und Kollegen, die nicht ihren eigenen Bereich prüfen. Ergebnisse sind Hinweise zur Verbesserung, keine Schuldzuweisung.</p></div>
+      <div class="box"><h4>📊 Management-Review (QP03)</h4><p style="font-size:15px;margin:0">Einmal im Jahr bewertet die Geschäftsführung das ganze System: Ziele, Kennzahlen, Kundenzufriedenheit, Vorfälle, Audits, Ressourcen. Daraus entstehen neue Ziele und Maßnahmen für das nächste Jahr.</p></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="7"> Modul 7 verstanden</label><a class="btn sekundaer" href="#m8">Weiter zu Modul 8 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 8 ===================== -->
+  <section class="modul" id="m8">
+    <div class="kap">Modul 8</div>
+    <h2>Melden und Audit: was du konkret tun musst</h2>
+    <p class="lead">Die Meldewege aus QP09 auf einen Blick. Für dich gilt immer: erst sichern und melden, dann dokumentieren. Der Eintrag in die Register ist Sache der Managementbeauftragten.</p>
+    <div class="tabwrap"><table>
+      <tr><th>Ereignis</th><th>Sofort melden an</th><th>Wie und wann</th><th>Dokumentation</th></tr>
+      <tr><td><b>Arbeitsunfall mit Verletzung</b></td><td>Ersthelfer und Bauleitung vor Ort, anschließend die Geschäftsführung</td><td>Sofort, mündlich oder telefonisch noch am Einsatzort</td><td>Verbandbuch QF28, Bericht QF19, Eintrag QF26; bei mehr als drei Ausfalltagen Unfallanzeige an die VBG</td></tr>
+      <tr><td><b>Beinaheunfall, unsichere Situation oder unsicheres Verhalten</b></td><td>Bauleitung vor Ort und Managementbeauftragte</td><td>Am selben Arbeitstag, telefonisch, per Kurznachricht oder E-Mail</td><td>Eintrag QF26</td></tr>
+      <tr><td><b>Umweltvorfall</b><br><span style="font-size:13px;color:#555">z. B. Ölaustritt, Gefährdung von Boden und Gewässer</span></td><td>Auftraggeber bzw. Bauleitung vor Ort und Geschäftsführung; bei Gefahr für Boden oder Gewässer zusätzlich die Umweltbehörde</td><td>Sofort telefonisch, schriftliche Bestätigung im Anschluss</td><td>Bericht QF19, Maßnahmen QF25, Umweltaspekt in QF11 prüfen</td></tr>
+      <tr><td><b>Kundenbeschwerde oder Reklamation</b></td><td>Managementbeauftragte; vor Ort keine Zusagen zu Nacharbeit, Terminen oder Kosten</td><td>Spätestens am nächsten Arbeitstag, telefonisch oder per E-Mail</td><td>Eintrag QF18, Bericht QF12 nur auf ausdrückliche Kundenanforderung</td></tr>
+      <tr><td><b>Verbesserungsvorschlag</b></td><td>Geschäftsführung oder Managementbeauftragte</td><td>Formlos im Teammeeting, per E-Mail oder im Gespräch</td><td>Eintrag QF25</td></tr>
+    </table></div>
+    <p class="quelle">Quelle: QP09, Abschnitt 2.7 „Melden von Ereignissen durch Mitarbeitende“. Meldewege des Auftraggebers gelten zusätzlich.</p>
+
+    <h3>Das Zertifizierungsaudit: was auf dich zukommt</h3>
+    <p style="font-size:15px;color:#333">Ein externer Auditor der Zertifizierungsstelle prüft unsere Dokumente, spricht mit Mitarbeitenden und schaut sich möglicherweise eine Baustelle an. Er will sehen, dass das System gelebt wird, nicht, dass du Normtexte aufsagen kannst.</p>
+    <div class="sprech">
+      <div class="bubble gut"><span class="lab">✅ So verhältst du dich</span>Ehrlich und konkret antworten. Beschreibe, wie du wirklich arbeitest. Zeige, wo du Dokumente findest. „Das weiß ich nicht genau, da würde ich Johanna fragen“ ist eine völlig richtige Antwort.</div>
+      <div class="bubble schlecht"><span class="lab">❌ Besser nicht</span>Etwas erfinden, was du nicht weißt. Behaupten, dass alles perfekt ist. Dokumente zeigen, die du selbst noch nie benutzt hast. Nervös werden: Der Auditor prüft das System, nicht dich.</div>
+    </div>
+    <h3>Typische Fragen im Audit</h3>
+    <div class="karten">
+      <div class="karte"><b>„Was ist die Politik Ihres Unternehmens?“</b><p>Die Kernaussage reicht: Qualität, Umwelt und Sicherheit sind Teil unserer Unternehmensführung, wir arbeiten risikobasiert, halten Vorschriften ein und verbessern uns ständig. Sie hängt im IMS-Ordner.</p></div>
+      <div class="karte"><b>„Welche Ziele hat das Unternehmen?“</b><p>Zwei oder drei nennen: null meldepflichtige Unfälle, Beinaheunfälle melden, Kraftstoff reduzieren, Kundenzufriedenheit, vollständige Dokumentation.</p></div>
+      <div class="karte"><b>„Welche Gefährdungen hat Ihre Tätigkeit?“</b><p>Aus deiner Gefährdungsbeurteilung: Höhe, Strom, Verkehr, Alleinarbeit. Und die Schutzmaßnahmen dazu.</p></div>
+      <div class="karte"><b>„Was tun Sie bei einem Beinaheunfall?“</b><p>Sichern, noch am selben Tag an Bauleitung und Managementbeauftragte melden. Eintrag ins QF26 macht die Managementbeauftragte.</p></div>
+      <div class="karte"><b>„Wie sind Sie unterwiesen?“</b><p>Deine Nachweise aus der Schulungsmatrix: Steigschulung, Sicherheitspass, Erste Hilfe, IMS-Schulung. Wann zuletzt, wann das nächste Mal.</p></div>
+      <div class="karte"><b>„Was machen Sie, wenn ein Kunde reklamiert?“</b><p>Aufnehmen, keine Zusagen, bis zum nächsten Arbeitstag an die Managementbeauftragte.</p></div>
+    </div>
+
+    <h3>Praxisfälle</h3>
+    <div class="szenario" data-sz="1">
+      <div class="sit"><b>Fall 1: Der Auditor auf der Baustelle</b>Der Auditor begleitet dich auf die Baustelle und fragt: „Woher wissen Sie, welche Gefährdungen hier bestehen und welche Schutzmaßnahmen gelten?“</div>
+      <button class="opt" data-ok="0">„Das weiß man nach ein paar Jahren einfach, dafür brauche ich kein Papier.“</button>
+      <button class="opt" data-ok="1">„Aus der Gefährdungsbeurteilung für Baustelle und Höhenarbeit, die habe ich gelesen und bestätigt. Dazu kommt die Einweisung des Netzbetreibers vor Ort. Konkret heißt das hier: PSA mit Gurt, Steigschutz geprüft, Freischaltung bestätigt.“</button>
+      <button class="opt" data-ok="0">„Das regelt alles der Netzbetreiber, wir sind ja nur Bauüberwachung.“</button>
+      <button class="opt" data-ok="0">„Dazu müssten Sie unsere Geschäftsführung fragen, ich bin nur Baukontrolleur.“</button>
+      <div class="feedback"></div>
+    </div>
+    <div class="szenario" data-sz="2">
+      <div class="sit"><b>Fall 2: Der Kollege ohne Helm</b>Während des Audits siehst du, dass ein Kollege des bauausführenden Unternehmens ohne Helm unter der Leitung arbeitet. Der Auditor hat es noch nicht bemerkt.</div>
+      <button class="opt" data-ok="0">Nichts sagen, damit es im Audit nicht auffällt.</button>
+      <button class="opt" data-ok="1">Den Kollegen sofort ansprechen und die Situation beenden, danach die Bauleitung informieren. Genau das erwartet der Auditor: dass wir als Bauüberwachung reagieren.</button>
+      <button class="opt" data-ok="0">Erst nach dem Audit mit der Bauleitung sprechen, jetzt stört es nur.</button>
+      <button class="opt" data-ok="0">Den Auditor darauf hinweisen und ihm die Entscheidung überlassen.</button>
+      <div class="feedback"></div>
+    </div>
+    <div class="szenario" data-sz="3">
+      <div class="sit"><b>Fall 3: Die Frage nach dem Dokument</b>Der Auditor fragt: „Wo finden Sie die aktuelle Version der Anweisung für die Dienstleistungserbringung?“ Du hast das Dokument zuletzt vor zwei Monaten gesehen.</div>
+      <button class="opt" data-ok="0">„Die habe ich auf meinem Laptop gespeichert, Moment.“</button>
+      <button class="opt" data-ok="1">„Im SharePoint-Ordner Integriertes Managementsystem unter Anweisungen, das ist QP07. Ich öffne sie dort, dann ist es sicher die freigegebene Version.“</button>
+      <button class="opt" data-ok="0">„Die schickt uns Johanna immer per E-Mail, ich müsste in meinem Postfach suchen.“</button>
+      <button class="opt" data-ok="0">„So ein Dokument gibt es bei uns nicht, wir arbeiten nach Erfahrung.“</button>
+      <div class="feedback"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="8"> Modul 8 verstanden</label><a class="btn sekundaer" href="#m9">Weiter zum Abschlusstest →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 9 ===================== -->
+  <section class="modul" id="m9">
+    <div class="kap">Modul 9</div>
+    <h2>Abschlusstest</h2>
+    <p class="lead">Zehn Fragen. Bei 7 richtigen Antworten hast du bestanden. Du kannst den Test beliebig oft wiederholen.</p>
+    <div id="quiz"></div>
+    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" id="auswerten">Test auswerten</button>
+      <button class="btn sekundaer" id="reset" style="display:none">Test wiederholen</button>
+    </div>
+    <div class="quiz-ergebnis" id="ergebnis"></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="9"> Abschlusstest gemacht</label><a class="btn sekundaer" href="#merk">Zur Merkkarte →</a></div>
+  </section>
+
+  <!-- ===================== MERKKARTE ===================== -->
+  <div class="merkkarte" id="merk">
+    <div class="kap" style="color:#ffb9a8;font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase">Zum Mitnehmen</div>
+    <h2>Fünf Regeln für den Alltag im IMS</h2>
+    <ol>
+      <li><div><b>Nur freigegebene Dokumente.</b> Aus dem IMS-Ordner im SharePoint, keine eigenen Kopien, keine eigenen Änderungen.</div></li>
+      <li><div><b>Vor jedem Einsatz:</b> Gefährdungsbeurteilung gelesen, Unterweisung gültig, PSA vollständig und geprüft.</div></li>
+      <li><div><b>Unsicher heißt stoppen und melden.</b> Beinaheunfälle noch am selben Tag, Unfälle sofort, jede Erste Hilfe ins Verbandbuch.</div></li>
+      <li><div><b>Kunde reklamiert?</b> Aufnehmen, keine Zusagen, bis zum nächsten Arbeitstag an die Managementbeauftragte.</div></li>
+      <li><div><b>Umwelt und Verbesserung:</b> Umweltvorfälle sofort melden, Tankkarte sauber nutzen, Verbesserungsvorschläge einbringen.</div></li>
+    </ol>
+    <div class="kontakt">
+      <div><b>Managementbeauftragte (IMS)</b>Johanna Scholz<br>j.scholz@energyeng.de</div>
+      <div><b>Geschäftsführung</b>Ismail Calgan<br>i.calgan@energyeng.de</div>
+    </div>
+    <p style="margin:22px 0 0;font-size:14px;color:#bbb">Nachweis fürs Audit: Bitte nach der Schulung die <b>Teilnahme- und Verständnisbestätigung</b> ausfüllen (QF08 für Mitarbeitende, QF06 für Freelancer und externe Partner; Thema: „IMS-Grundschulung ISO 9001 / 14001 / 45001“).</p>
+    <div style="margin-top:18px"><button class="btn" onclick="window.print()">Schulung drucken / als PDF sichern</button></div>
+  </div>
+
+  <div class="fuss">EnergyEng GmbH · Integriertes Managementsystem · Schulungsunterlage IMS-Grundlagen · Version 1 · Stand September 2026<br>Mitgeltende Unterlagen: M01, M02, M03, M05, QP01, QP04, QP06, QP07, QP08, QP09, QP12, QP14, QF16, QF06/QF08</div>
+</main>
+
+<script>
+(function(){
+  /* ---------- Fortschritt ---------- */
+  const doneBoxes=[...document.querySelectorAll('input[data-done]')];
+  const nav=document.getElementById('modulnav');
+  function updateFortschritt(){
+    const n=doneBoxes.filter(b=>b.checked).length;
+    document.getElementById('fortschritt').style.width=(n/doneBoxes.length*100)+'%';
+    doneBoxes.forEach(b=>{const a=nav.querySelector('a[data-m="'+b.dataset.done+'"]'); if(a) a.classList.toggle('fertig',b.checked);});
+    try{localStorage.setItem('ee_ims_done',JSON.stringify(doneBoxes.map(b=>b.checked)));}catch(e){}
+  }
+  try{const s=JSON.parse(localStorage.getItem('ee_ims_done')||'[]'); doneBoxes.forEach((b,i)=>b.checked=!!s[i]);}catch(e){}
+  doneBoxes.forEach(b=>b.addEventListener('change',updateFortschritt)); updateFortschritt();
+
+  /* ---------- Sortier-Übung: Norm zuordnen ---------- */
+  const normName={Q:'Qualität (ISO 9001)',U:'Umwelt (ISO 14001)',A:'Arbeitsschutz (ISO 45001)'};
+  document.querySelectorAll('#sortier .fall').forEach(f=>{
+    f.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{
+      const ok=btn.dataset.w===f.dataset.antwort;
+      f.classList.add(ok?'richtig':'falsch');
+      f.querySelector('.ergebnis').textContent=ok?'✔ Richtig':'✘ Leider falsch. Richtig wäre: '+normName[f.dataset.antwort];
+    }));
+  });
+
+  /* ---------- Szenarien ---------- */
+  const fb={
+    1:{ok:'Genau so. Du nennst die Quelle (Gefährdungsbeurteilung), bestätigst, dass du sie kennst, ergänzt die Einweisung vor Ort und machst es an der Baustelle konkret. Mehr will ein Auditor nicht hören.',
+       nok:'Nicht optimal. Erfahrung ersetzt die Gefährdungsbeurteilung nicht, und die Verantwortung liegt nicht allein beim Netzbetreiber oder bei der Geschäftsführung. Richtig: Gefährdungsbeurteilung nennen, Einweisung vor Ort, konkrete Schutzmaßnahmen.'},
+    2:{ok:'Richtig. Sicherheit geht vor Audit-Optik. Als Bauüberwachung ist es ausdrücklich unsere Aufgabe, einzugreifen. Der Auditor bewertet genau das positiv: ein gelebtes System reagiert.',
+       nok:'Nicht optimal. Wegsehen oder aufschieben wäre ein echter Sicherheitsverstoß, und den Auditor entscheiden zu lassen ist nicht unsere Rolle. Richtig: sofort ansprechen, Situation beenden, Bauleitung informieren.'},
+    3:{ok:'Richtig. Der IMS-Ordner im SharePoint ist der einzige Ort für freigegebene Versionen. Wer dort öffnet, arbeitet sicher mit dem aktuellen Stand.',
+       nok:'Nicht optimal. Kopien auf dem Laptop oder im Postfach veralten, und „gibt es nicht“ stimmt nicht. Richtig: IMS-Ordner im SharePoint, Anweisungen, QP07.'}
+  };
+  document.querySelectorAll('.szenario[data-sz]').forEach(sz=>{
+    const id=sz.dataset.sz, opts=sz.querySelectorAll('.opt'), f=sz.querySelector('.feedback');
+    opts.forEach(o=>o.addEventListener('click',()=>{
+      const ok=o.dataset.ok==='1';
+      opts.forEach(x=>{x.disabled=true; if(x.dataset.ok==='1') x.classList.add('richtig');});
+      if(!ok) o.classList.add('falsch');
+      f.textContent=ok?fb[id].ok:fb[id].nok; f.className='feedback show '+(ok?'ok':'nok');
+    }));
+  });
+
+  /* ---------- Abschlusstest ---------- */
+  const fragen=[
+    {q:'Nach welchen drei Normen lässt sich EnergyEng zertifizieren?',a:['ISO 9001, ISO 27001, ISO 50001','ISO 9001 (Qualität), ISO 14001 (Umwelt), ISO 45001 (Arbeitsschutz)','ISO 9001, ISO 14001, ISO 13485','Nur ISO 45001, weil Arbeitsschutz am wichtigsten ist'],r:1},
+    {q:'Wo findest du die gültige, freigegebene Version einer Anweisung?',a:['In meinem E-Mail-Postfach','Auf meinem Laptop im Ordner „Dokumente“','Im SharePoint-Ordner Integriertes Managementsystem','Beim Netzbetreiber'],r:2},
+    {q:'Was ist die Aufgabe der Managementbeauftragten?',a:['Sie entscheidet allein über alle Bestellungen','Sie pflegt das IMS: Dokumentenlenkung, Register, Audits, und ist erste Ansprechpartnerin für Meldungen','Sie ist nur für das Marketing zuständig','Sie führt ausschließlich die Buchhaltung'],r:1},
+    {q:'Du beobachtest einen Beinaheunfall, es ist aber nichts passiert. Was tust du?',a:['Nichts, es ist ja nichts passiert','Am selben Arbeitstag an Bauleitung vor Ort und Managementbeauftragte melden','Beim nächsten Jahresgespräch erwähnen','Nur melden, wenn ein Kunde es gesehen hat'],r:1},
+    {q:'Was gehört zu unseren IMS-Zielen 2026?',a:['Null meldepflichtige Arbeitsunfälle und Beinaheunfälle melden und auswerten','Möglichst viele Fahrten mit dem Pkw','Reklamationen nicht dokumentieren','Keine Unterweisungen mehr, das spart Zeit'],r:0},
+    {q:'Was ist unser größter Umweltaspekt?',a:['Papierverbrauch im Büro','Fahrten und Kraftstoffverbrauch','Stromverbrauch der Laptops','Der Bau von Freileitungen durch uns selbst'],r:1},
+    {q:'Du siehst auf der Baustelle eine Öllache unter einer fremden Maschine. Was tust du?',a:['Ignorieren, die Maschine gehört nicht uns','Sofort telefonisch an Auftraggeber bzw. Bauleitung und Geschäftsführung melden, danach schriftlich bestätigen','Erst am Monatsende im Bericht erwähnen','Selbst mit Bindemittel aufnehmen und niemandem etwas sagen'],r:1},
+    {q:'Wer bestellt bei EnergyEng Material, PSA und Arbeitsmittel?',a:['Jeder selbst, Hauptsache die Rechnung geht an EnergyEng','Hilal zentral nach freigegebener Bestellanforderung QF27','Nur der Netzbetreiber','Der Subunternehmer'],r:1},
+    {q:'Ein Kunde beschwert sich bei dir über einen unvollständigen Bericht. Was darfst du zusagen?',a:['Eine kostenlose Nacharbeit bis morgen','Dass EnergyEng die Kosten übernimmt','Dass du es aufnimmst, weitergibst und der Kunde eine Rückmeldung bekommt','Gar nichts, am besten nicht reagieren'],r:2},
+    {q:'Der Auditor stellt dir eine Frage, deren Antwort du nicht kennst. Was ist richtig?',a:['Etwas Plausibles erfinden, damit es gut aussieht','Ehrlich sagen, dass du es nicht weißt, und nennen, wen du fragen würdest','Das Gespräch abbrechen','Auf den Netzbetreiber verweisen'],r:1}
+  ];
+  const quiz=document.getElementById('quiz');
+  function baueQuiz(){
+    quiz.innerHTML='';
+    fragen.forEach((f,i)=>{
+      const d=document.createElement('div'); d.className='szenario'; d.dataset.q=i;
+      d.innerHTML='<div class="sit"><b>Frage '+(i+1)+' von '+fragen.length+'</b>'+f.q+'</div>'+f.a.map((t,j)=>'<label class="opt" style="display:flex;gap:10px;align-items:flex-start"><input type="radio" name="q'+i+'" value="'+j+'" style="margin-top:3px;accent-color:#EA3223"><span>'+t+'</span></label>').join('');
+      quiz.appendChild(d);
+    });
+    document.getElementById('ergebnis').className='quiz-ergebnis';
+    document.getElementById('auswerten').style.display='';
+    document.getElementById('reset').style.display='none';
+  }
+  baueQuiz();
+  document.getElementById('auswerten').addEventListener('click',()=>{
+    let richtig=0, offen=0;
+    fragen.forEach((f,i)=>{
+      const sel=quiz.querySelector('input[name="q'+i+'"]:checked');
+      const blk=quiz.querySelector('[data-q="'+i+'"]');
+      const labels=blk.querySelectorAll('label.opt');
+      if(!sel){offen++;}
+      labels.forEach((l,j)=>{l.classList.remove('richtig','falsch'); if(j===f.r) l.classList.add('richtig'); if(sel&&+sel.value===j&&j!==f.r) l.classList.add('falsch'); l.querySelector('input').disabled=true;});
+      if(sel&&+sel.value===f.r) richtig++;
+    });
+    if(offen>0 && !confirm(offen+' Frage(n) sind noch unbeantwortet. Trotzdem auswerten?')){ fragen.forEach((f,i)=>{quiz.querySelectorAll('[data-q="'+i+'"] label.opt').forEach(l=>{l.classList.remove('richtig','falsch'); l.querySelector('input').disabled=false;});}); return; }
+    const best=richtig>=7;
+    const e=document.getElementById('ergebnis');
+    e.innerHTML='<div class="zahl">'+richtig+' <small>von '+fragen.length+' richtig</small></div><p style="margin:10px 0 0;font-size:17px">'+(best?'✅ Bestanden. Bitte jetzt die Teilnahme- und Verständnisbestätigung (QF08 bzw. QF06) ausfüllen und an die Managementbeauftragte geben.':'Noch nicht bestanden. Schau dir die markierten Antworten an, lies die betreffenden Module noch einmal und wiederhole den Test.')+'</p>';
+    e.className='quiz-ergebnis show';
+    document.getElementById('auswerten').style.display='none';
+    document.getElementById('reset').style.display='';
+    e.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('reset').addEventListener('click',baueQuiz);
+})();
+</script>
+</body>
+</html>
