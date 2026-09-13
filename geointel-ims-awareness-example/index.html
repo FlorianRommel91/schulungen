@@ -472,7 +472,7 @@
       labels.forEach((l,j)=>{l.classList.remove('richtig','falsch'); if(j===f.r) l.classList.add('richtig'); if(+sel.value===j&&j!==f.r) l.classList.add('falsch'); l.querySelector('input').disabled=true;});
       if(+sel.value===f.r) richtig++;
     });
-    const best=richtig>=5;
+    const best=richtig>=5; if(window.qvmReport)qvmReport(best,richtig,fragen.length);
     const e=document.getElementById('ergebnis');
     e.innerHTML='<div class="zahl">'+richtig+' <small>of '+fragen.length+' correct</small></div><p style="margin:10px 0 0;font-size:17px">'+(best?'✅ Passed. Enter your name below and print your training confirmation for QF10.':'Not passed yet. Look at the highlighted answers, re-read the relevant part and try again.')+'</p>';
     e.className='quiz-ergebnis show';
@@ -505,6 +505,24 @@
     setTimeout(()=>window.print(),50);
     setTimeout(done,3000);
   });
+})();
+</script>
+<script>
+/* ---------- QVM-Portal-Brücke ----------
+   Läuft die Schulung im Lernbereich der QVM-App, meldet sie das Testergebnis
+   an die App zurück und übernimmt den Namen der angemeldeten Person für die
+   Teilnahmebestätigung. Außerhalb der App passiert nichts. */
+(function(){
+  var name=null;
+  function send(m){ try{ if(window.parent&&window.parent!==window){ m.type='qvm-training'; window.parent.postMessage(m,'*'); } }catch(e){} }
+  window.addEventListener('message',function(ev){
+    var d=ev.data||{}; if(d.type!=='qvm-training-context') return;
+    name=d.name||null;
+    var z=document.getElementById('zname')||document.getElementById('cert-name');
+    if(z&&name){ z.value=name; z.readOnly=true; }
+  });
+  window.qvmReport=function(passed,score,max){ send({event:'result',passed:!!passed,score:score,max:max}); };
+  send({event:'ready'});
 })();
 </script>
 </body>

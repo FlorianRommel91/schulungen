@@ -669,7 +669,7 @@
       if(sel&&+sel.value===f.r) richtig++;
     });
     if(offen>0 && !confirm(offen+' Frage(n) sind noch unbeantwortet. Trotzdem auswerten?')){ fragen.forEach((f,i)=>{quiz.querySelectorAll('[data-q="'+i+'"] label.opt').forEach(l=>{l.classList.remove('richtig','falsch'); l.querySelector('input').disabled=false;});}); return; }
-    const best=richtig===fragen.length; letztePunkte=richtig;
+    const best=richtig===fragen.length; if(window.qvmReport)qvmReport(best,richtig,fragen.length); letztePunkte=richtig;
     const e=document.getElementById('ergebnis');
     e.innerHTML='<div class="zahl">'+richtig+' <small>von '+fragen.length+' richtig</small></div><p style="margin:10px 0 0;font-size:17px">'+(best?'✅ Bestanden. Unten kannst du jetzt deine Teilnahmebestätigung erstellen und ausdrucken.':'Noch nicht bestanden. Beide Fragen müssen richtig sein. Schau dir die markierten Antworten an, lies das betreffende Modul noch einmal und wiederhole den Test.')+'</p>';
     e.className='quiz-ergebnis show';
@@ -703,6 +703,24 @@
     window.print();
     setTimeout(ende,3000);
   });
+})();
+</script>
+<script>
+/* ---------- QVM-Portal-Brücke ----------
+   Läuft die Schulung im Lernbereich der QVM-App, meldet sie das Testergebnis
+   an die App zurück und übernimmt den Namen der angemeldeten Person für die
+   Teilnahmebestätigung. Außerhalb der App passiert nichts. */
+(function(){
+  var name=null;
+  function send(m){ try{ if(window.parent&&window.parent!==window){ m.type='qvm-training'; window.parent.postMessage(m,'*'); } }catch(e){} }
+  window.addEventListener('message',function(ev){
+    var d=ev.data||{}; if(d.type!=='qvm-training-context') return;
+    name=d.name||null;
+    var z=document.getElementById('zname')||document.getElementById('cert-name');
+    if(z&&name){ z.value=name; z.readOnly=true; }
+  });
+  window.qvmReport=function(passed,score,max){ send({event:'result',passed:!!passed,score:score,max:max}); };
+  send({event:'ready'});
 })();
 </script>
 </body>
