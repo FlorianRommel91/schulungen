@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QM-Grundschulung ISO 9001 – Müller Maschinenbau GmbH</title>
+<style>
+  :root{
+    --blau:#1f4e79; --stahl:#3a6ea5; --akzent:#f28c28; --schwarz:#1a1a1a; --grau:#5b5b5b; --hell:#f4f5f7; --linie:#dfe2e7;
+    --gruen:#2e8b57; --gelb:#e0a800; --rot:#c62828; --weiss:#fff; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--schwarz);background:var(--hell);line-height:1.55;font-size:17px}
+  header.top{background:var(--weiss);border-bottom:1px solid var(--linie);position:sticky;top:0;z-index:20}
+  .top-inner{max-width:1040px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--schwarz)}
+  .logo svg{width:36px;height:36px}
+  .logo b{font-size:17px;letter-spacing:.02em;line-height:1}
+  .logo b small{display:block;font-size:11px;font-weight:600;color:var(--grau);letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
+  .top-inner .titel{font-weight:700;font-size:15px;flex:1;min-width:200px}
+  .fortschritt{height:6px;background:var(--linie);border-radius:3px;overflow:hidden;width:100%}
+  .fortschritt > div{height:100%;background:linear-gradient(90deg,var(--blau),var(--akzent));width:0%;transition:width .4s}
+  main{max-width:1040px;margin:0 auto;padding:24px 20px 80px}
+  .hero{background:var(--blau);color:#fff;border-radius:var(--radius);padding:44px 40px;margin-bottom:28px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,var(--akzent),#b85f0c);opacity:.85}
+  .hero *{position:relative}
+  .hero .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#ffd6b0;font-weight:600}
+  .hero h1{font-size:clamp(28px,4.5vw,44px);margin:8px 0 12px;line-height:1.1}
+  .hero p{max-width:620px;font-size:18px;color:#e9eef5;margin:0 0 20px}
+  .hero .meta{font-size:13px;color:#b9c7d8}
+  .btn{display:inline-block;-webkit-appearance:none;appearance:none;font-family:inherit;background:var(--akzent);color:#fff;border:0;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;transition:transform .1s,background .2s}
+  .btn:hover{background:#d4731a;transform:translateY(-1px)}
+  .btn.sekundaer{background:#fff;color:var(--blau);border:2px solid var(--blau)}
+  .btn.sekundaer:hover{background:var(--hell)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  nav.module{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:34px}
+  nav.module a{background:#fff;border:1px solid var(--linie);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--schwarz);font-size:14px;display:flex;gap:10px;align-items:center;transition:border .2s}
+  nav.module a:hover{border-color:var(--akzent)}
+  nav.module a .nr{width:26px;height:26px;border-radius:50%;background:var(--blau);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+  nav.module a.fertig .nr{background:var(--gruen)}
+  section.modul{background:#fff;border-radius:var(--radius);padding:36px 40px;margin-bottom:28px;border:1px solid var(--linie);scroll-margin-top:90px}
+  section.modul .kap{color:var(--akzent);font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase}
+  section.modul h2{margin:6px 0 18px;font-size:30px;line-height:1.15}
+  section.modul h3{font-size:19px;margin:28px 0 10px}
+  p.lead{font-size:19px;color:#333}
+  .karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .karte{background:var(--hell);border-radius:12px;padding:18px 18px 16px;border-left:5px solid var(--stahl)}
+  .karte.akzent{border-left-color:var(--akzent)} .karte.gruen{border-left-color:var(--gruen)} .karte.blau{border-left-color:var(--blau)} .karte.grau{border-left-color:#bbb} .karte.rot{border-left-color:var(--rot)}
+  .karte > b{display:block;margin-bottom:6px;font-size:16px}
+  .karte p{margin:0;font-size:15px;color:#333}
+  .karte .icon{font-size:26px;margin-bottom:8px}
+  .merke{background:#fff6ec;border:1px solid #ffd9b3;border-radius:12px;padding:16px 20px;margin:18px 0;display:flex;gap:14px;align-items:flex-start}
+  .merke .i{font-size:24px}
+  .merke > div > b:first-child{color:#b85f0c}
+  .zweispalt{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+  @media(max-width:720px){.zweispalt{grid-template-columns:1fr} section.modul{padding:26px 20px} .hero{padding:32px 24px}}
+  .box{border:1px solid var(--linie);border-radius:12px;padding:18px 20px}
+  .box.ja{background:#f0faf3;border-color:#bfe6cc} .box.nein{background:#fdf0ef;border-color:#f3c3bf}
+  .box h4{margin:0 0 10px;font-size:17px}
+  .box ul{margin:0;padding-left:20px} .box li{margin-bottom:6px;font-size:15px}
+  /* PDCA */
+  .pdca{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+  .pdca div{background:#fff;border:2px solid var(--blau);border-radius:12px;padding:16px}
+  .pdca div b{display:block;font-size:22px;color:var(--blau)} .pdca div b span{font-size:13px;color:var(--grau);font-weight:600;margin-left:6px}
+  .pdca div p{margin:6px 0 0;font-size:14.5px}
+  /* Grundsätze */
+  .grundsaetze{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:16px 0}
+  .grundsatz{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;background:var(--hell);border-radius:12px;padding:14px 16px}
+  .grundsatz .n{width:34px;height:34px;border-radius:50%;background:var(--blau);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px}
+  .grundsatz b{display:block;font-size:15.5px;margin-bottom:3px} .grundsatz p{margin:0;font-size:14px;color:#333}
+  /* Normkapitel */
+  .kapitel{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:16px 0}
+  .kapitel div{background:#fff;border:1px solid var(--linie);border-top:4px solid var(--stahl);border-radius:10px;padding:12px 12px 10px;font-size:13.5px}
+  .kapitel div b{display:block;font-size:20px;color:var(--blau)} .kapitel div i{display:block;font-style:normal;font-weight:700;margin-bottom:4px}
+  /* Schritte */
+  .schritte{counter-reset:s;display:grid;gap:14px;margin:18px 0}
+  .schritt{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;background:var(--hell);border-radius:12px;padding:18px}
+  .schritt .n{counter-increment:s;width:44px;height:44px;border-radius:50%;background:var(--blau);color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+  .schritt .n:before{content:counter(s)}
+  .schritt > div > b{font-size:18px;display:block;margin-bottom:4px}
+  .schritt p{margin:0 0 6px;font-size:15px}
+  .schritt ul{margin:4px 0 0;padding-left:18px;font-size:15px}
+  /* Prozesslandkarte */
+  .landkarte{display:grid;gap:10px;margin:18px 0}
+  .lk-reihe{display:grid;grid-template-columns:132px 1fr;gap:10px;align-items:stretch}
+  .lk-reihe .lab{background:var(--blau);color:#fff;border-radius:10px;padding:10px 6px;font-size:11px;line-height:1.3;font-weight:700;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;justify-content:center;text-align:center}
+  .lk-reihe.kern .lab{background:var(--akzent)}
+  .lk-reihe .zellen{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+  .lk-reihe .zellen div{background:#fff;border:1.5px solid var(--linie);border-radius:10px;padding:10px 6px;font-size:13px;hyphens:manual;text-align:center;display:flex;align-items:center;justify-content:center}
+  .lk-reihe.kern .zellen div{border-color:var(--akzent);background:#fff8f1;font-weight:600}
+  .lk-reihe.kern .zellen{grid-template-columns:repeat(auto-fit,minmax(95px,1fr))}
+  @media(max-width:720px){.lk-reihe{grid-template-columns:1fr}}
+  /* Flow */
+  .flow{display:flex;flex-direction:column;gap:0;margin:20px 0;align-items:stretch}
+  .flow .node{background:#fff;border:2px solid var(--blau);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+  .flow .node.start{background:var(--blau);color:#fff}
+  .flow .node.du{border-color:var(--akzent);background:#fff8f1}
+  .flow .node.ent{border-style:dashed;border-color:var(--stahl);background:#f7f9fc}
+  .flow .node.end{background:#eef8f1;border-color:var(--gruen)}
+  .flow .node b{display:block;font-size:16px}
+  .flow .node span.t{font-size:14px;color:#333}
+  .flow .node.start span.t{color:#dfe7f1}
+  .flow .node .wer{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--hell);white-space:nowrap;color:#333}
+  .flow .node.du .wer{background:var(--akzent);color:#fff}
+  .flow .pfeil{text-align:center;color:var(--grau);font-size:22px;line-height:1;padding:4px 0}
+  .flow .pfeil small{display:block;font-size:12px;color:var(--grau)}
+  /* Tabelle */
+  .tabwrap{overflow-x:auto;margin:16px 0}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;background:#fff}
+  th,td{border:1px solid var(--linie);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--blau);color:#fff;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfc}
+  td code{background:var(--hell);padding:1px 6px;border-radius:4px;font-size:13px}
+  /* Sortier-Übung */
+  .sortier{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0}
+  .fall{background:#fff;border:2px solid var(--linie);border-radius:12px;padding:14px 16px;font-size:15px}
+  .fall .frage{margin-bottom:10px;min-height:48px}
+  .fall .wahl{display:flex;gap:8px}
+  .fall button{flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--blau);background:#fff;cursor:pointer;font-weight:600;font-size:14px;font-family:inherit}
+  .fall button:hover{background:var(--hell)}
+  .fall.richtig{border-color:var(--gruen);background:#f4fbf6} .fall.falsch{border-color:var(--rot);background:#fdf3f2}
+  .fall .erkl{font-size:13.5px;margin-top:10px;color:#333;display:none}
+  .fall.richtig .erkl,.fall.falsch .erkl{display:block}
+  .fall.richtig .wahl,.fall.falsch .wahl{display:none}
+  .fall .ergebnis{font-weight:700;font-size:14px;margin-top:8px;display:none}
+  .fall.richtig .ergebnis{display:block;color:var(--gruen)} .fall.falsch .ergebnis{display:block;color:var(--rot)}
+  /* Szenarien / Quiz */
+  .szenario{border:1px solid var(--linie);border-radius:12px;padding:20px 22px;margin:16px 0;background:#fff}
+  .szenario .sit{font-size:16px;margin-bottom:12px}
+  .szenario .sit b{display:block;font-size:17px;margin-bottom:4px}
+  .opt{display:block;width:100%;text-align:left;background:var(--hell);border:2px solid var(--hell);border-radius:10px;padding:12px 14px;margin:8px 0;cursor:pointer;font-size:15px;font-family:inherit;line-height:1.4}
+  .opt:hover{border-color:#bbb}
+  .opt.richtig{border-color:var(--gruen);background:#eef8f1}
+  .opt.falsch{border-color:var(--rot);background:#fdf0ef}
+  .opt[disabled]{cursor:default}
+  .feedback{display:none;margin-top:10px;padding:12px 14px;border-radius:10px;font-size:14.5px}
+  .feedback.show{display:block}
+  .feedback.ok{background:#eef8f1;border:1px solid #bfe6cc} .feedback.nok{background:#fdf0ef;border:1px solid #f3c3bf}
+  .quiz-ergebnis{display:none;margin-top:20px;padding:22px;border-radius:12px;background:var(--blau);color:#fff}
+  .quiz-ergebnis.show{display:block}
+  .quiz-ergebnis .zahl{font-size:44px;font-weight:800;line-height:1}
+  .quiz-ergebnis .zahl small{font-size:18px;font-weight:400;color:#b9c7d8}
+  /* Merkkarte */
+  .merkkarte{background:var(--blau);color:#fff;border-radius:var(--radius);padding:34px 40px}
+  .merkkarte h2{margin:0 0 6px;font-size:28px}
+  .merkkarte ol{counter-reset:m;list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+  .merkkarte li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;font-size:17px}
+  .merkkarte li:before{counter-increment:m;content:counter(m);width:32px;height:32px;border-radius:50%;background:var(--akzent);display:flex;align-items:center;justify-content:center;font-weight:800}
+  .kontakt{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+  @media(max-width:720px){.kontakt{grid-template-columns:1fr} .merkkarte{padding:26px 22px}}
+  .kontakt div{background:#163a5c;border-radius:10px;padding:14px 16px;font-size:15px}
+  .kontakt b{display:block;color:#ffd6b0;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+  .fuss{text-align:center;color:var(--grau);font-size:13px;margin-top:40px}
+  .modul-ende{margin-top:26px;padding-top:18px;border-top:1px dashed var(--linie);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .modul-ende label{font-size:15px;display:flex;align-items:center;gap:8px;cursor:pointer}
+  .modul-ende input{width:20px;height:20px;accent-color:var(--gruen)}
+  .quelle{font-size:13px;color:var(--grau);margin-top:6px}
+  .dauer{display:inline-block;font-size:12px;color:var(--grau);background:var(--hell);border-radius:999px;padding:3px 10px;margin-left:8px;vertical-align:middle;font-weight:600}
+  @media print{
+    header.top{position:static} .btn,.modul-ende,nav.module,.fortschritt{display:none!important}
+    section.modul,.hero,.merkkarte{break-inside:avoid;border:1px solid #ccc;box-shadow:none}
+    body{background:#fff;font-size:13px} .hero{color:#000;background:#eee} .hero:before{display:none} .hero p,.hero .meta,.hero .kicker{color:#222}
+    .fall .wahl{display:none} .fall .erkl{display:block} .feedback{display:block}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <a class="logo" href="#start" aria-label="Müller Maschinenbau GmbH">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#1f4e79"/><path d="M24 9l3 3.2 4.3-.9 1.4 4.2 4.2 1.4-.9 4.3L39 24l-3 2.8.9 4.3-4.2 1.4-1.4 4.2-4.3-.9L24 39l-3-3.2-4.3.9-1.4-4.2-4.2-1.4.9-4.3L9 24l3-2.8-.9-4.3 4.2-1.4 1.4-4.2 4.3.9z" fill="#f28c28"/><circle cx="24" cy="24" r="6" fill="#1f4e79"/></svg>
+      <b>MÜLLER<small>Maschinenbau GmbH</small></b>
+    </a>
+    <div class="titel">QM-Grundschulung · ISO 9001</div>
+    <div class="fortschritt"><div id="fortschritt"></div></div>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="start">
+    <div class="kicker">Qualitätsmanagement · ISO 9001:2015</div>
+    <h1>Unser Qualitätsmanagementsystem: Was es ist und was es für dich bedeutet</h1>
+    <p>Müller Maschinenbau ist nach ISO 9001 zertifiziert. Das klingt nach Papier, ist aber vor allem eine Beschreibung davon, wie wir arbeiten: von der Anfrage über Konstruktion und Fertigung bis zur Abnahme beim Kunden. Diese Grundschulung erklärt in etwa 30 Minuten, warum wir ein QM-System haben, wie die Norm aufgebaut ist, wer wofür verantwortlich ist, wo du unsere Dokumente findest und welche Regeln im Alltag in Werkstatt, Montage und Büro für dich gelten.</p>
+    <a class="btn" href="#m1">Schulung starten</a>
+    <div class="meta" style="margin-top:18px">Grundlage: QMH Qualitätsmanagementhandbuch · Qualitätspolitik · Prozesslandkarte · Qualitätsziele 2026 · Stand 09/2026 · © Müller Maschinenbau GmbH</div>
+  </div>
+
+  <nav class="module" id="modulnav">
+    <a href="#m1" data-m="1"><span class="nr">1</span>Warum das Ganze?</a>
+    <a href="#m2" data-m="2"><span class="nr">2</span>Die Norm im Überblick</a>
+    <a href="#m3" data-m="3"><span class="nr">3</span>Unsere Prozesse</a>
+    <a href="#m4" data-m="4"><span class="nr">4</span>Politik, Ziele, Rollen</a>
+    <a href="#m5" data-m="5"><span class="nr">5</span>Dokumente &amp; Aufzeichnungen</a>
+    <a href="#m6" data-m="6"><span class="nr">6</span>Qualität im Alltag</a>
+    <a href="#m7" data-m="7"><span class="nr">7</span>Verbessern &amp; Audit</a>
+    <a href="#m8" data-m="8"><span class="nr">8</span>Abschlusstest</a>
+  </nav>
+
+  <!-- ===================== MODUL 1 ===================== -->
+  <section class="modul" id="m1">
+    <div class="kap">Modul 1 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Warum ein Qualitätsmanagementsystem?</h2>
+    <p class="lead">Ein QM-System ist keine Bürokratie-Übung. Es beschreibt, wie wir bei Müller Maschinenbau arbeiten, und sorgt dafür, dass wir es auch so tun, egal wer gerade an der Maschine, am CAD-Arbeitsplatz oder beim Kunden steht.</p>
+    <div class="karten">
+      <div class="karte akzent"><div class="icon">🤝</div><b>Unsere Kunden verlangen es</b><p>Automobilzulieferer, Verpackungshersteller und Anlagenbauer vergeben Aufträge zunehmend nur an zertifizierte Lieferanten. Das Zertifikat ist unser Nachweis, dass wir Termine, Qualität und Dokumentation im Griff haben.</p></div>
+      <div class="karte rot"><div class="icon">💸</div><b>Fehler sind teuer</b><p>Ein falsch gebohrtes Gehäuse kostet ein paar Euro Material. Dieselbe Bohrung, entdeckt bei der Inbetriebnahme beim Kunden, kostet Monteur, Reise, Stillstand und Vertrauen. Je später ein Fehler auffällt, desto teurer wird er.</p></div>
+      <div class="karte blau"><div class="icon">🔁</div><b>Gleiche Qualität, immer</b><p>Der Kunde soll dieselbe Maschine bekommen, egal welcher Kollege oder welche Kollegin sie konstruiert, fertigt oder montiert. Dafür brauchen wir beschriebene Abläufe statt Wissen, das nur in Köpfen steckt.</p></div>
+      <div class="karte gruen"><div class="icon">📈</div><b>Besser werden</b><p>Fehler, Nacharbeit und Kundenrückmeldungen werden erfasst und ausgewertet. Aus Einzelfällen werden Muster, aus Mustern Verbesserungen. Nur was gemeldet wird, kann verbessert werden.</p></div>
+    </div>
+
+    <h3>Was „Qualität“ eigentlich heißt</h3>
+    <p>Qualität ist nicht „so gut wie möglich“, sondern: <b>Die Anforderungen des Kunden sind erfüllt.</b> Eine Vorrichtung, die zwei Zehntel genauer ist als bestellt, aber drei Wochen zu spät kommt, hat keine gute Qualität. Ein Standard-Förderband, das genau das tut, was im Lastenheft steht, und pünktlich läuft, schon.</p>
+    <div class="zweispalt">
+      <div class="box ja"><h4>✅ Anforderungen kommen von …</h4><ul><li>dem Kunden (Lastenheft, Zeichnung, Bestellung, Abnahmekriterien)</li><li>Gesetzen und Normen (Maschinenrichtlinie, CE, Sicherheitsnormen)</li><li>uns selbst (Werksnormen, interne Standards, Qualitätsziele)</li></ul></div>
+      <div class="box nein"><h4>❌ Qualität ist nicht …</h4><ul><li>„Wir machen das schon immer so.“</li><li>„Ich habe es besser gemacht als bestellt.“</li><li>„Der Kunde hat sich nicht beschwert, also passt es.“</li></ul></div>
+    </div>
+
+    <h3>So funktioniert jedes Managementsystem: der PDCA-Kreis</h3>
+    <div class="pdca">
+      <div><b>Plan <span>Planen</span></b><p>Was will der Kunde? Welche Schritte, Prüfungen, Termine und Ressourcen brauchen wir dafür? Bei uns: Auftragsklärung, Projektplan, Prüfplan.</p></div>
+      <div><b>Do <span>Umsetzen</span></b><p>Konstruieren, fertigen, montieren, in Betrieb nehmen, so wie es geplant und in unseren Abläufen beschrieben ist.</p></div>
+      <div><b>Check <span>Prüfen</span></b><p>Haben wir erreicht, was geplant war? Maßprüfung, Funktionsprüfung, Abnahme, Kundenrückmeldung, Kennzahlen, Audit.</p></div>
+      <div><b>Act <span>Verbessern</span></b><p>Abweichungen abstellen, Ursachen beseitigen, Abläufe anpassen. Dann beginnt der Kreis von vorn, auf höherem Niveau.</p></div>
+    </div>
+    <div class="merke"><div class="i">💡</div><div><b>Merke:</b> Das QM-System ist kein Ordner im Regal. Es ist die Summe unserer Abläufe, Verantwortungen und Nachweise. Du arbeitest jeden Tag darin, ob du es „QM“ nennst oder nicht.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="1"> Modul 1 verstanden</label><a class="btn sekundaer" href="#m2">Weiter zu Modul 2 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 2 ===================== -->
+  <section class="modul" id="m2">
+    <div class="kap">Modul 2 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Die Norm ISO 9001 im Überblick</h2>
+    <p class="lead">ISO 9001 ist die weltweit meistgenutzte Norm für Qualitätsmanagement. Sie schreibt nicht vor, <i>wie</i> wir eine Maschine bauen. Sie fordert, dass wir unsere Abläufe kennen, steuern, nachweisen und verbessern.</p>
+
+    <h3>Die sieben Grundsätze des Qualitätsmanagements</h3>
+    <div class="grundsaetze">
+      <div class="grundsatz"><div class="n">1</div><div><b>Kundenorientierung</b><p>Wir verstehen, was der Kunde braucht, und erfüllen es. Der Kunde entscheidet, ob Qualität stimmt.</p></div></div>
+      <div class="grundsatz"><div class="n">2</div><div><b>Führung</b><p>Die Geschäftsführung gibt Richtung und Ziele vor und stellt Mittel bereit. Qualität ist Chefsache, nicht QMB-Sache.</p></div></div>
+      <div class="grundsatz"><div class="n">3</div><div><b>Einbeziehung der Personen</b><p>Jede und jeder trägt zur Qualität bei. Wer den Fehler sieht, meldet ihn. Wer eine Idee hat, sagt sie.</p></div></div>
+      <div class="grundsatz"><div class="n">4</div><div><b>Prozessorientierter Ansatz</b><p>Wir denken in Abläufen mit Eingaben, Schritten, Ergebnissen und Verantwortlichen, nicht in Abteilungssilos.</p></div></div>
+      <div class="grundsatz"><div class="n">5</div><div><b>Verbesserung</b><p>Der heutige Stand ist nie der Endzustand. Fehler sind Anlass zum Verbessern, nicht zum Schuldsuchen.</p></div></div>
+      <div class="grundsatz"><div class="n">6</div><div><b>Faktengestützte Entscheidungen</b><p>Wir entscheiden auf Basis von Daten: Prüfergebnisse, Reklamationsquote, Termintreue, Nacharbeitsstunden.</p></div></div>
+      <div class="grundsatz"><div class="n">7</div><div><b>Beziehungsmanagement</b><p>Lieferanten, Kunden und Partner sind Teil unserer Qualität. Wir bewerten Lieferanten und arbeiten mit ihnen an Problemen.</p></div></div>
+    </div>
+
+    <h3>Der Aufbau der Norm: Kapitel 4 bis 10</h3>
+    <p>Die Norm hat zehn Kapitel. Die ersten drei sind Einleitung und Begriffe. Anforderungen stehen in den Kapiteln 4 bis 10, und die folgen genau dem PDCA-Kreis:</p>
+    <div class="kapitel">
+      <div><b>4</b><i>Kontext</i>Wer sind wir, wer sind unsere Kunden und Partner, welche Prozesse haben wir?</div>
+      <div><b>5</b><i>Führung</i>Verpflichtung der Geschäftsführung, Qualitätspolitik, Rollen und Verantwortungen.</div>
+      <div><b>6</b><i>Planung</i>Risiken und Chancen, Qualitätsziele, geplante Änderungen.</div>
+      <div><b>7</b><i>Unterstützung</i>Personal, Kompetenz, Infrastruktur, Prüfmittel, Wissen, Dokumentation.</div>
+      <div><b>8</b><i>Betrieb</i>Das Kerngeschäft: Anfrage, Entwicklung, Einkauf, Fertigung, Prüfung, Lieferung, Fehlerbehandlung.</div>
+      <div><b>9</b><i>Bewertung</i>Kundenzufriedenheit, Kennzahlen, internes Audit, Managementbewertung.</div>
+      <div><b>10</b><i>Verbesserung</i>Fehler beheben, Ursachen abstellen, fortlaufend besser werden.</div>
+    </div>
+    <div class="tabwrap"><table>
+      <tr><th style="width:130px">PDCA</th><th>Normkapitel</th><th>Bei uns konkret</th></tr>
+      <tr><td><b>Plan</b></td><td>4 Kontext · 5 Führung · 6 Planung</td><td>Qualitätspolitik, Prozesslandkarte, Qualitätsziele, Risikoliste</td></tr>
+      <tr><td><b>Do</b></td><td>7 Unterstützung · 8 Betrieb</td><td>Schulungsmatrix, Prüfmittelliste, Auftragsabwicklung, Prüfplan, Lieferantenbewertung</td></tr>
+      <tr><td><b>Check</b></td><td>9 Bewertung der Leistung</td><td>Kennzahlen-Cockpit, internes Audit, Managementbewertung, Kundenbefragung</td></tr>
+      <tr><td><b>Act</b></td><td>10 Verbesserung</td><td>Fehlermeldungen, Korrekturmaßnahmen, Verbesserungsvorschläge</td></tr>
+    </table></div>
+    <div class="merke"><div class="i">💡</div><div><b>Merke:</b> Die Norm sagt <i>was</i> erfüllt sein muss, nie <i>wie</i>. Das „Wie“ steht in unseren eigenen Prozessbeschreibungen. Deshalb passt ein QM-System nach ISO 9001 zu einem Maschinenbauer genauso wie zu einer Arztpraxis.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="2"> Modul 2 verstanden</label><a class="btn sekundaer" href="#m3">Weiter zu Modul 3 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 3 ===================== -->
+  <section class="modul" id="m3">
+    <div class="kap">Modul 3 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Unsere Prozesse: Wie eine Maschine bei uns entsteht</h2>
+    <p class="lead">Die Norm verlangt den prozessorientierten Ansatz. Heißt: Wir beschreiben unsere Arbeit als Kette von Abläufen mit klaren Übergaben. Die Prozesslandkarte im QM-Handbuch zeigt alle Prozesse auf einen Blick.</p>
+
+    <h3>Unsere Prozesslandkarte</h3>
+    <div class="landkarte">
+      <div class="lk-reihe"><div class="lab">Führungs-<br>prozesse</div><div class="zellen"><div>Strategie &amp; Ziele</div><div>Risiken &amp; Chancen</div><div>Management&shy;bewertung</div><div>Internes Audit</div><div>Verbesserung</div></div></div>
+      <div class="lk-reihe kern"><div class="lab">Kern-<br>prozesse</div><div class="zellen"><div>Anfrage &amp; Angebot</div><div>Auftrags&shy;klärung</div><div>Konstruktion</div><div>Einkauf</div><div>Fertigung</div><div>Montage &amp; Prüfung</div><div>Lieferung &amp; Inbetrieb&shy;nahme</div><div>Service</div></div></div>
+      <div class="lk-reihe"><div class="lab">Unterstützungs-<br>prozesse</div><div class="zellen"><div>Personal &amp; Schulung</div><div>Prüfmittel</div><div>Instandhaltung</div><div>IT &amp; Dokumente</div><div>Lieferanten&shy;bewertung</div></div></div>
+    </div>
+    <p>Die <b>Kernprozesse</b> schaffen den Wert für den Kunden. Die <b>Führungsprozesse</b> steuern das Unternehmen. Die <b>Unterstützungsprozesse</b> sorgen dafür, dass die Kernprozesse überhaupt laufen können: ohne kalibrierte Messschieber keine gültige Prüfung, ohne geschulte Schweißer keine Schweißnaht.</p>
+
+    <h3>Der Kernprozess im Detail: von der Anfrage bis zur Abnahme</h3>
+    <div class="flow">
+      <div class="node start"><div><b>Anfrage des Kunden</b><span class="t">Lastenheft, Skizze, Stückzahl, Wunschtermin</span></div><span class="wer">Kunde</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node"><div><b>Angebot &amp; Auftragsklärung</b><span class="t">Anforderungen prüfen: Können wir das? Ist alles klar? Offene Punkte werden vor der Bestätigung geklärt (Norm: „Bewertung der Anforderungen“).</span></div><span class="wer">Vertrieb + Konstruktion</span></div>
+      <div class="pfeil">↓<small>Auftragsbestätigung</small></div>
+      <div class="node"><div><b>Konstruktion</b><span class="t">Pflichtenheft, 3D-Modell, Zeichnungen, Stücklisten. Prüfung durch zweite Person vor Freigabe (Vier-Augen-Prinzip), Freigabe dokumentiert.</span></div><span class="wer">Konstruktion</span></div>
+      <div class="pfeil">↓<small>Zeichnungsfreigabe</small></div>
+      <div class="node"><div><b>Einkauf</b><span class="t">Kaufteile und Rohmaterial nur bei freigegebenen Lieferanten, mit klarer Spezifikation. Wareneingang wird geprüft.</span></div><span class="wer">Einkauf + Wareneingang</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Fertigung</b><span class="t">Zerspanung, Schweißen, Oberfläche. Nach gültiger Zeichnung, mit kalibrierten Messmitteln, Prüfung nach Prüfplan, Ergebnisse im Prüfprotokoll.</span></div><span class="wer">Fertigung</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Montage &amp; Prüfung</b><span class="t">Zusammenbau, Verkabelung, Funktionsprüfung, Vorabnahme intern. Abweichungen werden gemeldet, nicht „passend gemacht“.</span></div><span class="wer">Montage + QS</span></div>
+      <div class="pfeil">↓<small>Interne Abnahme</small></div>
+      <div class="node ent"><div><b>Abnahme mit Kunde</b><span class="t">Abnahmeprotokoll, Mängelliste, Dokumentation (Betriebsanleitung, CE, Prüfprotokolle) übergeben.</span></div><span class="wer">Projektleitung + Kunde</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node end"><div><b>Lieferung, Inbetriebnahme, Service</b><span class="t">Aufstellung beim Kunden, Einweisung, Rückmeldung einholen. Reklamationen laufen in den Verbesserungsprozess.</span></div><span class="wer">Montage + Service</span></div>
+    </div>
+    <div class="merke"><div class="i">🔗</div><div><b>Merke:</b> Jeder Prozess hat einen <b>Prozessverantwortlichen</b>, definierte <b>Eingaben und Ergebnisse</b> und mindestens eine <b>Kennzahl</b>. Was du an den nächsten Schritt übergibst, ist dessen Eingabe. Unvollständige Übergaben sind die häufigste Fehlerquelle im Maschinenbau.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="3"> Modul 3 verstanden</label><a class="btn sekundaer" href="#m4">Weiter zu Modul 4 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 4 ===================== -->
+  <section class="modul" id="m4">
+    <div class="kap">Modul 4 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Politik, Ziele und Rollen</h2>
+    <p class="lead">Die Geschäftsführung legt fest, wofür wir stehen (Qualitätspolitik) und was wir konkret erreichen wollen (Qualitätsziele). Damit das nicht auf dem Papier bleibt, gibt es klare Rollen.</p>
+
+    <h3>Unsere Qualitätspolitik in drei Sätzen</h3>
+    <div class="karten">
+      <div class="karte akzent"><b>„Wir liefern, was wir zugesagt haben.“</b><p>Termin, Funktion, Dokumentation. Zusagen werden vor der Auftragsbestätigung geprüft, nicht danach.</p></div>
+      <div class="karte blau"><b>„Fehler stellen wir an der Quelle ab.“</b><p>Wir suchen Ursachen, nicht Schuldige. Ein gemeldeter Fehler ist wertvoller als ein versteckter.</p></div>
+      <div class="karte gruen"><b>„Jede und jeder trägt Verantwortung für Qualität.“</b><p>Qualität wird nicht am Ende hineingeprüft, sondern in jedem Arbeitsschritt hergestellt.</p></div>
+    </div>
+    <p class="quelle">Die vollständige Qualitätspolitik hängt im Eingangsbereich und in der Werkstatt aus und steht im QM-Handbuch, Kapitel 5. Im Audit darfst du sie in eigenen Worten wiedergeben, auswendig muss sie niemand können.</p>
+
+    <h3>Qualitätsziele 2026 (Auszug)</h3>
+    <div class="tabwrap"><table>
+      <tr><th>Ziel</th><th>Kennzahl</th><th>Zielwert 2026</th><th>Wer misst?</th></tr>
+      <tr><td>Termintreue gegenüber dem Kunden erhöhen</td><td>Anteil termingerecht ausgelieferter Aufträge</td><td>≥ 92 %</td><td>Projektleitung, monatlich</td></tr>
+      <tr><td>Reklamationen senken</td><td>Kundenreklamationen je 100 Aufträge</td><td>≤ 3</td><td>QMB, monatlich</td></tr>
+      <tr><td>Nacharbeit reduzieren</td><td>Nacharbeitsstunden in % der Fertigungsstunden</td><td>≤ 2,5 %</td><td>Fertigungsleitung, monatlich</td></tr>
+      <tr><td>Lieferantenqualität sichern</td><td>Beanstandungen im Wareneingang</td><td>≤ 1,5 %</td><td>Einkauf, quartalsweise</td></tr>
+      <tr><td>Kompetenz aufbauen</td><td>Schulungsplan erfüllt</td><td>100 %</td><td>Personal, halbjährlich</td></tr>
+    </table></div>
+    <p class="quelle">Ziele müssen messbar sein. „Wir wollen besser werden“ ist kein Ziel. „Nacharbeit unter 2,5 %“ schon.</p>
+
+    <h3>Wer ist wofür verantwortlich?</h3>
+    <div class="schritte">
+      <div class="schritt"><div class="n"></div><div><b>Geschäftsführung: Thomas Müller</b><p>Trägt die Gesamtverantwortung für das QM-System. Gibt Politik und Ziele vor, stellt Personal, Maschinen und Budget bereit, führt einmal jährlich die Managementbewertung durch. Die Norm nennt das „Verpflichtung der obersten Leitung“.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Qualitätsmanagementbeauftragte (QMB): Sabine Krüger</b><p>Pflegt das QM-System: Dokumentenlenkung, Kennzahlen, interne Audits, Reklamationsbearbeitung, Kontakt zur Zertifizierungsstelle. Erste Ansprechpartnerin für alle Fragen rund um Abläufe, Formulare und Meldungen.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Prozessverantwortliche: Abteilungsleitungen</b><p>Fertigungsleitung Markus Weber, Konstruktionsleitung Lena Hoffmann, Einkauf Petra Schulz, Montageleitung Jan Becker. Sie sorgen dafür, dass ihr Prozess wie beschrieben läuft, die Kennzahl erreicht wird und ihr Team geschult ist.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Qualitätssicherung (QS): Ali Demir</b><p>Führt Wareneingangs-, Zwischen- und Endprüfungen durch, verwaltet Prüfmittel und Kalibrierung, sperrt fehlerhafte Teile. Die QS prüft, aber die Qualität stellt jede und jeder selbst her.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Du: jede Mitarbeiterin, jeder Mitarbeiter</b><p>Arbeitest nach gültigen Zeichnungen und Anweisungen, prüfst deine eigene Arbeit, meldest Abweichungen sofort, nimmst an Unterweisungen teil und bringst Verbesserungsvorschläge ein.</p></div></div>
+    </div>
+    <div class="merke"><div class="i">👤</div><div><b>Merke:</b> Der Auditor fragt gern: „Wer ist bei Ihnen für Qualität verantwortlich?“ Die richtige Antwort ist nicht „die QMB“ oder „die QS“, sondern: „Jede und jeder in ihrem Bereich. Die Gesamtverantwortung hat die Geschäftsführung, die QMB koordiniert das System.“</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="4"> Modul 4 verstanden</label><a class="btn sekundaer" href="#m5">Weiter zu Modul 5 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 5 ===================== -->
+  <section class="modul" id="m5">
+    <div class="kap">Modul 5 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Dokumente und Aufzeichnungen</h2>
+    <p class="lead">Die Norm nennt es „dokumentierte Information“. Dahinter stecken zwei ganz verschiedene Dinge: <b>Vorgabedokumente</b> sagen, wie etwas gemacht wird. <b>Aufzeichnungen</b> beweisen, dass es gemacht wurde.</p>
+
+    <h3>Unsere Dokumentenpyramide</h3>
+    <div class="tabwrap"><table>
+      <tr><th style="width:150px">Ebene</th><th>Kürzel</th><th>Was steht drin?</th><th>Beispiele</th></tr>
+      <tr><td><b>1 · Handbuch</b></td><td><code>QMH</code></td><td>Überblick über das gesamte System: Politik, Prozesslandkarte, Rollen, Geltungsbereich</td><td>QM-Handbuch</td></tr>
+      <tr><td><b>2 · Prozessbeschreibungen</b></td><td><code>PB-xx</code></td><td>Wie ein Prozess abläuft: Schritte, Verantwortliche, Schnittstellen, Kennzahlen</td><td>PB-03 Auftragsabwicklung, PB-07 Reklamationsbearbeitung, PB-10 Lenkung fehlerhafter Produkte</td></tr>
+      <tr><td><b>3 · Arbeitsanweisungen</b></td><td><code>AA-xx</code></td><td>Wie ein einzelner Arbeitsschritt konkret ausgeführt wird, oft mit Bildern</td><td>AA-12 Rüsten Fräszentrum, AA-18 Schweißnahtprüfung Sichtkontrolle, AA-21 Verpackung Export</td></tr>
+      <tr><td><b>4 · Formblätter</b></td><td><code>FB-xx</code></td><td>Leere Vorlagen zum Ausfüllen. Ausgefüllt werden sie zur Aufzeichnung</td><td>FB-05 Prüfprotokoll, FB-09 Fehlermeldung, FB-14 Abnahmeprotokoll</td></tr>
+    </table></div>
+
+    <h3>Wo finde ich die gültige Version?</h3>
+    <div class="zweispalt">
+      <div class="box ja"><h4>✅ Hier ist die Wahrheit</h4><ul><li><b>QM-Ordner im Intranet</b> (Laufwerk Q:\QM\). Nur dort liegen freigegebene Versionen.</li><li>Zeichnungen: nur aus dem <b>PDM-System</b> mit Status „freigegeben“.</li><li>Aushänge in der Werkstatt tragen Versionsnummer und Datum; die QMB tauscht sie aus.</li></ul></div>
+      <div class="box nein"><h4>❌ Hier nicht</h4><ul><li>Kopien auf dem eigenen Laptop oder USB-Stick</li><li>Ausdrucke, die seit Monaten am Arbeitsplatz liegen</li><li>Zeichnungen aus alten E-Mails oder von der Werkbank des Kollegen</li><li>„Ich weiß noch, wie das früher war“</li></ul></div>
+    </div>
+    <p>Jedes Vorgabedokument hat Nummer, Version, Datum und Freigabe. Änderungen laufen über die QMB: Änderung vorschlagen, prüfen, freigeben, alte Version zurückziehen, Betroffene informieren. Ein Dokument ohne Freigabe ist ein Entwurf und gilt nicht.</p>
+
+    <h3>Aufzeichnungen: Der Nachweis, dass wir es getan haben</h3>
+    <p>Prüfprotokolle, Abnahmeprotokolle, Schulungsnachweise, Kalibrierscheine, Lieferantenbewertungen, Fehlermeldungen. Für Aufzeichnungen gelten drei Regeln:</p>
+    <div class="karten">
+      <div class="karte blau"><b>Vollständig und lesbar</b><p>Wer, was, wann, Ergebnis, Unterschrift oder Kürzel. Ein Prüfprotokoll ohne Messwert ist keine Prüfung, sondern ein Blatt Papier.</p></div>
+      <div class="karte akzent"><b>Zeitnah</b><p>Direkt nach der Tätigkeit ausfüllen, nicht am Freitag aus dem Gedächtnis. Was nicht dokumentiert ist, hat für den Auditor nicht stattgefunden.</p></div>
+      <div class="karte gruen"><b>Auffindbar und aufbewahrt</b><p>Ablage im Auftragsordner bzw. im ERP. Aufbewahrungsfristen stehen in PB-02 Dokumentenlenkung, für Maschinen-Prüfprotokolle mindestens 10 Jahre.</p></div>
+    </div>
+
+    <h3>Kurz-Check: Vorgabedokument oder Aufzeichnung?</h3>
+    <p>Ordne zu. Vorgabe = beschreibt, <i>wie</i> etwas zu tun ist. Aufzeichnung = belegt, <i>dass</i> und mit welchem Ergebnis es getan wurde.</p>
+    <div class="sortier" id="sortier">
+      <div class="fall" data-antwort="V"><div class="frage">Arbeitsanweisung AA-12 „Rüsten Fräszentrum“</div><div class="wahl"><button data-w="V">Vorgabe</button><button data-w="A">Aufzeichnung</button></div><div class="ergebnis"></div><div class="erkl">Beschreibt, wie gerüstet wird. Vorgabedokument mit Version und Freigabe.</div></div>
+      <div class="fall" data-antwort="A"><div class="frage">Ausgefülltes Prüfprotokoll zu Auftrag 26-0417 mit Messwerten und Kürzel</div><div class="wahl"><button data-w="V">Vorgabe</button><button data-w="A">Aufzeichnung</button></div><div class="ergebnis"></div><div class="erkl">Belegt, dass und mit welchem Ergebnis geprüft wurde. Aufzeichnung, wird im Auftragsordner aufbewahrt.</div></div>
+      <div class="fall" data-antwort="V"><div class="frage">Leeres Formblatt FB-05 „Prüfprotokoll“ im QM-Ordner</div><div class="wahl"><button data-w="V">Vorgabe</button><button data-w="A">Aufzeichnung</button></div><div class="ergebnis"></div><div class="erkl">Das leere Formblatt ist eine Vorlage, also ein Vorgabedokument. Erst ausgefüllt wird es zur Aufzeichnung.</div></div>
+      <div class="fall" data-antwort="A"><div class="frage">Kalibrierschein für Messschieber Nr. 27 vom 03.02.2026</div><div class="wahl"><button data-w="V">Vorgabe</button><button data-w="A">Aufzeichnung</button></div><div class="ergebnis"></div><div class="erkl">Nachweis, dass das Prüfmittel geprüft wurde. Aufzeichnung.</div></div>
+      <div class="fall" data-antwort="V"><div class="frage">Prozessbeschreibung PB-07 „Reklamationsbearbeitung“</div><div class="wahl"><button data-w="V">Vorgabe</button><button data-w="A">Aufzeichnung</button></div><div class="ergebnis"></div><div class="erkl">Beschreibt den Ablauf. Vorgabedokument.</div></div>
+      <div class="fall" data-antwort="A"><div class="frage">Unterschriebene Teilnehmerliste der Unterweisung „Kranführung“ vom 12.05.2026</div><div class="wahl"><button data-w="V">Vorgabe</button><button data-w="A">Aufzeichnung</button></div><div class="ergebnis"></div><div class="erkl">Belegt die Teilnahme. Aufzeichnung, Nachweis für die Kompetenz (Normkapitel 7.2).</div></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="5"> Modul 5 verstanden</label><a class="btn sekundaer" href="#m6">Weiter zu Modul 6 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 6 ===================== -->
+  <section class="modul" id="m6">
+    <div class="kap">Modul 6 <span class="dauer">ca. 5 Min.</span></div>
+    <h2>Qualität im Alltag: Was konkret für dich gilt</h2>
+    <p class="lead">Das QM-System lebt nicht im Handbuch, sondern an deinem Arbeitsplatz. Hier sind die Regeln, die im Audit wie im Tagesgeschäft am häufigsten eine Rolle spielen.</p>
+
+    <h3>1 · Nur nach gültiger Zeichnung und Anweisung arbeiten</h3>
+    <p>Vor dem Start prüfst du: Ist die Zeichnung freigegeben (Stempel bzw. Status im PDM)? Stimmt der Änderungsindex mit dem Auftrag überein? Bei Zweifel: nachfragen, nicht raten. Eine Stunde Wartezeit ist billiger als ein Bauteil nach altem Index.</p>
+
+    <h3>2 · Prüfmittel: nur kalibriert und gekennzeichnet</h3>
+    <div class="zweispalt">
+      <div class="box ja"><h4>✅ Verwenden</h4><ul><li>Messmittel mit grünem Kalibrieraufkleber und gültigem Datum</li><li>Messmittel, die in der Prüfmittelliste stehen (Nummer auf dem Gerät)</li><li>Vor Gebrauch Sichtkontrolle: Beschädigung, Nullstellung</li></ul></div>
+      <div class="box nein"><h4>❌ Nicht verwenden</h4><ul><li>Messmittel ohne Aufkleber oder mit abgelaufenem Datum</li><li>Private Messschieber aus dem Spind</li><li>Heruntergefallene Messmittel: an QS geben, nicht „passt schon“</li></ul></div>
+    </div>
+
+    <h3>3 · Kennzeichnung und Rückverfolgbarkeit</h3>
+    <p>Jedes Teil, jede Baugruppe trägt Auftragsnummer und Zeichnungsnummer (Anhänger, Beschriftung, Laufkarte). Materialzeugnisse bleiben dem Auftrag zugeordnet. Der Kunde und der Auditor müssen in drei Jahren noch nachvollziehen können, aus welcher Charge die Schweißkonstruktion an Maschine 26-0417 stammt.</p>
+
+    <h3>4 · Fehlerhafte Teile: sperren, kennzeichnen, melden</h3>
+    <div class="flow">
+      <div class="node du"><div><b>Abweichung entdeckt</b><span class="t">Maß außerhalb Toleranz, Riss, falsches Material, fehlende Bohrung, Beschädigung beim Transport</span></div><span class="wer">Du</span></div>
+      <div class="pfeil">↓<small>sofort</small></div>
+      <div class="node du"><div><b>Anhalten und kennzeichnen</b><span class="t">Teil nicht weiterbearbeiten, nicht in die Montage geben. Roten Sperranhänger anbringen, ins Sperrlager stellen.</span></div><span class="wer">Du</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node"><div><b>Fehlermeldung FB-09</b><span class="t">Was, wo, Auftrag, Zeichnungsindex, gemessen vs. gefordert. Ehrlich und vollständig, auch wenn es dein eigener Fehler war.</span></div><span class="wer">Du + Vorgesetzte</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node ent"><div><b>Entscheidung</b><span class="t">Nacharbeit · Sonderfreigabe (nur mit Kundenzustimmung!) · Ausschuss und Neufertigung. Die Entscheidung trifft QS mit Konstruktion, nie die Montage allein.</span></div><span class="wer">QS + Konstruktion</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node end"><div><b>Ursache abstellen</b><span class="t">Bei wiederholten oder schweren Fehlern: Korrekturmaßnahme mit Ursachenanalyse (siehe Modul 7).</span></div><span class="wer">Prozessverantwortliche + QMB</span></div>
+    </div>
+    <div class="merke"><div class="i">⚠️</div><div><b>Merke:</b> „Passend machen“ ist kein Weg. Eine Bohrung aufreiben, damit der Bolzen doch passt, ist eine undokumentierte Abweichung, die der Kunde beim nächsten Ersatzteil ausbadet. Melden ist kein Petzen, sondern Teil deines Jobs.</div></div>
+
+    <h3>5 · Kundenreklamationen</h3>
+    <p>Wenn ein Kunde sich bei dir beschwert, am Telefon, per Mail oder bei der Inbetriebnahme: <b>Zuhören, aufschreiben, weitergeben.</b> Du nimmst auf, was genau beanstandet wird, wann es aufgetreten ist, welche Maschine und welche Seriennummer. Du gibst es noch am selben Tag an die Projektleitung oder die QMB weiter. Was du <b>nicht</b> tust: Kosten zusagen, Schuld einräumen, Termine versprechen, die du nicht halten kannst. Die Reklamation läuft nach PB-07 mit Rückmeldung an den Kunden.</p>
+
+    <h3>6 · Lieferanten und Wareneingang</h3>
+    <p>Wir kaufen nur bei freigegebenen Lieferanten (Lieferantenliste im ERP). Im Wareneingang wird gegen Bestellung und Zeichnung geprüft: Menge, Kennzeichnung, Zeugnisse, Stichprobenmaße nach Prüfplan. Beanstandungen gehen als Lieferantenreklamation an den Einkauf und fließen in die jährliche Lieferantenbewertung ein.</p>
+
+    <h3>7 · Kompetenz und Unterweisung</h3>
+    <p>Wer schweißt, hat eine gültige Schweißerprüfung. Wer den Kran bedient, ist unterwiesen. Wer neu ist, wird nach Einarbeitungsplan eingearbeitet. Die Schulungsmatrix zeigt je Person, welche Qualifikation vorhanden und welche fällig ist. Unterweisungen werden mit Unterschrift dokumentiert. Fehlt dir eine Qualifikation für eine Aufgabe: sagen, nicht durchmogeln.</p>
+
+    <h3>Kurz-Check: Was tust du?</h3>
+    <div class="szenario" data-sz="1">
+      <div class="sit"><b>Fall 1: Das Maß stimmt nicht</b>Du fräst eine Aufnahmeplatte. Beim Messen stellst du fest: Die Bohrung liegt 0,15 mm außerhalb der Toleranz. Der Kollege aus der Montage sagt: „Ach, das geht schon, die Passung ist eh großzügig.“ Was tust du?</div>
+      <button class="opt" data-ok="0">Weitergeben. Der Montagekollege kennt die Maschine besser als die Zeichnung.</button>
+      <button class="opt" data-ok="0">Die Bohrung mit dem nächsten Auftrag ausreiben, dann passt es sicher.</button>
+      <button class="opt" data-ok="1">Teil sperren, Sperranhänger dran, Fehlermeldung FB-09 ausfüllen und die Entscheidung von QS und Konstruktion abwarten.</button>
+      <button class="opt" data-ok="0">Das Teil einfach in die Montage geben und nichts sagen, es ist ja nur ein kleines Maß.</button>
+      <div class="feedback"></div>
+    </div>
+    <div class="szenario" data-sz="2">
+      <div class="sit"><b>Fall 2: Der Kunde am Telefon</b>Ein Kunde ruft dich in der Montage direkt an: „Die Anlage, die ihr letzte Woche aufgestellt habt, steht seit heute Morgen. Der Greifer fährt nicht in Grundstellung. Das ist eure Schuld, das kostet uns 5.000 Euro am Tag!“ Was tust du?</div>
+      <button class="opt" data-ok="0">„Das übernehmen wir natürlich, wir schicken morgen jemanden vorbei und die Kosten tragen wir.“</button>
+      <button class="opt" data-ok="1">Ruhig bleiben, die Fakten aufnehmen (Maschine, Seriennummer, Fehlerbild, seit wann), Verständnis zeigen, keine Kosten zusagen, sofort an Projektleitung und QMB weitergeben und dem Kunden einen Rückruf zusagen.</button>
+      <button class="opt" data-ok="0">„Da haben Sie bestimmt selbst etwas verstellt, rufen Sie bitte den Vertrieb an.“</button>
+      <button class="opt" data-ok="0">Nichts weitergeben und nach Feierabend selbst mal vorbeifahren.</button>
+      <div class="feedback"></div>
+    </div>
+    <div class="szenario" data-sz="3">
+      <div class="sit"><b>Fall 3: Die Zeichnung auf der Werkbank</b>Du sollst ein Ersatzteil für eine Maschine aus 2024 fertigen. Auf der Werkbank liegt noch der Ausdruck der Zeichnung von damals. Was tust du?</div>
+      <button class="opt" data-ok="0">Nach dem Ausdruck fertigen, das Teil war ja damals in Ordnung.</button>
+      <button class="opt" data-ok="1">Im PDM den aktuellen freigegebenen Stand prüfen. Stimmt der Index mit dem Ausdruck überein, kann ich loslegen. Wenn nicht: neue Zeichnung drucken, alten Ausdruck entsorgen.</button>
+      <button class="opt" data-ok="0">Den Kollegen fragen, der es damals gefertigt hat, und es genauso machen.</button>
+      <button class="opt" data-ok="0">Erst mal anfangen und die Zeichnung später prüfen, der Termin drückt.</button>
+      <div class="feedback"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="6"> Modul 6 verstanden</label><a class="btn sekundaer" href="#m7">Weiter zu Modul 7 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 7 ===================== -->
+  <section class="modul" id="m7">
+    <div class="kap">Modul 7 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Verbessern und Audit: Wie das System sich selbst überprüft</h2>
+    <p class="lead">Ein QM-System muss sich regelmäßig selbst hinterfragen. Dafür gibt es drei feste Werkzeuge: Korrekturmaßnahmen, interne Audits und die Managementbewertung. Und einmal im Jahr kommt der externe Auditor der Zertifizierungsstelle.</p>
+
+    <h3>Korrekturmaßnahmen: Ursache statt Symptom</h3>
+    <p>Ein Fehler wird behoben (Korrektur). Bei wiederholten oder schweren Fehlern wird zusätzlich die <b>Ursache</b> gesucht und beseitigt (Korrekturmaßnahme), damit er nicht wieder auftritt. Unser Werkzeug dafür ist die 5-Warum-Methode:</p>
+    <div class="schritte">
+      <div class="schritt"><div class="n"></div><div><b>Problem: Falsche Bohrungsposition an drei Grundplatten</b></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Warum?</b><p>Der Fräser hat nach altem Zeichnungsindex gearbeitet.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Warum?</b><p>Der alte Ausdruck lag noch am Arbeitsplatz, die Änderung wurde per Mail geschickt.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Warum?</b><p>Es gibt keine feste Regel, wie Zeichnungsänderungen in die Fertigung kommen.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Maßnahme an der Ursache</b><p>Zeichnungen nur noch aus dem PDM drucken, Ausdrucke tragen Druckdatum, Änderung wird über Laufkarte mit Unterschrift bestätigt. Wirksamkeit nach drei Monaten prüfen: keine Wiederholung? Dann geschlossen.</p></div></div>
+    </div>
+    <p class="quelle">Vorlage: FB-11 Korrekturmaßnahme. Jede Maßnahme hat Verantwortliche, Termin und eine Wirksamkeitsprüfung.</p>
+
+    <h3>Internes Audit: Wir prüfen uns selbst</h3>
+    <p>Einmal im Jahr wird jeder Prozess intern auditiert, nach Auditprogramm der QMB. Ein interner Auditor (geschult, nicht aus dem eigenen Bereich) schaut sich an: Läuft der Prozess so, wie er beschrieben ist? Gibt es Nachweise? Wo hakt es? Das Ergebnis sind Feststellungen und Verbesserungsvorschläge, keine Noten. Das interne Audit ist die Generalprobe für das externe.</p>
+
+    <h3>Managementbewertung: Die Geschäftsführung zieht Bilanz</h3>
+    <p>Einmal jährlich bewertet Thomas Müller mit den Abteilungsleitungen und der QMB das gesamte System: Wurden die Ziele erreicht? Was sagen Kunden, Reklamationen, Audits, Lieferanten? Welche Risiken und Chancen gibt es? Daraus entstehen die Ziele und Maßnahmen für das nächste Jahr. Das Protokoll ist eine der wichtigsten Aufzeichnungen im Zertifizierungsaudit.</p>
+
+    <h3>Das externe Audit: So verhältst du dich</h3>
+    <div class="zweispalt">
+      <div class="box ja"><h4>✅ So läuft es gut</h4><ul><li>Ehrlich antworten. Wenn du etwas nicht weißt: „Das weiß ich nicht, da würde ich Frau Krüger fragen.“</li><li>Zeigen, wie du wirklich arbeitest. Der Auditor will den Alltag sehen, keine Show.</li><li>Nachweise parat haben: Zeichnung, Prüfprotokoll, Kalibrieraufkleber, Laufkarte.</li><li>Fragen zurückfragen, wenn du sie nicht verstehst.</li><li>Ruhig bleiben. Der Auditor prüft das System, nicht dich als Person.</li></ul></div>
+      <div class="box nein"><h4>❌ So besser nicht</h4><ul><li>Etwas erfinden oder schönreden. Auditoren merken das, und dann prüfen sie tiefer.</li><li>„Das macht die QMB, damit habe ich nichts zu tun.“</li><li>Über Kollegen oder die Geschäftsführung klagen.</li><li>Dokumente kurz vor dem Audit „nachpflegen“.</li><li>Auf Fragen mit Angst reagieren. Eine Feststellung ist eine Chance, keine Strafe.</li></ul></div>
+    </div>
+
+    <h3>Typische Auditorfragen an deinem Arbeitsplatz</h3>
+    <div class="tabwrap"><table>
+      <tr><th style="width:45%">Frage des Auditors</th><th>Eine gute Antwort</th></tr>
+      <tr><td>„Woher wissen Sie, was Sie hier fertigen sollen?“</td><td>„Aus dem Fertigungsauftrag mit Laufkarte und der freigegebenen Zeichnung aus dem PDM, Index C.“</td></tr>
+      <tr><td>„Wie wissen Sie, dass Ihr Messschieber richtig misst?“</td><td>„Er ist in der Prüfmittelliste, Nummer 27, und hat einen gültigen Kalibrieraufkleber bis 02/2027.“</td></tr>
+      <tr><td>„Was machen Sie, wenn ein Teil nicht in Ordnung ist?“</td><td>„Sperren, roter Anhänger, Fehlermeldung FB-09, ab ins Sperrlager. Entscheidung trifft die QS.“</td></tr>
+      <tr><td>„Kennen Sie die Qualitätspolitik?“</td><td>„Ja, in Kurzform: Wir liefern, was wir zugesagt haben, stellen Fehler an der Quelle ab, und jeder ist für Qualität verantwortlich.“</td></tr>
+      <tr><td>„Wann waren Sie zuletzt auf einer Schulung?“</td><td>„Im Mai die Kranunterweisung, im März die Schweißerprüfung verlängert. Steht in der Schulungsmatrix.“</td></tr>
+      <tr><td>„Haben Sie schon einmal einen Verbesserungsvorschlag gemacht?“</td><td>„Ja, die Spannvorrichtung für die Gehäuse. Ist über FB-15 eingereicht und umgesetzt worden.“</td></tr>
+    </table></div>
+    <div class="merke"><div class="i">🎯</div><div><b>Merke:</b> Das Audit ist bestanden, wenn der Auditor sieht: Die Leute kennen ihre Abläufe, arbeiten danach und können es belegen. Mehr nicht. Dafür musst du kein Normkapitel zitieren können.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="7"> Modul 7 verstanden</label><a class="btn sekundaer" href="#m8">Weiter zum Abschlusstest →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 8: TEST ===================== -->
+  <section class="modul" id="m8">
+    <div class="kap">Modul 8 <span class="dauer">ca. 5 Min.</span></div>
+    <h2>Abschlusstest</h2>
+    <p class="lead">Zehn Fragen zu allem, was du gerade gelesen hast. Bestanden ab 7 richtigen Antworten. Du kannst den Test beliebig oft wiederholen.</p>
+    <div id="quiz"></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">
+      <button class="btn" id="auswerten">Test auswerten</button>
+      <button class="btn sekundaer" id="reset" style="display:none">Test wiederholen</button>
+    </div>
+    <div class="quiz-ergebnis" id="ergebnis"></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="8"> Test abgeschlossen</label><a class="btn sekundaer" href="#merk">Zur Merkkarte →</a></div>
+  </section>
+
+  <!-- ===================== MERKKARTE ===================== -->
+  <div class="merkkarte" id="merk">
+    <h2>Fünf Regeln für den Alltag im QM-System</h2>
+    <p style="margin:0;color:#dfe7f1">Wenn du dir nur eine Sache aus dieser Schulung merkst, dann diese Karte.</p>
+    <ol>
+      <li><span><b>Nur nach gültiger Zeichnung und Anweisung arbeiten.</b> Freigabe und Index prüfen, Quelle ist das PDM bzw. der QM-Ordner. Bei Zweifel nachfragen.</span></li>
+      <li><span><b>Nur mit kalibrierten Messmitteln prüfen.</b> Grüner Aufkleber, gültiges Datum, in der Prüfmittelliste. Sonst nicht benutzen.</span></li>
+      <li><span><b>Abweichungen sofort sperren und melden.</b> Roter Anhänger, Fehlermeldung FB-09, Sperrlager. Nie „passend machen“.</span></li>
+      <li><span><b>Aufzeichnungen sofort und vollständig führen.</b> Prüfprotokoll, Laufkarte, Abnahme. Was nicht dokumentiert ist, hat nicht stattgefunden.</span></li>
+      <li><span><b>Kundenbeschwerden aufnehmen und weitergeben.</b> Fakten notieren, nichts zusagen, noch am selben Tag an Projektleitung oder QMB.</span></li>
+    </ol>
+    <div class="kontakt">
+      <div><b>Fragen zum QM-System</b>Sabine Krüger, Qualitätsmanagementbeauftragte<br>qm@mueller-maschinenbau.example</div>
+      <div><b>Prüfmittel, Sperrlager, Prüfungen</b>Ali Demir, Qualitätssicherung<br>qs@mueller-maschinenbau.example</div>
+      <div><b>Reklamationen von Kunden</b>Projektleitung des Auftrags oder QMB<br>reklamation@mueller-maschinenbau.example</div>
+      <div><b>Verbesserungsvorschläge</b>Formblatt FB-15 im QM-Ordner oder direkt an die Abteilungsleitung</div>
+    </div>
+  </div>
+
+  <p class="fuss">QM-Grundschulung ISO 9001:2015 · Müller Maschinenbau GmbH · Stand 09/2026 · Bearbeitungszeit ca. 30 Minuten · Nach dem Test bitte die Teilnahmebestätigung (FB-20) unterschreiben und an die QMB geben.</p>
+</main>
+
+<script>
+(function(){
+  /* ---------- Fortschritt ---------- */
+  const KEY='mm_iso9001_done';
+  const doneBoxes=[...document.querySelectorAll('input[data-done]')];
+  const nav=document.getElementById('modulnav');
+  function updateFortschritt(){
+    const n=doneBoxes.filter(b=>b.checked).length;
+    document.getElementById('fortschritt').style.width=(n/doneBoxes.length*100)+'%';
+    doneBoxes.forEach(b=>{const a=nav.querySelector('a[data-m="'+b.dataset.done+'"]'); if(a) a.classList.toggle('fertig',b.checked);});
+    try{localStorage.setItem(KEY,JSON.stringify(doneBoxes.map(b=>b.checked)));}catch(e){}
+  }
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'[]'); doneBoxes.forEach((b,i)=>b.checked=!!s[i]);}catch(e){}
+  doneBoxes.forEach(b=>b.addEventListener('change',updateFortschritt)); updateFortschritt();
+
+  /* ---------- Sortier-Übung: Vorgabe oder Aufzeichnung ---------- */
+  const artName={V:'Vorgabedokument',A:'Aufzeichnung'};
+  document.querySelectorAll('#sortier .fall').forEach(f=>{
+    f.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{
+      const ok=btn.dataset.w===f.dataset.antwort;
+      f.classList.add(ok?'richtig':'falsch');
+      f.querySelector('.ergebnis').textContent=ok?'✔ Richtig':'✘ Leider falsch. Richtig wäre: '+artName[f.dataset.antwort];
+    }));
+  });
+
+  /* ---------- Szenarien ---------- */
+  const fb={
+    1:{ok:'Genau so. Das Teil ist außerhalb der Toleranz, also fehlerhaft, egal wie großzügig die Passung „gefühlt“ ist. Sperren, melden, Entscheidung durch QS und Konstruktion. Vielleicht kommt eine Sonderfreigabe, vielleicht Nacharbeit. Aber dokumentiert.',
+       nok:'Nicht richtig. Weitergeben, aufreiben oder verschweigen sind alles undokumentierte Abweichungen. Der Montagekollege darf diese Entscheidung nicht treffen. Richtig: sperren, roter Anhänger, Fehlermeldung FB-09, Entscheidung durch QS und Konstruktion.'},
+    2:{ok:'Richtig. Fakten aufnehmen, Verständnis zeigen, aber keine Kosten- oder Schuldzusage. Die Reklamation geht sofort an Projektleitung und QMB, die den Kunden zurückrufen und nach PB-07 bearbeiten. Schnelle, geordnete Reaktion ist das, was den Kunden beruhigt.',
+       nok:'Nicht optimal. Kostenzusagen darfst du nicht machen, den Kunden abwimmeln oder ihm die Schuld geben auch nicht, und die Reklamation für dich behalten schon gar nicht. Richtig: Fakten aufnehmen, keine Zusagen, sofort an Projektleitung und QMB, Rückruf zusagen.'},
+    3:{ok:'Richtig. Nur das PDM kennt den gültigen Stand. Ein Ausdruck von 2024 kann längst überholt sein, gerade bei Ersatzteilen. Index abgleichen, dann fertigen. Alte Ausdrucke gehören in den Papierkorb, nicht auf die Werkbank.',
+       nok:'Nicht optimal. Der alte Ausdruck, die Erinnerung des Kollegen oder „erst mal anfangen“ sind alles keine gültigen Quellen. Richtig: freigegebenen Stand im PDM prüfen, Index abgleichen, bei Abweichung neue Zeichnung drucken.'}
+  };
+  document.querySelectorAll('.szenario[data-sz]').forEach(sz=>{
+    const id=sz.dataset.sz, opts=sz.querySelectorAll('.opt'), f=sz.querySelector('.feedback');
+    opts.forEach(o=>o.addEventListener('click',()=>{
+      const ok=o.dataset.ok==='1';
+      opts.forEach(x=>{x.disabled=true; if(x.dataset.ok==='1') x.classList.add('richtig');});
+      if(!ok) o.classList.add('falsch');
+      f.textContent=ok?fb[id].ok:fb[id].nok; f.className='feedback show '+(ok?'ok':'nok');
+    }));
+  });
+
+  /* ---------- Abschlusstest ---------- */
+  const fragen=[
+    {q:'Was bedeutet „Qualität“ im Sinne der ISO 9001?',a:['So gut wie technisch möglich','Die Anforderungen des Kunden, der Gesetze und die eigenen Vorgaben sind erfüllt','Teurer als der Wettbewerb','Der Kunde hat sich nicht beschwert'],r:1},
+    {q:'Wofür stehen die vier Buchstaben PDCA?',a:['Prüfen, Dokumentieren, Controllen, Abheften','Plan, Do, Check, Act: Planen, Umsetzen, Prüfen, Verbessern','Produkt, Design, Kunde, Auftrag','Personal, Daten, Compliance, Audit'],r:1},
+    {q:'Was schreibt die ISO 9001 vor?',a:['Genau, wie eine Maschine konstruiert und gefertigt werden muss','Welche Software wir benutzen müssen','Was ein QM-System leisten muss, aber nicht, wie wir es im Detail umsetzen','Dass jeder Mitarbeiter alle Normkapitel auswendig kennt'],r:2},
+    {q:'Wer trägt die Gesamtverantwortung für das QM-System bei Müller Maschinenbau?',a:['Die Qualitätsmanagementbeauftragte Sabine Krüger','Die Qualitätssicherung Ali Demir','Die Geschäftsführung Thomas Müller','Die Zertifizierungsstelle'],r:2},
+    {q:'Wo findest du die gültige, freigegebene Version einer Arbeitsanweisung?',a:['Auf dem Ausdruck, der an meinem Arbeitsplatz liegt','Im QM-Ordner im Intranet (Q:\\QM\\)','In einer alten E-Mail','Beim Kollegen an der Nachbarmaschine'],r:1},
+    {q:'Was ist der Unterschied zwischen Vorgabedokument und Aufzeichnung?',a:['Vorgaben sind auf Papier, Aufzeichnungen digital','Vorgaben beschreiben, wie etwas zu tun ist; Aufzeichnungen belegen, dass und mit welchem Ergebnis es getan wurde','Vorgaben schreibt der Kunde, Aufzeichnungen die QMB','Es gibt keinen Unterschied'],r:1},
+    {q:'Du stellst fest, dass ein gefertigtes Teil außerhalb der Toleranz liegt. Was tust du?',a:['Weiter in die Montage geben, wenn es ungefähr passt','Sperren, roten Anhänger anbringen, Fehlermeldung FB-09 ausfüllen und die Entscheidung der QS abwarten','Das Teil selbst nacharbeiten, bis es passt, ohne es zu melden','Das Teil verschrotten und ein neues fertigen, ohne jemandem etwas zu sagen'],r:1},
+    {q:'Dein Messschieber hat keinen Kalibrieraufkleber. Was ist richtig?',a:['Benutzen, er misst ja trotzdem','Nicht benutzen, an die QS geben und ein Messmittel aus der Prüfmittelliste nehmen','Nur für unwichtige Maße benutzen','Einen Aufkleber vom Nachbargerät abziehen'],r:1},
+    {q:'Ein Kunde beschwert sich telefonisch bei dir über eine Maschine. Was darfst du zusagen?',a:['Dass Müller Maschinenbau alle Kosten übernimmt','Dass es unsere Schuld war','Dass du die Reklamation aufnimmst, weitergibst und der Kunde einen Rückruf bekommt','Gar nichts, am besten auflegen'],r:2},
+    {q:'Der Auditor stellt dir eine Frage, deren Antwort du nicht kennst. Was ist richtig?',a:['Etwas Plausibles erfinden, damit es gut aussieht','Ehrlich sagen, dass du es nicht weißt, und nennen, wen du fragen würdest','Sagen, dass das nicht dein Bereich ist und das Gespräch beenden','Den Auditor an die Zertifizierungsstelle verweisen'],r:1}
+  ];
+  const quiz=document.getElementById('quiz');
+  function baueQuiz(){
+    quiz.innerHTML='';
+    fragen.forEach((f,i)=>{
+      const d=document.createElement('div'); d.className='szenario'; d.dataset.q=i;
+      d.innerHTML='<div class="sit"><b>Frage '+(i+1)+' von '+fragen.length+'</b>'+f.q+'</div>'+f.a.map((t,j)=>'<label class="opt" style="display:flex;gap:10px;align-items:flex-start"><input type="radio" name="q'+i+'" value="'+j+'" style="margin-top:3px;accent-color:#1f4e79"><span>'+t+'</span></label>').join('');
+      quiz.appendChild(d);
+    });
+    document.getElementById('ergebnis').className='quiz-ergebnis';
+    document.getElementById('auswerten').style.display='';
+    document.getElementById('reset').style.display='none';
+  }
+  baueQuiz();
+  document.getElementById('auswerten').addEventListener('click',()=>{
+    let richtig=0, offen=0;
+    fragen.forEach((f,i)=>{
+      const sel=quiz.querySelector('input[name="q'+i+'"]:checked');
+      const blk=quiz.querySelector('[data-q="'+i+'"]');
+      const labels=blk.querySelectorAll('label.opt');
+      if(!sel){offen++;}
+      labels.forEach((l,j)=>{l.classList.remove('richtig','falsch'); if(j===f.r) l.classList.add('richtig'); if(sel&&+sel.value===j&&j!==f.r) l.classList.add('falsch'); l.querySelector('input').disabled=true;});
+      if(sel&&+sel.value===f.r) richtig++;
+    });
+    if(offen>0 && !confirm(offen+' Frage(n) sind noch unbeantwortet. Trotzdem auswerten?')){ fragen.forEach((f,i)=>{quiz.querySelectorAll('[data-q="'+i+'"] label.opt').forEach(l=>{l.classList.remove('richtig','falsch'); l.querySelector('input').disabled=false;});}); return; }
+    const best=richtig>=7;
+    const e=document.getElementById('ergebnis');
+    e.innerHTML='<div class="zahl">'+richtig+' <small>von '+fragen.length+' richtig</small></div><p style="margin:10px 0 0;font-size:17px">'+(best?'✅ Bestanden. Bitte jetzt die Teilnahmebestätigung (FB-20) unterschreiben und an die QMB geben.':'Noch nicht bestanden. Schau dir die markierten Antworten an, lies die betreffenden Module noch einmal und wiederhole den Test.')+'</p>';
+    e.className='quiz-ergebnis show';
+    document.getElementById('auswerten').style.display='none';
+    document.getElementById('reset').style.display='';
+    e.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('reset').addEventListener('click',baueQuiz);
+})();
+</script>
+</body>
+</html>
