@@ -7,7 +7,7 @@
 <title>QM-Grundschulung ISO 9001 – Amiprox GmbH</title>
 <style>
   :root{
-    --blau:#173f4d; --stahl:#2f7b8c; --akzent:#2fb894; --schwarz:#1a1a1a; --grau:#5b5b5b; --hell:#f4f7f6; --linie:#dde4e2;
+    --blau:#2e2e6b; --stahl:#6b6bab; --akzent:#fdb822; --schwarz:#1a1a1a; --grau:#5b5b5b; --hell:#f5f5f7; --linie:#e2e2ea;
     --gruen:#2e8b57; --gelb:#e0a800; --rot:#c62828; --weiss:#fff; --radius:14px;
   }
   *{box-sizing:border-box}
@@ -16,7 +16,7 @@
   header.top{background:var(--weiss);border-bottom:1px solid var(--linie);position:sticky;top:0;z-index:20}
   .top-inner{max-width:1040px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
   .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--schwarz)}
-  .logo svg{width:36px;height:36px}
+  .logo img{width:36px;height:auto;display:block}
   .logo b{font-size:17px;letter-spacing:.02em;line-height:1}
   .logo b small{display:block;font-size:11px;font-weight:600;color:var(--grau);letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
   .top-inner .titel{font-weight:700;font-size:15px;flex:1;min-width:200px}
@@ -24,14 +24,14 @@
   .fortschritt > div{height:100%;background:linear-gradient(90deg,var(--blau),var(--akzent));width:0%;transition:width .4s}
   main{max-width:1040px;margin:0 auto;padding:24px 20px 80px}
   .hero{background:var(--blau);color:#fff;border-radius:var(--radius);padding:44px 40px;margin-bottom:28px;position:relative;overflow:hidden}
-  .hero:before{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,var(--akzent),#1c7a5e);opacity:.85}
+  .hero:before{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,var(--akzent),#c9860a);opacity:.85}
   .hero *{position:relative}
-  .hero .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#a9ecd9;font-weight:600}
+  .hero .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#ffd977;font-weight:600}
   .hero h1{font-size:clamp(28px,4.5vw,44px);margin:8px 0 12px;line-height:1.1}
-  .hero p{max-width:620px;font-size:18px;color:#e7f0ee;margin:0 0 20px}
-  .hero .meta{font-size:13px;color:#b7cbc6}
-  .btn{display:inline-block;-webkit-appearance:none;appearance:none;font-family:inherit;background:var(--akzent);color:#0a1f17;border:0;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;transition:transform .1s,background .2s}
-  .btn:hover{background:#40dab0;transform:translateY(-1px)}
+  .hero p{max-width:620px;font-size:18px;color:#e8e8f2;margin:0 0 20px}
+  .hero .meta{font-size:13px;color:#b6b6cf}
+  .btn{display:inline-block;-webkit-appearance:none;appearance:none;font-family:inherit;background:var(--akzent);color:#2e2e6b;border:0;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;transition:transform .1s,background .2s}
+  .btn:hover{background:#ffc94d;transform:translateY(-1px)}
   .btn.sekundaer{background:#fff;color:var(--blau);border:2px solid var(--blau)}
   .btn.sekundaer:hover{background:var(--hell)}
   .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
@@ -51,9 +51,9 @@
   .karte > b{display:block;margin-bottom:6px;font-size:16px}
   .karte p{margin:0;font-size:15px;color:#333}
   .karte .icon{font-size:26px;margin-bottom:8px}
-  .merke{background:#eefaf5;border:1px solid #b9e8d6;border-radius:12px;padding:16px 20px;margin:18px 0;display:flex;gap:14px;align-items:flex-start}
+  .merke{background:#fff6e0;border:1px solid #ffdf99;border-radius:12px;padding:16px 20px;margin:18px 0;display:flex;gap:14px;align-items:flex-start}
   .merke .i{font-size:24px}
-  .merke > div > b:first-child{color:#1c7a5e}
+  .merke > div > b:first-child{color:#a86a00}
   .zweispalt{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
   @media(max-width:720px){.zweispalt{grid-template-columns:1fr} section.modul{padding:26px 20px} .hero{padding:32px 24px}}
   .box{border:1px solid var(--linie);border-radius:12px;padding:18px 20px}
@@ -81,24 +81,24 @@
   .landkarte{display:grid;gap:10px;margin:18px 0}
   .lk-reihe{display:grid;grid-template-columns:132px 1fr;gap:10px;align-items:stretch}
   .lk-reihe .lab{background:var(--blau);color:#fff;border-radius:10px;padding:10px 6px;font-size:11px;line-height:1.3;font-weight:700;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;justify-content:center;text-align:center}
-  .lk-reihe.kern .lab{background:var(--akzent);color:#0a1f17}
+  .lk-reihe.kern .lab{background:var(--akzent);color:#2e2e6b}
   .lk-reihe .zellen{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
   .lk-reihe .zellen div{background:#fff;border:1.5px solid var(--linie);border-radius:10px;padding:10px 6px;font-size:13px;hyphens:manual;text-align:center;display:flex;align-items:center;justify-content:center}
-  .lk-reihe.kern .zellen div{border-color:var(--akzent);background:#f1fbf7;font-weight:600}
+  .lk-reihe.kern .zellen div{border-color:var(--akzent);background:#fff8e6;font-weight:600}
   .lk-reihe.kern .zellen{grid-template-columns:repeat(auto-fit,minmax(95px,1fr))}
   @media(max-width:720px){.lk-reihe{grid-template-columns:1fr}}
   /* Flow */
   .flow{display:flex;flex-direction:column;gap:0;margin:20px 0;align-items:stretch}
   .flow .node{background:#fff;border:2px solid var(--blau);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
   .flow .node.start{background:var(--blau);color:#fff}
-  .flow .node.du{border-color:var(--akzent);background:#f1fbf7}
+  .flow .node.du{border-color:var(--akzent);background:#fff8e6}
   .flow .node.ent{border-style:dashed;border-color:var(--stahl);background:#f7fafa}
   .flow .node.end{background:#eef8f1;border-color:var(--gruen)}
   .flow .node b{display:block;font-size:16px}
   .flow .node span.t{font-size:14px;color:#333}
   .flow .node.start span.t{color:#dcece7}
   .flow .node .wer{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--hell);white-space:nowrap;color:#333}
-  .flow .node.du .wer{background:var(--akzent);color:#0a1f17}
+  .flow .node.du .wer{background:var(--akzent);color:#2e2e6b}
   .flow .pfeil{text-align:center;color:var(--grau);font-size:22px;line-height:1;padding:4px 0}
   .flow .pfeil small{display:block;font-size:12px;color:var(--grau)}
   /* Tabelle */
@@ -136,17 +136,17 @@
   .quiz-ergebnis{display:none;margin-top:20px;padding:22px;border-radius:12px;background:var(--blau);color:#fff}
   .quiz-ergebnis.show{display:block}
   .quiz-ergebnis .zahl{font-size:44px;font-weight:800;line-height:1}
-  .quiz-ergebnis .zahl small{font-size:18px;font-weight:400;color:#b7cbc6}
+  .quiz-ergebnis .zahl small{font-size:18px;font-weight:400;color:#b6b6cf}
   /* Merkkarte */
   .merkkarte{background:var(--blau);color:#fff;border-radius:var(--radius);padding:34px 40px}
   .merkkarte h2{margin:0 0 6px;font-size:28px}
   .merkkarte ol{counter-reset:m;list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
   .merkkarte li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;font-size:17px}
-  .merkkarte li:before{counter-increment:m;content:counter(m);width:32px;height:32px;border-radius:50%;background:var(--akzent);color:#0a1f17;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .merkkarte li:before{counter-increment:m;content:counter(m);width:32px;height:32px;border-radius:50%;background:var(--akzent);color:#2e2e6b;display:flex;align-items:center;justify-content:center;font-weight:800}
   .kontakt{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
   @media(max-width:720px){.kontakt{grid-template-columns:1fr} .merkkarte{padding:26px 22px}}
-  .kontakt div{background:#0f2e39;border-radius:10px;padding:14px 16px;font-size:15px}
-  .kontakt b{display:block;color:#a9ecd9;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+  .kontakt div{background:#1f1f52;border-radius:10px;padding:14px 16px;font-size:15px}
+  .kontakt b{display:block;color:#ffd977;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
   .fuss{text-align:center;color:var(--grau);font-size:13px;margin-top:40px}
   .modul-ende{margin-top:26px;padding-top:18px;border-top:1px dashed var(--linie);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
   .modul-ende label{font-size:15px;display:flex;align-items:center;gap:8px;cursor:pointer}
@@ -163,9 +163,9 @@
   #zertifikat.show{display:block}
   .zert{background:#fff;border:10px double var(--blau);border-radius:6px;padding:0 54px 40px;text-align:center;position:relative;max-width:820px;margin:0 auto;overflow:hidden}
   .zert .kopf{background:var(--blau);margin:0 -54px 26px;padding:20px 0 16px;display:flex;justify-content:center;align-items:center;gap:12px;color:#fff}
-  .zert .kopf svg{width:44px;height:44px}
+  .zert .kopf img{width:44px;height:auto;display:block;background:#fff;border-radius:8px;padding:4px}
   .zert .kopf b{font-size:22px;letter-spacing:.03em;line-height:1;text-align:left}
-  .zert .kopf b small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#a9ecd9;margin-top:4px}
+  .zert .kopf b small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#ffd977;margin-top:4px}
   .zert .ecke{position:absolute;width:70px;height:70px;border:4px solid var(--akzent);z-index:2}
   .zert .ecke.tl{left:14px;top:14px;border-right:0;border-bottom:0} .zert .ecke.br{right:14px;bottom:14px;border-left:0;border-top:0}
   .zert .titel{font-size:30px;font-weight:800;color:var(--blau);letter-spacing:.04em;margin:0}
@@ -182,7 +182,7 @@
     body{background:#fff;font-size:13px} .hero{color:#000;background:#eee} .hero:before{display:none} .hero p,.hero .meta,.hero .kicker{color:#222}
     .fall .wahl{display:none} .fall .erkl{display:block} .feedback{display:block}
     body.nur-zert{background:#fff}
-    body.nur-zert .zert .kopf{background:#173f4d!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    body.nur-zert .zert .kopf{background:#2e2e6b!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     body.nur-zert main > *:not(#m8){display:none!important}
     body.nur-zert header.top{display:none!important}
     body.nur-zert #m8 > *:not(#zert-bereich){display:none!important}
@@ -192,7 +192,7 @@
     body.nur-zert #m8{border:0;padding:0;margin:0;background:#fff}
     body.nur-zert #zertifikat{display:block!important;margin:0}
     body.nur-zert main{padding:0;max-width:none}
-    body.nur-zert .zert{border-color:#173f4d;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid}
+    body.nur-zert .zert{border-color:#2e2e6b;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid}
     @page{size:A4 landscape;margin:12mm}
   }
 </style>
@@ -201,7 +201,7 @@
 <header class="top">
   <div class="top-inner">
     <a class="logo" href="#start" aria-label="Amiprox GmbH">
-      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#173f4d"/><path d="M24 9l3 3.2 4.3-.9 1.4 4.2 4.2 1.4-.9 4.3L39 24l-3 2.8.9 4.3-4.2 1.4-1.4 4.2-4.3-.9L24 39l-3-3.2-4.3.9-1.4-4.2-4.2-1.4.9-4.3L9 24l3-2.8-.9-4.3 4.2-1.4 1.4-4.2 4.3.9z" fill="#2fb894"/><circle cx="24" cy="24" r="6" fill="#173f4d"/></svg>
+      <img src="amiprox-logo.png" alt="Amiprox">
       <b>AMIPROX<small>GmbH</small></b>
     </a>
     <div class="titel">QM-Grundschulung · ISO 9001</div>
@@ -213,7 +213,7 @@
   <div class="hero" id="start">
     <div class="kicker">Qualitätsmanagement · ISO 9001:2015</div>
     <h1>Unser Qualitätsmanagementsystem: Was es ist und was es für dich bedeutet</h1>
-    <p>Amiprox entwickelt, stellt her und vertreibt Laborverbrauchsmaterialien für den Proteinnachweis – und bereitet gerade die Zertifizierung nach ISO 9001 vor. Diese Grundschulung erklärt in ca. 30 Minuten, warum wir ein QM-System haben, wie unser System aufgebaut ist, wer wofür verantwortlich ist, wo du unsere Dokumente findest und welche Regeln im Alltag bei Entwicklung, Herstellung, QC und Versand für dich gelten. Am Ende gibt es zwei Kontrollfragen und deine Teilnahmebestätigung zum Ausdrucken.</p>
+    <p>Amiprox entwickelt, stellt her und vertreibt Laborverbrauchsmaterialien für den Proteinnachweis – und bereitet gerade die Zertifizierung nach ISO 9001 vor. Diese Grundschulung erklärt in ca. 30 Minuten, warum wir ein QM-System haben, wie unser System aufgebaut ist, wer wofür verantwortlich ist, wo du unsere Dokumente findest und welche Regeln im Alltag bei Entwicklung, Herstellung, QC und Versand für dich gelten. Am Ende gibt es zehn Kontrollfragen und deine Teilnahmebestätigung zum Ausdrucken.</p>
     <a class="btn" href="#m1">Schulung starten</a>
     <div class="meta" style="margin-top:18px">Grundlage: QM01 Integriertes Managementhandbuch · QM02 Qualitäts- und Umweltpolitik · QM05 Prozesslandkarte · eQMS · Stand 09/2026 · © Amiprox GmbH</div>
   </div>
@@ -591,7 +591,7 @@
   <section class="modul" id="m8">
     <div class="kap">Modul 8 <span class="dauer">ca. 5 Min.</span></div>
     <h2>Abschlusstest und Teilnahmebestätigung</h2>
-    <p class="lead">Zwei Kontrollfragen zu dem, was du gerade gelesen hast. Sind beide richtig, kannst du dir unten deine Teilnahmebestätigung mit Namen und Datum ausdrucken. Du kannst den Test beliebig oft wiederholen.</p>
+    <p class="lead">Zehn Kontrollfragen zu dem, was du gerade gelesen hast. Sind alle richtig, kannst du dir unten deine Teilnahmebestätigung mit Namen und Datum ausdrucken. Du kannst den Test beliebig oft wiederholen.</p>
     <div id="quiz"></div>
     <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">
       <button class="btn" id="auswerten">Test auswerten</button>
@@ -609,11 +609,11 @@
       <div id="zertifikat">
         <div class="zert">
           <div class="ecke tl"></div><div class="ecke br"></div>
-          <div class="kopf"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#fff"/><path d="M24 9l3 3.2 4.3-.9 1.4 4.2 4.2 1.4-.9 4.3L39 24l-3 2.8.9 4.3-4.2 1.4-1.4 4.2-4.3-.9L24 39l-3-3.2-4.3.9-1.4-4.2-4.2-1.4.9-4.3L9 24l3-2.8-.9-4.3 4.2-1.4 1.4-4.2 4.3.9z" fill="#2fb894"/><circle cx="24" cy="24" r="6" fill="#fff"/></svg><b>AMIPROX<small>GmbH</small></b></div>
+          <div class="kopf"><img src="amiprox-logo.png" alt="Amiprox"><b>AMIPROX<small>GmbH</small></b></div>
           <p class="titel">Teilnahmebestätigung</p>
           <p class="sub">QM-Grundschulung nach ISO 9001:2015</p>
           <div class="name" id="z-name">–</div>
-          <p class="text">hat am <b id="z-datum">–</b> die Schulung <b>„Unser Qualitätsmanagementsystem: Was es ist und was es für dich bedeutet"</b> vollständig durchgearbeitet und die Kontrollfragen mit <b id="z-punkte">–</b> von 2 Punkten bestanden.</p>
+          <p class="text">hat am <b id="z-datum">–</b> die Schulung <b>„Unser Qualitätsmanagementsystem: Was es ist und was es für dich bedeutet"</b> vollständig durchgearbeitet und die Kontrollfragen mit <b id="z-punkte">–</b> von 10 Punkten bestanden.</p>
           <p class="inhalte"><b>Inhalte:</b> Sinn und Nutzen eines QM-Systems, PDCA · Aufbau der ISO 9001 und unsere Prozesslandkarte · Qualitäts- und Umweltpolitik, IMS-Ziele und Rollen · Dokumentenlenkung im eQMS · Herstellung, QC-Checks, Chargendokumentation und Versandfreigabe · Abweichungen und Reklamationen · Interne Audits und Managementbewertung</p>
           <div class="unterschriften">
             <div>Teilnehmer/in</div>
@@ -686,7 +686,15 @@
   /* ---------- Abschlusstest ---------- */
   const fragen=[
     {q:'Wo findest du die gültige, aktuell freigegebene Version eines Dokuments?',a:['Im eQMS – dort liegt garantiert nur der aktuelle Stand','Auf dem Ausdruck, der im Labor hängt','In einer alten E-Mail','Bei einer Kollegin, die zufällig eine Kopie hat'],r:0},
-    {q:'Eine Charge ist verpackt, aber die Shipping-List ist noch nicht ausgefüllt. Was tust du?',a:['Versenden, die Liste kann später nachgetragen werden','Erst die Shipping-List vollständig ausfüllen, dann versenden','Nur versenden, wenn der Kunde danach fragt','Die Charge ohne Dokumentation ins Lager zurücklegen und weitermachen'],r:1}
+    {q:'Eine Charge ist verpackt, aber die Shipping-List ist noch nicht ausgefüllt. Was tust du?',a:['Versenden, die Liste kann später nachgetragen werden','Erst die Shipping-List vollständig ausfüllen, dann versenden','Nur versenden, wenn der Kunde danach fragt','Die Charge ohne Dokumentation ins Lager zurücklegen und weitermachen'],r:1},
+    {q:'Was bedeutet „Qualität" im Sinne von ISO 9001?',a:['Möglichst teure, hochwertige Materialien verwenden','Die vereinbarten Anforderungen zuverlässig erfüllen','Strenger prüfen, als der Kunde verlangt hat','Keine Kundenbeschwerden bekommen'],r:1},
+    {q:'Was kommt im PDCA-Zyklus direkt nach „Do" (Umsetzen)?',a:['Check – prüfen, ob es wirklich besser geworden ist','Act – sofort überall ausrollen','Plan – von vorn beginnen','Nichts, der Zyklus endet mit Do'],r:0},
+    {q:'Wer gibt ein Dokument bei Amiprox final frei, nachdem Alice es geprüft hat?',a:['Delia, weil sie im Vertrieb ist', 'Dominik als Geschäftsführer','Das Dokument ist mit Alice\' Prüfung schon gültig','Der externe Berater'],r:1},
+    {q:'Wofür steht das Kürzel „QP" in unserer Dokumentenstruktur?',a:['Formulare und Aufzeichnungen','Managementdokumente wie Handbuch oder Politik','Prozessbeschreibungen – wie ein Ablauf grundsätzlich funktioniert','Qualitätsprotokolle des Zertifizierers'],r:2},
+    {q:'Was gehört zur Versandfreigabe, bevor eine Charge das Haus verlässt?',a:['Nur die Unterschrift der Laborleitung','Packaging checked, Completeness checked und Shipping release','Eine kurze Rücksprache mit dem Kunden','Nichts zusätzliches, die QC-Prüfung reicht'],r:1},
+    {q:'Drei Kunden melden innerhalb von zwei Wochen dieselbe Reklamation zur selben Charge. Was ist richtig?',a:['Jede Meldung einzeln beantworten, mehr nicht','Warten, ob noch mehr Meldungen kommen','Alle erfassen und das Muster sofort an Alice/Dominik melden','Die Kunden bitten, sich untereinander abzustimmen'],r:2},
+    {q:'Wer darf einen Unternehmensbereich im internen Audit auditieren?',a:['Nur die Geschäftsführung','Jeder, der gerade Zeit hat','Nur jemand, der nicht im eigenen Bereich arbeitet','Nur externe Auditoren'],r:2},
+    {q:'Was will ein Auditor beim QC-Check am Versandtag wirklich sehen?',a:['Eine mündliche Erklärung, dass es gemacht wird','Echte Protokolle aus tatsächlich bearbeiteten Chargen','Einen eigens für den Audittermin durchgeführten Beispiel-Check','Eine Ankündigung, dass es demnächst eingeführt wird'],r:1}
   ];
   let letztePunkte=0;
   const quiz=document.getElementById('quiz');
@@ -694,7 +702,7 @@
     quiz.innerHTML='';
     fragen.forEach((f,i)=>{
       const d=document.createElement('div'); d.className='szenario'; d.dataset.q=i;
-      d.innerHTML='<div class="sit"><b>Frage '+(i+1)+' von '+fragen.length+'</b>'+f.q+'</div>'+f.a.map((t,j)=>'<label class="opt" style="display:flex;gap:10px;align-items:flex-start"><input type="radio" name="q'+i+'" value="'+j+'" style="margin-top:3px;accent-color:#173f4d"><span>'+t+'</span></label>').join('');
+      d.innerHTML='<div class="sit"><b>Frage '+(i+1)+' von '+fragen.length+'</b>'+f.q+'</div>'+f.a.map((t,j)=>'<label class="opt" style="display:flex;gap:10px;align-items:flex-start"><input type="radio" name="q'+i+'" value="'+j+'" style="margin-top:3px;accent-color:#2e2e6b"><span>'+t+'</span></label>').join('');
       quiz.appendChild(d);
     });
     document.getElementById('ergebnis').className='quiz-ergebnis';
