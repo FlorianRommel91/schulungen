@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QM-Grundschulung ISO 9001 – Amiprox GmbH</title>
+<style>
+  :root{
+    --blau:#173f4d; --stahl:#2f7b8c; --akzent:#2fb894; --schwarz:#1a1a1a; --grau:#5b5b5b; --hell:#f4f7f6; --linie:#dde4e2;
+    --gruen:#2e8b57; --gelb:#e0a800; --rot:#c62828; --weiss:#fff; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--schwarz);background:var(--hell);line-height:1.55;font-size:17px}
+  header.top{background:var(--weiss);border-bottom:1px solid var(--linie);position:sticky;top:0;z-index:20}
+  .top-inner{max-width:1040px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--schwarz)}
+  .logo svg{width:36px;height:36px}
+  .logo b{font-size:17px;letter-spacing:.02em;line-height:1}
+  .logo b small{display:block;font-size:11px;font-weight:600;color:var(--grau);letter-spacing:.14em;text-transform:uppercase;margin-top:3px}
+  .top-inner .titel{font-weight:700;font-size:15px;flex:1;min-width:200px}
+  .fortschritt{height:6px;background:var(--linie);border-radius:3px;overflow:hidden;width:100%}
+  .fortschritt > div{height:100%;background:linear-gradient(90deg,var(--blau),var(--akzent));width:0%;transition:width .4s}
+  main{max-width:1040px;margin:0 auto;padding:24px 20px 80px}
+  .hero{background:var(--blau);color:#fff;border-radius:var(--radius);padding:44px 40px;margin-bottom:28px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,var(--akzent),#1c7a5e);opacity:.85}
+  .hero *{position:relative}
+  .hero .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#a9ecd9;font-weight:600}
+  .hero h1{font-size:clamp(28px,4.5vw,44px);margin:8px 0 12px;line-height:1.1}
+  .hero p{max-width:620px;font-size:18px;color:#e7f0ee;margin:0 0 20px}
+  .hero .meta{font-size:13px;color:#b7cbc6}
+  .btn{display:inline-block;-webkit-appearance:none;appearance:none;font-family:inherit;background:var(--akzent);color:#0a1f17;border:0;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;transition:transform .1s,background .2s}
+  .btn:hover{background:#40dab0;transform:translateY(-1px)}
+  .btn.sekundaer{background:#fff;color:var(--blau);border:2px solid var(--blau)}
+  .btn.sekundaer:hover{background:var(--hell)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  nav.module{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:34px}
+  nav.module a{background:#fff;border:1px solid var(--linie);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--schwarz);font-size:14px;display:flex;gap:10px;align-items:center;transition:border .2s}
+  nav.module a:hover{border-color:var(--akzent)}
+  nav.module a .nr{width:26px;height:26px;border-radius:50%;background:var(--blau);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+  nav.module a.fertig .nr{background:var(--gruen)}
+  section.modul{background:#fff;border-radius:var(--radius);padding:36px 40px;margin-bottom:28px;border:1px solid var(--linie);scroll-margin-top:90px}
+  section.modul .kap{color:var(--akzent);font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase}
+  section.modul h2{margin:6px 0 18px;font-size:30px;line-height:1.15}
+  section.modul h3{font-size:19px;margin:28px 0 10px}
+  p.lead{font-size:19px;color:#333}
+  .karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .karte{background:var(--hell);border-radius:12px;padding:18px 18px 16px;border-left:5px solid var(--stahl)}
+  .karte.akzent{border-left-color:var(--akzent)} .karte.gruen{border-left-color:var(--gruen)} .karte.blau{border-left-color:var(--blau)} .karte.grau{border-left-color:#bbb} .karte.rot{border-left-color:var(--rot)}
+  .karte > b{display:block;margin-bottom:6px;font-size:16px}
+  .karte p{margin:0;font-size:15px;color:#333}
+  .karte .icon{font-size:26px;margin-bottom:8px}
+  .merke{background:#eefaf5;border:1px solid #b9e8d6;border-radius:12px;padding:16px 20px;margin:18px 0;display:flex;gap:14px;align-items:flex-start}
+  .merke .i{font-size:24px}
+  .merke > div > b:first-child{color:#1c7a5e}
+  .zweispalt{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+  @media(max-width:720px){.zweispalt{grid-template-columns:1fr} section.modul{padding:26px 20px} .hero{padding:32px 24px}}
+  .box{border:1px solid var(--linie);border-radius:12px;padding:18px 20px}
+  .box.ja{background:#f0faf3;border-color:#bfe6cc} .box.nein{background:#fdf0ef;border-color:#f3c3bf}
+  .box h4{margin:0 0 10px;font-size:17px}
+  .box ul{margin:0;padding-left:20px} .box li{margin-bottom:6px;font-size:15px}
+  /* PDCA */
+  .pdca{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+  .pdca div{background:#fff;border:2px solid var(--blau);border-radius:12px;padding:16px}
+  .pdca div b{display:block;font-size:22px;color:var(--blau)} .pdca div b span{font-size:13px;color:var(--grau);font-weight:600;margin-left:6px}
+  .pdca div p{margin:6px 0 0;font-size:14.5px}
+  /* Norm-Kapitel */
+  .kapitel{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:16px 0}
+  .kapitel div{background:#fff;border:1px solid var(--linie);border-top:4px solid var(--stahl);border-radius:10px;padding:12px 12px 10px;font-size:13.5px}
+  .kapitel div b{display:block;font-size:20px;color:var(--blau)} .kapitel div i{display:block;font-style:normal;font-weight:700;margin-bottom:4px}
+  /* Schritte */
+  .schritte{counter-reset:s;display:grid;gap:14px;margin:18px 0}
+  .schritt{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;background:var(--hell);border-radius:12px;padding:18px}
+  .schritt .n{counter-increment:s;width:44px;height:44px;border-radius:50%;background:var(--blau);color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+  .schritt .n:before{content:counter(s)}
+  .schritt > div > b{font-size:18px;display:block;margin-bottom:4px}
+  .schritt p{margin:0 0 6px;font-size:15px}
+  .schritt ul{margin:4px 0 0;padding-left:18px;font-size:15px}
+  /* Prozesslandkarte */
+  .landkarte{display:grid;gap:10px;margin:18px 0}
+  .lk-reihe{display:grid;grid-template-columns:132px 1fr;gap:10px;align-items:stretch}
+  .lk-reihe .lab{background:var(--blau);color:#fff;border-radius:10px;padding:10px 6px;font-size:11px;line-height:1.3;font-weight:700;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;justify-content:center;text-align:center}
+  .lk-reihe.kern .lab{background:var(--akzent);color:#0a1f17}
+  .lk-reihe .zellen{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px}
+  .lk-reihe .zellen div{background:#fff;border:1.5px solid var(--linie);border-radius:10px;padding:10px 6px;font-size:13px;hyphens:manual;text-align:center;display:flex;align-items:center;justify-content:center}
+  .lk-reihe.kern .zellen div{border-color:var(--akzent);background:#f1fbf7;font-weight:600}
+  .lk-reihe.kern .zellen{grid-template-columns:repeat(auto-fit,minmax(95px,1fr))}
+  @media(max-width:720px){.lk-reihe{grid-template-columns:1fr}}
+  /* Flow */
+  .flow{display:flex;flex-direction:column;gap:0;margin:20px 0;align-items:stretch}
+  .flow .node{background:#fff;border:2px solid var(--blau);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+  .flow .node.start{background:var(--blau);color:#fff}
+  .flow .node.du{border-color:var(--akzent);background:#f1fbf7}
+  .flow .node.ent{border-style:dashed;border-color:var(--stahl);background:#f7fafa}
+  .flow .node.end{background:#eef8f1;border-color:var(--gruen)}
+  .flow .node b{display:block;font-size:16px}
+  .flow .node span.t{font-size:14px;color:#333}
+  .flow .node.start span.t{color:#dcece7}
+  .flow .node .wer{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--hell);white-space:nowrap;color:#333}
+  .flow .node.du .wer{background:var(--akzent);color:#0a1f17}
+  .flow .pfeil{text-align:center;color:var(--grau);font-size:22px;line-height:1;padding:4px 0}
+  .flow .pfeil small{display:block;font-size:12px;color:var(--grau)}
+  /* Tabelle */
+  .tabwrap{overflow-x:auto;margin:16px 0}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;background:#fff}
+  th,td{border:1px solid var(--linie);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--blau);color:#fff;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfa}
+  td code{background:var(--hell);padding:1px 6px;border-radius:4px;font-size:13px}
+  /* Sortier-Übung */
+  .sortier{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0}
+  .fall{background:#fff;border:2px solid var(--linie);border-radius:12px;padding:14px 16px;font-size:15px}
+  .fall .frage{margin-bottom:10px;min-height:48px}
+  .fall .wahl{display:flex;gap:8px}
+  .fall button{flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--blau);background:#fff;cursor:pointer;font-weight:600;font-size:14px;font-family:inherit}
+  .fall button:hover{background:var(--hell)}
+  .fall.richtig{border-color:var(--gruen);background:#f4fbf6} .fall.falsch{border-color:var(--rot);background:#fdf3f2}
+  .fall .erkl{font-size:13.5px;margin-top:10px;color:#333;display:none}
+  .fall.richtig .erkl,.fall.falsch .erkl{display:block}
+  .fall.richtig .wahl,.fall.falsch .wahl{display:none}
+  .fall .ergebnis{font-weight:700;font-size:14px;margin-top:8px;display:none}
+  .fall.richtig .ergebnis{display:block;color:var(--gruen)} .fall.falsch .ergebnis{display:block;color:var(--rot)}
+  /* Szenarien / Quiz */
+  .szenario{border:1px solid var(--linie);border-radius:12px;padding:20px 22px;margin:16px 0;background:#fff}
+  .szenario .sit{font-size:16px;margin-bottom:12px}
+  .szenario .sit b{display:block;font-size:17px;margin-bottom:4px}
+  .opt{display:block;width:100%;text-align:left;background:var(--hell);border:2px solid var(--hell);border-radius:10px;padding:12px 14px;margin:8px 0;cursor:pointer;font-size:15px;font-family:inherit;line-height:1.4}
+  .opt:hover{border-color:#bbb}
+  .opt.richtig{border-color:var(--gruen);background:#eef8f1}
+  .opt.falsch{border-color:var(--rot);background:#fdf0ef}
+  .opt[disabled]{cursor:default}
+  .feedback{display:none;margin-top:10px;padding:12px 14px;border-radius:10px;font-size:14.5px}
+  .feedback.show{display:block}
+  .feedback.ok{background:#eef8f1;border:1px solid #bfe6cc} .feedback.nok{background:#fdf0ef;border:1px solid #f3c3bf}
+  .quiz-ergebnis{display:none;margin-top:20px;padding:22px;border-radius:12px;background:var(--blau);color:#fff}
+  .quiz-ergebnis.show{display:block}
+  .quiz-ergebnis .zahl{font-size:44px;font-weight:800;line-height:1}
+  .quiz-ergebnis .zahl small{font-size:18px;font-weight:400;color:#b7cbc6}
+  /* Merkkarte */
+  .merkkarte{background:var(--blau);color:#fff;border-radius:var(--radius);padding:34px 40px}
+  .merkkarte h2{margin:0 0 6px;font-size:28px}
+  .merkkarte ol{counter-reset:m;list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+  .merkkarte li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;font-size:17px}
+  .merkkarte li:before{counter-increment:m;content:counter(m);width:32px;height:32px;border-radius:50%;background:var(--akzent);color:#0a1f17;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .kontakt{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+  @media(max-width:720px){.kontakt{grid-template-columns:1fr} .merkkarte{padding:26px 22px}}
+  .kontakt div{background:#0f2e39;border-radius:10px;padding:14px 16px;font-size:15px}
+  .kontakt b{display:block;color:#a9ecd9;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+  .fuss{text-align:center;color:var(--grau);font-size:13px;margin-top:40px}
+  .modul-ende{margin-top:26px;padding-top:18px;border-top:1px dashed var(--linie);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .modul-ende label{font-size:15px;display:flex;align-items:center;gap:8px;cursor:pointer}
+  .modul-ende input{width:20px;height:20px;accent-color:var(--gruen)}
+  .quelle{font-size:13px;color:var(--grau);margin-top:6px}
+  .dauer{display:inline-block;font-size:12px;color:var(--grau);background:var(--hell);border-radius:999px;padding:3px 10px;margin-left:8px;vertical-align:middle;font-weight:600}
+  /* Teilnahmebestätigung */
+  .zert-form{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;margin-top:14px}
+  @media(max-width:720px){.zert-form{grid-template-columns:1fr}}
+  .zert-form label{font-size:14px;font-weight:700;display:block;margin-bottom:4px}
+  .zert-form input{width:100%;font-size:17px;padding:11px 14px;border:2px solid var(--linie);border-radius:10px;font-family:inherit}
+  .zert-form input:focus{outline:none;border-color:var(--blau)}
+  #zertifikat{display:none;margin-top:26px}
+  #zertifikat.show{display:block}
+  .zert{background:#fff;border:10px double var(--blau);border-radius:6px;padding:0 54px 40px;text-align:center;position:relative;max-width:820px;margin:0 auto;overflow:hidden}
+  .zert .kopf{background:var(--blau);margin:0 -54px 26px;padding:20px 0 16px;display:flex;justify-content:center;align-items:center;gap:12px;color:#fff}
+  .zert .kopf svg{width:44px;height:44px}
+  .zert .kopf b{font-size:22px;letter-spacing:.03em;line-height:1;text-align:left}
+  .zert .kopf b small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#a9ecd9;margin-top:4px}
+  .zert .ecke{position:absolute;width:70px;height:70px;border:4px solid var(--akzent);z-index:2}
+  .zert .ecke.tl{left:14px;top:14px;border-right:0;border-bottom:0} .zert .ecke.br{right:14px;bottom:14px;border-left:0;border-top:0}
+  .zert .titel{font-size:30px;font-weight:800;color:var(--blau);letter-spacing:.04em;margin:0}
+  .zert .sub{color:var(--grau);font-size:15px;margin:6px 0 26px}
+  .zert .name{font-size:32px;font-weight:700;margin:10px 0;border-bottom:3px solid var(--akzent);display:inline-block;padding:0 24px 6px;min-width:60%}
+  .zert .text{font-size:16px;max-width:600px;margin:18px auto;line-height:1.6}
+  .zert .inhalte{font-size:13px;color:#333;max-width:640px;margin:0 auto 26px;line-height:1.5}
+  .zert .unterschriften{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:36px auto 0;max-width:620px}
+  .zert .unterschriften div{border-top:1px solid #333;padding-top:6px;font-size:13px;color:#333}
+  .zert .klein{font-size:11.5px;color:#777;margin-top:26px}
+  @media print{
+    header.top{position:static} .btn,.modul-ende,nav.module,.fortschritt,.zert-form{display:none!important}
+    section.modul,.hero,.merkkarte{break-inside:avoid;border:1px solid #ccc;box-shadow:none}
+    body{background:#fff;font-size:13px} .hero{color:#000;background:#eee} .hero:before{display:none} .hero p,.hero .meta,.hero .kicker{color:#222}
+    .fall .wahl{display:none} .fall .erkl{display:block} .feedback{display:block}
+    body.nur-zert{background:#fff}
+    body.nur-zert .zert .kopf{background:#173f4d!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    body.nur-zert main > *:not(#m8){display:none!important}
+    body.nur-zert header.top{display:none!important}
+    body.nur-zert #m8 > *:not(#zert-bereich){display:none!important}
+    body.nur-zert #zert-bereich{display:block!important}
+    body.nur-zert #zert-bereich > *:not(#zertifikat){display:none!important}
+    body.nur-zert #zertifikat > *:not(.zert){display:none!important}
+    body.nur-zert #m8{border:0;padding:0;margin:0;background:#fff}
+    body.nur-zert #zertifikat{display:block!important;margin:0}
+    body.nur-zert main{padding:0;max-width:none}
+    body.nur-zert .zert{border-color:#173f4d;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid}
+    @page{size:A4 landscape;margin:12mm}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <a class="logo" href="#start" aria-label="Amiprox GmbH">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#173f4d"/><path d="M24 9l3 3.2 4.3-.9 1.4 4.2 4.2 1.4-.9 4.3L39 24l-3 2.8.9 4.3-4.2 1.4-1.4 4.2-4.3-.9L24 39l-3-3.2-4.3.9-1.4-4.2-4.2-1.4.9-4.3L9 24l3-2.8-.9-4.3 4.2-1.4 1.4-4.2 4.3.9z" fill="#2fb894"/><circle cx="24" cy="24" r="6" fill="#173f4d"/></svg>
+      <b>AMIPROX<small>GmbH</small></b>
+    </a>
+    <div class="titel">QM-Grundschulung · ISO 9001</div>
+    <div class="fortschritt"><div id="fortschritt"></div></div>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="start">
+    <div class="kicker">Qualitätsmanagement · ISO 9001:2015</div>
+    <h1>Unser Qualitätsmanagementsystem: Was es ist und was es für dich bedeutet</h1>
+    <p>Amiprox entwickelt, stellt her und vertreibt Laborverbrauchsmaterialien für den Proteinnachweis – und bereitet gerade die Zertifizierung nach ISO 9001 vor. Diese Grundschulung erklärt in ca. 30 Minuten, warum wir ein QM-System haben, wie unser System aufgebaut ist, wer wofür verantwortlich ist, wo du unsere Dokumente findest und welche Regeln im Alltag bei Entwicklung, Herstellung, QC und Versand für dich gelten. Am Ende gibt es zwei Kontrollfragen und deine Teilnahmebestätigung zum Ausdrucken.</p>
+    <a class="btn" href="#m1">Schulung starten</a>
+    <div class="meta" style="margin-top:18px">Grundlage: QM01 Integriertes Managementhandbuch · QM02 Qualitäts- und Umweltpolitik · QM05 Prozesslandkarte · eQMS · Stand 09/2026 · © Amiprox GmbH</div>
+  </div>
+
+  <nav class="module" id="modulnav">
+    <a href="#m1" data-m="1"><span class="nr">1</span>Warum das Ganze?</a>
+    <a href="#m2" data-m="2"><span class="nr">2</span>Unser System im Überblick</a>
+    <a href="#m3" data-m="3"><span class="nr">3</span>Politik, Ziele, Rollen</a>
+    <a href="#m4" data-m="4"><span class="nr">4</span>Dokumente & eQMS</a>
+    <a href="#m5" data-m="5"><span class="nr">5</span>Herstellung, QC & Versand</a>
+    <a href="#m6" data-m="6"><span class="nr">6</span>Abweichungen & Reklamationen</a>
+    <a href="#m7" data-m="7"><span class="nr">7</span>Audits & Managementbewertung</a>
+    <a href="#m8" data-m="8"><span class="nr">8</span>Test & Bestätigung</a>
+  </nav>
+
+  <!-- ===================== MODUL 1 ===================== -->
+  <section class="modul" id="m1">
+    <div class="kap">Modul 1 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Warum ein Qualitätsmanagementsystem?</h2>
+    <p class="lead">Ein QM-System ist keine Bürokratie-Übung. Es beschreibt, wie wir bei Amiprox arbeiten – von der Entwicklung über die Assemblierung und Befüllung im Labor bis zum Versand an Kunden und Distributoren weltweit – und sorgt dafür, dass wir es auch wirklich so tun, egal wer gerade an der Reihe ist.</p>
+    <div class="karten">
+      <div class="karte akzent"><div class="icon">🤝</div><b>Kunden und Partner verlangen es</b><p>Labore, Vertriebspartner und internationale Distributoren vergeben Aufträge zunehmend nur an Anbieter mit belastbarem Qualitätsnachweis. Die ISO-9001-Zertifizierung, die wir gerade vorbereiten, ist genau dieser Nachweis.</p></div>
+      <div class="karte rot"><div class="icon">🌡️</div><b>Fehler sind teuer</b><p>Eine falsch etikettierte Charge oder eine unterbrochene Kühlkette beim Versand kostet nicht nur das Produkt – sie kann ein ganzes Experiment beim Kunden ruinieren und Vertrauen kosten. Je später ein Fehler auffällt, desto teurer wird er.</p></div>
+      <div class="karte blau"><div class="icon">🔁</div><b>Gleiche Qualität, immer</b><p>Der Kunde soll dasselbe ProtiPrep- oder ProtiPlate-Produkt bekommen, egal ob Alice, Delia oder eine neue Kollegin die Charge assembliert, befüllt oder freigibt. Dafür brauchen wir beschriebene Abläufe statt Wissen, das nur in Köpfen steckt.</p></div>
+      <div class="karte gruen"><div class="icon">📈</div><b>Besser werden</b><p>Reklamationen und Beobachtungen landen im Abweichungsregister und werden ausgewertet. Aus Einzelfällen werden Muster, aus Mustern Verbesserungen – wie zuletzt bei der Kühlketten-Validierung für den Versand.</p></div>
+    </div>
+
+    <h3>Was „Qualität" eigentlich heißt</h3>
+    <p>Qualität ist nicht „so rein wie irgend möglich", sondern: <b>Die Anforderungen sind zuverlässig erfüllt.</b> Ein Produkt, das strenger spezifiziert ist als nötig, aber zu spät oder mit unterbrochener Kühlkette ankommt, hat keine gute Qualität. Ein Standardprodukt, das exakt die zugesagte Spezifikation einhält und pünktlich beim Kunden ist, schon.</p>
+    <div class="zweispalt">
+      <div class="box ja"><h4>✅ Anforderungen kommen von …</h4><ul><li>dem Kunden (Bestellung, Spezifikation, Temperaturanforderungen)</li><li>Gesetzen und Vorschriften (Gefahrstoffrecht, Verpackungsrecht, Versandvorschriften)</li><li>uns selbst (interne Standards, IMS-Ziele, Qualitäts- und Umweltpolitik)</li></ul></div>
+      <div class="box nein"><h4>❌ Qualität ist nicht …</h4><ul><li>„Das haben wir schon immer so gemacht."</li><li>„Ich habe strenger geprüft, als vorgeschrieben war."</li><li>„Der Kunde hat sich nicht beschwert, also passt es."</li></ul></div>
+    </div>
+
+    <h3>So funktioniert jedes Managementsystem: der PDCA-Kreis</h3>
+    <div class="pdca">
+      <div><b>Plan <span>Planen</span></b><p>Was braucht der Kunde, was verlangt die Norm? Bei uns z. B.: die Kundenzufriedenheitsumfrage kommt kaum zurück – wie machen wir es einfacher?</p></div>
+      <div><b>Do <span>Umsetzen</span></b><p>Umsetzen, so wie geplant. Beispiel: Fragebogen auf 4 Kernfragen gekürzt statt der bisherigen 12 Aussagen.</p></div>
+      <div><b>Check <span>Prüfen</span></b><p>Kommt jetzt mehr Rücklauf? Wir beobachten die Antwortquote, bevor wir den nächsten Schritt entscheiden.</p></div>
+      <div><b>Act <span>Handeln</span></b><p>Wirkt es? Dann wird es Standard, ggf. ergänzt um weitere Kanäle (QR-Code, E-Mail nach dem Kauf). Wirkt es nicht, geht es zurück zu Plan.</p></div>
+    </div>
+
+    <h3>Quick-Check: Mythos oder Fakt?</h3>
+    <div class="sortier" id="sortier1">
+      <div class="fall" data-antwort="myth">
+        <div class="frage">„Qualität bedeutet, immer die reinste und teuerste Ausführung zu liefern."</div>
+        <div class="wahl"><button data-w="myth">Mythos</button><button data-w="fact">Fakt</button></div>
+        <div class="erkl">Mythos. Qualität heißt: die vereinbarte Spezifikation zuverlässig einhalten – nicht „möglichst viel".</div>
+        <div class="ergebnis"></div>
+      </div>
+      <div class="fall" data-antwort="fact">
+        <div class="frage">„Ein günstigeres Produkt kann trotzdem hohe Qualität haben."</div>
+        <div class="wahl"><button data-w="myth">Mythos</button><button data-w="fact">Fakt</button></div>
+        <div class="erkl">Fakt. Solange es zuverlässig das tut, was zugesagt wurde.</div>
+        <div class="ergebnis"></div>
+      </div>
+      <div class="fall" data-antwort="fact">
+        <div class="frage">„Bei einem Laborprodukt kann eine unterbrochene Kühlkette direkt das Ergebnis eines Kundenexperiments verfälschen."</div>
+        <div class="wahl"><button data-w="myth">Mythos</button><button data-w="fact">Fakt</button></div>
+        <div class="erkl">Fakt. Genau deshalb ist Qualität bei uns kein Papierkram, sondern Teil des Produkts.</div>
+        <div class="ergebnis"></div>
+      </div>
+      <div class="fall" data-antwort="myth">
+        <div class="frage">„Qualität ist vor allem die Aufgabe der Managementbeauftragten."</div>
+        <div class="wahl"><button data-w="myth">Mythos</button><button data-w="fact">Fakt</button></div>
+        <div class="erkl">Mythos. QC-Checks, Versandfreigabe, Kundenkontakt, Entwicklung – jede Tätigkeit im Alltag zahlt darauf ein.</div>
+        <div class="ergebnis"></div>
+      </div>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="1"> Modul 1 verstanden</label>
+      <a class="btn sekundaer" href="#m2">Weiter zu Modul 2 →</a>
+    </div>
+  </section>
+
+  <!-- ===================== MODUL 2 ===================== -->
+  <section class="modul" id="m2">
+    <div class="kap">Modul 2 <span class="dauer">ca. 5 Min.</span></div>
+    <h2>Unser System im Überblick</h2>
+    <p class="lead">ISO 9001 gibt eine Struktur vor, an die sich jedes zertifizierte Unternehmen hält – die Inhalte füllen wir mit unserer eigenen Prozesslandkarte (QM05).</p>
+
+    <h3>Die Norm in sieben Kapiteln</h3>
+    <div class="kapitel">
+      <div><b>4</b><i>Kontext</i>Wer sind wir, wer sind unsere Kunden und interessierten Parteien?</div>
+      <div><b>5</b><i>Führung</i>Politik, Rollen, Verantwortung der Geschäftsführung</div>
+      <div><b>6</b><i>Planung</i>Risiken, Chancen, IMS-Ziele</div>
+      <div><b>7</b><i>Unterstützung</i>Personal, Kompetenz, Dokumente, Infrastruktur</div>
+      <div><b>8</b><i>Betrieb</i>Entwicklung, Herstellung, QC, Versand</div>
+      <div><b>9</b><i>Bewertung</i>Audits, Kennzahlen, Managementbewertung</div>
+      <div><b>10</b><i>Verbesserung</i>Abweichungen, Korrekturmaßnahmen</div>
+    </div>
+
+    <h3>Unsere Prozesslandkarte (QM05)</h3>
+    <div class="landkarte">
+      <div class="lk-reihe"><div class="lab">Führung</div><div class="zellen"><div>Strategie &amp; Politik</div><div>Managementbewertung</div><div>Risiken &amp; Chancen</div></div></div>
+      <div class="lk-reihe kern"><div class="lab">Kernprozess</div><div class="zellen"><div>Entwicklung</div><div>Herstellung<br>(Assemblierung &amp; Befüllung)</div><div>QC &amp; Freigabe</div><div>Vertrieb &amp; Versand</div></div></div>
+      <div class="lk-reihe"><div class="lab">Unterstützung</div><div class="zellen"><div>Einkauf &amp; Lieferanten</div><div>Personal &amp; Kompetenz</div><div>IT-Sicherheit</div><div>Rechtskataster &amp; Umwelt</div></div></div>
+    </div>
+    <p class="quelle">Quelle: QM05 Prozesslandkarte. Der Kernprozess ist das, was beim Kunden ankommt – alles andere unterstützt ihn.</p>
+
+    <div class="merke">
+      <div class="i">🧪</div>
+      <div><b>Unser Geltungsbereich:</b> Entwicklung, Herstellung (Assemblierung und Befüllung) und Vertrieb von Laborverbrauchsmaterialien für den Proteinnachweis, Standort Hamburg. Kein Ausschluss – auch die Entwicklung ist Teil der Zertifizierung.</div>
+    </div>
+
+    <h3>Kurzer Szenario-Check</h3>
+    <div class="szenario" id="szenario1">
+      <div class="sit"><b>Situation</b>Ein neuer Kollege fragt: „Ist die Herstellung eigentlich Teil unseres QM-Systems, oder zählt nur der Versand?"</div>
+      <button class="opt" data-r="falsch">Nur der Versand, weil da der Kunde etwas merkt.</button>
+      <button class="opt" data-r="richtig">Entwicklung, Herstellung und Vertrieb – der gesamte Kernprozess.</button>
+      <button class="opt" data-r="falsch">Nur die Dokumentation im eQMS.</button>
+      <div class="feedback" data-fb-falsch>Nicht ganz – unser Geltungsbereich deckt den ganzen Weg vom Entwurf bis zum Versand ab, nicht nur den letzten Schritt.</div>
+      <div class="feedback" data-fb-richtig>Genau – Entwicklung, Herstellung und Vertrieb bilden zusammen unseren Kernprozess.</div>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="2"> Modul 2 verstanden</label>
+      <a class="btn sekundaer" href="#m3">Weiter zu Modul 3 →</a>
+    </div>
+  </section>
+
+  <!-- ===================== MODUL 3 ===================== -->
+  <section class="modul" id="m3">
+    <div class="kap">Modul 3 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Politik, Ziele &amp; Rollen</h2>
+    <p class="lead">Drei kurze Dokumente sagen, wohin wir wollen – und wer im Alltag wofür verantwortlich ist.</p>
+
+    <div class="tabwrap"><table>
+      <tr><th style="width:20%">Dokument</th><th>Was es festlegt</th></tr>
+      <tr><td>QM02</td><td>Qualitäts- und Umweltpolitik – unsere grundsätzliche Haltung zu Qualität und Umwelt</td></tr>
+      <tr><td>QF16</td><td>IMS-Ziele – die konkreten, messbaren Jahresziele daraus</td></tr>
+      <tr><td>QF22</td><td>Rollenbeschreibungen – wer welche Verantwortung trägt</td></tr>
+    </table></div>
+
+    <h3>Wer trägt welche Rolle</h3>
+    <div class="karten">
+      <div class="karte blau"><b>Dominik</b><p>Geschäftsführer / COO, zusätzlich Arbeitssicherheit. Gibt Dokumente final frei.</p></div>
+      <div class="karte akzent"><b>Alice</b><p>Laborleitung <b>und</b> Managementbeauftragte (MB). Erstellt und prüft Dokumente, bereitet Freigaben vor, ist erste Ansprechperson fürs QM-System.</p></div>
+      <div class="karte gruen"><b>Delia</b><p>Labor und Vertriebsunterstützung. Bringt die Kundenperspektive in Vertriebs- und Produktentwicklungsthemen ein.</p></div>
+    </div>
+
+    <div class="merke">
+      <div class="i">✍️</div>
+      <div><b>Freigaberegel:</b> Alice erstellt und prüft als Managementbeauftragte, Dominik als Geschäftsführer gibt final frei. Ohne beide Schritte ist ein Dokument nicht gültig.</div>
+    </div>
+
+    <h3>Kurzer Szenario-Check</h3>
+    <div class="szenario" id="szenario2">
+      <div class="sit"><b>Situation</b>Ein überarbeitetes Formular ist von Alice geprüft, aber Dominik hat es noch nicht freigegeben. Darf es schon verwendet werden?</div>
+      <button class="opt" data-r="falsch">Ja, Alice als MB reicht.</button>
+      <button class="opt" data-r="richtig">Nein – erst nach Dominiks finaler Freigabe ist es gültig.</button>
+      <button class="opt" data-r="falsch">Ja, wenn es dringend ist.</button>
+      <div class="feedback" data-fb-falsch>Nicht ganz – Prüfung allein reicht nicht, die finale Freigabe durch die Geschäftsführung fehlt noch.</div>
+      <div class="feedback" data-fb-richtig>Richtig – beide Schritte sind nötig, sonst ist das Dokument noch im Entwurf.</div>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="3"> Modul 3 verstanden</label>
+      <a class="btn sekundaer" href="#m4">Weiter zu Modul 4 →</a>
+    </div>
+  </section>
+
+  <!-- ===================== MODUL 4 ===================== -->
+  <section class="modul" id="m4">
+    <div class="kap">Modul 4 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Dokumente &amp; eQMS</h2>
+    <p class="lead">Unser QM-System ist kein Ordner im Regal – es lebt im eQMS (app5.eqms.de). Hier ist, was wo liegt, und die eine Regel, die alles zusammenhält.</p>
+
+    <div class="merke">
+      <div class="i">📁</div>
+      <div><b>Eine Quelle der Wahrheit:</b> Es gibt genau eine gültige Version jedes Dokuments, und sie liegt im eQMS – nicht auf dem eigenen Desktop, nicht als E-Mail-Anhang, nicht als ausgedruckter Zettel im Labor.</div>
+    </div>
+
+    <div class="tabwrap"><table>
+      <tr><th style="width:16%">Kürzel</th><th>Bedeutung</th></tr>
+      <tr><td>QM</td><td>Managementdokumente – Handbuch, Politik, Organigramm, Kontext, Prozesslandkarte</td></tr>
+      <tr><td>QP</td><td>Prozessbeschreibungen – wie ein Ablauf grundsätzlich funktioniert (z. B. Vertrieb, Audits, Entwicklung)</td></tr>
+      <tr><td>QF</td><td>Formulare &amp; Aufzeichnungen – Vorlagen und die ausgefüllten Nachweise daraus</td></tr>
+    </table></div>
+    <p class="quelle">QF01 Dokumentenverzeichnis ist die verbindliche Liste aller Dokumente und ihrer aktuellen Nummern – bei Unsicherheit dort nachsehen.</p>
+
+    <div class="zweispalt">
+      <div class="box ja">
+        <h4>Do</h4>
+        <ul>
+          <li>Dokument direkt im eQMS öffnen</li>
+          <li>Prüfen, ob es der aktuell freigegebene Stand ist</li>
+          <li>Bei Unsicherheit Alice fragen, welche Version gilt</li>
+        </ul>
+      </div>
+      <div class="box nein">
+        <h4>Don't</h4>
+        <ul>
+          <li>Eine private Kopie auf dem Rechner speichern</li>
+          <li>Mit einem alten E-Mail-Anhang weiterarbeiten</li>
+          <li>Ein Dokument ändern, ohne dass es den Freigabeweg durchläuft</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Kurzer Szenario-Check</h3>
+    <div class="szenario" id="szenario3">
+      <div class="sit"><b>Situation</b>Delia braucht die aktuelle Arbeitsanweisung für die Befüllung. Wo schaut sie zuerst nach?</div>
+      <button class="opt" data-r="falsch">Eine Kollegin fragen, ob sie zufällig eine Kopie hat.</button>
+      <button class="opt" data-r="richtig">Direkt im eQMS öffnen.</button>
+      <button class="opt" data-r="falsch">Die zuletzt ausgedruckte Version aus der Schublade nehmen.</button>
+      <div class="feedback" data-fb-falsch>Eine gespeicherte Kopie oder ein Ausdruck kann veraltet sein – genau das Problem, das die eine Quelle der Wahrheit vermeidet.</div>
+      <div class="feedback" data-fb-richtig>Genau – das eQMS ist der einzige Ort, an dem garantiert der aktuelle Stand liegt.</div>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="4"> Modul 4 verstanden</label>
+      <a class="btn sekundaer" href="#m5">Weiter zu Modul 5 →</a>
+    </div>
+  </section>
+
+  <!-- ===================== MODUL 5 ===================== -->
+  <section class="modul" id="m5">
+    <div class="kap">Modul 5 <span class="dauer">ca. 6 Min.</span></div>
+    <h2>Herstellung, QC &amp; Versand</h2>
+    <p class="lead">Vom Wareneingang bis zum versandfertigen Paket: hier entscheidet sich im Alltag am meisten für die Qualität, die beim Kunden ankommt.</p>
+
+    <div class="flow">
+      <div class="node start"><div><b>Rohstoffe &amp; Bauteile</b><span class="t">Einkauf nach Lieferantenbewertung, kritische Lieferanten besonders im Blick.</span></div><span class="wer">Einkauf</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Assemblierung &amp; Befüllung</b><span class="t">Nach freigegebener Arbeits- bzw. Methodenanweisung, keine Abweichung ohne Rücksprache.</span></div><span class="wer">Labor</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node"><div><b>QC-Check</b><span class="t">Wiegung / Verdunstungsprüfung an festgelegten Tagen und am Versandtag.</span></div><span class="wer">Labor</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node end"><div><b>Versandfreigabe &amp; Versand</b><span class="t">Packaging checked · Completeness checked · Shipping release – erst dann geht das Paket raus.</span></div><span class="wer">Ready</span></div>
+    </div>
+
+    <h3>Chargendokumentation: unsere Rückverfolgbarkeit</h3>
+    <p>Für ProtiPrep und ProtiPlate führt Alice je eine Shipping-List (QF20 / QF21). Darin stehen Entnahmeort, Links auf die QC-Dateien je Platte und die LOT-Nummern beider Chemikalienlieferanten. Damit ist im Fall eines Lieferantenrückrufs jede Charge bis zum Kundenauftrag zurückverfolgbar.</p>
+
+    <div class="merke">
+      <div class="i">❄️</div>
+      <div><b>Kühlkette beachten:</b> Bei temperaturempfindlichen Produkten gelten feste Versandregeln – nie Donnerstag/Freitag versenden, wenn möglich Express. Die richtige Verpackung ist Teil der Freigabe, nicht optional.</div>
+    </div>
+
+    <h3>Quick-Check: Vorgabedokument oder Aufzeichnung?</h3>
+    <div class="sortier" id="sortier2">
+      <div class="fall" data-antwort="V">
+        <div class="frage">Eine Arbeitsanweisung für die Befüllung (QF24-Vorlage)</div>
+        <div class="wahl"><button data-w="V">Vorgabe</button><button data-w="A">Aufzeichnung</button></div>
+        <div class="erkl">Vorgabedokument – beschreibt, wie gearbeitet werden soll, bevor gearbeitet wird.</div>
+        <div class="ergebnis"></div>
+      </div>
+      <div class="fall" data-antwort="A">
+        <div class="frage">Die ausgefüllte Shipping-List einer versendeten Charge</div>
+        <div class="wahl"><button data-w="V">Vorgabe</button><button data-w="A">Aufzeichnung</button></div>
+        <div class="erkl">Aufzeichnung – belegt, was tatsächlich passiert ist.</div>
+        <div class="ergebnis"></div>
+      </div>
+      <div class="fall" data-antwort="A">
+        <div class="frage">Das QC-Protokoll einer Wiegung am Versandtag</div>
+        <div class="wahl"><button data-w="V">Vorgabe</button><button data-w="A">Aufzeichnung</button></div>
+        <div class="erkl">Aufzeichnung – Nachweis einer durchgeführten Prüfung.</div>
+        <div class="ergebnis"></div>
+      </div>
+      <div class="fall" data-antwort="V">
+        <div class="frage">Die Prozessbeschreibung QP07 „Validierung der Prozesse"</div>
+        <div class="wahl"><button data-w="V">Vorgabe</button><button data-w="A">Aufzeichnung</button></div>
+        <div class="erkl">Vorgabedokument – legt fest, wie ein Ablauf grundsätzlich funktioniert.</div>
+        <div class="ergebnis"></div>
+      </div>
+    </div>
+
+    <h3>Kurzer Szenario-Check</h3>
+    <div class="szenario" id="szenario4">
+      <div class="sit"><b>Situation</b>Eine fertig verpackte Charge liegt bereit, aber die Shipping-List für diese Charge ist noch nicht ausgefüllt. Was jetzt?</div>
+      <button class="opt" data-r="falsch">Versenden, die Liste kann später nachgetragen werden.</button>
+      <button class="opt" data-r="richtig">Erst die Shipping-List vollständig ausfüllen, dann versenden.</button>
+      <button class="opt" data-r="falsch">Nur versenden, wenn der Kunde danach fragt.</button>
+      <div class="feedback" data-fb-falsch>Ein Nachtrag im Nachhinein untergräbt genau die Rückverfolgbarkeit, die die Liste sicherstellen soll.</div>
+      <div class="feedback" data-fb-richtig>Richtig – ohne vollständige Chargendokumentation ist die Charge nicht rückverfolgbar, also nicht versandbereit.</div>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="5"> Modul 5 verstanden</label>
+      <a class="btn sekundaer" href="#m6">Weiter zu Modul 6 →</a>
+    </div>
+  </section>
+
+  <!-- ===================== MODUL 6 ===================== -->
+  <section class="modul" id="m6">
+    <div class="kap">Modul 6 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Abweichungen &amp; Reklamationen</h2>
+    <p class="lead">Eine Reklamation ist kein Papierkram, das man abarbeitet – sie ist das schnellste Signal, dass beim Kunden etwas nicht wie erwartet lief.</p>
+
+    <div class="merke">
+      <div class="i">📋</div>
+      <div><b>Alles erfassen</b> – auch wenn am Ende nichts dabei herauskommt. Nur wenn auch die kleinen Meldungen im Abweichungsregister (QF11) landen, wird ein Muster überhaupt sichtbar.</div>
+    </div>
+
+    <h3>Typische Reklamationsfälle bei Amiprox</h3>
+    <div class="karten">
+      <div class="karte rot"><div class="icon">🌡️</div><b>Falsche Liefertemperatur</b><p>Kühlkette beim Versand nicht eingehalten.</p></div>
+      <div class="karte grau"><div class="icon">📦</div><b>Falscher Artikel/Inhalt</b><p>Verwechslung bei Kommissionierung oder Etikett.</p></div>
+      <div class="karte akzent"><div class="icon">🧫</div><b>Produkt funktioniert nicht</b><p>Ergebnis beim Kunden weicht von der Erwartung ab.</p></div>
+    </div>
+
+    <div class="schritte">
+      <div class="schritt">
+        <div class="n"></div>
+        <div><b>Meldung kommt rein</b><p>Ein Kunde oder Partner meldet ein Problem – egal auf welchem Weg.</p></div>
+      </div>
+      <div class="schritt">
+        <div class="n"></div>
+        <div><b>Im Abweichungsregister erfassen</b><p>QF11 ist das zentrale Register für Audits <b>und</b> Reklamationen – dort werden Fälligkeit und Status nachgehalten.</p></div>
+      </div>
+      <div class="schritt">
+        <div class="n"></div>
+        <div><b>8D-Bericht nur bei Bedarf</b><p>Für einfache Fälle reicht der Registereintrag. Ein QF10-8D-Bericht kommt nur zum Einsatz, wenn der Kunde einen formalen Bericht braucht.</p></div>
+      </div>
+    </div>
+
+    <h3>Kurzer Szenario-Check</h3>
+    <div class="szenario" id="szenario5">
+      <div class="sit"><b>Situation</b>In zwei Wochen melden drei verschiedene Kunden dasselbe Problem mit derselben Chargennummer. Was ist der richtige erste Schritt?</div>
+      <button class="opt" data-r="falsch">Jede Meldung einzeln beantworten und sonst nichts weiter tun.</button>
+      <button class="opt" data-r="richtig">Alle drei erfassen und das Muster (gleiche Charge) sofort an Alice/Dominik melden.</button>
+      <button class="opt" data-r="falsch">Abwarten, ob noch mehr Meldungen kommen.</button>
+      <div class="feedback" data-fb-falsch>Drei Meldungen zur selben Charge sind schon ein klares Muster – das darf nicht in Einzelfällen untergehen.</div>
+      <div class="feedback" data-fb-richtig>Genau – ein wiederkehrendes Muster bei derselben Charge verdient sofortige Aufmerksamkeit, nicht nur drei separate Antworten.</div>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="6"> Modul 6 verstanden</label>
+      <a class="btn sekundaer" href="#m7">Weiter zu Modul 7 →</a>
+    </div>
+  </section>
+
+  <!-- ===================== MODUL 7 ===================== -->
+  <section class="modul" id="m7">
+    <div class="kap">Modul 7 <span class="dauer">ca. 3 Min.</span></div>
+    <h2>Audits &amp; Managementbewertung</h2>
+    <p class="lead">Die Zertifizierung ist kein einmaliges Ereignis, sondern der Start eines jährlichen Rhythmus: interne Audits, Managementbewertung, und das externe Audit, das das Zertifikat bringt und erhält.</p>
+
+    <div class="tabwrap"><table>
+      <tr><th>Art</th><th>Wer macht es</th><th>Wofür</th></tr>
+      <tr><td>Internes Audit</td><td>Jemand, der nicht im eigenen Bereich auditiert</td><td>Probleme finden, bevor es jemand anders tut</td></tr>
+      <tr><td>Zertifizierungsaudit</td><td>Externe Zertifizierungsstelle</td><td>Führt zum ISO-9001-Zertifikat und erhält es</td></tr>
+    </table></div>
+
+    <h3>Unser Auditprogramm (QP08 / QF14)</h3>
+    <p>Auditoren auditieren nie den eigenen Bereich. Jede Feststellung bekommt eine von drei Kategorien – Hauptabweichung, Nebenabweichung oder Verbesserungsvorschlag – und wird im Abweichungsregister (QF11) bis zum Abschluss nachverfolgt.</p>
+
+    <div class="merke">
+      <div class="i">🔍</div>
+      <div>Ein Auditor will nicht nur sehen, dass der QC-Check <i>dokumentiert</i> ist – er will echte, laufende Nachweise sehen. Eine Charge, extra für den Audittermin durchgeführt, ist kein Beleg.</div>
+    </div>
+
+    <h3>Managementbewertung (QP03 / QF02)</h3>
+    <p>Mindestens einmal jährlich bewerten Dominik und Alice gemeinsam: Kontextänderungen, Zielerreichung, Ressourcen und Schulungen, Risiken, bindende Verpflichtungen und Umweltaspekte – auf einer Skala von ++ bis −−. Daraus entstehen ggf. neue Maßnahmen im Register.</p>
+
+    <h3>Kurzer Szenario-Check</h3>
+    <div class="szenario" id="szenario6">
+      <div class="sit"><b>Situation</b>Die Zertifizierungsstelle möchte sehen, dass der QC-Check am Versandtag wirklich stattfindet. Was zeigst du?</div>
+      <button class="opt" data-r="falsch">Erklären, dass es fest eingeplant ist.</button>
+      <button class="opt" data-r="richtig">Echte QC-Protokolle aus tatsächlich bearbeiteten Chargen.</button>
+      <button class="opt" data-r="falsch">Extra für den Audittermin einen Beispiel-Check durchführen.</button>
+      <div class="feedback" data-fb-falsch>Eine Ankündigung oder ein Beispiel nur für den Audittermin ist genau das, worauf ein erfahrener Auditor nachhakt.</div>
+      <div class="feedback" data-fb-richtig>Genau – echte, laufende Nachweise überzeugen mehr als jede Erklärung oder Demo.</div>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="7"> Modul 7 verstanden</label>
+      <a class="btn sekundaer" href="#m8">Weiter zum Test →</a>
+    </div>
+  </section>
+
+  <!-- ===================== MODUL 8: TEST ===================== -->
+  <section class="modul" id="m8">
+    <div class="kap">Modul 8 <span class="dauer">ca. 5 Min.</span></div>
+    <h2>Abschlusstest und Teilnahmebestätigung</h2>
+    <p class="lead">Zwei Kontrollfragen zu dem, was du gerade gelesen hast. Sind beide richtig, kannst du dir unten deine Teilnahmebestätigung mit Namen und Datum ausdrucken. Du kannst den Test beliebig oft wiederholen.</p>
+    <div id="quiz"></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">
+      <button class="btn" id="auswerten">Test auswerten</button>
+      <button class="btn sekundaer" id="reset" style="display:none">Test wiederholen</button>
+    </div>
+    <div class="quiz-ergebnis" id="ergebnis"></div>
+
+    <div id="zert-bereich" style="display:none">
+      <h3>🎓 Deine Teilnahmebestätigung</h3>
+      <p style="font-size:15px;color:#333;margin:0">Trag deinen vollständigen Namen ein. Das Datum wird automatisch gesetzt. Drucke die Bestätigung aus oder speichere sie als PDF und gib sie unterschrieben an Alice für die Schulungsakte.</p>
+      <div class="zert-form">
+        <div><label for="zname">Vor- und Nachname</label><input type="text" id="zname" placeholder="z. B. Max Mustermann" autocomplete="name"></div>
+        <button class="btn" id="zert-erstellen">Bestätigung erstellen</button>
+      </div>
+      <div id="zertifikat">
+        <div class="zert">
+          <div class="ecke tl"></div><div class="ecke br"></div>
+          <div class="kopf"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#fff"/><path d="M24 9l3 3.2 4.3-.9 1.4 4.2 4.2 1.4-.9 4.3L39 24l-3 2.8.9 4.3-4.2 1.4-1.4 4.2-4.3-.9L24 39l-3-3.2-4.3.9-1.4-4.2-4.2-1.4.9-4.3L9 24l3-2.8-.9-4.3 4.2-1.4 1.4-4.2 4.3.9z" fill="#2fb894"/><circle cx="24" cy="24" r="6" fill="#fff"/></svg><b>AMIPROX<small>GmbH</small></b></div>
+          <p class="titel">Teilnahmebestätigung</p>
+          <p class="sub">QM-Grundschulung nach ISO 9001:2015</p>
+          <div class="name" id="z-name">–</div>
+          <p class="text">hat am <b id="z-datum">–</b> die Schulung <b>„Unser Qualitätsmanagementsystem: Was es ist und was es für dich bedeutet"</b> vollständig durchgearbeitet und die Kontrollfragen mit <b id="z-punkte">–</b> von 2 Punkten bestanden.</p>
+          <p class="inhalte"><b>Inhalte:</b> Sinn und Nutzen eines QM-Systems, PDCA · Aufbau der ISO 9001 und unsere Prozesslandkarte · Qualitäts- und Umweltpolitik, IMS-Ziele und Rollen · Dokumentenlenkung im eQMS · Herstellung, QC-Checks, Chargendokumentation und Versandfreigabe · Abweichungen und Reklamationen · Interne Audits und Managementbewertung</p>
+          <div class="unterschriften">
+            <div>Teilnehmer/in</div>
+            <div>Managementbeauftragte · Alice Grün</div>
+          </div>
+          <p class="klein">Amiprox GmbH · Schulungsunterlage QM-Grundschulung Version 1, Stand 09/2026 · Nachweis für Schulungsmatrix und Schulungsakte</p>
+        </div>
+        <div style="text-align:center;margin-top:16px"><button class="btn" id="zert-drucken">Bestätigung drucken / als PDF speichern</button></div>
+      </div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="8"> Test abgeschlossen</label><a class="btn sekundaer" href="#merk">Zur Merkkarte →</a></div>
+  </section>
+
+  <!-- ===================== MERKKARTE ===================== -->
+  <div class="merkkarte" id="merk">
+    <h2>Fünf Regeln für den Alltag im QM-System</h2>
+    <p style="margin:0;color:#dce9e5">Wenn du dir nur eine Sache aus dieser Schulung merkst, dann diese Karte.</p>
+    <ol>
+      <li><span><b>Nur nach freigegebenen Anweisungen arbeiten.</b> Aktueller Stand ist im eQMS, nicht auf dem eigenen Rechner oder als Ausdruck aus der Schublade.</span></li>
+      <li><span><b>QC-Check und Versandfreigabe vor jedem Versand.</b> Wiegung/Verdunstungsprüfung, Packaging/Completeness/Shipping-Release – vollständig, nicht nachträglich.</span></li>
+      <li><span><b>Chargendokumentation sofort und vollständig führen.</b> Shipping-List je Charge – ohne sie ist ein Rückruf nicht mehr rückverfolgbar.</span></li>
+      <li><span><b>Abweichungen und Reklamationen sofort im Register erfassen.</b> Auch die kleinen – nur so werden Muster sichtbar.</span></li>
+      <li><span><b>Bei Unsicherheit nachfragen.</b> Alice (Labor/MB) oder Dominik (GF) – lieber einmal zu viel fragen als raten.</span></li>
+    </ol>
+    <div class="kontakt">
+      <div><b>Fragen zum QM-System</b>Alice Grün, Managementbeauftragte<br>qm@amiprox.example</div>
+      <div><b>QC, Chargendokumentation, Versand</b>Alice Grün, Laborleitung<br>labor@amiprox.example</div>
+      <div><b>Reklamationen von Kunden</b>Dominik Letschert oder Alice Grün<br>reklamation@amiprox.example</div>
+      <div><b>Verbesserungsvorschläge</b>Direkt an Alice oder Dominik ansprechen – kein separates Formular nötig</div>
+    </div>
+  </div>
+
+  <p class="fuss">QM-Grundschulung ISO 9001:2015 · Amiprox GmbH · Stand 09/2026 · Bearbeitungszeit ca. 30 Minuten · Die ausgedruckte Teilnahmebestätigung bitte unterschrieben an Alice geben (Schulungsakte).</p>
+</main>
+
+<script>
+(function(){
+  /* ---------- Fortschritt ---------- */
+  const KEY='amiprox_iso9001_done', KEYZ='amiprox_iso9001_zert';
+  const doneBoxes=[...document.querySelectorAll('input[data-done]')];
+  const nav=document.getElementById('modulnav');
+  function updateFortschritt(){
+    const n=doneBoxes.filter(b=>b.checked).length;
+    document.getElementById('fortschritt').style.width=(n/doneBoxes.length*100)+'%';
+    doneBoxes.forEach(b=>{const a=nav.querySelector('a[data-m="'+b.dataset.done+'"]'); if(a) a.classList.toggle('fertig',b.checked);});
+    try{localStorage.setItem(KEY,JSON.stringify(doneBoxes.map(b=>b.checked)));}catch(e){}
+  }
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'[]'); doneBoxes.forEach((b,i)=>b.checked=!!s[i]);}catch(e){}
+  doneBoxes.forEach(b=>b.addEventListener('change',updateFortschritt)); updateFortschritt();
+
+  /* ---------- Sortier-Übungen ---------- */
+  document.querySelectorAll('.sortier .fall').forEach(f=>{
+    f.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{
+      const ok=btn.dataset.w===f.dataset.antwort;
+      f.classList.add(ok?'richtig':'falsch');
+      f.querySelector('.ergebnis').textContent=ok?'✔ Richtig':'✘ Leider falsch – siehe Erklärung';
+    }));
+  });
+
+  /* ---------- Szenarien ---------- */
+  document.querySelectorAll('.szenario[id^="szenario"]').forEach(sz=>{
+    const opts=sz.querySelectorAll('.opt');
+    opts.forEach(opt=>opt.addEventListener('click',()=>{
+      opts.forEach(o=>{o.disabled=true; if(o.dataset.r==='richtig') o.classList.add('richtig'); else if(o===opt) o.classList.add('falsch');});
+      const fb = opt.dataset.r==='richtig' ? sz.querySelector('[data-fb-richtig]') : sz.querySelector('[data-fb-falsch]');
+      fb.classList.add('show', opt.dataset.r==='richtig'?'ok':'nok');
+    }));
+  });
+
+  /* ---------- Abschlusstest ---------- */
+  const fragen=[
+    {q:'Wo findest du die gültige, aktuell freigegebene Version eines Dokuments?',a:['Im eQMS – dort liegt garantiert nur der aktuelle Stand','Auf dem Ausdruck, der im Labor hängt','In einer alten E-Mail','Bei einer Kollegin, die zufällig eine Kopie hat'],r:0},
+    {q:'Eine Charge ist verpackt, aber die Shipping-List ist noch nicht ausgefüllt. Was tust du?',a:['Versenden, die Liste kann später nachgetragen werden','Erst die Shipping-List vollständig ausfüllen, dann versenden','Nur versenden, wenn der Kunde danach fragt','Die Charge ohne Dokumentation ins Lager zurücklegen und weitermachen'],r:1}
+  ];
+  let letztePunkte=0;
+  const quiz=document.getElementById('quiz');
+  function baueQuiz(){
+    quiz.innerHTML='';
+    fragen.forEach((f,i)=>{
+      const d=document.createElement('div'); d.className='szenario'; d.dataset.q=i;
+      d.innerHTML='<div class="sit"><b>Frage '+(i+1)+' von '+fragen.length+'</b>'+f.q+'</div>'+f.a.map((t,j)=>'<label class="opt" style="display:flex;gap:10px;align-items:flex-start"><input type="radio" name="q'+i+'" value="'+j+'" style="margin-top:3px;accent-color:#173f4d"><span>'+t+'</span></label>').join('');
+      quiz.appendChild(d);
+    });
+    document.getElementById('ergebnis').className='quiz-ergebnis';
+    document.getElementById('auswerten').style.display='';
+    document.getElementById('reset').style.display='none';
+    document.getElementById('zert-bereich').style.display='none';
+    document.getElementById('zertifikat').className='';
+  }
+  baueQuiz();
+  document.getElementById('auswerten').addEventListener('click',()=>{
+    let richtig=0, offen=0;
+    fragen.forEach((f,i)=>{
+      const sel=quiz.querySelector('input[name="q'+i+'"]:checked');
+      const blk=quiz.querySelector('[data-q="'+i+'"]');
+      const labels=blk.querySelectorAll('label.opt');
+      if(!sel){offen++;}
+      labels.forEach((l,j)=>{l.classList.remove('richtig','falsch'); if(j===f.r) l.classList.add('richtig'); if(sel&&+sel.value===j&&j!==f.r) l.classList.add('falsch'); l.querySelector('input').disabled=true;});
+      if(sel&&+sel.value===f.r) richtig++;
+    });
+    if(offen>0 && !confirm(offen+' Frage(n) sind noch unbeantwortet. Trotzdem auswerten?')){ fragen.forEach((f,i)=>{quiz.querySelectorAll('[data-q="'+i+'"] label.opt').forEach(l=>{l.classList.remove('richtig','falsch'); l.querySelector('input').disabled=false;});}); return; }
+    const best=richtig===fragen.length; letztePunkte=richtig;
+    const e=document.getElementById('ergebnis');
+    e.innerHTML='<div class="zahl">'+richtig+' <small>von '+fragen.length+' richtig</small></div><p style="margin:10px 0 0;font-size:17px">'+(best?'✅ Bestanden. Unten kannst du jetzt deine Teilnahmebestätigung erstellen und ausdrucken.':'Noch nicht bestanden. Beide Fragen müssen richtig sein. Schau dir die markierten Antworten an, lies das betreffende Modul noch einmal und wiederhole den Test.')+'</p>';
+    e.className='quiz-ergebnis show';
+    document.getElementById('auswerten').style.display='none';
+    document.getElementById('reset').style.display='';
+    if(best){ document.getElementById('zert-bereich').style.display=''; const box=document.querySelector('input[data-done="8"]'); if(box&&!box.checked){box.checked=true; updateFortschritt();} }
+    e.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('reset').addEventListener('click',baueQuiz);
+
+  /* ---------- Teilnahmebestätigung ---------- */
+  const zname=document.getElementById('zname');
+  try{ const z=JSON.parse(localStorage.getItem(KEYZ)||'null'); if(z&&z.name) zname.value=z.name; }catch(e){}
+  function datumHeute(){ const d=new Date(); return d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'}); }
+  document.getElementById('zert-erstellen').addEventListener('click',()=>{
+    const n=zname.value.trim();
+    if(n.length<3){ zname.focus(); zname.style.borderColor='#c62828'; return; }
+    zname.style.borderColor='';
+    const datum=datumHeute();
+    document.getElementById('z-name').textContent=n;
+    document.getElementById('z-datum').textContent=datum;
+    document.getElementById('z-punkte').textContent=letztePunkte;
+    document.getElementById('zertifikat').className='show';
+    try{localStorage.setItem(KEYZ,JSON.stringify({name:n,datum:datum,punkte:letztePunkte}));}catch(e){}
+    document.getElementById('zertifikat').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  document.getElementById('zert-drucken').addEventListener('click',()=>{
+    document.body.classList.add('nur-zert');
+    const ende=()=>{document.body.classList.remove('nur-zert'); window.removeEventListener('afterprint',ende);};
+    window.addEventListener('afterprint',ende);
+    window.print();
+    setTimeout(ende,3000);
+  });
+})();
+</script>
+</body>
+</html>
