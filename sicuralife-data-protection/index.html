@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IMS Training – Sicuralife SAGL</title>
+<style>
+  :root{
+    --teal:#20C997; --teal-dark:#159873; --schwarz:#111; --grau:#5b5b5b; --hell:#f5f4f2; --linie:#e2e0dc;
+    --gruen:#20C997; --rot:#E5484D; --gelb:#e0a800; --weiss:#fff; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--schwarz);background:var(--hell);line-height:1.55;font-size:17px}
+  header.top{background:var(--weiss);border-bottom:1px solid var(--linie);position:sticky;top:0;z-index:20}
+  .top-inner{max-width:1040px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .top-inner img{height:30px}
+  .top-inner .titel{font-weight:700;font-size:15px;flex:1;min-width:200px}
+  .fortschritt{height:6px;background:var(--linie);border-radius:3px;overflow:hidden;width:100%}
+  .fortschritt > div{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-dark));width:0%;transition:width .4s}
+  main{max-width:1040px;margin:0 auto;padding:24px 20px 80px}
+  .hero{background:var(--schwarz);color:#fff;border-radius:var(--radius);padding:44px 40px;margin-bottom:28px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,var(--teal),var(--teal-dark));opacity:.9}
+  .hero *{position:relative}
+  .hero .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#9fe6cd;font-weight:600}
+  .hero h1{font-size:clamp(28px,4.5vw,44px);margin:8px 0 12px;line-height:1.1}
+  .hero p{max-width:620px;font-size:18px;color:#e6e6e6;margin:0 0 20px}
+  .hero .meta{font-size:13px;color:#bdbdbd}
+  .btn{display:inline-block;-webkit-appearance:none;appearance:none;font-family:inherit;background:var(--teal);color:#0a1f17;border:0;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;transition:transform .1s,background .2s}
+  .btn:hover{background:#3fe0af;transform:translateY(-1px)}
+  .btn.sekundaer{background:#fff;color:var(--schwarz);border:2px solid var(--schwarz)}
+  .btn.sekundaer:hover{background:var(--hell)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  nav.module{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:34px}
+  nav.module a{background:#fff;border:1px solid var(--linie);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--schwarz);font-size:14px;display:flex;gap:10px;align-items:center;transition:border .2s}
+  nav.module a:hover{border-color:var(--teal)}
+  nav.module a .nr{width:26px;height:26px;border-radius:50%;background:var(--schwarz);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+  nav.module a.fertig .nr{background:var(--teal-dark)}
+  nav.module a.bald{opacity:.5;pointer-events:none;border-style:dashed}
+  nav.module a.bald .nr{background:#bbb}
+  section.modul{background:#fff;border-radius:var(--radius);padding:36px 40px;margin-bottom:28px;border:1px solid var(--linie);scroll-margin-top:90px}
+  section.modul .kap{color:var(--teal-dark);font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase}
+  section.modul h2{margin:6px 0 18px;font-size:30px;line-height:1.15}
+  section.modul h3{font-size:19px;margin:28px 0 10px}
+  p.lead{font-size:19px;color:#333}
+  .karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .karte{background:var(--hell);border-radius:12px;padding:18px 18px 16px;border-left:5px solid var(--teal)}
+  .karte.rot{border-left-color:var(--rot)} .karte.gruen{border-left-color:var(--gruen)} .karte.schwarz{border-left-color:var(--schwarz)} .karte.grau{border-left-color:#bbb}
+  .karte > b{display:block;margin-bottom:6px;font-size:16px}
+  .karte p{margin:0;font-size:15px;color:#333}
+  .karte .icon{font-size:26px;margin-bottom:8px}
+  .merke{background:#effaf5;border:1px solid #b7ecd7;border-radius:12px;padding:16px 20px;margin:18px 0;display:flex;gap:14px;align-items:flex-start}
+  .merke .i{font-size:24px}
+  .merke b{color:var(--teal-dark)}
+  .zweispalt{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+  @media(max-width:720px){.zweispalt{grid-template-columns:1fr} section.modul{padding:26px 20px} .hero{padding:32px 24px}}
+  .box{border:1px solid var(--linie);border-radius:12px;padding:18px 20px}
+  .box.ja{background:#f0faf3;border-color:#bfe6cc} .box.nein{background:#fff4f2;border-color:#ffd2ca}
+  .box h4{margin:0 0 10px;font-size:17px}
+  .box ul{margin:0;padding-left:20px} .box li{margin-bottom:6px;font-size:15px}
+  /* Schritte */
+  .schritte{counter-reset:s;display:grid;gap:14px;margin:18px 0}
+  .schritt{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;background:var(--hell);border-radius:12px;padding:18px}
+  .schritt .n{counter-increment:s;width:44px;height:44px;border-radius:50%;background:var(--teal-dark);color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+  .schritt .n:before{content:counter(s)}
+  .schritt > div > b{font-size:18px;display:block;margin-bottom:4px}
+  .schritt p{margin:0 0 6px;font-size:15px}
+  .schritt .beispiel{margin-top:8px;padding:10px 12px;background:#fff;border:1px dashed var(--linie);border-radius:8px;font-size:14px;color:#333}
+  .schritt .beispiel b{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-dark);display:block;margin-bottom:4px}
+  .loop-hinweis{text-align:center;font-size:14px;color:var(--grau);margin-top:-4px}
+  /* Sprechblasen */
+  .sprech{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  @media(max-width:720px){.sprech{grid-template-columns:1fr}}
+  .bubble{border-radius:14px;padding:14px 16px;font-size:15px;position:relative}
+  .bubble.gut{background:#eef8f1;border:1px solid #bfe6cc} .bubble.schlecht{background:#fff0ee;border:1px solid #ffd2ca}
+  .bubble .lab{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:6px}
+  .bubble.gut .lab{color:var(--teal-dark)} .bubble.schlecht .lab{color:var(--rot)}
+  /* Flow */
+  .flow{display:flex;flex-direction:column;gap:0;margin:20px 0;align-items:stretch}
+  .flow .node{background:#fff;border:2px solid var(--schwarz);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+  .flow .node.start{background:var(--schwarz);color:#fff}
+  .flow .node.du{border-color:var(--rot);background:#fff7f5}
+  .flow .node.end{background:#effaf5;border-color:var(--teal-dark)}
+  .flow .node b{display:block;font-size:16px}
+  .flow .node span.t{font-size:14px;color:#333}
+  .flow .node .wer{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--hell);white-space:nowrap;color:#333}
+  .flow .node.du .wer{background:var(--rot);color:#fff}
+  .flow .node.start .wer{background:#333;color:#fff}
+  .flow .node.end .wer{background:var(--teal-dark);color:#fff}
+  .flow .pfeil{text-align:center;color:var(--grau);font-size:22px;line-height:1;padding:4px 0}
+  .flow .pfeil small{display:block;font-size:12px;color:var(--grau)}
+  /* Tabelle */
+  .tabwrap{overflow-x:auto;margin:16px 0}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;background:#fff}
+  th,td{border:1px solid var(--linie);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--schwarz);color:#fff;font-weight:600}
+  tr:nth-child(even) td{background:#fafaf9}
+  /* Quiz-Ergebnis */
+  .quiz-ergebnis{display:none;margin-top:20px;padding:22px;border-radius:12px;background:var(--schwarz);color:#fff}
+  .quiz-ergebnis.show{display:block}
+  .quiz-ergebnis .zahl{font-size:44px;font-weight:800;line-height:1}
+  .quiz-ergebnis .zahl small{font-size:18px;font-weight:400;color:#bbb}
+  .quiz-hinweis{font-size:14px;color:var(--rot);margin-top:8px;display:none}
+  .quiz-hinweis.show{display:block}
+  /* Sortier-Übung (Myth or Fact) */
+  .sortier{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0}
+  .fall{background:#fff;border:2px solid var(--linie);border-radius:12px;padding:14px 16px;font-size:15px}
+  .fall .frage{margin-bottom:10px;min-height:48px}
+  .fall .wahl{display:flex;gap:8px}
+  .fall button{flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--schwarz);background:#fff;cursor:pointer;font-weight:600;font-size:14px}
+  .fall button:hover{background:var(--hell)}
+  .fall.richtig{border-color:var(--teal-dark);background:#f4fbf8} .fall.falsch{border-color:var(--rot);background:#fff6f4}
+  .fall .erkl{font-size:13.5px;margin-top:10px;color:#333;display:none}
+  .fall.richtig .erkl,.fall.falsch .erkl{display:block}
+  .fall.richtig .wahl,.fall.falsch .wahl{display:none}
+  .fall .ergebnis{font-weight:700;font-size:14px;margin-top:8px;display:none}
+  .fall.richtig .ergebnis{display:block;color:var(--teal-dark)} .fall.falsch .ergebnis{display:block;color:var(--rot)}
+  /* Szenarien / Quiz */
+  .szenario{border:1px solid var(--linie);border-radius:12px;padding:20px 22px;margin:16px 0;background:#fff}
+  .szenario .sit{font-size:16px;margin-bottom:12px}
+  .szenario .sit b{display:block;font-size:17px;margin-bottom:4px}
+  .opt{display:block;width:100%;text-align:left;background:var(--hell);border:2px solid var(--hell);border-radius:10px;padding:12px 14px;margin:8px 0;cursor:pointer;font-size:15px;font-family:inherit;line-height:1.4}
+  .opt:hover{border-color:#bbb}
+  .opt.richtig{border-color:var(--teal-dark);background:#effaf5}
+  .opt.falsch{border-color:var(--rot);background:#fff0ee}
+  .opt[disabled]{cursor:default}
+  .feedback{display:none;margin-top:10px;padding:12px 14px;border-radius:10px;font-size:14.5px}
+  .feedback.show{display:block}
+  .feedback.ok{background:#effaf5;border:1px solid #b7ecd7} .feedback.nok{background:#fff0ee;border:1px solid #ffd2ca}
+  /* Merkkarte */
+  .merkkarte{background:var(--schwarz);color:#fff;border-radius:var(--radius);padding:34px 40px}
+  .merkkarte h2{margin:0 0 6px;font-size:28px}
+  .merkkarte ol{counter-reset:m;list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+  .merkkarte li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;font-size:17px}
+  .merkkarte li:before{counter-increment:m;content:counter(m);width:32px;height:32px;border-radius:50%;background:var(--teal);color:#0a1f17;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .platzhalter{background:#fff3cd;color:#5c4400;padding:1px 6px;border-radius:4px;font-size:13px}
+  .fuss{text-align:center;color:var(--grau);font-size:13px;margin-top:40px}
+  .modul-ende{margin-top:26px;padding-top:18px;border-top:1px dashed var(--linie);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .modul-ende label{font-size:15px;display:flex;align-items:center;gap:8px;cursor:pointer}
+  .modul-ende input{width:20px;height:20px;accent-color:var(--teal-dark)}
+  .quelle{font-size:13px;color:var(--grau);margin-top:6px}
+  @media print{
+    header.top{position:static} .btn,.modul-ende,nav.module,.fortschritt{display:none!important}
+    section.modul,.hero,.merkkarte{break-inside:avoid;border:1px solid #ccc;box-shadow:none}
+    body{background:#fff;font-size:13px} .hero{color:#000;background:#eee} .hero:before{display:none} .hero p,.hero .meta,.hero .kicker{color:#222}
+    .fall .wahl{display:none} .fall .erkl{display:block} .feedback{display:block}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <img src="data:image/png;base64,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" alt="Sicuralife">
+    <div class="titel">IMS Training · Data Protection</div>
+    <div class="fortschritt"><div id="fortschritt"></div></div>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="start">
+    <div class="kicker">Integrated Management System · GDPR &amp; Swiss FADP</div>
+    <h1>Handling Personal Data at Sicuralife</h1>
+    <p>Our watch calls for help when someone falls. To do that, we handle real, sensitive information about real people — their location at the moment of an emergency, their contact details, their device data. That's exactly the kind of data GDPR and the Swiss Data Protection Act (FADP) were written to protect. This module covers what data we handle, which rules apply, and what that means for your everyday work.</p>
+    <a class="btn" href="#m1">Start Module 1</a>
+    <div class="meta" style="margin-top:18px">Basis: EU GDPR · Swiss Federal Act on Data Protection (revFADP, in force since 01.09.2023) · Status 09/2026 · © Sicuralife SAGL</div>
+  </div>
+
+  <nav class="module" id="modulnav">
+    <a href="#m1" data-m="1"><span class="nr">1</span>What Data We Handle</a>
+    <a href="#m2" data-m="2"><span class="nr">2</span>GDPR &amp; Swiss FADP Basics</a>
+    <a href="#m3" data-m="3"><span class="nr">3</span>Data Subject Rights &amp; Requests</a>
+    <a href="#m4" data-m="4"><span class="nr">4</span>Keeping Data Safe Day-to-Day</a>
+    <a href="#m5" data-m="5"><span class="nr">5</span>Practical Scenarios &amp; Final Check</a>
+  </nav>
+
+  <section class="modul" id="m1">
+    <div class="kap">Module 1</div>
+    <h2>What Personal Data We Handle — and Why It's Sensitive</h2>
+    <p class="lead">"Personal data" isn't just names in a spreadsheet. At Sicuralife, it includes information tied to a real emergency involving a real, often elderly, person.</p>
+
+    <div class="merke">
+      <div class="i">📍</div>
+      <div><b>What we hold:</b> end-customer name and address (via our B2B partners), device identifiers (IMEI, ICCID, Watch Code), GPS location at the moment of an SOS alert, call and support records in Odoo — and, as vital-sign features are developed (opportunity 02), potentially heart rate or oxygen data too.</div>
+    </div>
+
+    <div class="karten">
+      <div class="karte gruen">
+        <div class="icon">📇</div>
+        <b>"Ordinary" personal data</b>
+        <p>Name, address, phone number, device serial numbers — handled through partners and Odoo.</p>
+      </div>
+      <div class="karte rot">
+        <div class="icon">❤️</div>
+        <b>Potentially sensitive data</b>
+        <p>Real-time location during a fall, and future vital-sign readings — this can edge into "special category" health data under GDPR Article 9, which needs extra care.</p>
+      </div>
+    </div>
+
+    <h3>Quick check: myth or fact?</h3>
+    <div class="sortier" id="sortier1">
+      <div class="fall" data-antwort="myth">
+        <div class="frage">"We're a hardware company, so data protection rules mostly don't apply to us."</div>
+        <div class="wahl">
+          <button data-w="myth">Myth</button>
+          <button data-w="fact">Fact</button>
+        </div>
+        <div class="erkl">Myth. We process location, contact, and device data for real people every day — that's exactly what these rules cover.</div>
+        <div class="ergebnis"></div>
+      </div>
+      <div class="fall" data-antwort="fact">
+        <div class="frage">"A GPS location captured during a fall alert counts as personal data."</div>
+        <div class="wahl">
+          <button data-w="myth">Myth</button>
+          <button data-w="fact">Fact</button>
+        </div>
+        <div class="erkl">Fact. Any data that can identify or locate a specific person is personal data.</div>
+        <div class="ergebnis"></div>
+      </div>
+      <div class="fall" data-antwort="fact">
+        <div class="frage">"Future vital-sign data (heart rate, oxygen) would need extra care compared to a device serial number."</div>
+        <div class="wahl">
+          <button data-w="myth">Myth</button>
+          <button data-w="fact">Fact</button>
+        </div>
+        <div class="erkl">Fact. Health-related data is a "special category" under GDPR, with stricter rules than ordinary device data.</div>
+        <div class="ergebnis"></div>
+      </div>
+    </div>
+
+    <h3>Quick scenario check</h3>
+    <div class="szenario" id="szenario1">
+      <div class="sit"><b>Situation</b>A partner asks you to send over "just the GPS logs" for a batch of devices to help debug a connectivity issue.</div>
+      <button class="opt" data-r="falsch">Send the full logs immediately — it's just technical data.</button>
+      <button class="opt" data-r="richtig">Check whether the logs can be limited or anonymised first, and confirm the request is legitimate.</button>
+      <button class="opt" data-r="falsch">Forward it without checking, since the partner already has a contract with us.</button>
+      <div class="feedback" data-fb-falsch>GPS logs tied to specific end customers are personal data — "just technical" doesn't make that go away.</div>
+      <div class="feedback" data-fb-richtig>Exactly — minimise what's shared and confirm it's actually needed before sending anything.</div>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="1"> I understand what personal data Sicuralife handles and why some of it is sensitive</label>
+      <a class="btn sekundaer" href="#start">Back to overview</a>
+    </div>
+  </section>
+
+  <section class="modul" id="m2">
+    <div class="kap">Module 2</div>
+    <h2>GDPR &amp; Swiss FADP — the Basics That Apply to Us</h2>
+    <p class="lead">Sicuralife is a Swiss company, but our partners and end customers are in Switzerland, France, the UK, and Italy. That means two data protection laws apply at the same time, not just one.</p>
+
+    <div class="tabwrap">
+      <table>
+        <tr><th></th><th>EU GDPR</th><th>Swiss FADP (revised, since 01.09.2023)</th></tr>
+        <tr><td>Applies to us because</td><td>We offer a service to people in the EU/UK (France, UK joint venture, Italy)</td><td>We're a Swiss company processing personal data</td></tr>
+        <tr><td>Authority</td><td>National data protection authorities in each EU country</td><td>Federal Data Protection and Information Commissioner (FDPIC)</td></tr>
+        <tr><td>Breach notification</td><td>Within 72 hours to the authority if there's a risk to people</td><td>"As soon as possible" to the FDPIC if there's a high risk</td></tr>
+        <tr><td>Special category / sensitive data</td><td>Health data needs extra legal grounds (Art. 9)</td><td>Health data is also specially protected under Swiss law</td></tr>
+      </table>
+    </div>
+
+    <div class="merke">
+      <div class="i">⚖️</div>
+      <div><b>Both apply, not "either/or":</b> a French end customer's data is protected by GDPR; a Swiss end customer's data is protected by the FADP. Since we serve both, we design our processes to meet the stricter of the two wherever they differ. This is tracked as risk 08 in our QF14 Risk Register ("Regulatory Noncompliance").</div>
+    </div>
+
+    <h3>Quick scenario check</h3>
+    <div class="szenario" id="szenario2">
+      <div class="sit"><b>Situation</b>You hear a colleague say "GDPR doesn't apply to us, we're Swiss, not an EU company."</div>
+      <button class="opt" data-r="falsch">Agree — Swiss companies are outside GDPR's reach.</button>
+      <button class="opt" data-r="richtig">Point out that GDPR still applies because we serve customers in the EU/UK, alongside the Swiss FADP.</button>
+      <button class="opt" data-r="falsch">Say only the FADP matters, GDPR can be ignored.</button>
+      <div class="feedback" data-fb-falsch>GDPR reaches beyond EU borders whenever you offer services to people who live there — being Swiss doesn't exempt us.</div>
+      <div class="feedback" data-fb-richtig>Exactly — both laws apply, depending on where the end customer is.</div>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="2"> I understand that both GDPR and the Swiss FADP apply to Sicuralife, and roughly how</label>
+      <a class="btn sekundaer" href="#start">Back to overview</a>
+    </div>
+  </section>
+
+  <section class="modul" id="m3">
+    <div class="kap">Module 3</div>
+    <h2>Data Subject Rights &amp; Handling Requests</h2>
+    <p class="lead">Anyone whose data we hold — an end customer, a partner contact — has rights over that data. If a request comes in, how we handle it matters just as much as the answer itself.</p>
+
+    <div class="schritte">
+      <div class="schritt">
+        <div class="n"></div>
+        <div><b>Access</b><p>Someone can ask what data we hold about them and why.</p></div>
+      </div>
+      <div class="schritt">
+        <div class="n"></div>
+        <div><b>Correction</b><p>They can ask us to fix inaccurate data.</p></div>
+      </div>
+      <div class="schritt">
+        <div class="n"></div>
+        <div><b>Deletion</b><p>They can ask us to erase their data, where there's no legal reason to keep it.</p></div>
+      </div>
+      <div class="schritt">
+        <div class="n"></div>
+        <div><b>Objection</b><p>They can object to certain uses of their data.</p></div>
+      </div>
+    </div>
+
+    <div class="merke">
+      <div class="i">👤</div>
+      <div><b>Who handles this at Sicuralife:</b> right now, that's Jérôme, who combines the Quality Representative and management roles (see risk register item 16). If you receive this kind of request directly — from a partner or end customer — don't try to resolve it yourself: forward it to Jérôme straight away so it's handled correctly and on time.</div>
+    </div>
+
+    <h3>If something goes wrong: breach notification</h3>
+    <div class="karten">
+      <div class="karte rot">
+        <div class="icon">⏱️</div>
+        <b>GDPR: 72 hours</b>
+        <p>A personal data breach with risk to people must be reported to the relevant EU authority within 72 hours of becoming aware of it.</p>
+      </div>
+      <div class="karte rot">
+        <div class="icon">⏱️</div>
+        <b>Swiss FADP: "as soon as possible"</b>
+        <p>A high-risk breach must be reported to the FDPIC without unreasonable delay.</p>
+      </div>
+    </div>
+
+    <h3>Quick scenario check</h3>
+    <div class="szenario" id="szenario3">
+      <div class="sit"><b>Situation</b>An end customer's family member emails you directly asking you to delete their late relative's account and all associated data.</div>
+      <button class="opt" data-r="richtig">Forward the request to Jérôme immediately so it's verified and handled properly.</button>
+      <button class="opt" data-r="falsch">Delete the account yourself right away to be helpful.</button>
+      <button class="opt" data-r="falsch">Ignore the email since it didn't come through the official B2B partner channel.</button>
+      <div class="feedback" data-fb-falsch>Deleting data yourself skips identity verification and legal checks — this needs to go through the proper process.</div>
+      <div class="feedback" data-fb-richtig>Right — pass it on immediately rather than acting on it, or sitting on it.</div>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="3"> I know the basic data subject rights and what to do if a request or a breach comes up</label>
+      <a class="btn sekundaer" href="#start">Back to overview</a>
+    </div>
+  </section>
+
+  <section class="modul" id="m4">
+    <div class="kap">Module 4</div>
+    <h2>Keeping Data Safe in Daily Work</h2>
+    <p class="lead">Most data protection isn't dramatic — it's the everyday habit of not sharing more than needed, and keeping data where it belongs.</p>
+
+    <div class="flow">
+      <div class="node start"><div><b>Odoo ERP &amp; Sicuralife Cloud Platform</b><span class="t">Where customer, device and support data actually lives (Swiss hosting, Kubernetes cluster).</span></div><span class="wer">Systems</span></div>
+      <div class="pfeil">↓<small>only what's needed, only to those who need it</small></div>
+      <div class="node du"><div><b>Call-centre &amp; integration partners</b><span class="t">Skyresponse, Ennovation and similar partners only receive what's required to route an emergency alert.</span></div><span class="wer">Processors</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node end"><div><b>Nothing extra leaves the system</b><span class="t">No personal spreadsheets, no ad-hoc exports "just to check something."</span></div><span class="wer">Safe</span></div>
+    </div>
+
+    <div class="zweispalt">
+      <div class="box ja">
+        <h4>Do</h4>
+        <ul>
+          <li>Keep customer and device data inside Odoo / the Sicuralife Cloud Platform</li>
+          <li>Share only the minimum data needed with a partner, for a specific purpose</li>
+          <li>Use strong, unique passwords and keep your account access to yourself</li>
+        </ul>
+      </div>
+      <div class="box nein">
+        <h4>Don't</h4>
+        <ul>
+          <li>Export customer lists or GPS logs to a personal laptop, USB stick, or private email</li>
+          <li>Send full customer data to a partner "to be safe" when a subset would do</li>
+          <li>Share your login credentials with anyone, even a colleague</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="merke">
+      <div class="i">🔒</div>
+      <div>This connects directly to risk 04 in our QF14 Risk Register (cybersecurity / unauthorised access) and the planned ISO 27001 assessment — good data-handling habits are the first line of defence, before any technical control kicks in.</div>
+    </div>
+
+    <h3>Quick scenario check</h3>
+    <div class="szenario" id="szenario4">
+      <div class="sit"><b>Situation</b>You're preparing a demo for a potential new distribution partner and want to show "realistic" data.</div>
+      <button class="opt" data-r="richtig">Use anonymised or dummy data for the demo, not real end-customer records.</button>
+      <button class="opt" data-r="falsch">Export a handful of real customer records because it looks more convincing.</button>
+      <button class="opt" data-r="falsch">Show the partner direct access to the live Odoo system.</button>
+      <div class="feedback" data-fb-falsch>Real customer data has no place in a sales demo — anonymised or dummy data does the job just as well.</div>
+      <div class="feedback" data-fb-richtig>Exactly — never real personal data for something like a demo, however convincing it would look.</div>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="4"> I know where our data should stay, and what "share only what's needed" means in practice</label>
+      <a class="btn sekundaer" href="#start">Back to overview</a>
+    </div>
+  </section>
+
+  <section class="modul" id="m5">
+    <div class="kap">Module 5</div>
+    <h2>Practical Scenarios &amp; Final Check</h2>
+    <p class="lead">A last set of everyday situations, then a short check to see what stuck.</p>
+
+    <div class="szenario">
+      <div class="sit"><b>Situation</b>A journalist emails asking for "a few example cases" of the fall-detection system saving someone, including names and locations.</div>
+      <button class="opt" data-r="richtig">Decline to share real names or locations; offer an anonymised or made-up illustrative example instead.</button>
+      <button class="opt" data-r="falsch">Share a couple of real, positive cases — it's good publicity.</button>
+      <button class="opt" data-r="falsch">Forward the full incident log so they can pick their own examples.</button>
+      <div class="feedback" data-fb-falsch>Even a "positive" story is still personal data about a real emergency — it needs consent and care, not a quick share.</div>
+      <div class="feedback" data-fb-richtig>Right — good publicity is still not a reason to hand over identifiable personal data.</div>
+    </div>
+
+    <div class="szenario">
+      <div class="sit"><b>Situation</b>You're setting up a new laptop and think about syncing the customer database to it for convenience.</div>
+      <button class="opt" data-r="richtig">Don't — access the data through the proper system online instead of copying it locally.</button>
+      <button class="opt" data-r="falsch">Sync it — it's your own work laptop, so it should be fine.</button>
+      <button class="opt" data-r="falsch">Sync it, but remember to delete it "at some point."</button>
+      <div class="feedback" data-fb-falsch>A local copy is exactly the kind of uncontrolled copy that increases breach risk — even on a work laptop.</div>
+      <div class="feedback" data-fb-richtig>Right — keep data in the system, access it there, and avoid local copies altogether.</div>
+    </div>
+
+    <div class="szenario">
+      <div class="sit"><b>Situation</b>You realise a support spreadsheet with customer names and phone numbers was accidentally emailed to the wrong partner contact.</div>
+      <button class="opt" data-r="richtig">Tell Jérôme immediately — this may need to be reported as a breach.</button>
+      <button class="opt" data-r="falsch">Ask the recipient to delete it and consider the matter closed.</button>
+      <button class="opt" data-r="falsch">Wait to see if it causes any actual problems before doing anything.</button>
+      <div class="feedback" data-fb-falsch>A misdirected email with personal data is a potential breach — the clock on reporting starts now, not once trouble appears.</div>
+      <div class="feedback" data-fb-richtig>Right — escalate immediately so it can be assessed and, if needed, reported in time.</div>
+    </div>
+
+    <h3>Final check</h3>
+    <p>Answer all six questions, then check your score.</p>
+
+    <div class="szenario" data-final="1">
+      <div class="sit"><b>1.</b>Why does data protection law apply to Sicuralife?</div>
+      <button class="opt" data-r="richtig">We handle personal data like location, contact details, and device data for real people.</button>
+      <button class="opt" data-r="falsch">Only software companies need to worry about it.</button>
+      <button class="opt" data-r="falsch">It only applies once we reach a certain company size.</button>
+      <div class="feedback" data-fb-falsch>Not quite — it's about the kind of data you process, not your industry or size.</div>
+      <div class="feedback" data-fb-richtig>Correct.</div>
+    </div>
+
+    <div class="szenario" data-final="1">
+      <div class="sit"><b>2.</b>Which laws apply to Sicuralife's data processing?</div>
+      <button class="opt" data-r="richtig">Both GDPR (for EU/UK end customers) and the Swiss FADP (as a Swiss company).</button>
+      <button class="opt" data-r="falsch">Only the Swiss FADP, since we're a Swiss company.</button>
+      <button class="opt" data-r="falsch">Only GDPR, since most of our partners are in the EU.</button>
+      <div class="feedback" data-fb-falsch>Not quite — both apply at the same time, depending on where the end customer is.</div>
+      <div class="feedback" data-fb-richtig>Correct.</div>
+    </div>
+
+    <div class="szenario" data-final="1">
+      <div class="sit"><b>3.</b>Within what timeframe must a risky data breach typically be reported to the authority under GDPR?</div>
+      <button class="opt" data-r="richtig">72 hours.</button>
+      <button class="opt" data-r="falsch">30 days.</button>
+      <button class="opt" data-r="falsch">There's no fixed timeframe.</button>
+      <div class="feedback" data-fb-falsch>Not quite — GDPR sets a 72-hour clock once you become aware of the breach.</div>
+      <div class="feedback" data-fb-richtig>Correct.</div>
+    </div>
+
+    <div class="szenario" data-final="1">
+      <div class="sit"><b>4.</b>A partner asks for "just the GPS logs" for troubleshooting. What's the right approach?</div>
+      <button class="opt" data-r="richtig">Check if the data can be limited or anonymised, and confirm the request is legitimate first.</button>
+      <button class="opt" data-r="falsch">Send everything immediately since it's a partner we trust.</button>
+      <button class="opt" data-r="falsch">Refuse the request outright, no matter the reason.</button>
+      <div class="feedback" data-fb-falsch>Not quite — GPS logs are personal data; trust doesn't remove the need to minimise what's shared.</div>
+      <div class="feedback" data-fb-richtig>Correct.</div>
+    </div>
+
+    <div class="szenario" data-final="1">
+      <div class="sit"><b>5.</b>Someone asks Sicuralife to delete all their personal data. What should you do if this request reaches you directly?</div>
+      <button class="opt" data-r="richtig">Forward it to Jérôme right away rather than handling it yourself.</button>
+      <button class="opt" data-r="falsch">Delete their account yourself immediately.</button>
+      <button class="opt" data-r="falsch">Tell them we don't process deletion requests.</button>
+      <div class="feedback" data-fb-falsch>Not quite — deletion requests need identity verification and legal checks before anything is deleted.</div>
+      <div class="feedback" data-fb-richtig>Correct.</div>
+    </div>
+
+    <div class="szenario" data-final="1">
+      <div class="sit"><b>6.</b>What's the safest way to demo the product to a prospective partner?</div>
+      <button class="opt" data-r="richtig">Use anonymised or dummy data, never real end-customer records.</button>
+      <button class="opt" data-r="falsch">Show a few real customer cases because they're more convincing.</button>
+      <button class="opt" data-r="falsch">Give the partner direct access to the live system.</button>
+      <div class="feedback" data-fb-falsch>Not quite — real personal data has no place in a sales demo, however convincing it looks.</div>
+      <div class="feedback" data-fb-richtig>Correct.</div>
+    </div>
+
+    <div class="quiz-hinweis" id="quizHinweis">Please answer all 6 questions first.</div>
+    <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <button class="btn" id="btnShowScore" type="button">Show My Score</button>
+      <button class="btn sekundaer" id="btnRetry" type="button" style="display:none">Try Again</button>
+    </div>
+    <div class="quiz-ergebnis" id="quizErgebnis">
+      <div class="zahl" id="quizScore">0<small>/6 correct</small></div>
+      <p id="quizMsg" style="margin-top:10px;color:#ddd"></p>
+    </div>
+
+    <div class="modul-ende">
+      <label><input type="checkbox" data-done="5"> I've completed the final check</label>
+      <a class="btn sekundaer" href="#start">Back to overview</a>
+    </div>
+  </section>
+
+  <div class="merkkarte">
+    <h2>Five Rules to Remember</h2>
+    <ol>
+      <li>Location, contact, and device data are personal data — and future vital-sign data would be especially sensitive.</li>
+      <li>Both GDPR and the Swiss FADP apply to us at the same time, depending on where the end customer is.</li>
+      <li>Never resolve a data subject request or a suspected breach yourself — forward it to Jérôme immediately.</li>
+      <li>Share only the minimum data needed, and only through Odoo / the Cloud Platform — never personal copies or exports.</li>
+      <li>Real customer data never appears in a demo, a press example, or anywhere it isn't strictly needed.</li>
+    </ol>
+  </div>
+
+  <div class="fuss">© Sicuralife SAGL · Internal training material · Status 09/2026</div>
+</main>
+
+<script>
+(function(){
+  // Sortier-Übung (myth or fact)
+  document.querySelectorAll('.fall').forEach(function(fall){
+    var antwort = fall.dataset.antwort;
+    fall.querySelectorAll('.wahl button').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var richtig = btn.dataset.w === antwort;
+        fall.classList.add(richtig ? 'richtig' : 'falsch');
+        fall.querySelector('.ergebnis').textContent = richtig ? 'Correct!' : 'Not quite — see the explanation below.';
+      });
+    });
+  });
+
+  // Szenario-Quiz
+  document.querySelectorAll('.szenario').forEach(function(sz){
+    var opts = sz.querySelectorAll('.opt');
+    opts.forEach(function(opt){
+      opt.addEventListener('click', function(){
+        opts.forEach(function(o){ o.disabled = true; });
+        opts.forEach(function(o){
+          if(o.dataset.r === 'richtig') o.classList.add('richtig');
+          else if(o === opt) o.classList.add('falsch');
+        });
+        sz.dataset.result = opt.dataset.r;
+        var fb = opt.dataset.r === 'richtig' ? sz.querySelector('[data-fb-richtig]') : sz.querySelector('[data-fb-falsch]');
+        fb.classList.add('show');
+      });
+    });
+  });
+
+  // Abschlusstest: Auswertung
+  var btnShowScore = document.getElementById('btnShowScore');
+  var btnRetry = document.getElementById('btnRetry');
+  var quizHinweis = document.getElementById('quizHinweis');
+  var quizErgebnis = document.getElementById('quizErgebnis');
+  if(btnShowScore){
+    btnShowScore.addEventListener('click', function(){
+      var finalQ = document.querySelectorAll('.szenario[data-final="1"]');
+      var unanswered = Array.prototype.filter.call(finalQ, function(sz){ return !sz.dataset.result; });
+      if(unanswered.length){
+        quizHinweis.classList.add('show');
+        return;
+      }
+      quizHinweis.classList.remove('show');
+      var score = Array.prototype.filter.call(finalQ, function(sz){ return sz.dataset.result === 'richtig'; }).length;
+      document.getElementById('quizScore').innerHTML = score + '<small>/' + finalQ.length + ' correct</small>';
+      var msg = score === finalQ.length ? 'Perfect — you\'ve got it.' : (score >= finalQ.length - 1 ? 'Almost there — worth a quick re-read of the module above.' : 'Worth going back over the modules above.');
+      document.getElementById('quizMsg').textContent = msg;
+      quizErgebnis.classList.add('show');
+      btnShowScore.style.display = 'none';
+      btnRetry.style.display = 'inline-block';
+    });
+  }
+  if(btnRetry){
+    btnRetry.addEventListener('click', function(){ window.location.reload(); });
+  }
+
+  // Fortschritt + Modul-Nav + localStorage
+  var nav = document.getElementById('modulnav');
+  var bar = document.getElementById('fortschritt');
+  var doneBoxes = document.querySelectorAll('.modul-ende input[data-done]');
+  var STORAGE_KEY = 'sicuralife_dataprotection_training_progress';
+
+  function saveProgress(){
+    var state = {};
+    doneBoxes.forEach(function(b){ state[b.dataset.done] = b.checked; });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch(e){}
+  }
+  function loadProgress(){
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      var state = JSON.parse(raw);
+      doneBoxes.forEach(function(b){ if(state[b.dataset.done]) b.checked = true; });
+    } catch(e){}
+  }
+  function updateUI(){
+    var total = doneBoxes.length, done = 0;
+    doneBoxes.forEach(function(b){ if(b.checked) done++; });
+    bar.style.width = (total ? (done/total*100) : 0) + '%';
+    doneBoxes.forEach(function(b){
+      var a = nav.querySelector('a[data-m="'+b.dataset.done+'"]');
+      if(a) a.classList.toggle('fertig', b.checked);
+    });
+  }
+  doneBoxes.forEach(function(b){ b.addEventListener('change', function(){ saveProgress(); updateUI(); }); });
+  loadProgress();
+  updateUI();
+})();
+</script>
+</body>
+</html>
