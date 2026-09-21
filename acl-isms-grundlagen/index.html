@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grundlagen Informationssicherheit (ISO/IEC 27001)</title>
+<style>
+  :root{
+    --akzent:#0071b3; --akzent-d:#005a91; --akzent-h:#e6f2fa; --schwarz:#111; --grau:#5b5b5b; --hell:#f5f4f2; --linie:#e2e0dc;
+    --gruen:#2e8b57; --rot:#c0392b; --gelb:#e0a800; --weiss:#fff; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--schwarz);background:var(--hell);line-height:1.55;font-size:17px}
+  button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--akzent);outline-offset:2px}
+  header.top{background:var(--weiss);border-bottom:1px solid var(--linie);position:sticky;top:0;z-index:20}
+  .top-inner{max-width:1040px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .top-inner img{height:36px;width:36px}
+  .top-inner .titel{font-weight:700;font-size:15px;flex:1;min-width:200px}
+  .fortschritt{height:6px;background:var(--linie);border-radius:3px;overflow:hidden;width:100%}
+  .fortschritt > div{height:100%;background:linear-gradient(90deg,var(--akzent-d),var(--akzent));width:0%;transition:width .4s}
+  main{max-width:1040px;margin:0 auto;padding:24px 20px 80px}
+  .hero{background:var(--schwarz);color:#fff;border-radius:var(--radius);padding:44px 40px;margin-bottom:28px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,#3aa6e0,var(--akzent-d));opacity:.9}
+  .hero *{position:relative}
+  .hero .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#a9d8f2;font-weight:600}
+  .hero h1{font-size:clamp(28px,4.5vw,44px);margin:8px 0 12px;line-height:1.1}
+  .hero p{max-width:620px;font-size:18px;color:#e6e6e6;margin:0 0 20px}
+  .hero .meta{font-size:13px;color:#bdbdbd}
+  .btn{display:inline-block;-webkit-appearance:none;appearance:none;font-family:inherit;background:var(--akzent);color:#fff;border:0;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;transition:transform .1s,background .2s}
+  .btn:hover{background:var(--akzent-d);transform:translateY(-1px)}
+  .btn.sekundaer{background:#fff;color:var(--schwarz);border:2px solid var(--schwarz)}
+  .btn.sekundaer:hover{background:var(--hell)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  nav.module{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:34px}
+  nav.module a{background:#fff;border:1px solid var(--linie);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--schwarz);font-size:14px;display:flex;gap:10px;align-items:center;transition:border .2s}
+  nav.module a:hover{border-color:var(--akzent)}
+  nav.module a .nr{width:26px;height:26px;border-radius:50%;background:var(--schwarz);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+  nav.module a.fertig .nr{background:var(--gruen)}
+  section.modul{background:#fff;border-radius:var(--radius);padding:36px 40px;margin-bottom:28px;border:1px solid var(--linie);scroll-margin-top:90px}
+  section.modul .kap{color:var(--akzent);font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase}
+  section.modul h2{margin:6px 0 18px;font-size:30px;line-height:1.15}
+  section.modul h3{font-size:19px;margin:28px 0 10px}
+  p.lead{font-size:19px;color:#333}
+  .karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .karte{background:var(--hell);border-radius:12px;padding:18px 18px 16px;border-left:5px solid var(--akzent)}
+  .karte.gruen{border-left-color:var(--gruen)} .karte.schwarz{border-left-color:var(--schwarz)} .karte.gelb{border-left-color:var(--gelb)}
+  .karte > b{display:block;margin-bottom:6px;font-size:16px}
+  .karte p{margin:0;font-size:15px;color:#333}
+  .karte .icon{font-size:26px;margin-bottom:8px}
+  .merke{background:var(--akzent-h);border:1px solid #b9dcf1;border-radius:12px;padding:16px 20px;margin:18px 0;display:flex;gap:14px;align-items:flex-start}
+  .merke .i{font-size:24px}
+  .merke b{color:var(--akzent-d)}
+  .zweispalt{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+  @media(max-width:720px){.zweispalt{grid-template-columns:1fr} section.modul{padding:26px 20px} .hero{padding:32px 24px}}
+  .box{border:1px solid var(--linie);border-radius:12px;padding:18px 20px}
+  .box.ja{background:#f0faf3;border-color:#bfe6cc} .box.nein{background:#fff4f2;border-color:#f3c9c2}
+  .box h4{margin:0 0 10px;font-size:17px}
+  .box ul{margin:0;padding-left:20px} .box li{margin-bottom:6px;font-size:15px}
+  /* Kreislauf */
+  .kreis{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:18px 0;counter-reset:k}
+  .kreis > div{background:var(--hell);border-radius:12px;padding:18px;position:relative}
+  .kreis > div:before{counter-increment:k;content:counter(k);position:absolute;top:-12px;left:16px;width:28px;height:28px;border-radius:50%;background:var(--akzent);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center}
+  .kreis b{display:block;margin:4px 0 4px;font-size:16px}
+  .kreis p{margin:0;font-size:14.5px}
+  /* Flow */
+  .flow{display:flex;flex-direction:column;gap:0;margin:20px 0;align-items:stretch}
+  .flow .node{background:#fff;border:2px solid var(--schwarz);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+  .flow .node.start{background:var(--schwarz);color:#fff}
+  .flow .node.du{border-color:var(--akzent);background:#f3f9fd}
+  .flow .node.end{background:#eef8f1;border-color:var(--gruen)}
+  .flow .node b{display:block;font-size:16px}
+  .flow .node span.t{font-size:14px;color:#333}
+  .flow .node.start span.t{color:#ddd}
+  .flow .node .wer{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--hell);white-space:nowrap;color:#333}
+  .flow .node.du .wer{background:var(--akzent);color:#fff}
+  .flow .pfeil{text-align:center;color:var(--grau);font-size:22px;line-height:1;padding:4px 0}
+  /* Tabelle */
+  .tabwrap{overflow-x:auto;margin:16px 0}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;background:#fff}
+  th,td{border:1px solid var(--linie);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--schwarz);color:#fff;font-weight:600}
+  tr:nth-child(even) td{background:#fafaf9}
+  td .tag{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+  .tag.s1{background:#eef8f1;color:var(--gruen)} .tag.s2{background:#e6f2fa;color:var(--akzent-d)} .tag.s3{background:#fff6e5;color:#a86b00} .tag.s4{background:#fff0ee;color:var(--rot)}
+  /* Sortier-Übung */
+  .sortier{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px;margin:16px 0}
+  .fall{background:#fff;border:2px solid var(--linie);border-radius:12px;padding:14px 16px;font-size:15px}
+  .fall .frage{margin-bottom:10px;min-height:66px}
+  .fall .wahl{display:flex;flex-direction:column;gap:6px}
+  .fall button{padding:7px 8px;border-radius:8px;border:1.5px solid var(--schwarz);background:#fff;cursor:pointer;font-weight:600;font-size:13px;font-family:inherit}
+  .fall button:hover{background:var(--hell)}
+  .fall.richtig{border-color:var(--gruen);background:#f4fbf6} .fall.falsch{border-color:var(--rot);background:#fff6f4}
+  .fall .erkl{font-size:13.5px;margin-top:10px;color:#333;display:none}
+  .fall.richtig .erkl,.fall.falsch .erkl{display:block}
+  .fall.richtig .wahl,.fall.falsch .wahl{display:none}
+  .fall .ergebnis{font-weight:700;font-size:14px;margin-top:8px;display:none}
+  .fall.richtig .ergebnis{display:block;color:var(--gruen)} .fall.falsch .ergebnis{display:block;color:var(--rot)}
+  .zaehler{font-size:14px;color:var(--grau);margin:6px 0 0}
+  /* Flip-Karten */
+  .flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:16px 0}
+  .flip{font-family:inherit;text-align:left;border:2px solid var(--schwarz);border-radius:12px;background:#fff;padding:18px;cursor:pointer;font-size:15px;min-height:150px;display:flex;flex-direction:column;gap:8px}
+  .flip .lab{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--grau)}
+  .flip .rueck{display:none}
+  .flip.auf .vorn{display:none} .flip.auf .rueck{display:block}
+  .flip.auf.irrtum{border-color:var(--rot);background:#fff6f4} .flip.auf.irrtum .lab{color:var(--rot)}
+  .flip.auf.fakt{border-color:var(--gruen);background:#f4fbf6} .flip.auf.fakt .lab{color:var(--gruen)}
+  .flip .hint{font-size:12.5px;color:var(--grau);margin-top:auto}
+  .flip.auf .hint{display:none}
+  /* Reihenfolge-Spiel */
+  .reihe{display:grid;gap:10px;margin:16px 0}
+  .reihe button{font-family:inherit;text-align:left;font-size:15px;background:var(--hell);border:2px solid var(--hell);border-radius:10px;padding:12px 14px;cursor:pointer;display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center}
+  .reihe button:hover{border-color:#bbb}
+  .reihe button .num{width:30px;height:30px;border-radius:50%;background:#fff;border:2px dashed #bbb;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
+  .reihe button.gesetzt{border-color:var(--gruen);background:#eef8f1;cursor:default}
+  .reihe button.gesetzt .num{background:var(--gruen);border:2px solid var(--gruen);color:#fff}
+  .reihe button.wackel{animation:wackel .35s;border-color:var(--rot)}
+  @keyframes wackel{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+  /* Szenarien / Quiz */
+  .szenario{border:1px solid var(--linie);border-radius:12px;padding:20px 22px;margin:16px 0;background:#fff}
+  .szenario .sit{font-size:16px;margin-bottom:12px}
+  .szenario .sit b{display:block;font-size:17px;margin-bottom:4px}
+  .opt{display:block;width:100%;text-align:left;background:var(--hell);border:2px solid var(--hell);border-radius:10px;padding:12px 14px;margin:8px 0;cursor:pointer;font-size:15px;font-family:inherit;line-height:1.4}
+  .opt:hover{border-color:#bbb}
+  .opt.richtig{border-color:var(--gruen);background:#eef8f1}
+  .opt.falsch{border-color:var(--rot);background:#fff0ee}
+  .opt[disabled]{cursor:default}
+  .feedback{display:none;margin-top:10px;padding:12px 14px;border-radius:10px;font-size:14.5px}
+  .feedback.show{display:block}
+  .feedback.ok{background:#eef8f1;border:1px solid #bfe6cc} .feedback.nok{background:#fff0ee;border:1px solid #f3c9c2}
+  .quiz-ergebnis{display:none;margin-top:20px;padding:22px;border-radius:12px;background:var(--schwarz);color:#fff}
+  .quiz-ergebnis.show{display:block}
+  .quiz-ergebnis .zahl{font-size:44px;font-weight:800;line-height:1}
+  .quiz-ergebnis .zahl small{font-size:18px;font-weight:400;color:#bbb}
+  .quiz-ergebnis ul{margin:10px 0 0;padding-left:20px;font-size:14.5px;color:#ddd}
+  .hinweis-offen{display:none;color:var(--rot);font-weight:600;margin:10px 0 0;font-size:15px}
+  /* Merkkarte */
+  .merkkarte{background:var(--schwarz);color:#fff;border-radius:var(--radius);padding:34px 40px}
+  .merkkarte h2{margin:0 0 6px;font-size:28px}
+  .merkkarte ol{counter-reset:m;list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+  .merkkarte li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;font-size:17px}
+  .merkkarte li:before{counter-increment:m;content:counter(m);width:32px;height:32px;border-radius:50%;background:var(--akzent);display:flex;align-items:center;justify-content:center;font-weight:800}
+  .kontakt{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+  @media(max-width:720px){.kontakt{grid-template-columns:1fr} .merkkarte{padding:26px 22px}}
+  .kontakt div{background:#222;border-radius:10px;padding:14px 16px;font-size:15px}
+  .kontakt b{display:block;color:#a9d8f2;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+  .platzhalter{background:#fff3cd;color:#5c4400;padding:1px 6px;border-radius:4px;font-size:13px}
+  .fuss{text-align:center;color:var(--grau);font-size:13px;margin-top:40px}
+  .modul-ende{margin-top:26px;padding-top:18px;border-top:1px dashed var(--linie);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .modul-ende label{font-size:15px;display:flex;align-items:center;gap:8px;cursor:pointer}
+  .modul-ende input{width:20px;height:20px;accent-color:var(--gruen)}
+  .quelle{font-size:13px;color:var(--grau);margin-top:6px}
+  @media print{
+    header.top{position:static} .btn,.modul-ende,nav.module,.fortschritt{display:none!important}
+    section.modul,.hero,.merkkarte{break-inside:avoid;border:1px solid #ccc;box-shadow:none}
+    body{background:#fff;font-size:13px} .hero{color:#000;background:#eee} .hero:before{display:none} .hero p,.hero .meta,.hero .kicker{color:#222}
+    .fall .wahl{display:none} .fall .erkl{display:block} .feedback{display:block}
+    .flip .vorn{display:none} .flip .rueck{display:block}
+  }
+
+  /* ===== Ergänzungen (gemeinsam für alle ACL-Schulungen) ===== */
+  .kap .dauer{font-weight:500;color:var(--grau);text-transform:none;letter-spacing:0;margin-left:8px}
+  /* E-Mail-Analyse */
+  .mail{border:2px solid var(--linie);border-radius:12px;background:#fff;margin:16px 0 6px;overflow:hidden}
+  .mail-kopf{background:var(--hell);padding:14px 18px;font-size:14.5px;border-bottom:1px solid var(--linie)}
+  .mail-kopf div{margin:3px 0}
+  .mail-body{padding:18px 20px;font-size:15.5px;line-height:1.6}
+  .mail-body p{margin:0 0 10px}
+  .fakelink{color:#0b57d0;text-decoration:underline}
+  .sus,.unauf{cursor:pointer;border-bottom:2px dotted #8a8a8a;transition:background .2s}
+  .sus:hover,.unauf:hover{background:#fff3c4}
+  .sus.gefunden{background:#ffe1dd;border-bottom:2px solid var(--rot)}
+  .unauf.geprueft{background:#e7f5ec;border-bottom:2px solid var(--gruen)}
+  .mail-hinweise{margin:8px 0 0;display:grid;gap:8px}
+  .mail-hinweise div{font-size:14.5px;padding:10px 14px;border-radius:10px;background:#fff0ee;border:1px solid #f3c9c2}
+  .mail-hinweise div.n{background:#eef8f1;border-color:#bfe6cc}
+  .mail-tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:6px 0 22px}
+  /* Passwort-Check */
+  .pwcheck{background:#fff;border:2px solid var(--linie);border-radius:12px;padding:20px 22px;margin:16px 0}
+  .pw-beispiele{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .pw-beispiele button{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;padding:8px 12px;border-radius:8px;border:1.5px solid var(--schwarz);background:#fff;cursor:pointer}
+  .pw-beispiele button:hover,.pw-beispiele button.aktiv{background:var(--schwarz);color:#fff}
+  .pwcheck label{font-size:14px;font-weight:700;display:block;margin:6px 0 4px}
+  .pwcheck input[type=text]{width:100%;max-width:420px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:16px;padding:10px 12px;border:2px solid var(--linie);border-radius:10px}
+  .pwcheck .warn{font-size:13px;color:var(--rot);margin:4px 0 0}
+  .pw-regeln{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px 14px;font-size:14.5px}
+  .pw-regeln li:before{content:"○ ";color:var(--grau)}
+  .pw-regeln li.ok:before{content:"✔ ";color:var(--gruen);font-weight:800}
+  .pw-regeln li.nok:before{content:"✘ ";color:var(--rot);font-weight:800}
+  .pw-urteil{margin-top:12px;padding:12px 14px;border-radius:10px;background:var(--hell);font-size:14.5px;min-height:24px}
+  /* Teilnahmebestätigung */
+  .zert-form{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;margin-top:14px}
+  @media(max-width:720px){.zert-form{grid-template-columns:1fr}}
+  .zert-form label{font-size:14px;font-weight:700;display:block;margin-bottom:4px}
+  .zert-form input{width:100%;font-size:17px;padding:11px 14px;border:2px solid var(--linie);border-radius:10px;font-family:inherit}
+  .zert-form input:focus{outline:none;border-color:var(--akzent)}
+  #zertifikat{display:none;margin-top:26px}
+  #zertifikat.show{display:block}
+  .zert{background:#fff;border:10px double var(--akzent-d);border-radius:6px;padding:0 54px 36px;text-align:center;position:relative;max-width:820px;margin:0 auto;overflow:hidden}
+  .zert .kopf{background:var(--akzent-d);margin:0 -54px 26px;padding:18px 0 14px;display:flex;justify-content:center;align-items:center;gap:14px;color:#fff}
+  .zert .kopf img{height:44px;width:44px;background:#fff;border-radius:8px;padding:3px}
+  .zert .kopf b{font-size:20px;letter-spacing:.03em;line-height:1.1;text-align:left}
+  .zert .kopf b small{display:block;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#cfe8f7;margin-top:4px}
+  .zert .titel{font-size:30px;font-weight:800;color:var(--akzent-d);letter-spacing:.04em;margin:0}
+  .zert .sub{color:var(--grau);font-size:15px;margin:6px 0 24px}
+  .zert .name{font-size:30px;font-weight:700;margin:10px 0;border-bottom:3px solid var(--akzent);display:inline-block;padding:0 24px 6px;min-width:60%}
+  .zert .text{font-size:16px;max-width:620px;margin:18px auto;line-height:1.6}
+  .zert .inhalte{font-size:13px;color:#333;max-width:640px;margin:0 auto 22px;line-height:1.5}
+  .zert .unterschriften{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:36px auto 0;max-width:620px}
+  .zert .unterschriften div{border-top:1px solid #333;padding-top:6px;font-size:13px;color:#333}
+  .zert .klein{font-size:11.5px;color:#777;margin-top:22px}
+  .zert-tools{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+  .datenschutz-hinweis{font-size:13px;color:var(--grau);margin-top:8px}
+  @media print{
+    body.nur-zert{background:#fff}
+    body.nur-zert header.top,
+    body.nur-zert main > *:not([data-testmodul]),
+    body.nur-zert [data-testmodul] > *:not(#zert-bereich),
+    body.nur-zert #zert-bereich > *:not(#zertifikat),
+    body.nur-zert #zertifikat > *:not(.zert){display:none!important}
+    body.nur-zert [data-testmodul]{border:0;padding:0;margin:0;background:#fff}
+    body.nur-zert #zertifikat{display:block!important;margin:0}
+    body.nur-zert main{padding:0;max-width:none}
+    body.nur-zert .zert{-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid}
+    body.nur-zert .zert .kopf{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .zert-form,.zert-tools,.mail-tools,.pwcheck input{display:none!important}
+    .mail-hinweise div{display:block}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-inner">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAAAAADH8yjkAAAACXBIWXMAAC4jAAAuIwF4pT92AAAA82lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjardA/SgNBHMXx70TULloE67mAgmu15eQPi2ARYopsqkxmBw1hd4fZn3/2Bh7B43iDFIIXUVJbqARLwU/1eM2DB+rZDPujzjGUlcRsYvJZPteHGw7YAwDrmmDG4yuAqq48vynYvqEAXk/NsD/ib/ZdiAK8AEnhGwd8AKsHCQJqAfSW6yCgBOitp5MBqCegK/5RAAZ1aOPq5lb0eZqm2hT10uvrthFfNvqycnUMdbTiC+B7A+Aoi7bVmS1Lq5OzhH83y+f6K71PUYA62ey6HXcX73/+7FzAJ0sbODDOTdGSAAA79WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMwNjcgNzkuMTU3NzQ3LCAyMDE1LzAzLzMwLTIzOjQwOjQyICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgICAgICAgICB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIgogICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICAgICAgICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoTWFjaW50b3NoKTwveG1wOkNyZWF0b3JUb29sPgogICAgICAgICA8eG1wOkNyZWF0ZURhdGU+MjAyMS0xMS0xNlQxMjo1Mzo1NiswMTowMDwveG1wOkNyZWF0ZURhdGU+CiAgICAgICAgIDx4bXA6TWV0YWRhdGFEYXRlPjIwMjItMDYtMDdUMTM6MjQ6MDErMDI6MDA8L3htcDpNZXRhZGF0YURhdGU+CiAgICAgICAgIDx4bXA6TW9kaWZ5RGF0ZT4yMDIyLTA2LTA3VDEzOjI0OjAxKzAyOjAwPC94bXA6TW9kaWZ5RGF0ZT4KICAgICAgICAgPHhtcE1NOkluc3RhbmNlSUQ+eG1wLmlpZDo4ZTI2YWViZS04MWQzLTRmNjAtODE2Mi1lNjI2YjJhN2FhOTc8L3htcE1NOkluc3RhbmNlSUQ+CiAgICAgICAgIDx4bXBNTTpEb2N1bWVudElEPmFkb2JlOmRvY2lkOnBob3Rvc2hvcDpiMmIwYjY5NS0yNmUyLTExODAtYWJkZi1iNTYwNDhhZjZlMGY8L3htcE1NOkRvY3VtZW50SUQ+CiAgICAgICAgIDx4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ+eG1wLmRpZDpmMzY4MzU0Ni03ZDAyLTQ4Y2ItYmRlMi1jYWY3MDkzYTJjMDg8L3htcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD4KICAgICAgICAgPHhtcE1NOkhpc3Rvcnk+CiAgICAgICAgICAgIDxyZGY6U2VxPgogICAgICAgICAgICAgICA8cmRmOmxpIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmFjdGlvbj5jcmVhdGVkPC9zdEV2dDphY3Rpb24+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDppbnN0YW5jZUlEPnhtcC5paWQ6ZjM2ODM1NDYtN2QwMi00OGNiLWJkZTItY2FmNzA5M2EyYzA4PC9zdEV2dDppbnN0YW5jZUlEPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6d2hlbj4yMDIxLTExLTE2VDEyOjUzOjU2KzAxOjAwPC9zdEV2dDp3aGVuPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6c29mdHdhcmVBZ2VudD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoTWFjaW50b3NoKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6YWN0aW9uPnNhdmVkPC9zdEV2dDphY3Rpb24+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDppbnN0YW5jZUlEPnhtcC5paWQ6NWM4NGE4YzktMmI4ZC00MDI5LTgxYWUtZDVkMjg5MjMyN2ViPC9zdEV2dDppbnN0YW5jZUlEPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6d2hlbj4yMDIxLTExLTE2VDEyOjUzOjU2KzAxOjAwPC9zdEV2dDp3aGVuPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6c29mdHdhcmVBZ2VudD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoTWFjaW50b3NoKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmNoYW5nZWQ+Lzwvc3RFdnQ6Y2hhbmdlZD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6YWN0aW9uPnNhdmVkPC9zdEV2dDphY3Rpb24+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDppbnN0YW5jZUlEPnhtcC5paWQ6OGUyNmFlYmUtODFkMy00ZjYwLTgxNjItZTYyNmIyYTdhYTk3PC9zdEV2dDppbnN0YW5jZUlEPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6d2hlbj4yMDIyLTA2LTA3VDEzOjI0OjAxKzAyOjAwPC9zdEV2dDp3aGVuPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6c29mdHdhcmVBZ2VudD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoTWFjaW50b3NoKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmNoYW5nZWQ+Lzwvc3RFdnQ6Y2hhbmdlZD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOlNlcT4KICAgICAgICAgPC94bXBNTTpIaXN0b3J5PgogICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL3BuZzwvZGM6Zm9ybWF0PgogICAgICAgICA8cGhvdG9zaG9wOkNvbG9yTW9kZT4xPC9waG90b3Nob3A6Q29sb3JNb2RlPgogICAgICAgICA8cGhvdG9zaG9wOklDQ1Byb2ZpbGU+R3JheSBHYW1tYSAyLjI8L3Bob3Rvc2hvcDpJQ0NQcm9maWxlPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpYUmVzb2x1dGlvbj4zMDAwMDAwLzEwMDAwPC90aWZmOlhSZXNvbHV0aW9uPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj4zMDAwMDAwLzEwMDAwPC90aWZmOllSZXNvbHV0aW9uPgogICAgICAgICA8dGlmZjpSZXNvbHV0aW9uVW5pdD4yPC90aWZmOlJlc29sdXRpb25Vbml0PgogICAgICAgICA8ZXhpZjpDb2xvclNwYWNlPjY1NTM1PC9leGlmOkNvbG9yU3BhY2U+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj45NjwvZXhpZjpQaXhlbFhEaW1lbnNpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj45NjwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgIAo8P3hwYWNrZXQgZW5kPSJ3Ij8+BfvyZgAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAHwUlEQVR42qyZa2wU1xXH//Pa98PrB+s1xmuMBRSwoQXZmAQBMeQBKlUeitzWNG2jhKZNZSkgOU2o8gElRYg2Kg8pKVhQp1WVpJRXSiEBo0IQhaZgTIDU9RoTPzD2rtfrnfXuzszO9INjWHtnZmdn936y795zfvfcOfecc+8lJGhqY/cv+0YH7kQI57eKLeWLvHZSmxwIDQDuxoVjvghvAm+1SGyEpnnK5nr0iXkVVE4A/a1/6RPMRip5yhKXiHLW8mfXV2cN+Lr5LOuwSbKSbJSobviJJRuA8M5vxQJGVBZmo3mvvWzRDRis6/cYRNUJkuP+vP0bdQKu14sFYtpFJln/6gNePYDO+fn5CS1+guHoh09nDggVOvJFEEJUBM9EIzA4RBE0bSKIVCPiA5v3kBkCxLprs4VEiDRXLPTMNBTNpP198bHh/q4uISHaaEqapqV3zRFLZoC9v5w7ItifXFs3c8rUEn3DV75o7wtbrcwUSbK35lNTJgB/sZ2vaVprlbeu+9JnbSNWO5kkTN6rOUNmANj29sKWWrVPO9zxhzY+PwlB3vlBq3bASEHz22kjzdBHuzhLEqFr7y80A5q5d9No73284sfVF3fEmIeqEj3tizUCxs8/mW76+5ryeWlJbDDJTnJEGDZoA4gyzj6t9VV6SAgEnSxPd/7qHT35QD5JzIvJOH5315zpm1CnfhieGJOJS4YtyBUAz43LLO2sY7dzBvBaZSItQe7PGYB0yXmHpzWSK4DLKBfLzYHruQJY5ZYIInUpVwCCkM12+UdHcwQYZ2WDlannfo4AY7wsgOSCOQIInMLK5cqC0JCsBQTjn/I/rSB+4oR3U5kq4KxCPx3QAjj7I0t03ym1yrNv+yyFIobXAIg12DdUHl3sq3jQE+Tck4VvmBOHDZ0vmQyyRZOUcGoA/LH86Exs+fVj150AJIEBBiNuAOg70nFnaEgyxMcKnApFWSJfA+CRF2mOYLYvX33SAxyvng20B5cBt5r+E7NQlBEUY4eCfinq1QBYdHVbP19Tsqy8fpW7zXYSANtc5Ww5aHTkp0tQCcalARD/01dbVzy35mC//RrbexMAOqJPGRNFhJQ2AYpOqwYA/Tuzq5jYR62MEoG9pQC4S26TREACJImEpJKx2VUeDRuNwg9f8Ww2hHy8s3UTAMSHCBAAQLN+KjHAKddMXI1B005ecHT3Fmn35hPn1k0EnjgFgBC4/vf9YkErySkC+LnQtJOxejXCzeYH2yBqBRUay2ciwS7fm89bN5YryTmhEQDA/vDP//IkBmfsrnce3iQwTZglimKCYOQ+BcNrByS1mzQ1sPwTI9Cw4Nz3i2INGHM4xsdEB5XiVX5aF2CYuL/uryQAVFcDW2vfy8vLE4Z2nLKnAMy31+sB9DAjbz3wB3GHbSI7HnprZ0mKm/J6cnLsLuN66H2kbfKvFalfwSTqAYQChvFhmf6IkLqFivQA7oaYeL9M/5XUyBGr1AMYEWE9IxMWWtypUcajBzAqoPBvgZTuD/wpFXzMXaYH0GsCPXp3eu+tJm9KUgivseiygIJkODRd/1JX6oEpXKurumYBuKfVzVdW2lKzpkiu1QUIAzCEzid3/bmOcaVmzWhFmR6A4GMAydKS1HWgscSeqp/wP2vQcwgMVpEMIIUvzJ/sOfKMl5aRJHy35+uxYGyABkghPDLZcfWZUjn9GPfMzvAQKFyOAthpIgGeP7BiMrYuLTLL6SfvbTNmek72nfkn193tFoDg4rZvQlu8kHTLVkVi/0BhpsfYOS/9NPIlIRKA41/f7DShniuW1U/ce6FQx8UsMPLCBbcAMuC+7AAwtOFGOS9/7uy6sUgXAOLGzwsAZsj8cWWo7Q3eI8jX1cO1pwldgBPfvfhopQiQbMzFsoVGhatOwtdRJWOWBgOOs9928ABEi0uyeZQuginfK1XQBZC671rWBIiJmwKFopHiRv639PfQB+i6NozXWfULpNiC3ScvMrJlbnoAtWw+auvbnarh9rFNSlca6rm4ZestVHxajIiXVzUhOE/pFzUL+OtdiapdRWvm3dzzuZkOO1Uusmf4FW8cVNyUlwwAvvz36FDh4+XxLaetykMDext1WMAAEMVFE7vTvv6wCiBk1LNEAIDT0bIykf+kZYAqVjHWfFvPEk2EzmM7eyPjJoOTVhsacbUbdQKAxFdfd7Z9wRZBZSjhu7ZEN2Dig2//zWwVLyL8y09lBwAa/j5D7f7LJ3Nvndl1zhus6s/md5EloFD1xYiI1mQLYGxqT14xQ2O2gFhQ5cWC7tvlyBZwI6w8lhp0/QxZelG8xKD4ZknE+nu8yM4C/nsxu6J+7v55xbfGNADWN+E6PXXnSpWciBwP7lkJnbFIPP5RfuOskQ/epwuU9FN+4TOVB7G036Bnz8GQzTDlTW6qfN/cf5QiCwAQ2r8dSpGOCg827jchOwAQevlwuRyB5PzOjx9Rl9XkRc4P3/SlDiQSgcjPO9Po17wPXjxUObUiJTCIVfvK0wpqBXClYl7SUEIM8M8rXC7r3MlXl86RHkyeDdqefnWJJjntCeepSwUTAvEA4X19XYlGMe2Ay8srRUJiwyhuaFhIaZXKAMCXR7mEZe6Gdd9hkEmTNLfXqFcPdwhShi2D19iuwdrM5g4A+P8Aryk/TNG1y/wAAAAASUVORK5CYII=" alt="Averroes Concept Lounge">
+    <div class="titel">Grundlagen Informationssicherheit (ISO/IEC 27001)</div>
+    <div class="fortschritt" aria-hidden="true"><div id="fortschritt"></div></div>
+  </div>
+</header>
+
+<main>
+
+<div class="hero">
+  <div class="kicker">Schulung für alle Mitarbeitenden</div>
+  <h1>Informationssicherheit bei ACL: die Grundlagen</h1>
+  <p>Was ein ISMS ist, warum es uns alle betrifft, welche Regeln im Alltag gelten und was Sie tun, wenn etwas schiefgeht. In sechs kurzen Modulen, mit Übungen und einem Abschlusstest.</p>
+  <a class="btn" href="#m1">Schulung starten</a>
+  <div class="meta" style="margin-top:18px">Dauer ca. 15 Minuten · läuft im Browser, kein Login · Fortschritt wird nur auf Ihrem Gerät gespeichert</div>
+</div>
+
+<nav class="module" id="modulnav"><a href="#m1" data-m="1"><span class="nr">1</span>Warum das Thema wichtig ist</a><a href="#m2" data-m="2"><span class="nr">2</span>Was ist ein ISMS?</a><a href="#m3" data-m="3"><span class="nr">3</span>Regeln im Alltag</a><a href="#m4" data-m="4"><span class="nr">4</span>Wenn etwas passiert</a><a href="#m5" data-m="5"><span class="nr">5</span>Praxisfälle</a><a href="#m6" data-m="6"><span class="nr">6</span>Abschlusstest</a></nav>
+
+<!-- ============ MODUL 1 ============ -->
+<section class="modul" id="m1">
+  <div class="kap">Modul 1</div>
+  <h2>Warum das Thema wichtig ist</h2>
+  <p class="lead">ACL arbeitet mit Daten, die anderen gehören: mit Kundendaten, Projektdaten und Quellcode. Wenn davon etwas verloren geht, in falsche Hände gerät oder verfälscht wird, trifft das nicht nur uns, sondern unsere Kunden.</p>
+  <div class="karten">
+    <div class="karte"><div class="icon">🤝</div><b>Kunden vertrauen uns</b><p>Unsere Kunden aus dem Asset Management erwarten, dass ihre Daten bei uns sicher sind. Das ist Teil unserer Leistung.</p></div>
+    <div class="karte schwarz"><div class="icon">📜</div><b>Anforderungen steigen</b><p>Kunden und Regulierung (zum Beispiel DORA) verlangen nachweisbare Informationssicherheit, nicht nur gute Absichten.</p></div>
+    <div class="karte gruen"><div class="icon">🎯</div><b>ACL führt ein ISMS ein</b><p>Wir bauen ein Informationssicherheits-Managementsystem nach ISO 27001 auf. Es steht als Unternehmensziel fest.</p></div>
+  </div>
+  <div class="merke"><span class="i">💡</span><div><b>Merke:</b> Informationssicherheit ist keine reine IT-Aufgabe. Die meisten Vorfälle beginnen mit einer normalen Alltagshandlung: einem Klick, einer Mail, einem Kopieren.</div></div>
+  <h3>Was Sie nach dieser Schulung können</h3>
+  <ul>
+    <li>erklären, was ein ISMS ist und wofür die drei Schutzziele stehen,</li>
+    <li>Informationen richtig einordnen und die wichtigsten Alltagsregeln anwenden,</li>
+    <li>bei einem Verdacht oder Vorfall wissen, was zu tun ist.</li>
+  </ul>
+  <div class="modul-ende"><span></span><label><input type="checkbox" data-done="1"> Modul abgeschlossen</label><a class="btn" href="#m2">Weiter zu Modul 2</a></div>
+</section>
+
+<!-- ============ MODUL 2 ============ -->
+<section class="modul" id="m2">
+  <div class="kap">Modul 2</div>
+  <h2>Was ist ein ISMS?</h2>
+  <p class="lead">Ein ISMS ist ein System, mit dem ein Unternehmen Informationssicherheit <b>planvoll</b> steuert: Risiken erkennen, Regeln festlegen, umsetzen, prüfen und immer wieder verbessern. Es ist mehr als eine Sammlung von Richtlinien.</p>
+
+  <h3>Der Kreislauf hinter jedem ISMS</h3>
+  <div class="kreis">
+    <div><b>Planen</b><p>Risiken bewerten, Ziele und Regeln festlegen. Zum Beispiel Risikoregister, Richtlinien, Zielkatalog.</p></div>
+    <div><b>Umsetzen</b><p>Regeln leben und Maßnahmen einführen, etwa Zugriffsrechte, Backups, Schulungen wie diese.</p></div>
+    <div><b>Prüfen</b><p>Wirkt es? Interne Audits und Kennzahlen zeigen, wo etwas nicht funktioniert.</p></div>
+    <div><b>Verbessern</b><p>Managementbewertung und Maßnahmenregister: Lücken werden geschlossen, nicht nur notiert.</p></div>
+  </div>
+
+  <h3>Die drei Schutzziele</h3>
+  <div class="karten">
+    <div class="karte"><div class="icon">🔒</div><b>Vertraulichkeit</b><p>Nur Berechtigte sehen die Information.</p></div>
+    <div class="karte schwarz"><div class="icon">✅</div><b>Integrität</b><p>Die Information ist richtig und vollständig und wurde nicht unbemerkt verändert.</p></div>
+    <div class="karte gruen"><div class="icon">⚡</div><b>Verfügbarkeit</b><p>Die Information und die Systeme sind da, wenn man sie braucht.</p></div>
+  </div>
+
+  <h3>Übung: Welches Schutzziel ist betroffen?</h3>
+  <p>Ordnen Sie jeden Fall dem Schutzziel zu, das <b>hauptsächlich</b> verletzt wird.</p>
+  <div class="sortier" id="sortier">
+    <div class="fall" data-antwort="v">
+      <div class="frage">Ein Kundenexport geht per Mail an den falschen Empfänger.</div>
+      <div class="wahl"><button data-w="v">Vertraulichkeit</button><button data-w="i">Integrität</button><button data-w="a">Verfügbarkeit</button></div>
+      <div class="ergebnis"></div><div class="erkl">Unbefugte sehen Daten, die nicht für sie bestimmt sind: Vertraulichkeit.</div>
+    </div>
+    <div class="fall" data-antwort="a">
+      <div class="frage">Der Fileserver ist nach einem Update einen halben Tag nicht erreichbar.</div>
+      <div class="wahl"><button data-w="v">Vertraulichkeit</button><button data-w="i">Integrität</button><button data-w="a">Verfügbarkeit</button></div>
+      <div class="ergebnis"></div><div class="erkl">Niemand kommt an die Daten heran, wenn er sie braucht: Verfügbarkeit.</div>
+    </div>
+    <div class="fall" data-antwort="i">
+      <div class="frage">Ein Tippfehler in einer Konfigurationsdatei verfälscht unbemerkt Berechnungen.</div>
+      <div class="wahl"><button data-w="v">Vertraulichkeit</button><button data-w="i">Integrität</button><button data-w="a">Verfügbarkeit</button></div>
+      <div class="ergebnis"></div><div class="erkl">Die Daten sind nicht mehr korrekt, ohne dass es jemand merkt: Integrität.</div>
+    </div>
+    <div class="fall" data-antwort="v">
+      <div class="frage">Ein ausgeschiedener Mitarbeiter kann noch auf Projektdaten zugreifen.</div>
+      <div class="wahl"><button data-w="v">Vertraulichkeit</button><button data-w="i">Integrität</button><button data-w="a">Verfügbarkeit</button></div>
+      <div class="ergebnis"></div><div class="erkl">Zugriff für jemanden, der ihn nicht mehr haben darf: Vertraulichkeit. Deshalb gibt es eine Offboarding-Checkliste.</div>
+    </div>
+    <div class="fall" data-antwort="a">
+      <div class="frage">Ein Backup lässt sich im Ernstfall nicht zurückspielen.</div>
+      <div class="wahl"><button data-w="v">Vertraulichkeit</button><button data-w="i">Integrität</button><button data-w="a">Verfügbarkeit</button></div>
+      <div class="ergebnis"></div><div class="erkl">Die Daten sind verloren oder nicht rechtzeitig wieder da: Verfügbarkeit. Darum wird die Wiederherstellung regelmäßig getestet.</div>
+    </div>
+    <div class="fall" data-antwort="i">
+      <div class="frage">Jemand ändert unbemerkt Code im Release-Stand.</div>
+      <div class="wahl"><button data-w="v">Vertraulichkeit</button><button data-w="i">Integrität</button><button data-w="a">Verfügbarkeit</button></div>
+      <div class="ergebnis"></div><div class="erkl">Der Stand ist nicht mehr der geprüfte und freigegebene: Integrität.</div>
+    </div>
+  </div>
+  <div class="zaehler" id="sortier-zaehler">Noch keine Antwort.</div>
+  <div class="modul-ende"><span></span><label><input type="checkbox" data-done="2"> Modul abgeschlossen</label><a class="btn" href="#m3">Weiter zu Modul 3</a></div>
+</section>
+
+<!-- ============ MODUL 3 ============ -->
+<section class="modul" id="m3">
+  <div class="kap">Modul 3</div>
+  <h2>Regeln im Alltag</h2>
+  <p class="lead">Die Richtlinien sind lang, der Alltag ist kurz. Diese Regeln decken die meisten Situationen ab.</p>
+
+  <h3>1. Informationen einordnen: vier Stufen</h3>
+  <div class="tabwrap"><table>
+    <tr><th>Stufe</th><th>Bedeutung</th><th>Beispiele</th></tr>
+    <tr><td><span class="tag s1">öffentlich</span></td><td>Darf jeder sehen.</td><td>Website-Texte, Stellenanzeigen</td></tr>
+    <tr><td><span class="tag s2">intern</span></td><td>Nur für Mitarbeitende von ACL.</td><td>Rundschreiben, Organigramm, Prozessbeschreibungen</td></tr>
+    <tr><td><span class="tag s3">vertraulich</span></td><td>Nur wer es für die Arbeit braucht (Need-to-know).</td><td>Kundenprojekte, Quellcode, Verträge, Zugangsdaten</td></tr>
+    <tr><td><span class="tag s4">sensibel-persönlich</span></td><td>Personenbezogene Daten mit besonderem Schutz.</td><td>Personalakten, Gehaltsdaten, Gesundheitsdaten</td></tr>
+  </table></div>
+  <p class="quelle">Quelle: R02 Richtlinie Asset-Nutzung. Die Beispiele zeigen typische Fälle. Im Zweifel gilt: lieber eine Stufe höher einordnen und nachfragen.</p>
+
+  <h3>2. Geräte, Zugänge und Daten</h3>
+  <div class="zweispalt">
+    <div class="box ja"><h4>✔ So ist es richtig</h4><ul>
+      <li>Nur mit firmeneigenen Geräten arbeiten.</li>
+      <li>Von unterwegs und im Homeoffice: VPN nutzen, Festplatte mit BitLocker verschlüsselt.</li>
+      <li>Passwörter mit mindestens 10 Zeichen, nie doppelt verwenden.</li>
+      <li>Zugriffe nur so weit, wie Sie sie für Ihre Arbeit brauchen.</li>
+      <li>Wichtige Anweisungen nach dem Vier-Augen-Prinzip prüfen lassen.</li>
+    </ul></div>
+    <div class="box nein"><h4>✘ Das gehört nicht dazu</h4><ul>
+      <li>Private Geräte für Firmendaten (kein „Bring your own device“).</li>
+      <li>USB-Sticks ohne Freigabe der Geschäftsführung.</li>
+      <li>Passwörter an andere weitergeben, auch nicht an Kolleginnen, Kollegen oder angebliche IT-Mitarbeitende.</li>
+      <li>Kundendaten in private Cloud-Dienste oder Messenger kopieren.</li>
+      <li>Zugänge „auf Vorrat“ behalten, wenn Sie sie nicht mehr brauchen.</li>
+    </ul></div>
+  </div>
+  <p class="quelle">Quelle: R03 Zugriffskontrolle &amp; Passwörter, R04 Mobiles Arbeiten. USB-Datenträger sind technisch gesperrt, Ausnahmen gibt es nur mit dokumentierter Freigabe der Geschäftsführung.</p>
+
+  <h3>3. KI-Werkzeuge nutzen</h3>
+  <p>ACL führt Cursor als KI-Werkzeug für die Entwicklung ein. Dafür gelten klare Grenzen:</p>
+  <div class="karten">
+    <div class="karte gruen"><b>Erlaubt</b><p>Nutzung im freigegebenen Projektkontext, mit dem freigegebenen Werkzeug.</p></div>
+    <div class="karte gelb"><b>Nie hinein</b><p>Kundendaten und personenbezogene Daten gehören in kein KI-System.</p></div>
+    <div class="karte schwarz"><b>Dokumentieren</b><p>Sinnvolle Anwendungsfälle kommen in die Knowledge Base, damit alle davon lernen.</p></div>
+  </div>
+
+  <h3>Übung: Irrtum oder Fakt?</h3>
+  <p>Klicken Sie eine Karte an, um die Auflösung zu sehen.</p>
+  <div class="flips" id="flips">
+    <button class="flip irrtum" type="button"><span class="lab vorn">Aussage 1</span><span class="vorn">„Wir sind ein kleines Team. Uns greift schon niemand an.“</span><span class="lab rueck">Irrtum</span><span class="rueck">Angriffe zielen oft automatisiert auf alle. Gerade Dienstleister mit Zugang zu Kundendaten sind interessant, weil sie ein Einstieg zu größeren Zielen sind.</span><span class="hint">Zum Auflösen klicken</span></button>
+    <button class="flip fakt" type="button"><span class="lab vorn">Aussage 2</span><span class="vorn">„Wer einen Fehler meldet, hilft dem Unternehmen, auch wenn der Fehler selbst passiert ist.“</span><span class="lab rueck">Fakt</span><span class="rueck">Ein gemeldeter Vorfall lässt sich begrenzen und daraus lernen. Ein verschwiegener Vorfall wird oft erst größer entdeckt. Ziel ist Lernen, nicht Schuldzuweisung.</span><span class="hint">Zum Auflösen klicken</span></button>
+    <button class="flip irrtum" type="button"><span class="lab vorn">Aussage 3</span><span class="vorn">„Für eine kurze Aufgabe kann ich schnell mein privates Notebook nehmen.“</span><span class="lab rueck">Irrtum</span><span class="rueck">Private Geräte sind nicht verwaltet, nicht verschlüsselt und nicht in unserem Schutz. Deshalb gilt: kein BYOD, nur firmeneigene Geräte mit VPN und BitLocker.</span><span class="hint">Zum Auflösen klicken</span></button>
+    <button class="flip irrtum" type="button"><span class="lab vorn">Aussage 4</span><span class="vorn">„Ein KI-Tool darf ich für alles nutzen, was mir hilft, auch mit echten Kundendaten.“</span><span class="lab rueck">Irrtum</span><span class="rueck">KI nur im freigegebenen Projektkontext und nie mit Kunden- oder personenbezogenen Daten. Was einmal eingegeben wurde, lässt sich nicht zurückholen.</span><span class="hint">Zum Auflösen klicken</span></button>
+  </div>
+  <div class="modul-ende"><span></span><label><input type="checkbox" data-done="3"> Modul abgeschlossen</label><a class="btn" href="#m4">Weiter zu Modul 4</a></div>
+</section>
+
+<!-- ============ MODUL 4 ============ -->
+<section class="modul" id="m4">
+  <div class="kap">Modul 4</div>
+  <h2>Wenn etwas passiert</h2>
+  <p class="lead">Kein System ist fehlerfrei. Entscheidend ist, dass ein Vorfall <b>schnell</b> bei den richtigen Personen ankommt. Melden Sie lieber einmal zu viel als einmal zu wenig.</p>
+
+  <h3>Was ist ein Vorfall?</h3>
+  <div class="tabwrap"><table>
+    <tr><th>Beispiel</th><th>Kategorie</th></tr>
+    <tr><td>Sie haben auf einen Link in einer verdächtigen Mail geklickt.</td><td>Informationssicherheit</td></tr>
+    <tr><td>Ein Notebook oder Handy ist verloren gegangen oder gestohlen.</td><td>Informationssicherheit / Datenschutz</td></tr>
+    <tr><td>Daten gehen an den falschen Empfänger.</td><td>Datenschutz</td></tr>
+    <tr><td>Ein Kunde meldet eine ausgenutzte Schwachstelle in unserer Software.</td><td>Kundenbezug, <b>besonders eilig</b></td></tr>
+    <tr><td>Verdächtige Anmeldung oder unerklärliches Systemverhalten.</td><td>Informationssicherheit</td></tr>
+  </table></div>
+  <div class="merke"><span class="i">⏱</span><div><b>Warum die Eile?</b> Bei ausgenutzten Schwachstellen und Cybervorfällen gelten Meldepflichten mit engen Fristen, teils nur 24 bis 48 Stunden. Die Uhr läuft ab dem Moment, in dem wir davon wissen, also ab Ihrer Meldung.</div></div>
+
+  <h3>So läuft die Meldung ab</h3>
+  <div class="flow">
+    <div class="node start"><div><b>Sie erkennen etwas Ungewöhnliches</b><span class="t">Verdacht reicht. Sie müssen nicht sicher sein.</span></div><span class="wer">Sie</span></div>
+    <div class="pfeil">↓</div>
+    <div class="node du"><div><b>Sofort melden</b><span class="t">An HR und Geschäftsführung, telefonisch oder per Mail: <b>hr@averroesconcept.de</b></span></div><span class="wer">Sie</span></div>
+    <div class="pfeil">↓</div>
+    <div class="node"><div><b>Einschätzen</b><span class="t">Kategorie und Schweregrad (niedrig, mittel, hoch, kritisch) festlegen.</span></div><span class="wer">Verantwortliche</span></div>
+    <div class="pfeil">↓</div>
+    <div class="node"><div><b>Behandeln</b><span class="t">Maßnahmen umsetzen, bei Bedarf Kunden oder Behörden fristgerecht informieren, Vorfallbericht schreiben.</span></div><span class="wer">GF + Fachbereich</span></div>
+    <div class="pfeil">↓</div>
+    <div class="node end"><div><b>Daraus lernen</b><span class="t">Ursache klären und die Regel oder Maßnahme verbessern.</span></div><span class="wer">Alle</span></div>
+  </div>
+
+  <h3>Übung: Bringen Sie die Schritte in die richtige Reihenfolge</h3>
+  <p>Klicken Sie die Schritte in der Reihenfolge an, in der eine Meldung abläuft.</p>
+  <div class="reihe" id="reihe"></div>
+  <div class="zaehler" id="reihe-status">Nächster Schritt: 1</div>
+  <button class="btn sekundaer" type="button" id="reihe-reset" style="margin-top:10px;display:none">Nochmal versuchen</button>
+
+  <h3>Was Sie in der Zwischenzeit tun und lassen</h3>
+  <div class="zweispalt">
+    <div class="box ja"><h4>✔ Tun</h4><ul>
+      <li>Sofort melden, auch bei Unsicherheit.</li>
+      <li>Fakten festhalten: was, wann, welche Daten oder Systeme.</li>
+      <li>Anweisungen der Verantwortlichen befolgen.</li>
+    </ul></div>
+    <div class="box nein"><h4>✘ Lassen</h4><ul>
+      <li>Nicht „aufräumen“: keine Mails, Dateien oder Logs löschen.</li>
+      <li>Nicht auf eigene Faust Kunden informieren.</li>
+      <li>Nicht abwarten, ob es „von allein“ verschwindet.</li>
+    </ul></div>
+  </div>
+  <p class="quelle">Quelle: R09 Richtlinie Vorfall- und Abweichungsmanagement.</p>
+  <div class="modul-ende"><span></span><label><input type="checkbox" data-done="4"> Modul abgeschlossen</label><a class="btn" href="#m5">Weiter zu Modul 5</a></div>
+</section>
+
+<!-- ============ MODUL 5 ============ -->
+<section class="modul" id="m5">
+  <div class="kap">Modul 5</div>
+  <h2>Praxisfälle</h2>
+  <p class="lead">Drei Situationen aus dem Arbeitsalltag. Wählen Sie, wie Sie handeln würden.</p>
+
+  <div class="szenario" data-sz="1">
+    <div class="sit"><b>Fall 1: Die Mail „Ihr Passwort läuft ab“</b>Sie bekommen eine Mail, Ihr Passwort laufe heute ab. Sie klicken auf den Link und geben Ihr Passwort ein. Erst danach fällt Ihnen auf, dass die Absenderadresse merkwürdig aussieht.</div>
+    <button class="opt" data-ok="0">Nichts sagen. Wahrscheinlich ist nichts passiert, und peinlich wäre es auch.</button>
+    <button class="opt" data-ok="1">Sofort das Passwort ändern und den Vorfall melden.</button>
+    <button class="opt" data-ok="0">Erst einen Kollegen fragen, ob ihm die Mail auch aufgefallen ist, dann entscheiden.</button>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="szenario" data-sz="2">
+    <div class="sit"><b>Fall 2: Der falsche Empfänger</b>Sie schicken einen Export mit Kundendaten an einen Kollegen. Die Mail-Autovervollständigung hat einen Externen mit ähnlichem Namen eingesetzt. Sie bemerken es zehn Minuten später.</div>
+    <button class="opt" data-ok="0">Ich schreibe dem Externen selbst und bitte ihn, die Mail zu löschen. Damit ist es erledigt.</button>
+    <button class="opt" data-ok="1">Ich melde es sofort und schreibe auf, was gesendet wurde und wann.</button>
+    <button class="opt" data-ok="0">Ich warte ab, ob sich der Empfänger meldet.</button>
+    <div class="feedback"></div>
+  </div>
+
+  <div class="szenario" data-sz="3">
+    <div class="sit"><b>Fall 3: Die KI hilft bei der Fehlersuche</b>Sie suchen einen Fehler und möchten den Log-Ausschnitt in Cursor einfügen. Im Log stehen echte Kundennamen und Kontonummern.</div>
+    <button class="opt" data-ok="0">Ich füge alles ein, es ist ja nur ein Log.</button>
+    <button class="opt" data-ok="1">Ich entferne oder ersetze die Kundendaten, bevor ich etwas einfüge. Oder ich beschreibe das Problem ohne Log.</button>
+    <button class="opt" data-ok="0">Ich nehme dafür mein privates KI-Konto, da ist es ja nicht das Firmentool.</button>
+    <div class="feedback"></div>
+  </div>
+  <div class="modul-ende"><span></span><label><input type="checkbox" data-done="5"> Modul abgeschlossen</label><a class="btn" href="#m6">Weiter zum Abschlusstest</a></div>
+</section>
+
+
+<section class="modul" id="m6" data-testmodul="1">
+  <div class="kap">Modul 6</div>
+  <h2>Abschlusstest</h2>
+  <p class="lead">8 Fragen. Ab 6 richtigen Antworten haben Sie bestanden. Sie können den Test beliebig oft wiederholen. Danach erstellen Sie Ihre Teilnahmebestätigung.</p>
+  <div id="quiz"></div>
+  <div class="hinweis-offen" id="offen"></div>
+  <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+    <button class="btn" type="button" id="auswerten">Auswerten</button>
+    <button class="btn sekundaer" type="button" id="reset" style="display:none">Test wiederholen</button>
+  </div>
+  <div class="quiz-ergebnis" id="ergebnis"></div>
+  <label style="display:none"><input type="checkbox" data-done="6" id="test-done"></label>
+
+  <div id="zert-bereich" style="display:none">
+    <h3>🎓 Ihre Teilnahmebestätigung</h3>
+    <p style="font-size:15px;color:#333;margin:0">Tragen Sie Ihren vollständigen Namen ein. Das Datum wird automatisch gesetzt. Speichern Sie die Bestätigung als PDF (im Druckdialog „Als PDF sichern“ wählen) und schicken Sie sie Ihrer Führungskraft für die Schulungsakte.</p>
+    <div class="zert-form">
+      <div><label for="zname">Vor- und Nachname</label><input type="text" id="zname" placeholder="z. B. Max Mustermann" autocomplete="name"></div>
+      <button class="btn" type="button" id="zert-erstellen">Bestätigung erstellen</button>
+    </div>
+    <div class="hinweis-offen" id="zert-fehler">Bitte Vor- und Nachnamen eintragen.</div>
+    <div class="datenschutz-hinweis">Ihr Name bleibt in Ihrem Browser. Es wird nichts an einen Server übertragen.</div>
+    <div id="zertifikat">
+      <div class="zert">
+        <div class="kopf"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAAAAADH8yjkAAAACXBIWXMAAC4jAAAuIwF4pT92AAAA82lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjardA/SgNBHMXx70TULloE67mAgmu15eQPi2ARYopsqkxmBw1hd4fZn3/2Bh7B43iDFIIXUVJbqARLwU/1eM2DB+rZDPujzjGUlcRsYvJZPteHGw7YAwDrmmDG4yuAqq48vynYvqEAXk/NsD/ib/ZdiAK8AEnhGwd8AKsHCQJqAfSW6yCgBOitp5MBqCegK/5RAAZ1aOPq5lb0eZqm2hT10uvrthFfNvqycnUMdbTiC+B7A+Aoi7bVmS1Lq5OzhH83y+f6K71PUYA62ey6HXcX73/+7FzAJ0sbODDOTdGSAAA79WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMwNjcgNzkuMTU3NzQ3LCAyMDE1LzAzLzMwLTIzOjQwOjQyICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIgogICAgICAgICAgICB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIgogICAgICAgICAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICAgICAgICAgIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoTWFjaW50b3NoKTwveG1wOkNyZWF0b3JUb29sPgogICAgICAgICA8eG1wOkNyZWF0ZURhdGU+MjAyMS0xMS0xNlQxMjo1Mzo1NiswMTowMDwveG1wOkNyZWF0ZURhdGU+CiAgICAgICAgIDx4bXA6TWV0YWRhdGFEYXRlPjIwMjItMDYtMDdUMTM6MjQ6MDErMDI6MDA8L3htcDpNZXRhZGF0YURhdGU+CiAgICAgICAgIDx4bXA6TW9kaWZ5RGF0ZT4yMDIyLTA2LTA3VDEzOjI0OjAxKzAyOjAwPC94bXA6TW9kaWZ5RGF0ZT4KICAgICAgICAgPHhtcE1NOkluc3RhbmNlSUQ+eG1wLmlpZDo4ZTI2YWViZS04MWQzLTRmNjAtODE2Mi1lNjI2YjJhN2FhOTc8L3htcE1NOkluc3RhbmNlSUQ+CiAgICAgICAgIDx4bXBNTTpEb2N1bWVudElEPmFkb2JlOmRvY2lkOnBob3Rvc2hvcDpiMmIwYjY5NS0yNmUyLTExODAtYWJkZi1iNTYwNDhhZjZlMGY8L3htcE1NOkRvY3VtZW50SUQ+CiAgICAgICAgIDx4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ+eG1wLmRpZDpmMzY4MzU0Ni03ZDAyLTQ4Y2ItYmRlMi1jYWY3MDkzYTJjMDg8L3htcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD4KICAgICAgICAgPHhtcE1NOkhpc3Rvcnk+CiAgICAgICAgICAgIDxyZGY6U2VxPgogICAgICAgICAgICAgICA8cmRmOmxpIHJkZjpwYXJzZVR5cGU9IlJlc291cmNlIj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmFjdGlvbj5jcmVhdGVkPC9zdEV2dDphY3Rpb24+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDppbnN0YW5jZUlEPnhtcC5paWQ6ZjM2ODM1NDYtN2QwMi00OGNiLWJkZTItY2FmNzA5M2EyYzA4PC9zdEV2dDppbnN0YW5jZUlEPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6d2hlbj4yMDIxLTExLTE2VDEyOjUzOjU2KzAxOjAwPC9zdEV2dDp3aGVuPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6c29mdHdhcmVBZ2VudD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoTWFjaW50b3NoKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6YWN0aW9uPnNhdmVkPC9zdEV2dDphY3Rpb24+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDppbnN0YW5jZUlEPnhtcC5paWQ6NWM4NGE4YzktMmI4ZC00MDI5LTgxYWUtZDVkMjg5MjMyN2ViPC9zdEV2dDppbnN0YW5jZUlEPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6d2hlbj4yMDIxLTExLTE2VDEyOjUzOjU2KzAxOjAwPC9zdEV2dDp3aGVuPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6c29mdHdhcmVBZ2VudD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoTWFjaW50b3NoKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmNoYW5nZWQ+Lzwvc3RFdnQ6Y2hhbmdlZD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgICAgIDxyZGY6bGkgcmRmOnBhcnNlVHlwZT0iUmVzb3VyY2UiPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6YWN0aW9uPnNhdmVkPC9zdEV2dDphY3Rpb24+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDppbnN0YW5jZUlEPnhtcC5paWQ6OGUyNmFlYmUtODFkMy00ZjYwLTgxNjItZTYyNmIyYTdhYTk3PC9zdEV2dDppbnN0YW5jZUlEPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6d2hlbj4yMDIyLTA2LTA3VDEzOjI0OjAxKzAyOjAwPC9zdEV2dDp3aGVuPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6c29mdHdhcmVBZ2VudD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNSAoTWFjaW50b3NoKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmNoYW5nZWQ+Lzwvc3RFdnQ6Y2hhbmdlZD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOlNlcT4KICAgICAgICAgPC94bXBNTTpIaXN0b3J5PgogICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL3BuZzwvZGM6Zm9ybWF0PgogICAgICAgICA8cGhvdG9zaG9wOkNvbG9yTW9kZT4xPC9waG90b3Nob3A6Q29sb3JNb2RlPgogICAgICAgICA8cGhvdG9zaG9wOklDQ1Byb2ZpbGU+R3JheSBHYW1tYSAyLjI8L3Bob3Rvc2hvcDpJQ0NQcm9maWxlPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpYUmVzb2x1dGlvbj4zMDAwMDAwLzEwMDAwPC90aWZmOlhSZXNvbHV0aW9uPgogICAgICAgICA8dGlmZjpZUmVzb2x1dGlvbj4zMDAwMDAwLzEwMDAwPC90aWZmOllSZXNvbHV0aW9uPgogICAgICAgICA8dGlmZjpSZXNvbHV0aW9uVW5pdD4yPC90aWZmOlJlc29sdXRpb25Vbml0PgogICAgICAgICA8ZXhpZjpDb2xvclNwYWNlPjY1NTM1PC9leGlmOkNvbG9yU3BhY2U+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj45NjwvZXhpZjpQaXhlbFhEaW1lbnNpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj45NjwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgIAo8P3hwYWNrZXQgZW5kPSJ3Ij8+BfvyZgAAACBjSFJNAAB6JQAAgIMAAPn/AACA6QAAdTAAAOpgAAA6mAAAF2+SX8VGAAAHwUlEQVR42qyZa2wU1xXH//Pa98PrB+s1xmuMBRSwoQXZmAQBMeQBKlUeitzWNG2jhKZNZSkgOU2o8gElRYg2Kg8pKVhQp1WVpJRXSiEBo0IQhaZgTIDU9RoTPzD2rtfrnfXuzszO9INjWHtnZmdn936y795zfvfcOfecc+8lJGhqY/cv+0YH7kQI57eKLeWLvHZSmxwIDQDuxoVjvghvAm+1SGyEpnnK5nr0iXkVVE4A/a1/6RPMRip5yhKXiHLW8mfXV2cN+Lr5LOuwSbKSbJSobviJJRuA8M5vxQJGVBZmo3mvvWzRDRis6/cYRNUJkuP+vP0bdQKu14sFYtpFJln/6gNePYDO+fn5CS1+guHoh09nDggVOvJFEEJUBM9EIzA4RBE0bSKIVCPiA5v3kBkCxLprs4VEiDRXLPTMNBTNpP198bHh/q4uISHaaEqapqV3zRFLZoC9v5w7ItifXFs3c8rUEn3DV75o7wtbrcwUSbK35lNTJgB/sZ2vaVprlbeu+9JnbSNWO5kkTN6rOUNmANj29sKWWrVPO9zxhzY+PwlB3vlBq3bASEHz22kjzdBHuzhLEqFr7y80A5q5d9No73284sfVF3fEmIeqEj3tizUCxs8/mW76+5ryeWlJbDDJTnJEGDZoA4gyzj6t9VV6SAgEnSxPd/7qHT35QD5JzIvJOH5315zpm1CnfhieGJOJS4YtyBUAz43LLO2sY7dzBvBaZSItQe7PGYB0yXmHpzWSK4DLKBfLzYHruQJY5ZYIInUpVwCCkM12+UdHcwQYZ2WDlannfo4AY7wsgOSCOQIInMLK5cqC0JCsBQTjn/I/rSB+4oR3U5kq4KxCPx3QAjj7I0t03ym1yrNv+yyFIobXAIg12DdUHl3sq3jQE+Tck4VvmBOHDZ0vmQyyRZOUcGoA/LH86Exs+fVj150AJIEBBiNuAOg70nFnaEgyxMcKnApFWSJfA+CRF2mOYLYvX33SAxyvng20B5cBt5r+E7NQlBEUY4eCfinq1QBYdHVbP19Tsqy8fpW7zXYSANtc5Ww5aHTkp0tQCcalARD/01dbVzy35mC//RrbexMAOqJPGRNFhJQ2AYpOqwYA/Tuzq5jYR62MEoG9pQC4S26TREACJImEpJKx2VUeDRuNwg9f8Ww2hHy8s3UTAMSHCBAAQLN+KjHAKddMXI1B005ecHT3Fmn35hPn1k0EnjgFgBC4/vf9YkErySkC+LnQtJOxejXCzeYH2yBqBRUay2ciwS7fm89bN5YryTmhEQDA/vDP//IkBmfsrnce3iQwTZglimKCYOQ+BcNrByS1mzQ1sPwTI9Cw4Nz3i2INGHM4xsdEB5XiVX5aF2CYuL/uryQAVFcDW2vfy8vLE4Z2nLKnAMy31+sB9DAjbz3wB3GHbSI7HnprZ0mKm/J6cnLsLuN66H2kbfKvFalfwSTqAYQChvFhmf6IkLqFivQA7oaYeL9M/5XUyBGr1AMYEWE9IxMWWtypUcajBzAqoPBvgZTuD/wpFXzMXaYH0GsCPXp3eu+tJm9KUgivseiygIJkODRd/1JX6oEpXKurumYBuKfVzVdW2lKzpkiu1QUIAzCEzid3/bmOcaVmzWhFmR6A4GMAydKS1HWgscSeqp/wP2vQcwgMVpEMIIUvzJ/sOfKMl5aRJHy35+uxYGyABkghPDLZcfWZUjn9GPfMzvAQKFyOAthpIgGeP7BiMrYuLTLL6SfvbTNmek72nfkn193tFoDg4rZvQlu8kHTLVkVi/0BhpsfYOS/9NPIlIRKA41/f7DShniuW1U/ce6FQx8UsMPLCBbcAMuC+7AAwtOFGOS9/7uy6sUgXAOLGzwsAZsj8cWWo7Q3eI8jX1cO1pwldgBPfvfhopQiQbMzFsoVGhatOwtdRJWOWBgOOs9928ABEi0uyeZQuginfK1XQBZC671rWBIiJmwKFopHiRv639PfQB+i6NozXWfULpNiC3ScvMrJlbnoAtWw+auvbnarh9rFNSlca6rm4ZestVHxajIiXVzUhOE/pFzUL+OtdiapdRWvm3dzzuZkOO1Uusmf4FW8cVNyUlwwAvvz36FDh4+XxLaetykMDext1WMAAEMVFE7vTvv6wCiBk1LNEAIDT0bIykf+kZYAqVjHWfFvPEk2EzmM7eyPjJoOTVhsacbUbdQKAxFdfd7Z9wRZBZSjhu7ZEN2Dig2//zWwVLyL8y09lBwAa/j5D7f7LJ3Nvndl1zhus6s/md5EloFD1xYiI1mQLYGxqT14xQ2O2gFhQ5cWC7tvlyBZwI6w8lhp0/QxZelG8xKD4ZknE+nu8yM4C/nsxu6J+7v55xbfGNADWN+E6PXXnSpWciBwP7lkJnbFIPP5RfuOskQ/epwuU9FN+4TOVB7G036Bnz8GQzTDlTW6qfN/cf5QiCwAQ2r8dSpGOCg827jchOwAQevlwuRyB5PzOjx9Rl9XkRc4P3/SlDiQSgcjPO9Po17wPXjxUObUiJTCIVfvK0wpqBXClYl7SUEIM8M8rXC7r3MlXl86RHkyeDdqefnWJJjntCeepSwUTAvEA4X19XYlGMe2Ay8srRUJiwyhuaFhIaZXKAMCXR7mEZe6Gdd9hkEmTNLfXqFcPdwhShi2D19iuwdrM5g4A+P8Aryk/TNG1y/wAAAAASUVORK5CYII=" alt=""><b>Averroes Concept Lounge<small>Informationssicherheit</small></b></div>
+        <p class="titel">Teilnahmebestätigung</p>
+        <p class="sub">Informationssicherheit nach ISO/IEC 27001: Grundlagen</p>
+        <div class="name" id="z-name">–</div>
+        <p class="text">hat am <b id="z-datum">–</b> die Schulung <b>„Grundlagen Informationssicherheit (ISMS)“</b> vollständig durchgearbeitet und den Abschlusstest mit <b id="z-punkte">–</b> von 8 Punkten bestanden.</p>
+        <p class="inhalte"><b>Inhalte:</b> Was ist ein ISMS und wozu dient es · Schutzziele Vertraulichkeit, Integrität, Verfügbarkeit · Informationsklassifizierung · Regeln für Geräte, Zugänge und KI-Werkzeuge · Melden von Sicherheitsvorfällen.</p>
+        <div class="unterschriften"><div>Teilnehmer/in</div><div>Führungskraft</div></div>
+        <p class="klein">Averroes Concept Lounge GmbH · Schulungsunterlage „Grundlagen Informationssicherheit (ISMS)“, Version 1, Stand 09/2026 · Referenz <span id="z-code">–</span> · Nachweis für die Schulungsakte</p>
+      </div>
+      <div class="zert-tools"><button class="btn" type="button" id="zert-drucken">Bestätigung drucken / als PDF speichern</button><button class="btn sekundaer" type="button" id="zert-mail">Per E-Mail an Führungskraft senden</button></div>
+    </div>
+  </div>
+</section>
+
+<div class="merkkarte" id="merk">
+  <h2>Fünf Regeln für Informationssicherheit bei ACL</h2>
+  <div style="color:#bbb;font-size:15px">Zum Ausdrucken oder als Bildschirmfoto für den Schreibtisch</div>
+  <ol><li><span><b>Drei Schutzziele im Blick:</b> Vertraulichkeit, Integrität, Verfügbarkeit. Fragen Sie sich bei jeder Information, was passiert, wenn eines davon verletzt wird.</span></li><li><span><b>Erst einordnen, dann handeln:</b> öffentlich, intern, vertraulich, sensibel-persönlich. Je höher die Stufe, desto enger der Kreis.</span></li><li><span><b>Nur firmeneigene Geräte:</b> mit VPN und BitLocker, kein BYOD, USB-Sticks nur mit Freigabe der Geschäftsführung.</span></li><li><span><b>KI nur im freigegebenen Rahmen:</b> nie mit Kunden- oder personenbezogenen Daten.</span></li><li><span><b>Bei Verdacht sofort melden:</b> es geht um Lernen, nicht um Schuld, und Meldefristen laufen ab Ihrer Meldung.</span></li></ol>
+  <div class="kontakt"><div><b>Vorfall melden</b><span>hr@averroesconcept.de und Geschäftsführung, sofort</span></div><div><b>Fragen zu Regeln und Schulungen</b><span>Ihre Führungskraft oder HR</span></div></div>
+</div>
+
+<div class="fuss">Averroes Concept Lounge GmbH · Schulungsunterlage „Grundlagen Informationssicherheit (ISMS)“ · Version 1, Stand 09/2026 · <button class="btn sekundaer" type="button" id="reset-alles" style="padding:4px 12px;font-size:12px">Fortschritt zurücksetzen</button></div>
+
+</main>
+
+<script>
+window.KURS={"slug": "acl-isms-grundlagen", "key": "acl_isms_grundlagen_done", "titel": "Grundlagen Informationssicherheit (ISMS)", "bestehen": 6, "fragen": [{"q": "Wofür steht ISMS?", "t": "Modul 2", "a": ["Informationssicherheits-Managementsystem: Risiken planvoll erkennen, Regeln festlegen, prüfen und verbessern", "Eine Firewall-Software für das Firmennetz", "Ein Ticketsystem für IT-Störungen", "Ein Zertifikat, das man einmal erhält und dann nicht mehr pflegt"], "r": 0}, {"q": "Welche drei Schutzziele gibt es?", "t": "Modul 2", "a": ["Vertraulichkeit, Integrität, Verfügbarkeit", "Sicherheit, Geschwindigkeit, Kosten", "Datenschutz, Urheberrecht, Lizenzrecht", "Passwort, Firewall, Virenscanner"], "r": 0}, {"q": "Ein Backup lässt sich im Ernstfall nicht zurückspielen. Welches Schutzziel ist betroffen?", "t": "Modul 2", "a": ["Vertraulichkeit", "Integrität", "Verfügbarkeit", "Keines, das ist ein reines IT-Problem"], "r": 2}, {"q": "Welcher Stufe ordnen Sie eine Personalakte zu?", "t": "Modul 3", "a": ["öffentlich", "intern", "vertraulich", "sensibel-persönlich"], "r": 3}, {"q": "Darf ich für ein Kundenprojekt mein privates Notebook nutzen?", "t": "Modul 3", "a": ["Ja, wenn ich ein gutes Passwort habe", "Ja, für kurze Aufgaben", "Nein. Es gilt kein BYOD, nur firmeneigene Geräte mit VPN und BitLocker", "Ja, wenn der Kunde nichts merkt"], "r": 2}, {"q": "Was gilt für KI-Werkzeuge wie Cursor?", "t": "Modul 3", "a": ["Nur im freigegebenen Projektkontext und nie mit Kunden- oder personenbezogenen Daten", "Uneingeschränkt, solange es mir Zeit spart", "Nur mit privatem Konto, damit die Firma nichts riskiert", "Gar nicht, KI ist bei ACL verboten"], "r": 0}, {"q": "Sie haben Daten an den falschen Empfänger geschickt. Was tun Sie?", "t": "Modul 4 und 5", "a": ["Sie bitten den Empfänger selbst, die Mail zu löschen, und schweigen dann", "Sie melden es sofort und halten die Fakten fest", "Sie warten ab, ob etwas passiert", "Sie informieren den Kunden selbst"], "r": 1}, {"q": "Warum ist schnelles Melden so wichtig, auch bei kleinem Verdacht?", "t": "Modul 4", "a": ["Weil sonst die Geschäftsführung verärgert ist", "Weil Meldepflichten enge Fristen haben, die ab dem Bekanntwerden laufen, und nur ein gemeldeter Vorfall begrenzt werden kann", "Weil jeder Vorfall automatisch zu einer Strafe führt", "Weil man dann nichts mehr dokumentieren muss"], "r": 1}], "fb": {"1": {"ok": "Richtig. Passwort sofort ändern und melden. Je schneller wir es wissen, desto eher lässt sich Schaden verhindern, zum Beispiel durch Sperren von Zugängen. Es geht nicht um Schuld: Phishing trifft auch Profis.", "nok": "Nicht optimal. Schweigen oder Abwarten kostet Zeit, und genau die fehlt bei einem Vorfall. Richtig ist: Passwort sofort ändern und den Vorfall melden, auch wenn es peinlich ist."}, "2": {"ok": "Richtig. Sofort melden und die Fakten festhalten (was, wann, an wen). Nur so kann eingeschätzt werden, ob Meldepflichten bestehen. Auf eigene Faust beim Empfänger nachzufragen kann die Lage verschlimmern.", "nok": "Nicht optimal. Ein Fehler dieser Art betrifft den Datenschutz und kann Meldepflichten auslösen. Das darf nicht privat geklärt werden. Richtig ist: sofort melden und Fakten festhalten."}, "3": {"ok": "Richtig. Kunden- und personenbezogene Daten gehören in kein KI-System. Bereinigen Sie den Ausschnitt oder beschreiben Sie das Problem allgemein. So bekommen Sie trotzdem Hilfe.", "nok": "Nicht optimal. Kunden- und personenbezogene Daten dürfen nicht in KI-Systeme, weder im Firmentool noch erst recht in einem privaten Konto. Bereinigen Sie die Daten vorher oder beschreiben Sie das Problem allgemein."}}, "schritte": ["Ungewöhnliches erkennen und nichts löschen oder „aufräumen“", "Sofort an HR und Geschäftsführung melden", "Kategorie und Schweregrad einschätzen (durch die Verantwortlichen)", "Maßnahmen umsetzen, Kunden und Behörden bei Bedarf fristgerecht informieren", "Ursache klären und daraus lernen (Regel oder Maßnahme verbessern)"]};
+(function(){
+  var K=window.KURS;
+  function qsa(s,r){return [].slice.call((r||document).querySelectorAll(s));}
+  function mische(a){var b=a.slice(); for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)); var t=b[i]; b[i]=b[j]; b[j]=t;} return b;}
+
+  /* ---------- Fortschritt ---------- */
+  var doneBoxes=qsa('input[data-done]');
+  var nav=document.getElementById('modulnav');
+  function updateFortschritt(){
+    var n=doneBoxes.filter(function(b){return b.checked;}).length;
+    document.getElementById('fortschritt').style.width=(n/doneBoxes.length*100)+'%';
+    doneBoxes.forEach(function(b){var a=nav.querySelector('a[data-m="'+b.dataset.done+'"]'); if(a) a.classList.toggle('fertig',b.checked);});
+    try{localStorage.setItem(K.key,JSON.stringify(doneBoxes.map(function(b){return b.checked;})));}catch(e){}
+  }
+  try{var s=JSON.parse(localStorage.getItem(K.key)||'[]'); doneBoxes.forEach(function(b,i){b.checked=!!s[i];});}catch(e){}
+  doneBoxes.forEach(function(b){b.addEventListener('change',updateFortschritt);}); updateFortschritt();
+  document.getElementById('reset-alles').addEventListener('click',function(){
+    doneBoxes.forEach(function(b){b.checked=false;}); updateFortschritt();
+  });
+
+  /* ---------- Zuordnungs-Übung ---------- */
+  qsa('.sortier').forEach(function(box){
+    var faelle=qsa('.fall',box), z=box.nextElementSibling;
+    function zaehl(){
+      var ok=faelle.filter(function(f){return f.classList.contains('richtig');}).length;
+      var fertig=faelle.filter(function(f){return f.classList.contains('richtig')||f.classList.contains('falsch');}).length;
+      z.textContent=fertig===0?'Noch keine Antwort.':(ok+' von '+faelle.length+' richtig'+(fertig<faelle.length?' (bisher '+fertig+' beantwortet)':'.'));
+    }
+    faelle.forEach(function(f){
+      qsa('button',f).forEach(function(btn){btn.addEventListener('click',function(){
+        var ok=btn.dataset.w===f.dataset.antwort;
+        var richtigBtn=qsa('button',f).filter(function(b){return b.dataset.w===f.dataset.antwort;})[0];
+        f.classList.add(ok?'richtig':'falsch');
+        f.querySelector('.ergebnis').textContent=ok?'✔ Richtig':'✘ Leider falsch. Richtig wäre: '+richtigBtn.textContent;
+        zaehl();
+      });});
+    });
+  });
+
+  /* ---------- Flip-Karten ---------- */
+  qsa('.flips .flip').forEach(function(c){c.addEventListener('click',function(){c.classList.toggle('auf');});});
+
+  /* ---------- Reihenfolge-Spiel ---------- */
+  qsa('.reihe').forEach(function(el){
+    var schritte=el.dataset.schritte?JSON.parse(el.dataset.schritte):K.schritte;
+    var status=el.nextElementSibling, reset=status.nextElementSibling, naechster=0;
+    function bau(){
+      naechster=0; el.innerHTML=''; reset.style.display='none'; status.textContent='Nächster Schritt: 1';
+      var order=mische(schritte.map(function(_,i){return i;}));
+      if(order.every(function(v,i){return v===i;})){order.reverse();}
+      order.forEach(function(idx){
+        var b=document.createElement('button'); b.type='button'; b.dataset.idx=idx;
+        b.innerHTML='<span class="num">?</span><span></span>'; b.lastChild.textContent=schritte[idx];
+        b.addEventListener('click',function(){
+          if(b.classList.contains('gesetzt')) return;
+          if(+b.dataset.idx===naechster){
+            b.classList.add('gesetzt'); b.querySelector('.num').textContent=naechster+1; naechster++;
+            if(naechster===schritte.length){status.textContent='✔ Alles richtig. Genau in dieser Reihenfolge läuft es ab.'; reset.style.display='';}
+            else{status.textContent='Nächster Schritt: '+(naechster+1);}
+          }else{
+            b.classList.remove('wackel'); void b.offsetWidth; b.classList.add('wackel');
+            status.textContent='Noch nicht: Das ist nicht Schritt '+(naechster+1)+'. Versuchen Sie es mit einem anderen.';
+          }
+        });
+        el.appendChild(b);
+      });
+    }
+    bau(); reset.addEventListener('click',bau);
+  });
+
+  /* ---------- Szenarien ---------- */
+  qsa('.szenario[data-sz]').forEach(function(sz){
+    var id=sz.dataset.sz, opts=qsa('.opt',sz), f=sz.querySelector('.feedback');
+    var txt=(K.fb&&K.fb[id])||{ok:f.dataset.ok,nok:f.dataset.nok};
+    opts.forEach(function(o){o.addEventListener('click',function(){
+      var ok=o.dataset.ok==='1';
+      opts.forEach(function(x){x.disabled=true; if(x.dataset.ok==='1') x.classList.add('richtig');});
+      if(!ok) o.classList.add('falsch');
+      f.textContent=ok?txt.ok:txt.nok; f.className='feedback show '+(ok?'ok':'nok');
+    });});
+  });
+
+  /* ---------- E-Mail-Analyse ---------- */
+  qsa('.mail-wrap').forEach(function(w){
+    var sus=qsa('.sus',w), status=w.querySelector('.mail-status'), liste=w.querySelector('.mail-hinweise'), gefunden=0;
+    function upd(){status.textContent=gefunden+' von '+sus.length+' Auffälligkeiten gefunden.'+(gefunden===sus.length?' ✔ Alle entdeckt!':' Klicken Sie auf verdächtige Stellen in der Mail.');}
+    function add(txt,klasse){var d=document.createElement('div'); if(klasse) d.className=klasse; d.textContent=txt; liste.appendChild(d);}
+    sus.forEach(function(x){x.addEventListener('click',function(){
+      if(x.classList.contains('gefunden')) return; x.classList.add('gefunden'); gefunden++; add('✘ '+x.dataset.h); upd();
+    });});
+    qsa('.unauf',w).forEach(function(x){x.addEventListener('click',function(){
+      if(x.classList.contains('geprueft')) return; x.classList.add('geprueft'); add('✔ Unauffällig: '+x.dataset.h,'n');
+    });});
+    var zeig=w.querySelector('.mail-zeigen');
+    if(zeig) zeig.addEventListener('click',function(){sus.forEach(function(x){if(!x.classList.contains('gefunden')){x.classList.add('gefunden'); gefunden++; add('✘ '+x.dataset.h);}}); upd(); zeig.style.display='none';});
+    upd();
+  });
+
+  /* ---------- Passwort-Check (nur lokal, nichts wird gespeichert oder gesendet) ---------- */
+  qsa('.pwcheck').forEach(function(box){
+    var input=box.querySelector('input'), urteil=box.querySelector('.pw-urteil'), lis=qsa('.pw-regeln li',box);
+    var regeln={len:function(p){return p.length>=10;},klein:function(p){return /[a-zäöüß]/.test(p);},gross:function(p){return /[A-ZÄÖÜ]/.test(p);},zahl:function(p){return /[0-9]/.test(p);},sonder:function(p){return /[^A-Za-z0-9äöüÄÖÜß]/.test(p);}};
+    function pruefe(p,notiz){
+      var erfuellt=0;
+      lis.forEach(function(li){var ok=p.length>0&&regeln[li.dataset.r](p); li.className=p.length===0?'':(ok?'ok':'nok'); if(ok) erfuellt++;});
+      if(p.length===0){urteil.textContent='Wählen Sie ein Beispiel oder tippen Sie ein eigenes Beispiel.'; return;}
+      var kopf=erfuellt===lis.length?'Alle fünf Regeln erfüllt.':'Nicht alle Regeln erfüllt ('+erfuellt+' von '+lis.length+').';
+      urteil.textContent=kopf+' '+(notiz||'Regeln erfüllt heißt nicht automatisch sicher: Länge und Zufälligkeit zählen. Vermeiden Sie Namen, Firmenbegriffe, Jahreszahlen und bekannte Muster.');
+    }
+    qsa('.pw-beispiele button',box).forEach(function(b){b.addEventListener('click',function(){
+      qsa('.pw-beispiele button',box).forEach(function(x){x.classList.remove('aktiv');}); b.classList.add('aktiv');
+      input.value=b.dataset.pw; pruefe(b.dataset.pw,b.dataset.note);
+    });});
+    input.addEventListener('input',function(){qsa('.pw-beispiele button',box).forEach(function(x){x.classList.remove('aktiv');}); pruefe(input.value,null);});
+    pruefe('');
+  });
+
+  /* ---------- Abschlusstest ---------- */
+  var quiz=document.getElementById('quiz'), offenEl=document.getElementById('offen'), ergebnisEl=document.getElementById('ergebnis');
+  var ordnung=[], letzterStand={punkte:0,datum:''};
+  function baueQuiz(){
+    quiz.innerHTML=''; ordnung=[];
+    mische(K.fragen.map(function(_,i){return i;})).forEach(function(fi,pos){
+      var f=K.fragen[fi]; var reihenfolge=mische(f.a.map(function(_,j){return j;}));
+      ordnung.push({fi:fi,reihenfolge:reihenfolge});
+      var d=document.createElement('div'); d.className='szenario'; d.dataset.pos=pos;
+      d.innerHTML='<div class="sit"><b>Frage '+(pos+1)+' von '+K.fragen.length+'</b><span class="fq"></span></div>';
+      d.querySelector('.fq').textContent=f.q;
+      reihenfolge.forEach(function(j,k){
+        var l=document.createElement('label'); l.className='opt'; l.style.cssText='display:flex;gap:10px;align-items:flex-start';
+        l.innerHTML='<input type="radio" style="margin-top:3px;accent-color:#0071b3"><span></span>';
+        var inp=l.querySelector('input'); inp.name='q'+pos; inp.value=k; l.querySelector('span').textContent=f.a[j];
+        d.appendChild(l);
+      });
+      quiz.appendChild(d);
+    });
+    ergebnisEl.className='quiz-ergebnis'; ergebnisEl.innerHTML=''; offenEl.style.display='none';
+    document.getElementById('auswerten').style.display='';
+    document.getElementById('reset').style.display='none';
+    var zb=document.getElementById('zert-bereich'); if(zb) zb.style.display='none';
+  }
+  baueQuiz();
+  document.getElementById('auswerten').addEventListener('click',function(){
+    var richtig=0, offen=0, falsche=[];
+    ordnung.forEach(function(o,pos){ if(!quiz.querySelector('input[name="q'+pos+'"]:checked')) offen++; });
+    if(offen>0){offenEl.textContent='Bitte beantworten Sie noch '+offen+' Frage'+(offen>1?'n':'')+'.'; offenEl.style.display='block'; return;}
+    offenEl.style.display='none';
+    ordnung.forEach(function(o,pos){
+      var f=K.fragen[o.fi]; var sel=quiz.querySelector('input[name="q'+pos+'"]:checked');
+      var labels=qsa('[data-pos="'+pos+'"] label.opt',quiz);
+      var korrekt=o.reihenfolge.indexOf(f.r);
+      labels.forEach(function(l,k){l.classList.remove('richtig','falsch'); if(k===korrekt) l.classList.add('richtig'); if(+sel.value===k&&k!==korrekt) l.classList.add('falsch'); l.querySelector('input').disabled=true;});
+      if(+sel.value===korrekt) richtig++; else falsche.push(f);
+    });
+    var bestanden=richtig>=K.bestehen;
+    var html='<div class="zahl">'+richtig+'<small> von '+K.fragen.length+' richtig</small></div><p style="margin:10px 0 0;font-size:17px">'+(bestanden?'✔ Bestanden. Sie können sich jetzt Ihre Teilnahmebestätigung erstellen.':'Noch nicht bestanden (mindestens '+K.bestehen+' richtige Antworten nötig). Schauen Sie sich die markierten Themen noch einmal an und versuchen Sie es erneut.')+'</p>';
+    if(falsche.length){html+='<ul>'+falsche.map(function(f){return '<li>'+f.t+': '+f.q.replace(/</g,'&lt;')+'</li>';}).join('')+'</ul>';}
+    ergebnisEl.innerHTML=html; ergebnisEl.className='quiz-ergebnis show';
+    document.getElementById('auswerten').style.display='none';
+    document.getElementById('reset').style.display='';
+    var cb=document.getElementById('test-done'); cb.checked=bestanden; updateFortschritt();
+    letzterStand.punkte=richtig;
+    var zb=document.getElementById('zert-bereich'); if(zb&&bestanden) zb.style.display='';
+    ergebnisEl.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('reset').addEventListener('click',function(){baueQuiz(); quiz.scrollIntoView({behavior:'smooth',block:'start'});});
+
+  /* ---------- Teilnahmebestätigung (Name bleibt im Browser, es wird nichts übertragen) ---------- */
+  var zbtn=document.getElementById('zert-erstellen');
+  if(zbtn){
+    var zname=document.getElementById('zname'), zfehler=document.getElementById('zert-fehler');
+    function code(str){var h=5381; for(var i=0;i<str.length;i++){h=((h<<5)+h+str.charCodeAt(i))>>>0;} return h.toString(36).toUpperCase().padStart(6,'0').slice(-6);}
+    zbtn.addEventListener('click',function(){
+      var n=zname.value.trim();
+      if(n.length<3||n.indexOf(' ')<0){zfehler.style.display='block'; zname.focus(); return;}
+      zfehler.style.display='none';
+      var d=new Date(), datum=d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});
+      letzterStand.datum=datum; letzterStand.name=n; letzterStand.code=code(n+'|'+datum+'|'+K.slug);
+      document.getElementById('z-name').textContent=n; document.getElementById('z-datum').textContent=datum;
+      document.getElementById('z-punkte').textContent=letzterStand.punkte; document.getElementById('z-code').textContent=letzterStand.code;
+      document.getElementById('zertifikat').className='show';
+      document.getElementById('zertifikat').scrollIntoView({behavior:'smooth',block:'center'});
+    });
+    document.getElementById('zert-drucken').addEventListener('click',function(){
+      document.body.classList.add('nur-zert');
+      var ende=function(){document.body.classList.remove('nur-zert'); window.removeEventListener('afterprint',ende);};
+      window.addEventListener('afterprint',ende); window.print();
+    });
+    document.getElementById('zert-mail').addEventListener('click',function(){
+      var s=letzterStand;
+      var betreff='Teilnahmebestätigung: '+K.titel;
+      var text='Hallo,\n\nich habe die Schulung "'+K.titel+'" am '+s.datum+' abgeschlossen und den Abschlusstest mit '+s.punkte+' von '+K.fragen.length+' Punkten bestanden.\n\nName: '+s.name+'\nReferenz: '+s.code+'\n\nDie Teilnahmebestätigung hänge ich als PDF an (im Browser über "Bestätigung drucken / als PDF speichern" erstellen).\n\nViele Grüße\n'+s.name;
+      window.location.href='mailto:?subject='+encodeURIComponent(betreff)+'&body='+encodeURIComponent(text);
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
