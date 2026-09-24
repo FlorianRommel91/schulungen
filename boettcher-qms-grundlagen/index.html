@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QMS-Schulung ISO 9001 – BÖTTCHER Siebdruck-Service GmbH</title>
+<style>
+  :root{
+    --blau:#111; --blau2:#333; --gelb:#d98a3d; --gelbtext:#a35d17; --schwarz:#111; --grau:#5b5b5b; --hell:#f5f5f2; --linie:#e2e2dc;
+    --gruen:#2e8b57; --rot:#c62828; --weiss:#fff; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--schwarz);background:var(--hell);line-height:1.55;font-size:17px}
+  header.top{background:#111;border-bottom:3px solid var(--gelb);position:sticky;top:0;z-index:20}
+  .top-inner{max-width:1040px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+  .logo svg{width:36px;height:36px;flex-shrink:0}
+  .logo b{font-size:14px;letter-spacing:.03em}
+  .logo b small{display:block;font-weight:400;font-size:11px;color:#bbb;letter-spacing:.02em}
+  .top-inner .titel{font-weight:700;font-size:15px;flex:1;min-width:200px;color:#fff}
+  .fortschritt{height:6px;background:#333;border-radius:3px;overflow:hidden;width:100%}
+  .fortschritt > div{height:100%;background:var(--gelb);width:0%;transition:width .4s}
+  main{max-width:1040px;margin:0 auto;padding:24px 20px 80px}
+  .hero{background:var(--blau);color:#fff;border-radius:var(--radius);padding:44px 40px;margin-bottom:28px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,#d98a3d,#a35d17);opacity:.95}
+  .hero *{position:relative}
+  .hero .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:var(--gelb);font-weight:600}
+  .hero h1{font-size:clamp(28px,4.5vw,44px);margin:8px 0 12px;line-height:1.1}
+  .hero p{max-width:640px;font-size:18px;color:#e6e6e6;margin:0 0 20px}
+  .hero .meta{font-size:13px;color:#aaa}
+  .btn{display:inline-block;-webkit-appearance:none;appearance:none;font-family:inherit;background:var(--blau);color:#fff;border:0;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;transition:transform .1s,background .2s}
+  .btn:hover{background:var(--blau2);transform:translateY(-1px)}
+  .btn.gelb{background:var(--gelb);color:#111} .btn.gelb:hover{background:#c27a30}
+  .btn.sekundaer{background:#fff;color:var(--blau);border:2px solid var(--blau)}
+  .btn.sekundaer:hover{background:var(--hell)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  nav.module{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:34px}
+  nav.module a{background:#fff;border:1px solid var(--linie);border-radius:10px;padding:12px 14px;text-decoration:none;color:var(--schwarz);font-size:14px;display:flex;gap:10px;align-items:center;transition:border .2s}
+  nav.module a:hover{border-color:var(--blau)}
+  nav.module a .nr{width:26px;height:26px;border-radius:50%;background:var(--blau);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+  nav.module a.fertig .nr{background:var(--gruen)}
+  section.modul{background:#fff;border-radius:var(--radius);padding:36px 40px;margin-bottom:28px;border:1px solid var(--linie);scroll-margin-top:90px}
+  section.modul .kap{color:var(--gelbtext);font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase}
+  section.modul h2{margin:6px 0 18px;font-size:30px;line-height:1.15;color:var(--blau)}
+  section.modul h3{font-size:19px;margin:28px 0 10px}
+  p.lead{font-size:19px;color:#333}
+  .karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .karte{background:var(--hell);border-radius:12px;padding:18px 18px 16px;border-left:5px solid #cf9a5c}
+  .karte.blau{border-left-color:var(--blau)} .karte.gruen{border-left-color:var(--gruen)} .karte.grau{border-left-color:#bbb}
+  .karte > b{display:block;margin-bottom:6px;font-size:16px}
+  .karte p{margin:0;font-size:15px;color:#333}
+  .karte .icon{font-size:26px;margin-bottom:8px}
+  .merke{background:#fdf3e8;border:1px solid #ecd2ab;border-radius:12px;padding:16px 20px;margin:18px 0;display:flex;gap:14px;align-items:flex-start}
+  .merke .i{font-size:24px}
+  .merke b{color:var(--blau)}
+  .zweispalt{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+  @media(max-width:720px){.zweispalt{grid-template-columns:1fr} section.modul{padding:26px 20px} .hero{padding:32px 24px}}
+  .box{border:1px solid var(--linie);border-radius:12px;padding:18px 20px}
+  .box.ja{background:#f0faf3;border-color:#bfe6cc} .box.nein{background:#fff3f3;border-color:#f3c2c2}
+  .box h4{margin:0 0 10px;font-size:17px}
+  .box ul{margin:0;padding-left:20px} .box li{margin-bottom:6px;font-size:15px}
+  .schritte{counter-reset:s;display:grid;gap:14px;margin:18px 0}
+  .schritt{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;background:var(--hell);border-radius:12px;padding:18px}
+  .schritt .n{counter-increment:s;width:44px;height:44px;border-radius:50%;background:var(--blau);color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+  .schritt .n:before{content:counter(s)}
+  .schritt > div > b{font-size:18px;display:block;margin-bottom:4px}
+  .schritt p{margin:0 0 6px;font-size:15px}
+  .schritt ul{margin:4px 0 0;padding-left:18px;font-size:15px}
+  .sprech{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  @media(max-width:720px){.sprech{grid-template-columns:1fr}}
+  .bubble{border-radius:14px;padding:14px 16px;font-size:15px;position:relative}
+  .bubble.gut{background:#eef8f1;border:1px solid #bfe6cc} .bubble.schlecht{background:#fff3f3;border:1px solid #f3c2c2}
+  .bubble .lab{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:6px}
+  .bubble.gut .lab{color:var(--gruen)} .bubble.schlecht .lab{color:var(--rot)}
+  .flow{display:flex;flex-direction:column;gap:0;margin:20px 0;align-items:stretch}
+  .flow .node{background:#fff;border:2px solid var(--blau);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+  .flow .node.start{background:var(--blau);color:#fff}
+  .flow .node.du{border-color:#cf9a5c;background:#fdf3e8}
+  .flow .node.ent{border-style:dashed;border-color:#b8823f;background:#fdf6ee}
+  .flow .node.end{background:#eef8f1;border-color:var(--gruen)}
+  .flow .node b{display:block;font-size:16px}
+  .flow .node span.t{font-size:14px;color:#333}
+  .flow .node .wer{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--hell);white-space:nowrap;color:#333}
+  .flow .node.du .wer{background:var(--gelb);color:#111}
+  .flow .pfeil{text-align:center;color:var(--grau);font-size:22px;line-height:1;padding:4px 0}
+  .flow .pfeil small{display:block;font-size:12px;color:var(--grau)}
+  .abzweig{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:720px){.abzweig{grid-template-columns:1fr}}
+  .abzweig .lab{font-size:12px;text-transform:uppercase;letter-spacing:.08em;font-weight:700;text-align:center;color:var(--grau);margin-bottom:6px}
+  .tabwrap{overflow-x:auto;margin:16px 0}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;background:#fff}
+  th,td{border:1px solid var(--linie);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--blau);color:#fff;font-weight:600}
+  tr:nth-child(even) td{background:#fafbfd}
+  .szenario{border:1px solid var(--linie);border-radius:12px;padding:20px 22px;margin:16px 0;background:#fff}
+  .szenario .sit{font-size:16px;margin-bottom:12px}
+  .szenario .sit b{display:block;font-size:17px;margin-bottom:4px}
+  .opt{display:block;width:100%;text-align:left;background:var(--hell);border:2px solid var(--hell);border-radius:10px;padding:12px 14px;margin:8px 0;cursor:pointer;font-size:15px;font-family:inherit;line-height:1.4;color:inherit}
+  .opt:hover{border-color:#bbb}
+  .opt.richtig{border-color:var(--gruen);background:#eef8f1}
+  .opt.falsch{border-color:var(--rot);background:#fff3f3}
+  .opt[disabled]{cursor:default}
+  .feedback{display:none;margin-top:10px;padding:12px 14px;border-radius:10px;font-size:14.5px}
+  .feedback.show{display:block}
+  .feedback.ok{background:#eef8f1;border:1px solid #bfe6cc} .feedback.nok{background:#fff3f3;border:1px solid #f3c2c2}
+  .check{margin-top:26px;border-top:2px solid #cf9a5c;padding-top:10px}
+  .check h3{margin-top:8px}
+  .check .status{font-size:15px;font-weight:700;margin-top:6px;min-height:22px}
+  .check .status.ok{color:var(--gruen)} .check .status.nok{color:var(--rot)}
+  .quiz-ergebnis{display:none;margin-top:20px;padding:22px;border-radius:12px;background:var(--blau);color:#fff}
+  .quiz-ergebnis.show{display:block}
+  .quiz-ergebnis .zahl{font-size:44px;font-weight:800;line-height:1}
+  .quiz-ergebnis .zahl small{font-size:18px;font-weight:400;color:#bbb}
+  .merkkarte{background:var(--blau);color:#fff;border-radius:var(--radius);padding:34px 40px}
+  .merkkarte h2{margin:0 0 6px;font-size:28px}
+  .merkkarte ol{counter-reset:m;list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+  .merkkarte li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;font-size:17px}
+  .merkkarte li:before{counter-increment:m;content:counter(m);width:32px;height:32px;border-radius:50%;background:var(--gelb);color:#111;display:flex;align-items:center;justify-content:center;font-weight:800}
+  .kontakt{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+  @media(max-width:720px){.kontakt{grid-template-columns:1fr} .merkkarte{padding:26px 22px}}
+  .kontakt div{background:#222;border-radius:10px;padding:14px 16px;font-size:15px}
+  .kontakt b{display:block;color:var(--gelb);font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+  .fuss{text-align:center;color:var(--grau);font-size:13px;margin-top:40px}
+  .modul-ende{margin-top:26px;padding-top:18px;border-top:1px dashed var(--linie);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .modul-ende label{font-size:15px;display:flex;align-items:center;gap:8px;cursor:pointer}
+  .modul-ende input{width:20px;height:20px;accent-color:var(--gruen)}
+  .quelle{font-size:13px;color:var(--grau);margin-top:6px}
+  .zert-form{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;margin-top:14px}
+  @media(max-width:720px){.zert-form{grid-template-columns:1fr}}
+  .zert-form label{font-size:14px;font-weight:700;display:block;margin-bottom:4px}
+  .zert-form input{width:100%;font-size:17px;padding:11px 14px;border:2px solid var(--linie);border-radius:10px;font-family:inherit}
+  .zert-form input:focus{outline:none;border-color:var(--blau)}
+  #zertifikat{display:none;margin-top:26px}
+  #zertifikat.show{display:block}
+  .zert{background:#fff;border:10px double #111;border-radius:6px;padding:0 54px 40px;text-align:center;position:relative;max-width:820px;margin:0 auto;overflow:hidden}
+  .zert .kopf{background:#111;margin:0 -54px 26px;padding:22px 0 18px;display:flex;align-items:center;justify-content:center;gap:10px}
+  .zert .kopf svg{width:40px;height:40px}
+  .zert .kopf .wortmarke{color:#fff;font-weight:700;font-size:18px;letter-spacing:.03em;text-align:left}
+  .zert .kopf .wortmarke small{display:block;font-weight:400;font-size:11px;color:#bbb}
+  .zert .ecke{position:absolute;width:70px;height:70px;border:4px solid var(--gelb);z-index:2}
+  .zert .ecke.tl{left:14px;top:14px;border-right:0;border-bottom:0} .zert .ecke.br{right:14px;bottom:14px;border-left:0;border-top:0}
+  .zert .titel{font-size:30px;font-weight:800;color:#111;letter-spacing:.04em;margin:0}
+  .zert .sub{color:var(--grau);font-size:15px;margin:6px 0 26px}
+  .zert .name{font-size:32px;font-weight:700;margin:10px 0;border-bottom:3px solid var(--gelb);display:inline-block;padding:0 24px 6px;min-width:60%}
+  .zert .text{font-size:16px;max-width:600px;margin:18px auto;line-height:1.6}
+  .zert .inhalte{font-size:13px;color:#333;max-width:640px;margin:0 auto 26px;line-height:1.5}
+  .zert .unterschriften{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:36px auto 0;max-width:620px}
+  .zert .unterschriften div{border-top:1px solid #333;padding-top:6px;font-size:13px;color:#333}
+  .zert .klein{font-size:11.5px;color:#777;margin-top:26px}
+  @media print{
+    header.top{position:static} .btn,.modul-ende,nav.module,.fortschritt,.check,.zert-form{display:none!important}
+    section.modul,.hero,.merkkarte{break-inside:avoid;border:1px solid #ccc;box-shadow:none}
+    .hero{background:#111!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .feedback{display:block}
+    body.nur-zert{background:#fff}
+    body.nur-zert .zert .kopf{background:#111!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    body.nur-zert main > *:not(#m9){display:none!important}
+    body.nur-zert header.top{display:none!important}
+    body.nur-zert #m9 > *:not(#zert-bereich){display:none!important}
+    body.nur-zert #zert-bereich{display:block!important}
+    body.nur-zert #zert-bereich > *:not(#zertifikat){display:none!important}
+    body.nur-zert #zertifikat > *:not(.zert){display:none!important}
+    body.nur-zert #m9{border:0;padding:0;margin:0;background:#fff}
+    body.nur-zert #zertifikat{display:block!important;margin:0}
+    body.nur-zert main{padding:0;max-width:none}
+    body.nur-zert .zert{border-color:#111;-webkit-print-color-adjust:exact;print-color-adjust:exact;page-break-inside:avoid}
+    @page{size:A4 landscape;margin:12mm}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <a class="logo" href="#start" aria-label="BÖTTCHER Siebdruck-Service GmbH">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="3" y="3" width="42" height="42" rx="8" fill="#1a1a1a" stroke="#d98a3d" stroke-width="2"/><text x="24" y="31" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="800" fill="#d98a3d" text-anchor="middle">B</text></svg>
+      <b>BÖTTCHER<small>Siebdruck-Service GmbH</small></b>
+    </a>
+    <div class="titel">QMS-Schulung · ISO 9001</div>
+    <div class="fortschritt"><div id="fortschritt"></div></div>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="start">
+    <div class="kicker">Qualitätsmanagementsystem · ISO 9001</div>
+    <h1>Unser QMS: So arbeiten wir bei BÖTTCHER</h1>
+    <p>BÖTTCHER Siebdruck-Service baut gerade sein Qualitätsmanagementsystem für die ISO-9001-Erstzertifizierung auf, begleitet von IMSM. Diese Schulung erklärt in rund 25 Minuten, warum wir das machen, wer wofür zuständig ist, wo unsere Dokumente liegen und wie unser Schablonenfertigungsprozess und unsere wichtigsten QM-Themen zusammenhängen. Nach jedem Abschnitt gibt es Prüfungsfragen, am Ende einen Abschlusstest und dein Teilnahmezertifikat zum Ausdrucken.</p>
+    <a class="btn gelb" href="#m1">Schulung starten</a>
+    <div class="meta" style="margin-top:18px">Grundlage: Qualitätsmanagement-Handbuch (in Erarbeitung) · Register R02, R03, R08, R14 · Stand 09/2026 · © BÖTTCHER Siebdruck-Service GmbH</div>
+  </div>
+
+  <nav class="module" id="modulnav">
+    <a href="#m1" data-m="1"><span class="nr">1</span>Warum ISO 9001?</a>
+    <a href="#m2" data-m="2"><span class="nr">2</span>Ziele, Rollen</a>
+    <a href="#m3" data-m="3"><span class="nr">3</span>Unsere Dokumente</a>
+    <a href="#m4" data-m="4"><span class="nr">4</span>Unsere Fertigung</a>
+    <a href="#m5" data-m="5"><span class="nr">5</span>Lieferanten (R08)</a>
+    <a href="#m6" data-m="6"><span class="nr">6</span>Risiken &amp; Ziele</a>
+    <a href="#m7" data-m="7"><span class="nr">7</span>Reklamationen</a>
+    <a href="#m8" data-m="8"><span class="nr">8</span>Audit</a>
+    <a href="#m9" data-m="9"><span class="nr">9</span>Abschlusstest &amp; Zertifikat</a>
+  </nav>
+
+  <!-- ===================== MODUL 1 ===================== -->
+  <section class="modul" id="m1">
+    <div class="kap">Modul 1</div>
+    <h2>Warum ISO 9001 bei BÖTTCHER?</h2>
+    <p class="lead">Wir fertigen seit 1934 als Familienunternehmen Siebdruck-Schablonen: für Automotive-Interieur, Glasfassaden und Fahrzeugverglasung, Leiterplatten, Folientastaturen, Wertpapier- und Sicherheitsdruck sowie Verkehrsschilder. Kunden wie BMW, Daimler/Mercedes oder Tesla verlassen sich darauf, dass jede Schablone exakt der Spezifikation entspricht. Die ISO-9001-Zertifizierung macht das für unsere Kunden verbindlich nachvollziehbar.</p>
+    <div class="karten">
+      <div class="karte blau"><div class="icon">📜</div><b>Erstzertifizierung</b><p>Wir bauen unser QMS gerade neu auf, begleitet durch IMSM. GAP-Analyse abgeschlossen (26.08.2026), Zertifizierungsaudit voraussichtlich Ende 2026 / Anfang 2027.</p></div>
+      <div class="karte"><div class="icon">🎯</div><b>Geltungsbereich</b><p>Siebdruck-Schablonenfertigung am Standort Annaberger Str. 113, Chemnitz. „Entwicklung“ ist bewusst aus dem QMS ausgeklammert (Kap. 8.3) – wir fertigen nach Kundenvorgabe, wir entwickeln keine eigenen Produkte.</p></div>
+      <div class="karte gruen"><div class="icon">🤝</div><b>Was Kunden davon haben</b><p>Nachvollziehbare Rückverfolgbarkeit über unser Produktionsstatussystem PSS, geprüfte Lieferanten, geregelte Freigaben vor der Belichtung und eine Fehlerkultur, die Ursachen abstellt statt nur Symptome zu beheben.</p></div>
+    </div>
+    <h3>Was ein QMS eigentlich ist</h3>
+    <p style="font-size:15px;color:#333">Kein Ordner voller Papier, sondern ein Kreislauf: Wir planen, wie wir arbeiten, arbeiten so, prüfen, ob es geklappt hat, und verbessern. Die Norm nennt das <b>Plan, Do, Check, Act</b>.</p>
+    <div class="schritte">
+      <div class="schritt"><div class="n"></div><div><b>Planen (Plan)</b><p>Qualitätsziele (R03), Risiken und Chancen (R02), Kontext der Organisation (R14), Zuständigkeiten und Ressourcen festlegen.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Arbeiten (Do)</b><p>Bespannen, Beschichten, Belichten, Entwickeln, Sicht- und Endkontrolle – nach den vereinbarten Abläufen, dokumentiert im PSS.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Prüfen (Check)</b><p>Qualitätsziele jährlich zum 31.12. bewerten, Lieferanten bewerten (R08), künftig interne Audits und Management Review.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Verbessern (Act)</b><p>Reklamationen und Nacharbeit auswerten, Ursachen abstellen, Verbesserungen in die Register einpflegen.</p></div></div>
+    </div>
+    <div class="merke"><div class="i">💡</div><div><b>Was das für dich heißt:</b> Du musst keine Norm auswendig lernen. Du musst wissen, wo unsere Regeln stehen, sie anwenden und Abweichungen melden. Register und Auswertungen pflegt die Managementbeauftragte gemeinsam mit der Geschäftsführung.</div></div>
+
+    <div class="check" data-mq="1">
+      <h3>✏️ Prüfungsfragen zu Modul 1</h3>
+      <div class="szenario"><div class="sit"><b>Frage 1</b>Wonach lässt sich BÖTTCHER aktuell zertifizieren?</div>
+        <button class="opt" data-ok="0">ISO 14001 (Umwelt)</button>
+        <button class="opt" data-ok="1">ISO 9001 (Qualitätsmanagement), als Erstzertifizierung</button>
+        <button class="opt" data-ok="0">ISO 27001 (Informationssicherheit)</button>
+        <div class="feedback" data-ok="Richtig. Wir bauen aktuell unser QMS für die ISO-9001-Erstzertifizierung auf, begleitet von IMSM." data-nok="Nicht ganz. Wir arbeiten auf die ISO-9001-Erstzertifizierung hin. Statt ISO 14001 nutzen wir EcoVadis für Umweltthemen."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 2</b>Was ist bewusst NICHT Teil unseres Geltungsbereichs?</div>
+        <button class="opt" data-ok="0">Die Schablonenfertigung für Automotive-Kunden</button>
+        <button class="opt" data-ok="1">Die „Entwicklung“ (Kap. 8.3) – wir fertigen nach Kundenvorgabe, wir entwickeln keine eigenen Produkte</button>
+        <button class="opt" data-ok="0">Der Standort Chemnitz</button>
+        <div class="feedback" data-ok="Genau. Organisationsentwicklung ist nicht dasselbe wie Norm-Entwicklung – Kap. 8.3 ist für uns nicht anwendbar." data-nok="Nicht richtig. Ausgeklammert ist das Normkapitel Entwicklung (8.3), weil wir nach Kundenvorgabe fertigen und nichts selbst entwickeln."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 3</b>Wofür stehen die vier Schritte Plan, Do, Check, Act?</div>
+        <button class="opt" data-ok="1">Planen, arbeiten, prüfen, verbessern: der Kreislauf, nach dem unser QMS funktioniert</button>
+        <button class="opt" data-ok="0">Die vier Schritte des Belichtungsprozesses</button>
+        <button class="opt" data-ok="0">Die vier Abteilungen bei BÖTTCHER</button>
+        <div class="feedback" data-ok="Richtig. Planen, arbeiten, prüfen, verbessern. Alles im QMS lässt sich einem dieser Schritte zuordnen." data-nok="Nicht ganz. Plan, Do, Check, Act ist der Verbesserungskreislauf: planen, arbeiten, prüfen, verbessern."></div></div>
+      <div class="status"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="1"> Modul 1 abgeschlossen</label><a class="btn sekundaer" href="#m2">Weiter zu Modul 2 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 2 ===================== -->
+  <section class="modul" id="m2">
+    <div class="kap">Modul 2 · R03</div>
+    <h2>Qualitätsziele und Rollen</h2>
+    <p class="lead">Vier SMART-Qualitätsziele wurden 2026 festgelegt. Sie werden jeweils zum 31.12. bewertet und stehen im Register R03.</p>
+    <div class="tabwrap"><table>
+      <tr><th style="width:34%">Ziel</th><th>Was du dazu beitragen kannst</th></tr>
+      <tr><td><b>Max. 10 berechtigte Reklamationen/Jahr</b> (ohne Handelsware)</td><td>Sicht- und Endkontrolle sorgfältig durchführen, Auffälligkeiten sofort melden statt „durchwinken“.</td></tr>
+      <tr><td><b>Liefertermintreue 98 %</b> (ohne Handelsware)</td><td>Realistische Termine zusagen, Verzug im Prozess (Bespannen–Beschichten–Belichten–Entwickeln) frühzeitig melden.</td></tr>
+      <tr><td><b>Nacharbeit/Ausschuss unter 5 %</b> der Schablonen</td><td>Sauber nach Vorgabe arbeiten, Emulsionsauftrag und Belichtung korrekt dokumentieren, Fehler im PSS erfassen.</td></tr>
+      <tr><td><b>Schulungen 100 %</b></td><td>An den vorgesehenen Schulungen teilnehmen, diese Schulung vollständig durcharbeiten.</td></tr>
+    </table></div>
+    <p class="quelle">Verantwortliche für die Auswertung: Michelle Böttcher, Frank Hilbig und Steven Böttcher. Bewertung jeweils zum 31.12. im Register R03.</p>
+    <h3>Wer ist wer im QMS?</h3>
+    <div class="tabwrap"><table>
+      <tr><th style="width:30%">Rolle</th><th>Aufgabe</th></tr>
+      <tr><td><b>Geschäftsführung</b><br><span style="font-size:13px;color:#555">Uwe Böttcher</span></td><td>Oberste Leitung des QMS, seit 2009 Geschäftsführer in dritter Generation. Trifft die grundsätzlichen Entscheidungen zu Geltungsbereich und Zielen.</td></tr>
+      <tr><td><b>Managementbeauftragte (QMB)</b><br><span style="font-size:13px;color:#555">Michelle Böttcher</span></td><td>Vertrieb/Einkauf und QMB in Personalunion. Arbeitet die Managementdokumente aus, pflegt die Register (R02, R03, R08, R14), lädt Dateien in die Nextcloud hoch. Deine erste Ansprechpartnerin für alle Fragen zum QMS.</td></tr>
+      <tr><td><b>Produktionsleitung</b><br><span style="font-size:13px;color:#555">Steven Böttcher</span></td><td>Verantwortlich für den Fertigungsprozess und die Qualitätsziele „Nacharbeit/Ausschuss“ und „Schulungen“.</td></tr>
+      <tr><td><b>Externer Berater</b><br><span style="font-size:13px;color:#555">Florian Rommel, IMSM</span></td><td>Begleitet den Aufbau des QMS, erstellt die Dokumente gemeinsam mit Michelle, bereitet Registerinhalte und das Zertifizierungsaudit vor.</td></tr>
+      <tr><td><b>Du</b></td><td>Regeln kennen und anwenden, sorgfältig in deinem Bereich der Fertigung arbeiten, Auffälligkeiten und Reklamationen melden.</td></tr>
+    </table></div>
+
+    <div class="check" data-mq="2">
+      <h3>✏️ Prüfungsfragen zu Modul 2</h3>
+      <div class="szenario"><div class="sit"><b>Frage 1</b>Welches ist eines unserer vier Qualitätsziele 2026?</div>
+        <button class="opt" data-ok="0">Mindestens 50 neue Kunden pro Jahr</button>
+        <button class="opt" data-ok="1">Liefertermintreue 98 % und maximal 10 berechtigte Reklamationen im Jahr (jeweils ohne Handelsware)</button>
+        <button class="opt" data-ok="0">Nacharbeit/Ausschuss von mindestens 5 %</button>
+        <div class="feedback" data-ok="Richtig. Dazu kommen Nacharbeit/Ausschuss unter 5 % und Schulungen 100 %. Alle vier stehen im Register R03." data-nok="Nicht richtig. Die vier Ziele sind: max. 10 Reklamationen/Jahr, Liefertermintreue 98 %, Nacharbeit/Ausschuss unter 5 %, Schulungen 100 %."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 2</b>Wer ist deine erste Ansprechpartnerin bei Fragen zum QMS?</div>
+        <button class="opt" data-ok="0">Der externe Berater von IMSM</button>
+        <button class="opt" data-ok="1">Die Managementbeauftragte Michelle Böttcher</button>
+        <button class="opt" data-ok="0">Die Buchhaltung</button>
+        <div class="feedback" data-ok="Richtig. Michelle Böttcher ist QMB und pflegt die Register und Dokumente." data-nok="Nicht richtig. Erste Ansprechpartnerin ist die Managementbeauftragte Michelle Böttcher."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 3</b>Wann werden die Qualitätsziele bewertet?</div>
+        <button class="opt" data-ok="0">Wöchentlich im Teammeeting</button>
+        <button class="opt" data-ok="1">Jährlich zum 31.12., im Register R03</button>
+        <button class="opt" data-ok="0">Nur beim externen Audit</button>
+        <div class="feedback" data-ok="Richtig. Die Bewertung erfolgt jährlich zum 31.12." data-nok="Nicht richtig. Die vier Qualitätsziele werden jährlich zum 31.12. im Register R03 bewertet."></div></div>
+      <div class="status"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="2"> Modul 2 abgeschlossen</label><a class="btn sekundaer" href="#m3">Weiter zu Modul 3 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 3 ===================== -->
+  <section class="modul" id="m3">
+    <div class="kap">Modul 3</div>
+    <h2>Unsere Dokumente: wo sie liegen und was gilt</h2>
+    <p class="lead">Unsere QMS-Dokumente liegen in der firmeneigenen <b>Nextcloud</b>, nicht bei einem externen Cloud-Anbieter. Jedes Thema bekommt eine eigene, durchnummerierte Datei mit „R“ davor – ein Register.</p>
+    <div class="karten">
+      <div class="karte blau"><b>R02 · Risikoregister</b><p>Risiken und Chancen für unsere Fertigung und Organisation, mit Bewertung und Maßnahmen.</p></div>
+      <div class="karte"><b>R03 · Qualitätsziele</b><p>Die vier SMART-Ziele 2026 mit Messmethode, Termin und Verantwortlichen.</p></div>
+      <div class="karte gruen"><b>R08 · Lieferantenmanagement</b><p>Bewertung unserer Lieferanten, Sperrliste, künftig der Onboarding-Prozess für neue Lieferanten.</p></div>
+      <div class="karte"><b>R14 · Kontext der Organisation</b><p>Interessierte Parteien, Stakeholder, Kundenanforderungen – die Grundlage, auf der unser QMS aufbaut.</p></div>
+    </div>
+    <h3>Regeln für den Umgang mit Dokumenten</h3>
+    <div class="zweispalt">
+      <div class="box ja"><h4>📁 So gehen wir mit Dokumenten um</h4><ul><li>Nur die <b>aktuelle Version aus der Nextcloud</b> nutzen, keine eigenen Kopien auf dem Laptop, sie veralten.</li><li>Kein Dokument einfach selbst ändern. Änderungswunsch an die Managementbeauftragte.</li><li>Ausgefüllte Register sind Nachweise: vollständig, mit Datum, am vorgesehenen Ort abgelegt.</li><li>Unklar, welches Dokument gilt? Bei Michelle Böttcher nachfragen.</li></ul></div>
+      <div class="box"><h4>💾 Wie unsere Daten gesichert sind</h4><ul><li>QM-relevante Dateien liegen in der Nextcloud auf eigenem Server, dazu unser Produktionsstatussystem PSS.</li><li>Backup: gespiegelte und externe Wechselfestplatten, täglich physisch mit nach Hause genommen.</li><li>Die Warenwirtschaft (GS-Auftrag) ist bewusst vom PSS getrennt: Das PSS liest nur, schreibt nicht zurück – das schützt die Datenintegrität.</li></ul></div>
+    </div>
+    <div class="merke"><div class="i">📌</div><div><b>Das PSS ist unsere zentrale Wissensdatenbank.</b> Rückverfolgbarkeit per Barcode (Gewebe, Emulsion, Rollennummer → Auftrag), Wartungs- und Reparaturhistorie, interne Fehlerstatistik, Personalplanung, Messmodul, Lieferanten- und Kundendaten, technische Datenblätter – alles an einem Ort, gewachsen über rund 20 Jahre. Ein separates Wiki gibt es bewusst nicht.</div></div>
+
+    <div class="check" data-mq="3">
+      <h3>✏️ Prüfungsfragen zu Modul 3</h3>
+      <div class="szenario"><div class="sit"><b>Frage 1</b>Wo liegen unsere aktuellen QMS-Dokumente?</div>
+        <button class="opt" data-ok="0">Bei einem externen Cloud-Anbieter wie SharePoint</button>
+        <button class="opt" data-ok="1">In der firmeneigenen Nextcloud</button>
+        <button class="opt" data-ok="0">Nur als Ausdruck im Büroordner</button>
+        <div class="feedback" data-ok="Richtig. Unsere Dokumentenablage ist die firmeneigene Nextcloud." data-nok="Nicht richtig. Unsere QMS-Dokumente liegen in der firmeneigenen Nextcloud."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 2</b>Was steht im Register R08?</div>
+        <button class="opt" data-ok="0">Die Qualitätsziele des Jahres</button>
+        <button class="opt" data-ok="1">Das Lieferantenmanagement: Bewertung, Sperrliste, Onboarding neuer Lieferanten</button>
+        <button class="opt" data-ok="0">Der Kontext der Organisation</button>
+        <div class="feedback" data-ok="Richtig. R08 ist unser Lieferantenmanagement." data-nok="Nicht richtig. R08 ist das Lieferantenmanagement. Qualitätsziele stehen in R03, der Kontext der Organisation in R14."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 3</b>Dir fällt auf, dass ein Register nicht mehr zur aktuellen Arbeitsweise passt. Was tust du?</div>
+        <button class="opt" data-ok="0">Ich ändere die Datei selbst und lade sie neu hoch</button>
+        <button class="opt" data-ok="1">Ich melde es Michelle Böttcher, sie überarbeitet das Register</button>
+        <button class="opt" data-ok="0">Nichts, das fällt im Audit schon nicht auf</button>
+        <div class="feedback" data-ok="Genau. Änderungen laufen über die Managementbeauftragte. Dein Hinweis ist dabei genau richtig und erwünscht." data-nok="Nicht richtig. Register werden nur über die Managementbeauftragte geändert. Dein Hinweis darauf ist aber genau richtig."></div></div>
+      <div class="status"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="3"> Modul 3 abgeschlossen</label><a class="btn sekundaer" href="#m4">Weiter zu Modul 4 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 4 ===================== -->
+  <section class="modul" id="m4">
+    <div class="kap">Modul 4</div>
+    <h2>Unsere Fertigung: von der Anfrage zur fertigen Schablone</h2>
+    <p class="lead">Wir sind Spezialist für Siebdruck-Schablonen, keine reine Druckerei – staubarme Raum-in-Raum-Fertigung, ursprünglich aus der Solarindustrie übernommen. Großformate bis 12 × 4,80 m sind möglich (Kranbahnen, 330-kg-Rahmen).</p>
+    <div class="flow">
+      <div class="node start"><div><b>Kundenauftrag mit Grafikdaten</b><span class="t" style="color:#ddd">Der Kunde liefert Druckvorlage und Anforderungen (z. B. Datecode-Position, Spezifikation).</span></div><span class="wer" style="background:#333;color:#fff">Kunde</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Bespannen</b><span class="t">Das Gewebe (Polyester, aus der Schweiz oder Italien) wird auf den Rahmen gespannt.</span></div><span class="wer">Fertigung</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Beschichten</b><span class="t">Auftrag der Emulsion auf das gespannte Gewebe.</span></div><span class="wer">Fertigung</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node ent"><div><b>Kundenfreigabe</b><span class="t">Die Druckvorlage wird per PDF-Mail an den Kunden zur Freigabe geschickt – erst nach Freigabe geht es weiter zur Belichtung.</span></div></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Belichten (UV)</b><span class="t">Die freigegebene Vorlage wird auf die beschichtete Schablone belichtet.</span></div><span class="wer">Fertigung</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Entwickeln</b><span class="t">Die belichtete Schablone wird ausgewaschen, das Motiv wird sichtbar.</span></div><span class="wer">Fertigung</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Sicht- und Endkontrolle</b><span class="t">Bei Automotive-Aufträgen zusätzlich das 10-Punkt-Messprotokoll im PSS.</span></div><span class="wer">Fertigung</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node end"><div><b>Versand</b><span class="t">Fertige Schablone geht an den Kunden, Rückverfolgbarkeit per Barcode bleibt im PSS erhalten.</span></div><span class="wer">Logistik</span></div>
+    </div>
+    <div class="merke"><div class="i">🔎</div><div><b>Rückverfolgbarkeit ist unsere Stärke.</b> Jede Schablone lässt sich im PSS per Barcode bis zu Gewebe-, Emulsions- und Rollennummer zurückverfolgen. Genau das ist es, was Automotive-Kunden wie BMW oder Daimler von uns erwarten.</div></div>
+    <h3>Messmittel und Wartung</h3>
+    <div class="zweispalt">
+      <div class="box"><h4>📏 Messmittel</h4><p style="font-size:15px;margin:0">Spannungs-/Tenso-, Schichtdicken- und Oberflächenrauheits-Messgeräte werden intern über Normale bzw. eine Glasplatte geprüft. Kein externer Kalibrierzwang.</p></div>
+      <div class="box"><h4>🛠️ Wartung</h4><p style="font-size:15px;margin:0">Interne Wartung läuft wöchentlich/monatlich im PSS. Kran, Tore und Kompressor werden im 2-Jahres-Rhythmus extern geprüft.</p></div>
+    </div>
+
+    <div class="check" data-mq="4">
+      <h3>✏️ Prüfungsfragen zu Modul 4</h3>
+      <div class="szenario"><div class="sit"><b>Frage 1</b>In welcher Reihenfolge läuft unsere Fertigung ab?</div>
+        <button class="opt" data-ok="1">Bespannen → Beschichten → Kundenfreigabe → Belichten → Entwickeln → Kontrolle</button>
+        <button class="opt" data-ok="0">Belichten → Bespannen → Entwickeln → Beschichten</button>
+        <button class="opt" data-ok="0">Entwickeln → Beschichten → Bespannen → Belichten</button>
+        <div class="feedback" data-ok="Richtig. Erst bespannen und beschichten, dann die Freigabe des Kunden einholen, erst danach belichten und entwickeln." data-nok="Nicht richtig. Die Reihenfolge ist: Bespannen, Beschichten, Kundenfreigabe, Belichten, Entwickeln, Sicht- und Endkontrolle."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 2</b>Warum wird vor dem Belichten die Kundenfreigabe eingeholt?</div>
+        <button class="opt" data-ok="0">Das ist reine Formalie ohne praktischen Zweck</button>
+        <button class="opt" data-ok="1">Damit die belichtete Schablone garantiert der freigegebenen Druckvorlage entspricht – Fehler vor der teuren Belichtung vermeiden</button>
+        <button class="opt" data-ok="0">Weil das Gesetz es für alle Druckereien vorschreibt</button>
+        <div class="feedback" data-ok="Genau. Die Freigabe per PDF-Mail stellt sicher, dass wir nach der richtigen Vorlage belichten, bevor der aufwendige Schritt passiert." data-nok="Nicht richtig. Die Kundenfreigabe vor der Belichtung verhindert, dass wir eine falsche oder veraltete Vorlage belichten."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 3</b>Wie lässt sich eine ausgelieferte Schablone zurückverfolgen?</div>
+        <button class="opt" data-ok="0">Gar nicht, dafür gibt es keine Aufzeichnung</button>
+        <button class="opt" data-ok="1">Per Barcode im PSS bis zu Gewebe-, Emulsions- und Rollennummer</button>
+        <button class="opt" data-ok="0">Nur über eine handschriftliche Liste im Büro</button>
+        <div class="feedback" data-ok="Richtig. Das PSS verknüpft Barcode, Material und Auftrag – das ist unsere Stärke in Sachen Rückverfolgbarkeit." data-nok="Nicht richtig. Rückverfolgbarkeit läuft über den Barcode im PSS, verknüpft mit Gewebe-, Emulsions- und Rollennummer."></div></div>
+      <div class="status"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="4"> Modul 4 abgeschlossen</label><a class="btn sekundaer" href="#m5">Weiter zu Modul 5 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 5 ===================== -->
+  <section class="modul" id="m5">
+    <div class="kap">Modul 5 · R08</div>
+    <h2>Lieferantenmanagement</h2>
+    <p class="lead">Wir kaufen Gewebe, Stahl (Rahmen) und Emulsionen/Chemie zu. Die Qualität unserer Lieferanten wirkt sich direkt auf unsere Schablonen aus – deshalb bewerten wir sie im Register R08.</p>
+    <div class="karten">
+      <div class="karte blau"><b>Unsere Lieferanten</b><p>Gewebe (Polyester) aus der Schweiz und Italien, Stahl für Rahmen aus Deutschland (3 Lieferanten), Emulsionen/Chemie aus Deutschland. Farben werden zu 95 % direkt vom Hersteller an den Kunden versendet, Partner fürs Farblabor ist Coals &amp; Chemicals.</p></div>
+      <div class="karte"><b>Bewertung</b><p>Aktuell überwiegend A-Bewertungen. Eine Formel zur Punkteberechnung (max. 100 Punkte) wird gerade korrigiert. Gesperrte Lieferanten gibt es derzeit keine.</p></div>
+      <div class="karte gruen"><b>Ein-Lieferanten-Risiko</b><p>Bei manchen Rahmen besteht ein Ein-Lieferanten-Risiko. Statt eines zweiten Lieferanten wird das Risiko bewusst akzeptiert und im Risikoregister R02 dokumentiert.</p></div>
+    </div>
+    <h3>Onboarding neuer Lieferanten</h3>
+    <div class="schritte">
+      <div class="schritt"><div class="n"></div><div><b>Firmendaten prüfen</b><p>Wer ist der Lieferant, was liefert er, passt er zu unseren Anforderungen?</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Anlage im System</b><p>Inklusive Steuernummer und Lieferantennummer.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Angebote einholen, ggf. Musterprüfung</b><p>Bei kritischen Materialien wird vor der ersten Serienbestellung ein Muster geprüft.</p></div></div>
+    </div>
+    <div class="merke"><div class="i">⚠️</div><div><b>Ausnahmefall Spandex:</b> Ein Lieferant hatte ein falsches Produkt empfohlen. Das Problem wurde geklärt, das Geld erstattet, die Bewertung dieses Lieferanten entsprechend niedriger angesetzt. So funktioniert die laufende Bewertung: Auffälligkeiten fließen ein, nicht nur der Preis.</div></div>
+
+    <div class="check" data-mq="5">
+      <h3>✏️ Prüfungsfragen zu Modul 5</h3>
+      <div class="szenario"><div class="sit"><b>Frage 1</b>Wo wird die Bewertung unserer Lieferanten dokumentiert?</div>
+        <button class="opt" data-ok="0">Im Register R03</button>
+        <button class="opt" data-ok="1">Im Register R08, Lieferantenmanagement</button>
+        <button class="opt" data-ok="0">Gar nicht, das macht jeder aus dem Gedächtnis</button>
+        <div class="feedback" data-ok="Richtig. R08 ist unser Lieferantenmanagement-Register." data-nok="Nicht richtig. Die Lieferantenbewertung läuft über das Register R08."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 2</b>Wie gehen wir mit dem Ein-Lieferanten-Risiko bei bestimmten Rahmen um?</div>
+        <button class="opt" data-ok="0">Wir ignorieren es, weil es bisher nie zu Problemen kam</button>
+        <button class="opt" data-ok="1">Wir akzeptieren es bewusst und dokumentieren es im Risikoregister R02</button>
+        <button class="opt" data-ok="0">Wir kaufen deshalb grundsätzlich nur noch im Ausland ein</button>
+        <div class="feedback" data-ok="Genau. Nicht jedes Risiko muss beseitigt werden – eine bewusste, dokumentierte Akzeptanz ist eine gültige Reaktion." data-nok="Nicht richtig. Das Risiko wird bewusst akzeptiert und im Risikoregister R02 dokumentiert, nicht ignoriert."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 3</b>Ein Lieferant liefert wiederholt Auffälligkeiten (falsches Produkt, Qualitätsproblem). Was passiert mit seiner Bewertung?</div>
+        <button class="opt" data-ok="0">Nichts, solange der Preis stimmt</button>
+        <button class="opt" data-ok="1">Die laufende Bewertung wird entsprechend niedriger angesetzt</button>
+        <button class="opt" data-ok="0">Der Lieferant wird automatisch ohne Prüfung gesperrt</button>
+        <div class="feedback" data-ok="Richtig, so wie beim Ausnahmefall Spandex: Auffälligkeiten fließen in die laufende Bewertung ein." data-nok="Nicht richtig. Auffälligkeiten fließen in die laufende Bewertung ein und senken sie, wie im Fall Spandex."></div></div>
+      <div class="status"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="5"> Modul 5 abgeschlossen</label><a class="btn sekundaer" href="#m6">Weiter zu Modul 6 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 6 ===================== -->
+  <section class="modul" id="m6">
+    <div class="kap">Modul 6 · R02 / R03</div>
+    <h2>Risiken, Chancen und unsere Kennzahlen</h2>
+    <p class="lead">Das Risikoregister R02 hält fest, was unserem Betrieb schaden oder nützen könnte – und was wir dagegen bzw. dafür tun. Zusammen mit den Qualitätszielen (R03) ist das unser wichtigstes Steuerungsinstrument.</p>
+    <div class="karten">
+      <div class="karte blau"><b>Beispiel-Risiko: Ein-Lieferanten-Rahmen</b><p>Bewusst akzeptiert, siehe Modul 5.</p></div>
+      <div class="karte"><b>Wassergefährdende Stoffe</b><p>Die Auffangwanne für wassergefährdende Stoffe wird geprüft – ein offener Punkt aus der GAP-Analyse.</p></div>
+      <div class="karte gruen"><b>Umwelt</b><p>Statt ISO 14001 nutzen wir EcoVadis, praktikabler für unsere Betriebsgröße. Abwasserüberwachung und Entsorgungsprotokolle sind vorhanden, dazu eine PV-Anlage mit 100 kWp.</p></div>
+    </div>
+    <h3>So werden Risiken bearbeitet</h3>
+    <div class="schritte">
+      <div class="schritt"><div class="n"></div><div><b>Risiko benennen</b><p>Was könnte passieren, was ist die Ursache?</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Bewerten</b><p>Wie wahrscheinlich, wie schwerwiegend?</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Entscheiden</b><p>Vermeiden, vermindern, übertragen oder – wie beim Ein-Lieferanten-Risiko – bewusst akzeptieren.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Im Register R02 dokumentieren</b><p>Damit die Entscheidung nachvollziehbar bleibt, auch für den Auditor.</p></div></div>
+    </div>
+    <div class="merke"><div class="i">🤖</div><div><b>KI-Nutzung:</b> Wir setzen Copilot für Texte und QS-Unterstützung ein, bewusst ohne sensible Daten – keine Namen, Adressen oder Zahlen. Auch das ist eine bewusste Risikoentscheidung.</div></div>
+
+    <div class="check" data-mq="6">
+      <h3>✏️ Prüfungsfragen zu Modul 6</h3>
+      <div class="szenario"><div class="sit"><b>Frage 1</b>Welches Umwelt-Instrument nutzt BÖTTCHER anstelle einer ISO-14001-Zertifizierung?</div>
+        <button class="opt" data-ok="0">ISO 45001</button>
+        <button class="opt" data-ok="1">EcoVadis</button>
+        <button class="opt" data-ok="0">Gar keins</button>
+        <div class="feedback" data-ok="Richtig. EcoVadis wurde als praktikablere Lösung für unsere Betriebsgröße gewählt." data-nok="Nicht richtig. Wir nutzen EcoVadis statt einer eigenen ISO-14001-Zertifizierung."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 2</b>Was passiert mit einem Risiko, das wir bewusst akzeptieren?</div>
+        <button class="opt" data-ok="0">Es wird verschwiegen, damit es im Audit nicht auffällt</button>
+        <button class="opt" data-ok="1">Die Entscheidung wird im Risikoregister R02 dokumentiert, damit sie nachvollziehbar ist</button>
+        <button class="opt" data-ok="0">Es wird automatisch an den Kunden weitergegeben</button>
+        <div class="feedback" data-ok="Genau. Auch eine Akzeptanz-Entscheidung gehört ins Register, damit der Auditor nachvollziehen kann, warum sie getroffen wurde." data-nok="Nicht richtig. Jede Risikoentscheidung – auch eine bewusste Akzeptanz – wird im Register R02 dokumentiert."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 3</b>Worauf achten wir bei der Nutzung von Copilot?</div>
+        <button class="opt" data-ok="0">Beliebige Kundendaten dürfen eingegeben werden</button>
+        <button class="opt" data-ok="1">Keine sensiblen Daten wie Namen, Adressen oder Zahlen eingeben</button>
+        <button class="opt" data-ok="0">Copilot ist bei uns komplett verboten</button>
+        <div class="feedback" data-ok="Richtig. Wir nutzen Copilot bewusst ohne sensible Daten." data-nok="Nicht richtig. Copilot wird genutzt, aber bewusst ohne sensible Daten wie Namen, Adressen oder Zahlen."></div></div>
+      <div class="status"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="6"> Modul 6 abgeschlossen</label><a class="btn sekundaer" href="#m7">Weiter zu Modul 7 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 7 ===================== -->
+  <section class="modul" id="m7">
+    <div class="kap">Modul 7</div>
+    <h2>Reklamationen, Nacharbeit und Verbesserung</h2>
+    <p class="lead">Fehler passieren. Entscheidend ist, dass wir sie erfassen, die Ursache finden und daraus lernen. Wir bauen dafür gerade eine Reklamationsdatenbank auf, die intern verursachte Fehler von extern verursachten (z. B. durch den Lieferanten) trennt.</p>
+    <div class="zweispalt">
+      <div class="box nein"><h4>📋 Was erfasst wird</h4><ul><li>Reklamationsgrund und betroffener Auftrag</li><li><b>Ursache</b> – eine eigene Spalte, damit wir wiederkehrende Fehlerquellen erkennen</li><li>Verweis auf interne Fehlercodes (S-Verweis)</li><li>Ob der Fehler <b>intern</b> oder <b>extern</b> (z. B. Lieferant) verursacht wurde</li></ul></div>
+      <div class="box ja"><h4>✅ Was schon funktioniert</h4><ul><li>Das PSS führt bereits eine interne Fehlerstatistik, getrennt nach eigen- und fremdverschuldet.</li><li>Kundenfeedback holen wir im persönlichen Gespräch ein – jährlicher Besuch bei den 10–20 wichtigsten Kunden im Dezember, bewusst kein Fragebogen.</li></ul></div>
+    </div>
+    <div class="sprech">
+      <div class="bubble gut"><span class="lab">✅ So klingt es beim Kunden</span>„Danke für die Rückmeldung, ich nehme das auf und kläre die Ursache. Ich melde mich zeitnah mit einer Lösung.“</div>
+      <div class="bubble schlecht"><span class="lab">❌ Besser nicht</span>„Das kann bei uns eigentlich nicht passieren.“ (Abwehr statt Aufnahme) oder eine Zusage (Ersatz, Gutschrift) machen, bevor die Ursache geklärt ist.</div>
+    </div>
+    <div class="merke"><div class="i">🎯</div><div><b>Warum die Ursache-Spalte wichtig ist:</b> Nur wenn wir wissen, ob ein Fehler an der Beschichtung, der Belichtung oder einem Lieferantenmaterial lag, können wir gezielt gegensteuern – und unser Ziel „Nacharbeit/Ausschuss unter 5 %“ erreichen.</div></div>
+
+    <div class="check" data-mq="7">
+      <h3>✏️ Prüfungsfragen zu Modul 7</h3>
+      <div class="szenario"><div class="sit"><b>Frage 1</b>Warum bekommt die Reklamationsdatenbank eine eigene Ursache-Spalte?</div>
+        <button class="opt" data-ok="0">Nur zur Formsache, sie wird nicht ausgewertet</button>
+        <button class="opt" data-ok="1">Damit wiederkehrende Fehlerquellen erkennbar werden und gezielt abgestellt werden können</button>
+        <button class="opt" data-ok="0">Weil der Kunde das verlangt</button>
+        <div class="feedback" data-ok="Richtig. Ohne Ursache-Spalte lässt sich nicht erkennen, wo im Prozess ein Fehler wirklich entsteht." data-nok="Nicht richtig. Die Ursache-Spalte macht wiederkehrende Fehlerquellen sichtbar, damit wir sie gezielt abstellen können."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 2</b>Was unterscheiden wir bei jedem erfassten Fehler?</div>
+        <button class="opt" data-ok="0">Ob der Fehler teuer oder billig war</button>
+        <button class="opt" data-ok="1">Ob er intern verursacht wurde oder extern, z. B. durch einen Lieferanten</button>
+        <button class="opt" data-ok="0">Ob der Kunde ihn bemerkt hat oder nicht</button>
+        <div class="feedback" data-ok="Genau. Intern vs. extern zu trennen zeigt, wo wir selbst ansetzen müssen und wo beim Lieferanten." data-nok="Nicht richtig. Entscheidend ist die Trennung intern verursacht vs. extern verursacht (z. B. Lieferant)."></div></div>
+      <div class="szenario"><div class="sit"><b>Frage 3</b>Wie holen wir Kundenfeedback ein?</div>
+        <button class="opt" data-ok="0">Per automatisierter Online-Umfrage nach jedem Auftrag</button>
+        <button class="opt" data-ok="1">Im persönlichen Gespräch, jährlicher Besuch bei den wichtigsten 10–20 Kunden im Dezember</button>
+        <button class="opt" data-ok="0">Wir holen kein Kundenfeedback ein</button>
+        <div class="feedback" data-ok="Richtig. Bewusst kein Fragebogen – das persönliche Gespräch passt besser zu unseren langjährigen Kundenbeziehungen." data-nok="Nicht richtig. Kundenfeedback holen wir im persönlichen Gespräch beim jährlichen Kundenbesuch im Dezember ein."></div></div>
+      <div class="status"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="7"> Modul 7 abgeschlossen</label><a class="btn sekundaer" href="#m8">Weiter zu Modul 8 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 8 ===================== -->
+  <section class="modul" id="m8">
+    <div class="kap">Modul 8</div>
+    <h2>Audit: was auf dich zukommt</h2>
+    <p class="lead">Unser Zertifizierungsaudit ist voraussichtlich Ende 2026 oder Anfang 2027. Interne Auditoren werden erst später benannt – das ist bei uns bewusst einer der letzten Schritte im Projekt.</p>
+    <div class="karten">
+      <div class="karte blau"><div class="icon">🔍</div><b>Der Weg dahin</b><p>Wöchentlich ein Thema im Teams-Meeting mit dem externen Berater, dazwischen Doku-Erstellung. Über rund zwei Monate wird das QMS Stück für Stück aufgebaut und dokumentiert.</p></div>
+      <div class="karte"><div class="icon">📊</div><b>Was der Auditor sehen will</b><p>Dass wir unsere eigenen Register (R02, R03, R08, R14) kennen und danach arbeiten – nicht, dass wir Normtexte auswendig können.</p></div>
+      <div class="karte gruen"><div class="icon">🏅</div><b>Externes Zertifizierungsaudit</b><p>Der Auditor prüft Dokumente, spricht mit Mitarbeitenden und lässt sich den Fertigungsprozess und das PSS zeigen.</p></div>
+    </div>
+    <div class="sprech">
+      <div class="bubble gut"><span class="lab">✅ So verhältst du dich</span>Ehrlich und konkret antworten. Beschreibe, wie du wirklich arbeitest, und zeig es im PSS oder in der Nextcloud. „Das weiß ich nicht genau, da würde ich Michelle fragen“ ist eine völlig richtige Antwort.</div>
+      <div class="bubble schlecht"><span class="lab">❌ Besser nicht</span>Etwas erfinden. Behaupten, dass alles perfekt läuft. Nervös werden: Der Auditor prüft das System, nicht dich.</div>
+    </div>
+    <h3>Praxisfälle</h3>
+    <div class="check" data-mq="8">
+      <div class="szenario"><div class="sit"><b>Fall 1: Die Frage nach dem Prozess</b>Der Auditor bittet dich, den Weg einer Schablone von der Anfrage bis zum Versand zu zeigen.</div>
+        <button class="opt" data-ok="0">„Das müsste ich erst zusammensuchen, das dauert.“</button>
+        <button class="opt" data-ok="1">„Gern. Ich zeige den Auftrag im PSS: Bespannen, Beschichten, Kundenfreigabe, Belichten, Entwickeln, Kontrolle – jeder Schritt ist per Barcode nachvollziehbar.“</button>
+        <button class="opt" data-ok="0">„Dafür ist Steven zuständig, ich mache nur Versand.“</button>
+        <div class="feedback" data-ok="Genau so. Das PSS macht den ganzen Vorgang nachvollziehbar. Das ist der beste Nachweis, den es gibt." data-nok="Nicht optimal. Der ganze Vorgang lässt sich im PSS per Barcode zeigen. Auf andere zu verweisen wirkt, als würdest du deinen eigenen Prozess nicht kennen."></div></div>
+      <div class="szenario"><div class="sit"><b>Fall 2: Die kritische Frage</b>Der Auditor fragt: „Was tun Sie, wenn ein Lieferant wiederholt auffällt?“ Du bist dir nicht ganz sicher, wie das genau dokumentiert wird.</div>
+        <button class="opt" data-ok="0">Eine Antwort raten, Hauptsache selbstbewusst</button>
+        <button class="opt" data-ok="1">„Die laufende Bewertung sinkt, das steht im Register R08 – die genauen Kriterien schaue ich dort nach.“</button>
+        <button class="opt" data-ok="0">„Das kommt bei uns nicht vor.“</button>
+        <div class="feedback" data-ok="Richtig. Wissen, dass es eine Regel gibt, und wissen, wo sie steht, ist genau das, was der Auditor sehen will." data-nok="Nicht optimal. Raten oder ausweichen fällt auf. Richtig: die Regel benennen und im Register R08 nachschlagen."></div></div>
+      <div class="szenario"><div class="sit"><b>Fall 3: Die Dokumentenfrage</b>„Wo finden Sie die aktuelle Fassung Ihrer Qualitätsziele?“</div>
+        <button class="opt" data-ok="1">„In der Nextcloud, Register R03. Ich öffne die dortige Version, dann ist es sicher die aktuelle.“</button>
+        <button class="opt" data-ok="0">„Die habe ich mir vor ein paar Monaten mal ausgedruckt.“</button>
+        <button class="opt" data-ok="0">„So etwas gibt es bei uns nicht, wir arbeiten nach Erfahrung.“</button>
+        <div class="feedback" data-ok="Richtig. Die Nextcloud ist der einzige Ort für die aktuelle Fassung unserer Register." data-nok="Nicht optimal. Ausdrucke veralten, und „gibt es nicht“ stimmt nicht. Richtig: Register R03 in der Nextcloud."></div></div>
+      <div class="status"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="8"> Modul 8 abgeschlossen</label><a class="btn sekundaer" href="#m9">Weiter zum Abschlusstest →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 9 ===================== -->
+  <section class="modul" id="m9">
+    <div class="kap">Modul 9</div>
+    <h2>Abschlusstest und Teilnahmezertifikat</h2>
+    <p class="lead">Zehn Fragen aus allen Modulen. Bei 7 richtigen Antworten hast du bestanden und kannst dein Zertifikat ausdrucken. Du kannst den Test beliebig oft wiederholen.</p>
+    <div id="quiz"></div>
+    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" id="auswerten">Test auswerten</button>
+      <button class="btn sekundaer" id="reset" style="display:none">Test wiederholen</button>
+    </div>
+    <div class="quiz-ergebnis" id="ergebnis"></div>
+
+    <div id="zert-bereich" style="display:none">
+      <h3>🎓 Dein Teilnahmezertifikat</h3>
+      <p style="font-size:15px;color:#333;margin:0">Trag deinen vollständigen Namen ein. Das Datum wird automatisch gesetzt. Drucke das Zertifikat aus oder speichere es als PDF und gib es Michelle Böttcher für die Schulungsunterlagen.</p>
+      <div class="zert-form">
+        <div><label for="zname">Vor- und Nachname</label><input type="text" id="zname" placeholder="z. B. Max Mustermann" autocomplete="name"></div>
+        <button class="btn gelb" id="zert-erstellen">Zertifikat erstellen</button>
+      </div>
+      <div id="zertifikat">
+        <div class="zert">
+          <div class="ecke tl"></div><div class="ecke br"></div>
+          <div class="kopf"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="3" y="3" width="42" height="42" rx="8" fill="#1a1a1a" stroke="#d98a3d" stroke-width="2"/><text x="24" y="31" font-family="Arial,Helvetica,sans-serif" font-size="20" font-weight="800" fill="#d98a3d" text-anchor="middle">B</text></svg><div class="wortmarke">BÖTTCHER<small>Siebdruck-Service GmbH</small></div></div>
+          <p class="titel">Teilnahmezertifikat</p>
+          <p class="sub">Schulung Qualitätsmanagementsystem nach ISO 9001</p>
+          <div class="name" id="z-name">–</div>
+          <p class="text">hat am <b id="z-datum">–</b> die Schulung <b>„Unser QMS: So arbeiten wir bei BÖTTCHER“</b> vollständig durchgearbeitet und den Abschlusstest mit <b id="z-punkte">–</b> von 10 Punkten bestanden.</p>
+          <p class="inhalte"><b>Inhalte:</b> Grundlagen ISO 9001 und Erstzertifizierung · Qualitätsziele 2026 und Rollen · Dokumentenlenkung (Register R02, R03, R08, R14) · Fertigungsprozess Bespannen–Beschichten–Belichten–Entwickeln–Kontrolle · Lieferantenmanagement · Risiken und Chancen · Reklamationen und Verbesserung · Verhalten im Audit</p>
+          <div class="unterschriften">
+            <div>Teilnehmer/in</div>
+            <div>Managementbeauftragte · Michelle Böttcher</div>
+          </div>
+          <p class="klein">BÖTTCHER Siebdruck-Service GmbH · Annaberger Str. 113 · 09120 Chemnitz · Schulungsunterlage QMS Version 1, Stand 09/2026</p>
+        </div>
+        <div style="text-align:center;margin-top:16px"><button class="btn" id="zert-drucken">Zertifikat drucken / als PDF speichern</button></div>
+      </div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="9"> Abschlusstest bestanden</label><a class="btn sekundaer" href="#merk">Zur Merkkarte →</a></div>
+  </section>
+
+  <!-- ===================== MERKKARTE ===================== -->
+  <div class="merkkarte" id="merk">
+    <div class="kap" style="color:#d98a3d;font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase">Zum Mitnehmen</div>
+    <h2>Fünf Regeln für den Alltag im QMS</h2>
+    <ol>
+      <li><div><b>Das PSS ist unsere Wissensdatenbank.</b> Rückverfolgbarkeit, Wartung, Fehlerstatistik: alles dort dokumentieren.</div></li>
+      <li><div><b>Nur die aktuelle Version aus der Nextcloud.</b> Keine eigenen Kopien, keine veralteten Ausdrucke.</div></li>
+      <li><div><b>Vor der Belichtung: Kundenfreigabe abwarten.</b> Nie ohne freigegebene Vorlage weiterarbeiten.</div></li>
+      <li><div><b>Auffälligkeiten bei Material oder Lieferanten melden.</b> Nie durchwinken, lieber einmal zu viel prüfen.</div></li>
+      <li><div><b>Fehler melden statt verstecken.</b> Ursache benennen, intern/extern trennen, daraus lernen.</div></li>
+    </ol>
+    <div class="kontakt">
+      <div><b>Managementbeauftragte (QMB)</b>Michelle Böttcher<br>michelle@boettcher-sw.de</div>
+      <div><b>Geschäftsführung</b>Uwe Böttcher<br>uwe@boettcher-sw.de</div>
+    </div>
+    <p style="margin:22px 0 0;font-size:14px;color:#bbb">Nachweis fürs Audit: Zertifikat ausdrucken oder als PDF an Michelle Böttcher geben.</p>
+    <div style="margin-top:18px"><button class="btn gelb" onclick="window.print()">Schulung drucken / als PDF sichern</button></div>
+  </div>
+
+  <div class="fuss">BÖTTCHER Siebdruck-Service GmbH · Qualitätsmanagementsystem ISO 9001 (Aufbauphase) · Schulungsunterlage QMS-Grundlagen · Version 1 · Stand September 2026<br>Mitgeltende Unterlagen: Register R02 (Risiken), R03 (Qualitätsziele), R08 (Lieferantenmanagement), R14 (Kontext der Organisation)</div>
+</main>
+
+<script>
+(function(){
+  const KEY='boettcher_qms_done', KEYZ='boettcher_qms_zert';
+  /* ---------- Fortschritt ---------- */
+  const doneBoxes=[...document.querySelectorAll('input[data-done]')];
+  const nav=document.getElementById('modulnav');
+  function updateFortschritt(){
+    const n=doneBoxes.filter(b=>b.checked).length;
+    document.getElementById('fortschritt').style.width=(n/doneBoxes.length*100)+'%';
+    doneBoxes.forEach(b=>{const a=nav.querySelector('a[data-m="'+b.dataset.done+'"]'); if(a) a.classList.toggle('fertig',b.checked);});
+    try{localStorage.setItem(KEY,JSON.stringify(doneBoxes.map(b=>b.checked)));}catch(e){}
+  }
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'[]'); doneBoxes.forEach((b,i)=>b.checked=!!s[i]);}catch(e){}
+  doneBoxes.forEach(b=>b.addEventListener('change',updateFortschritt)); updateFortschritt();
+
+  /* ---------- Modul-Prüfungsfragen ---------- */
+  document.querySelectorAll('.check[data-mq]').forEach(chk=>{
+    const m=chk.dataset.mq, szs=[...chk.querySelectorAll('.szenario')], status=chk.querySelector('.status');
+    const box=document.querySelector('input[data-done="'+m+'"]');
+    function pruefen(){
+      const beantwortet=szs.filter(s=>s.dataset.beantwortet).length;
+      if(beantwortet<szs.length){ status.textContent=beantwortet+' von '+szs.length+' Fragen beantwortet'; status.className='status'; return; }
+      const richtig=szs.filter(s=>s.dataset.richtig==='1').length;
+      if(richtig===szs.length){ status.textContent='✅ Alle '+szs.length+' Fragen richtig. Modul '+m+' ist abgeschlossen.'; status.className='status ok'; if(box&&!box.checked){box.checked=true; updateFortschritt();} }
+      else { status.innerHTML='✘ '+richtig+' von '+szs.length+' richtig. Lies die markierten Antworten und <button type="button" class="btn sekundaer" style="padding:6px 14px;font-size:14px" data-retry>versuch es noch einmal</button>.'; status.className='status nok';
+        status.querySelector('[data-retry]').addEventListener('click',()=>{ szs.forEach(s=>{ delete s.dataset.beantwortet; delete s.dataset.richtig; s.querySelectorAll('.opt').forEach(o=>{o.disabled=false;o.classList.remove('richtig','falsch');}); const f=s.querySelector('.feedback'); f.textContent=''; f.className='feedback'; }); status.textContent=''; status.className='status'; }); }
+    }
+    szs.forEach(sz=>{
+      const opts=sz.querySelectorAll('.opt'), f=sz.querySelector('.feedback');
+      opts.forEach(o=>o.addEventListener('click',()=>{
+        if(sz.dataset.beantwortet) return;
+        const ok=o.dataset.ok==='1';
+        opts.forEach(x=>{x.disabled=true; if(x.dataset.ok==='1') x.classList.add('richtig');});
+        if(!ok) o.classList.add('falsch');
+        f.textContent=ok?f.dataset.ok:f.dataset.nok; f.className='feedback show '+(ok?'ok':'nok');
+        sz.dataset.beantwortet='1'; sz.dataset.richtig=ok?'1':'0'; pruefen();
+      }));
+    });
+  });
+
+  /* ---------- Abschlusstest ---------- */
+  const fragen=[
+    {q:'Wonach lässt sich BÖTTCHER aktuell zertifizieren und wie heißt das laufende Projekt?',a:['ISO 14001, Rezertifizierung','ISO 9001, Erstzertifizierung, begleitet durch IMSM','ISO 27001, Rezertifizierung','ISO 9001, Überwachungsaudit'],r:1},
+    {q:'Wo findest du die aktuelle, gültige Fassung unserer Register?',a:['In meinem E-Mail-Postfach','Auf einem Ausdruck im Büro','In der firmeneigenen Nextcloud','Nur im PSS'],r:2},
+    {q:'Welche vier Qualitätsziele hat BÖTTCHER für 2026 festgelegt?',a:['50 neue Kunden, mehr Umsatz, weniger Personal, mehr Marketing','Max. 10 Reklamationen/Jahr, Liefertermintreue 98 %, Nacharbeit/Ausschuss unter 5 %, Schulungen 100 %','Nur ein einziges Ziel: Zertifizierung bestehen','Reklamationsquote von 20 %'],r:1},
+    {q:'Wer ist die Managementbeauftragte (QMB) bei BÖTTCHER?',a:['Uwe Böttcher','Steven Böttcher','Michelle Böttcher','Steffi Böttcher'],r:2},
+    {q:'In welcher Reihenfolge läuft die Fertigung einer Schablone ab?',a:['Belichten, Bespannen, Entwickeln, Beschichten','Bespannen, Beschichten, Kundenfreigabe, Belichten, Entwickeln, Kontrolle','Entwickeln, Kontrolle, Bespannen, Beschichten','Kontrolle, Bespannen, Belichten, Entwickeln'],r:1},
+    {q:'Was steht im Register R08 und was tun wir bei einem gesperrten oder auffälligen Lieferanten?',a:['R08 sind die Qualitätsziele; auffällige Lieferanten werden ignoriert','R08 ist das Lieferantenmanagement; Auffälligkeiten senken die laufende Bewertung','R08 ist der Kontext der Organisation; Lieferanten werden dort nicht erwähnt','R08 gibt es bei uns nicht'],r:1},
+    {q:'Wie gehen wir mit dem Ein-Lieferanten-Risiko bei bestimmten Rahmen um?',a:['Wir ignorieren es', 'Wir akzeptieren es bewusst und dokumentieren es im Risikoregister R02','Wir stoppen die Produktion', 'Wir wechseln sofort den Lieferanten'],r:1},
+    {q:'Wie lässt sich eine ausgelieferte Schablone zurückverfolgen?',a:['Gar nicht','Per Barcode im PSS bis zu Gewebe-, Emulsions- und Rollennummer','Nur über eine handschriftliche Liste','Über die Rechnungsnummer allein'],r:1},
+    {q:'Was gehört zu einer erfassten Reklamation in unserer künftigen Reklamationsdatenbank?',a:['Nur das Datum','Ursache, Verweis auf Fehlercodes und ob intern oder extern verursacht','Nur der Name des Kunden','Nichts, Reklamationen werden nicht dokumentiert'],r:1},
+    {q:'Der Auditor stellt dir eine Frage, deren Antwort du nicht genau kennst. Was ist richtig?',a:['Etwas Plausibles erfinden','Ehrlich sagen, dass du es nicht genau weißt, und nennen, wo du nachschauen oder wen du fragen würdest','Das Gespräch beenden','Auf den Lieferanten verweisen'],r:1}
+  ];
+  const quiz=document.getElementById('quiz');
+  let letztePunkte=0;
+  function baueQuiz(){
+    quiz.innerHTML='';
+    fragen.forEach((f,i)=>{
+      const d=document.createElement('div'); d.className='szenario'; d.dataset.q=i;
+      d.innerHTML='<div class="sit"><b>Frage '+(i+1)+' von '+fragen.length+'</b>'+f.q+'</div>'+f.a.map((t,j)=>'<label class="opt" style="display:flex;gap:10px;align-items:flex-start"><input type="radio" name="q'+i+'" value="'+j+'" style="margin-top:3px;accent-color:#111"><span>'+t+'</span></label>').join('');
+      quiz.appendChild(d);
+    });
+    document.getElementById('ergebnis').className='quiz-ergebnis';
+    document.getElementById('auswerten').style.display='';
+    document.getElementById('reset').style.display='none';
+    document.getElementById('zert-bereich').style.display='none';
+    document.getElementById('zertifikat').className='';
+  }
+  baueQuiz();
+  document.getElementById('auswerten').addEventListener('click',()=>{
+    let richtig=0, offen=0;
+    fragen.forEach((f,i)=>{
+      const sel=quiz.querySelector('input[name="q'+i+'"]:checked');
+      if(!sel) offen++;
+    });
+    if(offen>0){ const e=document.getElementById('ergebnis'); e.innerHTML='<p style="margin:0;font-size:17px">Bitte beantworte zuerst alle Fragen. Es fehlen noch '+offen+'.</p>'; e.className='quiz-ergebnis show'; return; }
+    fragen.forEach((f,i)=>{
+      const sel=quiz.querySelector('input[name="q'+i+'"]:checked');
+      const labels=quiz.querySelectorAll('[data-q="'+i+'"] label.opt');
+      labels.forEach((l,j)=>{l.classList.remove('richtig','falsch'); if(j===f.r) l.classList.add('richtig'); if(+sel.value===j&&j!==f.r) l.classList.add('falsch'); l.querySelector('input').disabled=true;});
+      if(+sel.value===f.r) richtig++;
+    });
+    letztePunkte=richtig;
+    const best=richtig>=7; if(window.qvmReport)qvmReport(best,richtig,fragen.length);
+    const e=document.getElementById('ergebnis');
+    e.innerHTML='<div class="zahl">'+richtig+' <small>von '+fragen.length+' richtig</small></div><p style="margin:10px 0 0;font-size:17px">'+(best?'✅ Bestanden. Unten kannst du jetzt dein Teilnahmezertifikat erstellen.':'Noch nicht bestanden. Schau dir die markierten Antworten an, lies die betreffenden Module noch einmal und wiederhole den Test.')+'</p>';
+    e.className='quiz-ergebnis show';
+    document.getElementById('auswerten').style.display='none';
+    document.getElementById('reset').style.display='';
+    if(best){ document.getElementById('zert-bereich').style.display=''; const box=document.querySelector('input[data-done="9"]'); if(box&&!box.checked){box.checked=true; updateFortschritt();} }
+    e.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('reset').addEventListener('click',baueQuiz);
+
+  /* ---------- Zertifikat ---------- */
+  const zname=document.getElementById('zname');
+  try{ const z=JSON.parse(localStorage.getItem(KEYZ)||'null'); if(z&&z.name) zname.value=z.name; }catch(e){}
+  function datumHeute(){ const d=new Date(); return d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'}); }
+  document.getElementById('zert-erstellen').addEventListener('click',()=>{
+    const n=zname.value.trim();
+    if(n.length<3){ zname.focus(); zname.style.borderColor='#c62828'; return; }
+    zname.style.borderColor='';
+    const datum=datumHeute();
+    document.getElementById('z-name').textContent=n;
+    document.getElementById('z-datum').textContent=datum;
+    document.getElementById('z-punkte').textContent=letztePunkte;
+    document.getElementById('zertifikat').className='show';
+    try{localStorage.setItem(KEYZ,JSON.stringify({name:n,datum:datum,punkte:letztePunkte}));}catch(e){}
+    document.getElementById('zertifikat').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+  document.getElementById('zert-drucken').addEventListener('click',()=>{
+    document.body.classList.add('nur-zert');
+    const ende=()=>{document.body.classList.remove('nur-zert'); window.removeEventListener('afterprint',ende);};
+    window.addEventListener('afterprint',ende);
+    window.print();
+    setTimeout(ende,3000);
+  });
+})();
+</script>
+<script>
+/* ---------- QVM-Portal-Brücke ----------
+   Läuft die Schulung im Lernbereich der QVM-App, meldet sie das Testergebnis
+   an die App zurück und übernimmt den Namen der angemeldeten Person für die
+   Teilnahmebestätigung. Außerhalb der App passiert nichts. */
+(function(){
+  var name=null;
+  function send(m){ try{ if(window.parent&&window.parent!==window){ m.type='qvm-training'; window.parent.postMessage(m,'*'); } }catch(e){} }
+  window.addEventListener('message',function(ev){
+    var d=ev.data||{}; if(d.type!=='qvm-training-context') return;
+    name=d.name||null;
+    var z=document.getElementById('zname')||document.getElementById('cert-name');
+    if(z&&name){ z.value=name; z.readOnly=true; }
+  });
+  window.qvmReport=function(passed,score,max){ send({event:'result',passed:!!passed,score:score,max:max}); };
+  send({event:'ready'});
+})();
+</script>
+</body>
+</html>
