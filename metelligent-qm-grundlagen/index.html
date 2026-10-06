@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QM-Kurzschulung ISO 9001 – metelligent GmbH</title>
+<style>
+  :root{--blau:#0f3d5e;--akzent:#18a999;--hell:#f3f6f8;--linie:#dde3e8;--gruen:#2e8b57;--rot:#c62828;--grau:#5b6670;--radius:14px}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#1a1a1a;background:var(--hell);line-height:1.55;font-size:17px}
+  header.top{background:#fff;border-bottom:1px solid var(--linie);position:sticky;top:0;z-index:20}
+  .top-inner{max-width:900px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:22px;color:var(--blau);letter-spacing:-.01em}.logo span{color:var(--akzent)}
+  .top-inner .titel{font-weight:600;font-size:14px;color:var(--grau);flex:1}
+  .fortschritt{height:5px;background:var(--linie);width:100%;border-radius:3px;overflow:hidden}.fortschritt>div{height:100%;background:var(--akzent);width:0;transition:width .4s}
+  main{max-width:900px;margin:0 auto;padding:24px 20px 70px}
+  .hero{background:var(--blau);color:#fff;border-radius:var(--radius);padding:40px;margin-bottom:24px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;background:var(--akzent);opacity:.8}
+  .hero *{position:relative}.hero .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#a8ece3;font-weight:600}
+  .hero h1{font-size:clamp(26px,4.5vw,40px);margin:8px 0 12px;line-height:1.12}.hero p{max-width:600px;font-size:18px;color:#e4eef5;margin:0 0 20px}
+  .btn{display:inline-block;font-family:inherit;background:var(--akzent);color:#fff;border:0;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none}
+  .btn:hover{filter:brightness(.92)}.btn.sek{background:#fff;color:var(--blau);border:2px solid var(--blau)}
+  section.modul{background:#fff;border-radius:var(--radius);padding:32px 36px;margin-bottom:22px;border:1px solid var(--linie);scroll-margin-top:80px}
+  .kap{color:var(--akzent);font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase}
+  .dauer{font-size:12px;color:var(--grau);background:var(--hell);border-radius:999px;padding:3px 10px;margin-left:8px;font-weight:600;text-transform:none;letter-spacing:0}
+  section.modul h2{margin:6px 0 14px;font-size:28px;line-height:1.15}p.lead{font-size:18px;color:#333}
+  .karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+  .karte{background:var(--hell);border-radius:12px;padding:16px;border-left:5px solid var(--akzent)}.karte b{display:block;margin-bottom:4px}.karte p{margin:0;font-size:15px;color:#333}
+  .merke{background:#e9f8f5;border:1px solid #b6e8df;border-radius:12px;padding:14px 18px;margin:16px 0}
+  .zahlen{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+  .zahlen div{background:var(--blau);color:#fff;border-radius:12px;padding:16px;text-align:center}.zahlen b{display:block;font-size:30px;color:#7ee7da}.zahlen span{font-size:14px}
+  .schritte{display:grid;gap:10px;margin:16px 0;counter-reset:s}
+  .schritt{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:var(--hell);border-radius:12px;padding:14px 16px}
+  .schritt:before{counter-increment:s;content:counter(s);width:38px;height:38px;border-radius:50%;background:var(--blau);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .schritt b{display:block}.schritt p{margin:2px 0 0;font-size:15px}
+  table{border-collapse:collapse;width:100%;font-size:15px;margin:14px 0}th,td{border:1px solid var(--linie);padding:9px 12px;text-align:left;vertical-align:top}th{background:var(--blau);color:#fff}
+  .szenario{border:1px solid var(--linie);border-radius:12px;padding:18px 20px;margin:14px 0}.szenario .sit b{display:block;margin-bottom:4px}
+  .opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:var(--hell);border:2px solid var(--hell);border-radius:10px;padding:11px 14px;margin:8px 0;cursor:pointer;font-size:15px;font-family:inherit}
+  .opt:hover{border-color:#bbb}.opt.richtig{border-color:var(--gruen);background:#eef8f1}.opt.falsch{border-color:var(--rot);background:#fdf0ef}
+  .opt input{margin-top:4px;accent-color:var(--blau)}
+  .quiz-ergebnis{display:none;margin-top:18px;padding:20px;border-radius:12px;background:var(--blau);color:#fff}.quiz-ergebnis.show{display:block}
+  .quiz-ergebnis .zahl{font-size:40px;font-weight:800}.quiz-ergebnis .zahl small{font-size:17px;font-weight:400;color:#b9d3e6}
+  .modul-ende{margin-top:22px;padding-top:16px;border-top:1px dashed var(--linie);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .modul-ende label{display:flex;gap:8px;align-items:center;cursor:pointer;font-size:15px}.modul-ende input{width:20px;height:20px;accent-color:var(--gruen)}
+  .zert-form{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;margin-top:12px}@media(max-width:720px){.zert-form{grid-template-columns:1fr}section.modul{padding:24px 18px}.hero{padding:28px 22px}}
+  .zert-form label{font-size:14px;font-weight:700;display:block;margin-bottom:4px}.zert-form input{width:100%;font-size:17px;padding:11px 14px;border:2px solid var(--linie);border-radius:10px;font-family:inherit}
+  #zertifikat{display:none;margin-top:24px}#zertifikat.show{display:block}
+  .zert{background:#fff;border:10px double var(--blau);padding:0 48px 34px;text-align:center;max-width:780px;margin:0 auto;overflow:hidden}
+  .zert .kopf{background:var(--blau);margin:0 -48px 24px;padding:18px 0;color:#fff;font-weight:800;font-size:26px}.zert .kopf span{color:#7ee7da}
+  .zert .titel{font-size:28px;font-weight:800;color:var(--blau);margin:0}.zert .sub{color:var(--grau);margin:4px 0 22px}
+  .zert .name{font-size:30px;font-weight:700;margin:8px 0;border-bottom:3px solid var(--akzent);display:inline-block;padding:0 22px 6px;min-width:60%}
+  .zert .text{max-width:580px;margin:16px auto}.zert .unterschriften{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:34px auto 0;max-width:600px}
+  .zert .unterschriften div{border-top:1px solid #333;padding-top:6px;font-size:13px}.zert .klein{font-size:11.5px;color:#777;margin-top:22px}
+  .merkkarte{background:var(--blau);color:#fff;border-radius:var(--radius);padding:30px 36px}.merkkarte h2{margin:0 0 6px;font-size:26px}
+  .merkkarte ol{counter-reset:m;list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}.merkkarte li{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start}
+  .merkkarte li:before{counter-increment:m;content:counter(m);width:30px;height:30px;border-radius:50%;background:var(--akzent);display:flex;align-items:center;justify-content:center;font-weight:800}
+  .fuss{text-align:center;color:var(--grau);font-size:13px;margin-top:30px}
+  @media print{header.top,.btn,.modul-ende,.fortschritt,.zert-form{display:none!important}body.nur-zert main>*:not(#m5){display:none!important}body.nur-zert #m5>*:not(#zert-bereich){display:none!important}
+    body.nur-zert #zert-bereich>*:not(#zertifikat){display:none!important}body.nur-zert #zertifikat>*:not(.zert){display:none!important}body.nur-zert #zertifikat{display:block!important;margin:0}
+    body.nur-zert{background:#fff}body.nur-zert .zert .kopf{background:#0f3d5e!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4 landscape;margin:12mm}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner">
+  <div class="logo">metel<span>ligent</span></div><div class="titel">QM-Kurzschulung · ISO 9001</div>
+  <div class="fortschritt"><div id="fortschritt"></div></div>
+</div></header>
+<main>
+  <div class="hero" id="start">
+    <div class="kicker">Qualitätsmanagement · ISO 9001:2015</div>
+    <h1>Qualität bei metelligent: Das Wichtigste in 15 Minuten</h1>
+    <p>Wir montieren intelligente Messsysteme im Auftrag von Messstellen- und Netzbetreibern und sind nach ISO 9001 zertifiziert. Hier siehst du kurz und praktisch, was das für deinen Arbeitsalltag bedeutet.</p>
+    <a class="btn" href="#m1">Schulung starten</a>
+  </div>
+
+  <section class="modul" id="m1">
+    <div class="kap">Modul 1 <span class="dauer">ca. 3 Min.</span></div>
+    <h2>Warum ein Qualitätsmanagementsystem?</h2>
+    <p class="lead">Beim Kunden zu Hause sind wir das Gesicht der Energiewende. Ein Zählerwechsel muss sicher, pünktlich und sauber dokumentiert sein, und zwar jedes Mal, bei jedem Monteur.</p>
+    <div class="zahlen">
+      <div><b>95&nbsp;%</b><span>Ziel Termintreue bei Montagen (heute 85&nbsp;%)</span></div>
+      <div><b>−30&nbsp;%</b><span>Ziel weniger Kundenreklamationen gegenüber 2024</span></div>
+      <div><b>2×</b><span>Schulungen pro Monteur und Jahr</span></div>
+    </div>
+    <div class="merke"><b>Merke:</b> Das QM-System ist keine Papierübung. Es beschreibt, wie wir arbeiten, damit Aufträge nicht doppelt angefahren, Kunden nicht verärgert und Kollegen nicht gefährdet werden.</div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="1"> Gelesen</label><a class="btn sek" href="#m2">Weiter →</a></div>
+  </section>
+
+  <section class="modul" id="m2">
+    <div class="kap">Modul 2 <span class="dauer">ca. 3 Min.</span></div>
+    <h2>Planen, Machen, Prüfen, Verbessern</h2>
+    <p class="lead">Die ISO 9001 folgt einem einfachen Kreislauf, dem PDCA-Zyklus. Du erlebst ihn jeden Tag:</p>
+    <div class="karten">
+      <div class="karte"><b>Plan: Planen</b><p>Einsatzplanung, Kundentermin, Material und Zählerplatz vorab klären.</p></div>
+      <div class="karte"><b>Do: Machen</b><p>Montage nach Arbeitsanweisung, mit Schutzausrüstung und Prüfgerät.</p></div>
+      <div class="karte"><b>Check: Prüfen</b><p>Messung, Funktionstest, Dokumentation in der Monteursapp, Freigabe durch den Kunden.</p></div>
+      <div class="karte"><b>Act: Verbessern</b><p>Fehler melden, Qualitätsmeeting nutzen, Maßnahmen umsetzen.</p></div>
+    </div>
+    <p>Einmal im Jahr prüfen wir uns selbst (interne Audits) und die Geschäftsführung bewertet das System (Managementbewertung). Zusätzlich kommt jährlich die Zertifizierungsstelle.</p>
+    <div class="modul-ende"><label><input type="checkbox" data-done="2"> Gelesen</label><a class="btn sek" href="#m3">Weiter →</a></div>
+  </section>
+
+  <section class="modul" id="m3">
+    <div class="kap">Modul 3 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Qualität und Sicherheit beim Kunden</h2>
+    <p class="lead">Drei Dinge entscheiden, ob ein Einsatz gelingt: die fünf Sicherheitsregeln, geprüftes Equipment und saubere Kundenkommunikation.</p>
+    <h3>Die fünf Sicherheitsregeln, immer in dieser Reihenfolge</h3>
+    <div class="schritte">
+      <div class="schritt"><div><b>Freischalten</b><p>Anlage allpolig abschalten, auch die Lastseite.</p></div></div>
+      <div class="schritt"><div><b>Gegen Wiedereinschalten sichern</b><p>Schloss und Schild anbringen.</p></div></div>
+      <div class="schritt"><div><b>Spannungsfreiheit feststellen</b><p>Mit geprüftem Spannungsprüfer, vorher am Prüfgerät testen.</p></div></div>
+      <div class="schritt"><div><b>Erden und kurzschließen</b><p>Wo erforderlich.</p></div></div>
+      <div class="schritt"><div><b>Benachbarte Teile abdecken</b><p>Unter Spannung stehende Teile in der Nähe abdecken oder abschranken.</p></div></div>
+    </div>
+    <h3>Equipment und PSA: Nur geprüft einsetzen</h3>
+    <table>
+      <tr><th>Was</th><th>Worauf du achtest</th></tr>
+      <tr><td>Pegelmessgerät und Prüfmittel</td><td>Im Messmittelregister geführt, jährliche Sicht- und Funktionsprüfung. Zeigt es unplausible Werte: nicht mehr benutzen, melden, tauschen.</td></tr>
+      <tr><td>Helm und Gesichtsschutz (Visier)</td><td>Helm: Ablaufdatum beachten. Visier: vor jedem Einsatz auf Kratzer, Risse und Sprödigkeit prüfen. Beschädigt heißt tauschen.</td></tr>
+      <tr><td>Isolierte Werkzeuge, Handschuhe</td><td>Sichtprüfung vor Gebrauch, beschädigte Teile sofort aussortieren.</td></tr>
+      <tr><td>Fahrzeug und Ladung</td><td>Ladung sichern, Fahrzeugmängel dem Fuhrparkleiter melden.</td></tr>
+    </table>
+    <div class="merke"><b>Kundenkommunikation:</b> Termin vorab bestätigen, freundlich und verbindlich auftreten, bei verweigertem Zutritt oder aggressivem Verhalten den Auftrag abbrechen und sofort die Disposition informieren.</div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="3"> Gelesen</label><a class="btn sek" href="#m4">Weiter →</a></div>
+  </section>
+
+  <section class="modul" id="m4">
+    <div class="kap">Modul 4 <span class="dauer">ca. 2 Min.</span></div>
+    <h2>Wenn etwas schiefgeht</h2>
+    <p class="lead">Fehler passieren. Wichtig ist, dass wir sie sehen, melden und daraus lernen, statt sie zu verstecken.</p>
+    <div class="schritte">
+      <div class="schritt"><div><b>Sichern</b><p>Gefahr beseitigen, Anlage in sicheren Zustand bringen.</p></div></div>
+      <div class="schritt"><div><b>Dokumentieren</b><p>Fotos und kurze Beschreibung in der Monteursapp: Was, wo, wann?</p></div></div>
+      <div class="schritt"><div><b>Melden</b><p>Kunden ehrlich informieren, Betriebsleitung sofort anrufen, Abweichung erfassen.</p></div></div>
+      <div class="schritt"><div><b>Lernen</b><p>Besprechung im monatlichen Qualitätsmeeting, Maßnahme festlegen.</p></div></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="4"> Gelesen</label><a class="btn sek" href="#m5">Zum Test →</a></div>
+  </section>
+
+  <section class="modul" id="m5">
+    <div class="kap">Modul 5 <span class="dauer">ca. 3 Min.</span></div>
+    <h2>Kurztest und Teilnahmebestätigung</h2>
+    <p class="lead">Drei Fragen. Sind alle richtig, kannst du dir deine Teilnahmebestätigung erstellen. Der Test lässt sich beliebig oft wiederholen.</p>
+    <div id="quiz"></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
+      <button class="btn" id="auswerten">Test auswerten</button><button class="btn sek" id="reset" style="display:none">Test wiederholen</button>
+    </div>
+    <div class="quiz-ergebnis" id="ergebnis"></div>
+    <div id="zert-bereich" style="display:none">
+      <h3>🎓 Deine Teilnahmebestätigung</h3>
+      <div class="zert-form">
+        <div><label for="zname">Vor- und Nachname</label><input type="text" id="zname" placeholder="Vor- und Nachname" autocomplete="name"></div>
+        <button class="btn" id="zert-erstellen">Bestätigung erstellen</button>
+      </div>
+      <div id="zertifikat"><div class="zert">
+        <div class="kopf">metel<span>ligent</span></div>
+        <p class="titel">Teilnahmebestätigung</p><p class="sub">QM-Kurzschulung nach ISO 9001:2015</p>
+        <div class="name" id="z-name">–</div>
+        <p class="text">hat am <b id="z-datum">–</b> die Online-Schulung <b>„Qualität bei metelligent“</b> durchgearbeitet und den Test mit <b id="z-punkte">–</b> von 3 Punkten bestanden.</p>
+        <div class="unterschriften"><div>Teilnehmer/in</div><div>Qualitätsmanagementbeauftragte/r</div></div>
+        <p class="klein">metelligent GmbH · Schulungsunterlage QM-Kurzschulung, Version 1 · Nachweis für Qualifikationsmatrix und Schulungsplan</p>
+      </div>
+      <div style="text-align:center;margin-top:14px"><button class="btn" id="zert-drucken">Drucken / als PDF speichern</button></div></div>
+    </div>
+  </section>
+
+  <div class="merkkarte" id="merk">
+    <h2>Vier Regeln für jeden Einsatz</h2>
+    <ol>
+      <li><span><b>Erst sicher, dann schnell.</b> Fünf Sicherheitsregeln, immer in Reihenfolge. Lastseite nicht vergessen.</span></li>
+      <li><span><b>Nur geprüftes Equipment und intakte PSA.</b> Helm-Ablaufdatum und Visier-Zustand prüfen.</span></li>
+      <li><span><b>Kunden vorab informieren, beim Termin verbindlich sein.</b> Das spart die zweite Anfahrt.</span></li>
+      <li><span><b>Fehler sofort dokumentieren und melden.</b> Wer meldet, hilft uns allen besser zu werden.</span></li>
+    </ol>
+  </div>
+  <p class="fuss">QM-Kurzschulung ISO 9001:2015 · metelligent GmbH · Beispielschulung der QVM-Lernplattform</p>
+</main>
+
+<script>
+(function(){
+  const KEY='ml_qm_done', KEYZ='ml_qm_zert';
+  const boxes=[...document.querySelectorAll('input[data-done]')];
+  function upd(){document.getElementById('fortschritt').style.width=(boxes.filter(b=>b.checked).length/boxes.length*100)+'%';try{localStorage.setItem(KEY,JSON.stringify(boxes.map(b=>b.checked)));}catch(e){}}
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach((b,i)=>b.checked=!!s[i]);}catch(e){}
+  boxes.forEach(b=>b.addEventListener('change',upd));upd();
+  const fragen=[
+    {q:'Du stehst am Zählerplatz. Was gilt, bevor du arbeitest?',a:['Ich arbeite sofort, der Kunde hat ja schon abgeschaltet','Ich halte die fünf Sicherheitsregeln ein: freischalten, sichern, Spannungsfreiheit feststellen, bei Bedarf erden und abdecken','Eine Sichtprüfung reicht, wenn kein Licht brennt'],r:1},
+    {q:'Dein Pegelmessgerät zeigt Werte, die nicht plausibel sind. Was tust du?',a:['Ich nutze es weiter und rechne den Fehler im Kopf aus','Ich nehme es außer Betrieb, melde es und lasse es prüfen oder tauschen','Ich stelle es selbst neu ein'],r:1},
+    {q:'Bei der Montage beschädigst du versehentlich etwas an der Kundenanlage. Was tust du?',a:['Ich sichere die Stelle, dokumentiere mit Fotos, informiere Kunde und Betriebsleitung und melde die Abweichung','Ich sage nichts, wenn es der Kunde nicht merkt','Ich repariere es heimlich am nächsten Tag'],r:0}
+  ];
+  const quiz=document.getElementById('quiz');let letzte=0;
+  function bau(){quiz.innerHTML='';fragen.forEach((f,i)=>{const d=document.createElement('div');d.className='szenario';d.dataset.q=i;
+    d.innerHTML='<div class="sit"><b>Frage '+(i+1)+' von '+fragen.length+'</b>'+f.q+'</div>'+f.a.map((t,j)=>'<label class="opt"><input type="radio" name="q'+i+'" value="'+j+'"><span>'+t+'</span></label>').join('');quiz.appendChild(d);});
+    document.getElementById('ergebnis').className='quiz-ergebnis';document.getElementById('auswerten').style.display='';document.getElementById('reset').style.display='none';
+    document.getElementById('zert-bereich').style.display='none';document.getElementById('zertifikat').className='';}
+  bau();
+  document.getElementById('auswerten').addEventListener('click',()=>{
+    let richtig=0,offen=0;
+    fragen.forEach((f,i)=>{const sel=quiz.querySelector('input[name="q'+i+'"]:checked');const ls=quiz.querySelectorAll('[data-q="'+i+'"] label.opt');if(!sel)offen++;
+      ls.forEach((l,j)=>{l.classList.remove('richtig','falsch');if(j===f.r)l.classList.add('richtig');if(sel&&+sel.value===j&&j!==f.r)l.classList.add('falsch');l.querySelector('input').disabled=true;});
+      if(sel&&+sel.value===f.r)richtig++;});
+    if(offen>0){alert('Bitte beantworte alle Fragen.');fragen.forEach((f,i)=>quiz.querySelectorAll('[data-q="'+i+'"] label.opt').forEach(l=>{l.classList.remove('richtig','falsch');l.querySelector('input').disabled=false;}));return;}
+    const best=richtig===fragen.length;if(window.qvmReport)qvmReport(best,richtig,fragen.length);letzte=richtig;
+    const e=document.getElementById('ergebnis');
+    e.innerHTML='<div class="zahl">'+richtig+' <small>von '+fragen.length+' richtig</small></div><p style="margin:8px 0 0">'+(best?'✅ Bestanden. Unten kannst du deine Teilnahmebestätigung erstellen.':'Noch nicht bestanden. Lies die markierten Antworten und versuche es noch einmal.')+'</p>';
+    e.className='quiz-ergebnis show';document.getElementById('auswerten').style.display='none';document.getElementById('reset').style.display='';
+    if(best)document.getElementById('zert-bereich').style.display='';
+  });
+  document.getElementById('reset').addEventListener('click',bau);
+  const zname=document.getElementById('zname');try{const z=JSON.parse(localStorage.getItem(KEYZ)||'null');if(z&&z.name)zname.value=z.name;}catch(e){}
+  document.getElementById('zert-erstellen').addEventListener('click',()=>{const n=zname.value.trim();if(n.length<3){zname.focus();zname.style.borderColor='#c62828';return;}zname.style.borderColor='';
+    document.getElementById('z-name').textContent=n;document.getElementById('z-datum').textContent=new Date().toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});
+    document.getElementById('z-punkte').textContent=letzte;document.getElementById('zertifikat').className='show';try{localStorage.setItem(KEYZ,JSON.stringify({name:n}));}catch(e){}});
+  document.getElementById('zert-drucken').addEventListener('click',()=>{document.body.classList.add('nur-zert');const ende=()=>{document.body.classList.remove('nur-zert');window.removeEventListener('afterprint',ende);};window.addEventListener('afterprint',ende);window.print();setTimeout(ende,3000);});
+})();
+</script>
+<script>
+/* ---------- QVM-Portal-Brücke ---------- */
+(function(){
+  var name=null;
+  function send(m){ try{ if(window.parent&&window.parent!==window){ m.type='qvm-training'; window.parent.postMessage(m,'*'); } }catch(e){} }
+  window.addEventListener('message',function(ev){
+    var d=ev.data||{}; if(d.type!=='qvm-training-context') return;
+    name=d.name||null;
+    var z=document.getElementById('zname')||document.getElementById('cert-name');
+    if(z&&name){ z.value=name; z.readOnly=true; }
+  });
+  window.qvmReport=function(passed,score,max){ send({event:'result',passed:!!passed,score:score,max:max}); };
+  send({event:'ready'});
+})();
+</script>
+</body>
+</html>
