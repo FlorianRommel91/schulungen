@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QMS-Grundlagen – Lidrotec GmbH</title>
+<style>
+  :root{--blau:#0b1838;--akzent:#00a3c2;--hell:#f3f6f8;--linie:#dde3e8;--gruen:#2e8b57;--rot:#c62828;--grau:#5b6670;--radius:14px}
+  *{box-sizing:border-box} html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#1a1a1a;background:var(--hell);line-height:1.55;font-size:17px}
+  header.top{background:#fff;border-bottom:1px solid var(--linie);position:sticky;top:0;z-index:20}
+  .top-inner{max-width:900px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:22px;color:var(--blau);letter-spacing:-.01em}.logo span{color:var(--akzent)}
+  .top-inner .titel{font-weight:600;font-size:14px;color:var(--grau);flex:1}
+  .fortschritt{height:5px;background:var(--linie);width:100%;border-radius:3px;overflow:hidden}.fortschritt>div{height:100%;background:var(--akzent);width:0;transition:width .4s}
+  main{max-width:900px;margin:0 auto;padding:24px 20px 70px}
+  .hero{background:var(--blau);color:#fff;border-radius:var(--radius);padding:40px;margin-bottom:24px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-80px;top:-80px;width:300px;height:300px;border-radius:50%;background:var(--akzent);opacity:.8}
+  .hero *{position:relative}.hero .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#9fe6f3;font-weight:600}
+  .hero h1{font-size:clamp(26px,4.5vw,40px);margin:8px 0 12px;line-height:1.12}.hero p{max-width:600px;font-size:18px;color:#e4eef5;margin:0 0 20px}
+  .btn{display:inline-block;font-family:inherit;background:var(--akzent);color:#fff;border:0;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none}
+  .btn:hover{filter:brightness(.92)}.btn.sek{background:#fff;color:var(--blau);border:2px solid var(--blau)}
+  section.modul{background:#fff;border-radius:var(--radius);padding:32px 36px;margin-bottom:22px;border:1px solid var(--linie);scroll-margin-top:80px}
+  .kap{color:var(--akzent);font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase}
+  .dauer{font-size:12px;color:var(--grau);background:var(--hell);border-radius:999px;padding:3px 10px;margin-left:8px;font-weight:600;text-transform:none;letter-spacing:0}
+  section.modul h2{margin:6px 0 14px;font-size:28px;line-height:1.15}p.lead{font-size:18px;color:#333}
+  .karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+  .karte{background:var(--hell);border-radius:12px;padding:16px;border-left:5px solid var(--akzent)}.karte b{display:block;margin-bottom:4px}.karte p{margin:0;font-size:15px;color:#333}
+  .merke{background:#e6f7fb;border:1px solid #b3e4ef;border-radius:12px;padding:14px 18px;margin:16px 0}
+  .zahlen{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:16px 0}
+  .zahlen div{background:var(--blau);color:#fff;border-radius:12px;padding:16px;text-align:center}.zahlen b{display:block;font-size:30px;color:#7fdcef}.zahlen span{font-size:14px}
+  .schritte{display:grid;gap:10px;margin:16px 0;counter-reset:s}
+  .schritt{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;background:var(--hell);border-radius:12px;padding:14px 16px}
+  .schritt:before{counter-increment:s;content:counter(s);width:38px;height:38px;border-radius:50%;background:var(--blau);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .schritt b{display:block}.schritt p{margin:2px 0 0;font-size:15px}
+  table{border-collapse:collapse;width:100%;font-size:15px;margin:14px 0}th,td{border:1px solid var(--linie);padding:9px 12px;text-align:left;vertical-align:top}th{background:var(--blau);color:#fff}
+  .szenario{border:1px solid var(--linie);border-radius:12px;padding:18px 20px;margin:14px 0}.szenario .sit b{display:block;margin-bottom:4px}
+  .opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;background:var(--hell);border:2px solid var(--hell);border-radius:10px;padding:11px 14px;margin:8px 0;cursor:pointer;font-size:15px;font-family:inherit}
+  .opt:hover{border-color:#bbb}.opt.richtig{border-color:var(--gruen);background:#eef8f1}.opt.falsch{border-color:var(--rot);background:#fdf0ef}
+  .opt input{margin-top:4px;accent-color:var(--blau)}
+  .quiz-ergebnis{display:none;margin-top:18px;padding:20px;border-radius:12px;background:var(--blau);color:#fff}.quiz-ergebnis.show{display:block}
+  .quiz-ergebnis .zahl{font-size:40px;font-weight:800}.quiz-ergebnis .zahl small{font-size:17px;font-weight:400;color:#b9d3e6}
+  .modul-ende{margin-top:22px;padding-top:16px;border-top:1px dashed var(--linie);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .modul-ende label{display:flex;gap:8px;align-items:center;cursor:pointer;font-size:15px}.modul-ende input{width:20px;height:20px;accent-color:var(--gruen)}
+  .zert-form{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;margin-top:12px}@media(max-width:720px){.zert-form{grid-template-columns:1fr}section.modul{padding:24px 18px}.hero{padding:28px 22px}}
+  .zert-form label{font-size:14px;font-weight:700;display:block;margin-bottom:4px}.zert-form input{width:100%;font-size:17px;padding:11px 14px;border:2px solid var(--linie);border-radius:10px;font-family:inherit}
+  #zertifikat{display:none;margin-top:24px}#zertifikat.show{display:block}
+  .zert{background:#fff;border:10px double var(--blau);padding:0 48px 34px;text-align:center;max-width:780px;margin:0 auto;overflow:hidden}
+  .zert .kopf{background:var(--blau);margin:0 -48px 24px;padding:18px 0;color:#fff;font-weight:800;font-size:26px}.zert .kopf span{color:#7fdcef}
+  .zert .titel{font-size:28px;font-weight:800;color:var(--blau);margin:0}.zert .sub{color:var(--grau);margin:4px 0 22px}
+  .zert .name{font-size:30px;font-weight:700;margin:8px 0;border-bottom:3px solid var(--akzent);display:inline-block;padding:0 22px 6px;min-width:60%}
+  .zert .text{max-width:580px;margin:16px auto}.zert .unterschriften{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin:34px auto 0;max-width:600px}
+  .zert .unterschriften div{border-top:1px solid #333;padding-top:6px;font-size:13px}.zert .klein{font-size:11.5px;color:#777;margin-top:22px}
+  .merkkarte{background:var(--blau);color:#fff;border-radius:var(--radius);padding:30px 36px}.merkkarte h2{margin:0 0 6px;font-size:26px}
+  .merkkarte ol{counter-reset:m;list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}.merkkarte li{display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start}
+  .merkkarte li:before{counter-increment:m;content:counter(m);width:30px;height:30px;border-radius:50%;background:var(--akzent);display:flex;align-items:center;justify-content:center;font-weight:800}
+  .fuss{text-align:center;color:var(--grau);font-size:13px;margin-top:30px}
+  @media print{header.top,.btn,.modul-ende,.fortschritt,.zert-form{display:none!important}body.nur-zert main>*:not(#m5){display:none!important}body.nur-zert #m5>*:not(#zert-bereich){display:none!important}
+    body.nur-zert #zert-bereich>*:not(#zertifikat){display:none!important}body.nur-zert #zertifikat>*:not(.zert){display:none!important}body.nur-zert #zertifikat{display:block!important;margin:0}
+    body.nur-zert{background:#fff}body.nur-zert .zert .kopf{background:#0b1838!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}@page{size:A4 landscape;margin:12mm}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-inner">
+  <div class="logo">LIDRO<span>TEC</span></div><div class="titel">QMS-Grundlagen · Handbuch, Qualitätspolitik, Ziele</div>
+  <div class="fortschritt"><div id="fortschritt"></div></div>
+</div></header>
+<main>
+  <div class="hero" id="start">
+    <div class="kicker">Qualitätsmanagement · ISO 9001:2015</div>
+    <h1>Qualität bei Lidrotec: Das Wichtigste in 15 Minuten</h1>
+    <p>Wir entwickeln, bauen und verkaufen halbautomatische Lasermaschinen für das Wafer-Dicing in Flüssigkeit und sind seit 2023 nach ISO 9001 zertifiziert. Hier siehst du kurz und praktisch, was unser QMS für deine Arbeit bedeutet.</p>
+    <a class="btn" href="#m1">Schulung starten</a>
+  </div>
+
+  <section class="modul" id="m1">
+    <div class="kap">Modul 1 <span class="dauer">ca. 3 Min.</span></div>
+    <h2>Warum ein Qualitätsmanagementsystem?</h2>
+    <p class="lead">Unsere Kunden aus der Halbleiterindustrie verlassen sich darauf, dass jede Maschine präzise, zuverlässig und reproduzierbar arbeitet. Das QMS beschreibt, wie wir das sicherstellen – vom ersten Kundengespräch bis zur Abnahme beim Kunden.</p>
+    <div class="karten">
+      <div class="karte"><b>People</b><p>Menschen geben Lidrotec seinen Wert: Respekt, Vertrauen und Teamgeist.</p></div>
+      <div class="karte"><b>Innovation</b><p>Freiraum für Ideen und für die Verbesserung von Prozessen und Strukturen.</p></div>
+      <div class="karte"><b>Precision</b><p>Genauigkeit vor Schnelligkeit – in der Technologie und in der Arbeit.</p></div>
+    </div>
+    <div class="merke"><b>Merke:</b> Das QMS ist keine Papierübung. Es hält fest, wie wir arbeiten, damit Wissen nicht verloren geht, Fehler nicht zweimal passieren und Kunden bekommen, was wir zugesagt haben.</div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="1"> Gelesen</label><a class="btn sek" href="#m2">Weiter →</a></div>
+  </section>
+
+  <section class="modul" id="m2">
+    <div class="kap">Modul 2 <span class="dauer">ca. 3 Min.</span></div>
+    <h2>Handbuch, Prozesse und Dokumente</h2>
+    <p class="lead">Das <b>Managementhandbuch (QP00)</b> ist das Dach unseres QMS. Darunter beschreiben Prozessanweisungen (QP01–QP13), wie die einzelnen Bereiche arbeiten.</p>
+    <table>
+      <tr><th>Prozessgruppe</th><th>Beispiele</th></tr>
+      <tr><td>Führungsprozesse</td><td>Strategie und Qualitätspolitik, Risiken und Chancen (QP11), Ziele (QP10), Management Review (QP03), interne Audits (QP08)</td></tr>
+      <tr><td>Kernprozesse</td><td>Vertrieb (QP05), Entwicklung (QP13), Produktion (QP07), Labor und Auftragsarbeiten</td></tr>
+      <tr><td>Unterstützungsprozesse</td><td>Einkauf (QP06), Personal (QP04), Dokumentenlenkung (QP01/QP02), Prüfmittel (QP12)</td></tr>
+    </table>
+    <p><b>Geltungsbereich:</b> Entwicklung, Produktion und Vertrieb von halbautomatischen Lasermaschinen zur Bearbeitung von Wafern – ohne Ausschlüsse.</p>
+    <div class="merke"><b>Wichtig:</b> Gültig ist immer nur die freigegebene Fassung in der QVM-Software. Ausdrucke und lokale Kopien sind nur am Tag des Ausdrucks gültig.</div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="2"> Gelesen</label><a class="btn sek" href="#m3">Weiter →</a></div>
+  </section>
+
+  <section class="modul" id="m3">
+    <div class="kap">Modul 3 <span class="dauer">ca. 4 Min.</span></div>
+    <h2>Qualitätspolitik und Qualitätsziele</h2>
+    <p class="lead">Die Qualitätspolitik ist von der Geschäftsführung unterschrieben und gilt für alle. Jede und jeder bei Lidrotec ist dafür verantwortlich, sie in die tägliche Arbeit einzubringen.</p>
+    <p>Aus der Politik leiten wir messbare Ziele ab. Sie werden monatlich ausgewertet und im Management Review bewertet:</p>
+    <div class="zahlen">
+      <div><b>≤&nbsp;2&nbsp;%</b><span>Reklamationsquote bei Kunden</span></div>
+      <div><b>≥&nbsp;8/10</b><span>Bewertung durch unsere Kunden</span></div>
+      <div><b>≤&nbsp;5&nbsp;%</b><span>interne Abweichungsquote</span></div>
+      <div><b>≤&nbsp;5&nbsp;%</b><span>Reklamationsquote bei Lieferanten</span></div>
+      <div><b>&gt;&nbsp;90&nbsp;%</b><span>Liefertreue</span></div>
+    </div>
+    <div class="merke"><b>Dein Beitrag:</b> Du musst die Zahlen nicht auswendig kennen. Aber du solltest wissen, welche Ziele deinen Bereich betreffen und wo du sie in der QVM-Software unter <i>Ziele &amp; Kennzahlen</i> findest.</div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="3"> Gelesen</label><a class="btn sek" href="#m4">Weiter →</a></div>
+  </section>
+
+  <section class="modul" id="m4">
+    <div class="kap">Modul 4 <span class="dauer">ca. 3 Min.</span></div>
+    <h2>Wenn etwas schiefgeht – und Vertraulichkeit</h2>
+    <p class="lead">Fehler passieren, gerade beim Hochlauf der neuen Produktion. Wichtig ist, dass wir sie sehen, melden und daraus lernen.</p>
+    <div class="schritte">
+      <div class="schritt"><div><b>Sichern</b><p>Fehlerhaftes Teil kennzeichnen und separieren, damit es nicht verbaut wird.</p></div></div>
+      <div class="schritt"><div><b>Erfassen</b><p>Abweichung oder Verbesserungsidee über das Qualitätsformular melden – auch bei Lieferantenteilen (dann den Einkauf einbinden).</p></div></div>
+      <div class="schritt"><div><b>Ursache finden</b><p>Gemeinsam die Ursache klären, nicht nur das Symptom beheben.</p></div></div>
+      <div class="schritt"><div><b>Lernen</b><p>Maßnahme festlegen, umsetzen und auf Wirksamkeit prüfen.</p></div></div>
+    </div>
+    <div class="merke"><b>Vertraulichkeit:</b> Kundendaten und Anforderungsblätter sind streng vertraulich. Kunden werden nur codiert geführt, Daten liegen auf dem gesicherten Server, und vor jeder fachlichen Anfrage steht ein NDA.</div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="4"> Gelesen</label><a class="btn sek" href="#m5">Zum Test →</a></div>
+  </section>
+
+  <section class="modul" id="m5">
+    <div class="kap">Modul 5 <span class="dauer">ca. 2 Min.</span></div>
+    <h2>Kurztest und Teilnahmebestätigung</h2>
+    <p class="lead">Drei Fragen. Sind alle richtig, kannst du dir deine Teilnahmebestätigung erstellen. Der Test lässt sich beliebig oft wiederholen.</p>
+    <div id="quiz"></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
+      <button class="btn" id="auswerten">Test auswerten</button><button class="btn sek" id="reset" style="display:none">Test wiederholen</button>
+    </div>
+    <p id="hinweis" style="display:none;color:#c62828;font-weight:600">Bitte beantworte alle Fragen.</p>
+    <div class="quiz-ergebnis" id="ergebnis"></div>
+    <div id="zert-bereich" style="display:none">
+      <h3>🎓 Deine Teilnahmebestätigung</h3>
+      <div class="zert-form">
+        <div><label for="zname">Vor- und Nachname</label><input type="text" id="zname" placeholder="Vor- und Nachname" autocomplete="name"></div>
+        <button class="btn" id="zert-erstellen">Bestätigung erstellen</button>
+      </div>
+      <div id="zertifikat"><div class="zert">
+        <div class="kopf">LIDRO<span>TEC</span></div>
+        <p class="titel">Teilnahmebestätigung</p><p class="sub">QMS-Grundlagen nach ISO 9001:2015</p>
+        <div class="name" id="z-name">–</div>
+        <p class="text">hat am <b id="z-datum">–</b> die Online-Schulung <b>„QMS-Grundlagen: Handbuch, Qualitätspolitik, Ziele“</b> durchgearbeitet und den Test mit <b id="z-punkte">–</b> von 3 Punkten bestanden.</p>
+        <div class="unterschriften"><div>Teilnehmer/in</div><div>Qualitätsbeauftragte</div></div>
+        <p class="klein">Lidrotec GmbH · Schulungsunterlage QMS-Grundlagen, Version 1 · Nachweis für Kompetenzmatrix und Schulungsplan</p>
+      </div>
+      <div style="text-align:center;margin-top:14px"><button class="btn" id="zert-drucken">Drucken / als PDF speichern</button></div></div>
+    </div>
+  </section>
+
+  <div class="merkkarte" id="merk">
+    <h2>Vier Dinge, die du mitnimmst</h2>
+    <ol>
+      <li><span><b>Nur die freigegebene Fassung zählt.</b> Dokumente immer in der QVM-Software öffnen, nicht aus alten Ordnern.</span></li>
+      <li><span><b>Die Qualitätspolitik gilt für alle.</b> Precision heißt: Genauigkeit vor Schnelligkeit.</span></li>
+      <li><span><b>Kenne die Ziele deines Bereichs.</b> Sie stehen unter Ziele &amp; Kennzahlen.</span></li>
+      <li><span><b>Fehler melden ist erwünscht.</b> Nur was erfasst ist, können wir abstellen.</span></li>
+    </ol>
+  </div>
+  <p class="fuss">QMS-Grundlagen ISO 9001:2015 · Lidrotec GmbH · Beispielschulung der QVM-Lernplattform</p>
+</main>
+
+<script>
+(function(){
+  const KEY='lt_qm_done', KEYZ='lt_qm_zert';
+  const boxes=[...document.querySelectorAll('input[data-done]')];
+  function upd(){document.getElementById('fortschritt').style.width=(boxes.filter(b=>b.checked).length/boxes.length*100)+'%';try{localStorage.setItem(KEY,JSON.stringify(boxes.map(b=>b.checked)));}catch(e){}}
+  try{const s=JSON.parse(localStorage.getItem(KEY)||'[]');boxes.forEach((b,i)=>b.checked=!!s[i]);}catch(e){}
+  boxes.forEach(b=>b.addEventListener('change',upd));upd();
+  const fragen=[
+    {q:'Du brauchst die aktuelle Einkaufsanweisung QP06. Wo findest du die gültige Fassung?',a:['In einem alten Ausdruck im Büro','In der QVM-Software unter Dokumente – dort steht immer die freigegebene Fassung','Im Download-Ordner eines Kollegen'],r:1},
+    {q:'Was gilt für die Qualitätspolitik?',a:['Sie betrifft nur die Geschäftsführung und die Qualitätsbeauftragte','Jede und jeder bei Lidrotec ist verantwortlich, sie in die tägliche Arbeit einzubringen','Sie wird nur für das Zertifizierungsaudit gebraucht'],r:1},
+    {q:'Bei der Montage stellst du fest, dass ein zugekauftes Bauteil beschädigt ist. Was tust du?',a:['Ich baue es trotzdem ein, wenn es gerade noch passt','Ich kennzeichne es, melde die Abweichung über das Qualitätsformular und binde den Einkauf ein','Ich werfe es weg und bestelle selbst neu'],r:1}
+  ];
+  const quiz=document.getElementById('quiz');let letzte=0;
+  function bau(){quiz.innerHTML='';fragen.forEach((f,i)=>{const d=document.createElement('div');d.className='szenario';d.dataset.q=i;
+    d.innerHTML='<div class="sit"><b>Frage '+(i+1)+' von '+fragen.length+'</b>'+f.q+'</div>'+f.a.map((t,j)=>'<label class="opt"><input type="radio" name="q'+i+'" value="'+j+'"><span>'+t+'</span></label>').join('');quiz.appendChild(d);});
+    document.getElementById('ergebnis').className='quiz-ergebnis';document.getElementById('auswerten').style.display='';document.getElementById('reset').style.display='none';
+    document.getElementById('zert-bereich').style.display='none';document.getElementById('zertifikat').className='';}
+  bau();
+  document.getElementById('auswerten').addEventListener('click',()=>{
+    let richtig=0,offen=0;
+    fragen.forEach((f,i)=>{const sel=quiz.querySelector('input[name="q'+i+'"]:checked');const ls=quiz.querySelectorAll('[data-q="'+i+'"] label.opt');if(!sel)offen++;
+      ls.forEach((l,j)=>{l.classList.remove('richtig','falsch');if(j===f.r)l.classList.add('richtig');if(sel&&+sel.value===j&&j!==f.r)l.classList.add('falsch');l.querySelector('input').disabled=true;});
+      if(sel&&+sel.value===f.r)richtig++;});
+    document.getElementById('hinweis').style.display=offen>0?'':'none';if(offen>0){fragen.forEach((f,i)=>quiz.querySelectorAll('[data-q="'+i+'"] label.opt').forEach(l=>{l.classList.remove('richtig','falsch');l.querySelector('input').disabled=false;}));return;}
+    const best=richtig===fragen.length;if(window.qvmReport)qvmReport(best,richtig,fragen.length);letzte=richtig;
+    const e=document.getElementById('ergebnis');
+    e.innerHTML='<div class="zahl">'+richtig+' <small>von '+fragen.length+' richtig</small></div><p style="margin:8px 0 0">'+(best?'✅ Bestanden. Unten kannst du deine Teilnahmebestätigung erstellen.':'Noch nicht bestanden. Lies die markierten Antworten und versuche es noch einmal.')+'</p>';
+    e.className='quiz-ergebnis show';document.getElementById('auswerten').style.display='none';document.getElementById('reset').style.display='';
+    if(best)document.getElementById('zert-bereich').style.display='';
+  });
+  document.getElementById('reset').addEventListener('click',bau);
+  const zname=document.getElementById('zname');try{const z=JSON.parse(localStorage.getItem(KEYZ)||'null');if(z&&z.name)zname.value=z.name;}catch(e){}
+  document.getElementById('zert-erstellen').addEventListener('click',()=>{const n=zname.value.trim();if(n.length<3){zname.focus();zname.style.borderColor='#c62828';return;}zname.style.borderColor='';
+    document.getElementById('z-name').textContent=n;document.getElementById('z-datum').textContent=new Date().toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});
+    document.getElementById('z-punkte').textContent=letzte;document.getElementById('zertifikat').className='show';try{localStorage.setItem(KEYZ,JSON.stringify({name:n}));}catch(e){}});
+  document.getElementById('zert-drucken').addEventListener('click',()=>{document.body.classList.add('nur-zert');const ende=()=>{document.body.classList.remove('nur-zert');window.removeEventListener('afterprint',ende);};window.addEventListener('afterprint',ende);window.print();setTimeout(ende,3000);});
+})();
+</script>
+<script>
+/* ---------- QVM-Portal-Brücke ---------- */
+(function(){
+  var name=null;
+  function send(m){ try{ if(window.parent&&window.parent!==window){ m.type='qvm-training'; window.parent.postMessage(m,'*'); } }catch(e){} }
+  window.addEventListener('message',function(ev){
+    var d=ev.data||{}; if(d.type!=='qvm-training-context') return;
+    name=d.name||null;
+    var z=document.getElementById('zname')||document.getElementById('cert-name');
+    if(z&&name){ z.value=name; z.readOnly=true; }
+  });
+  window.qvmReport=function(passed,score,max){ send({event:'result',passed:!!passed,score:score,max:max}); };
+  send({event:'ready'});
+})();
+</script>
+</body>
+</html>
