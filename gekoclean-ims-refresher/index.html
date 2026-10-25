@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IMS-Refresher ISO 9001 / 14001 – GEKO CLEAN GbR</title>
+<style>
+  :root{
+    --haupt:#0e7a4e; --akzent:#36b37e; --schwarz:#11271c; --grau:#5b5b5b; --hell:#f3f7f4; --linie:#dde6df;
+    --gruen:#2e8b57; --blau:#1769aa; --weiss:#fff; --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#1a1a1a;background:var(--hell);line-height:1.55;font-size:17px}
+  header.top{background:var(--weiss);border-bottom:1px solid var(--linie);position:sticky;top:0;z-index:20}
+  .top-inner{max-width:1040px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .wortmarke{font-weight:800;font-size:18px;letter-spacing:.04em;color:var(--haupt);white-space:nowrap}
+  .wortmarke span{color:#1a1a1a}
+  .top-inner .titel{font-weight:700;font-size:15px;flex:1;min-width:200px}
+  .fortschritt{height:6px;background:var(--linie);border-radius:3px;overflow:hidden;width:100%}
+  .fortschritt > div{height:100%;background:linear-gradient(90deg,var(--haupt),var(--akzent));width:0%;transition:width .4s}
+  main{max-width:1040px;margin:0 auto;padding:24px 20px 80px}
+  .hero{background:var(--schwarz);color:#fff;border-radius:var(--radius);padding:44px 40px;margin-bottom:28px;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,var(--akzent),var(--haupt));opacity:.85}
+  .hero *{position:relative}
+  .hero .kicker{text-transform:uppercase;letter-spacing:.12em;font-size:13px;color:#9fe0c0;font-weight:600}
+  .hero h1{font-size:clamp(28px,4.5vw,44px);margin:8px 0 12px;line-height:1.1}
+  .hero p{max-width:620px;font-size:18px;color:#e6e6e6;margin:0 0 20px}
+  .hero .meta{font-size:13px;color:#bdbdbd}
+  .btn{display:inline-block;-webkit-appearance:none;appearance:none;font-family:inherit;background:var(--haupt);color:#fff;border:0;padding:12px 22px;border-radius:999px;font-weight:700;font-size:16px;cursor:pointer;text-decoration:none;transition:transform .1s,background .2s}
+  .btn:hover{background:#0a5e3c;transform:translateY(-1px)}
+  .btn.sekundaer{background:#fff;color:var(--schwarz);border:2px solid var(--schwarz)}
+  .btn.sekundaer:hover{background:var(--hell)}
+  .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  nav.module{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:34px}
+  nav.module a{background:#fff;border:1px solid var(--linie);border-radius:10px;padding:12px 14px;text-decoration:none;color:#1a1a1a;font-size:14px;display:flex;gap:10px;align-items:center;transition:border .2s}
+  nav.module a:hover{border-color:var(--haupt)}
+  nav.module a .nr{width:26px;height:26px;border-radius:50%;background:var(--schwarz);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+  nav.module a.fertig .nr{background:var(--gruen)}
+  section.modul{background:#fff;border-radius:var(--radius);padding:36px 40px;margin-bottom:28px;border:1px solid var(--linie);scroll-margin-top:90px}
+  section.modul .kap{color:var(--haupt);font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase}
+  section.modul h2{margin:6px 0 18px;font-size:30px;line-height:1.15}
+  section.modul h3{font-size:19px;margin:28px 0 10px}
+  p.lead{font-size:19px;color:#333}
+  .karten{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+  .karte{background:var(--hell);border-radius:12px;padding:18px 18px 16px;border-left:5px solid var(--akzent)}
+  .karte.haupt{border-left-color:var(--haupt)} .karte.blau{border-left-color:var(--blau)} .karte.schwarz{border-left-color:var(--schwarz)} .karte.grau{border-left-color:#bbb}
+  .karte > b{display:block;margin-bottom:6px;font-size:16px}
+  .karte p{margin:0;font-size:15px;color:#333}
+  .karte .icon{font-size:26px;margin-bottom:8px}
+  .merke{background:#eef8f1;border:1px solid #bfe6cc;border-radius:12px;padding:16px 20px;margin:18px 0;display:flex;gap:14px;align-items:flex-start}
+  .merke .i{font-size:24px}
+  .merke b{color:var(--haupt)}
+  .zweispalt{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+  @media(max-width:720px){.zweispalt{grid-template-columns:1fr} section.modul{padding:26px 20px} .hero{padding:32px 24px}}
+  .box{border:1px solid var(--linie);border-radius:12px;padding:18px 20px}
+  .box.ja{background:#f0faf3;border-color:#bfe6cc} .box.nein{background:#fff4f2;border-color:#ffd2ca}
+  .box h4{margin:0 0 10px;font-size:17px}
+  .box ul{margin:0;padding-left:20px} .box li{margin-bottom:6px;font-size:15px}
+  .schritte{counter-reset:s;display:grid;gap:14px;margin:18px 0}
+  .schritt{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;background:var(--hell);border-radius:12px;padding:18px}
+  .schritt .n{counter-increment:s;width:44px;height:44px;border-radius:50%;background:var(--haupt);color:#fff;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center}
+  .schritt .n:before{content:counter(s)}
+  .schritt > div > b{font-size:18px;display:block;margin-bottom:4px}
+  .schritt p{margin:0 0 6px;font-size:15px}
+  .schritt ul{margin:4px 0 0;padding-left:18px;font-size:15px}
+  .flow{display:flex;flex-direction:column;gap:0;margin:20px 0;align-items:stretch}
+  .flow .node{background:#fff;border:2px solid var(--schwarz);border-radius:12px;padding:14px 18px;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+  .flow .node.start{background:var(--schwarz);color:#fff}
+  .flow .node.du{border-color:var(--haupt);background:#f2faf5}
+  .flow .node.end{background:#eef8f1;border-color:var(--gruen)}
+  .flow .node b{display:block;font-size:16px}
+  .flow .node span.t{font-size:14px;color:#333}
+  .flow .node .wer{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:var(--hell);white-space:nowrap;color:#333}
+  .flow .node.du .wer{background:var(--haupt);color:#fff}
+  .flow .pfeil{text-align:center;color:var(--grau);font-size:22px;line-height:1;padding:4px 0}
+  .tabwrap{overflow-x:auto;margin:16px 0}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;background:#fff}
+  th,td{border:1px solid var(--linie);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--schwarz);color:#fff;font-weight:600}
+  tr:nth-child(even) td{background:#fafcfa}
+  .sortier{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:16px 0}
+  .fall{background:#fff;border:2px solid var(--linie);border-radius:12px;padding:14px 16px;font-size:15px}
+  .fall .frage{margin-bottom:10px;min-height:48px}
+  .fall .wahl{display:flex;gap:8px}
+  .fall button{flex:1;padding:8px;border-radius:8px;border:1.5px solid var(--schwarz);background:#fff;cursor:pointer;font-weight:600;font-size:14px}
+  .fall button:hover{background:var(--hell)}
+  .fall.richtig{border-color:var(--gruen);background:#f4fbf6} .fall.falsch{border-color:#c0392b;background:#fff6f4}
+  .fall .erkl{font-size:13.5px;margin-top:10px;color:#333;display:none}
+  .fall.richtig .erkl,.fall.falsch .erkl{display:block}
+  .fall.richtig .wahl,.fall.falsch .wahl{display:none}
+  .fall .ergebnis{font-weight:700;font-size:14px;margin-top:8px;display:none}
+  .fall.richtig .ergebnis{display:block;color:var(--gruen)} .fall.falsch .ergebnis{display:block;color:#c0392b}
+  .szenario{border:1px solid var(--linie);border-radius:12px;padding:20px 22px;margin:16px 0;background:#fff}
+  .szenario .sit{font-size:16px;margin-bottom:12px}
+  .szenario .sit b{display:block;font-size:17px;margin-bottom:4px}
+  .opt{display:block;width:100%;text-align:left;background:var(--hell);border:2px solid var(--hell);border-radius:10px;padding:12px 14px;margin:8px 0;cursor:pointer;font-size:15px;font-family:inherit;line-height:1.4}
+  .opt:hover{border-color:#bbb}
+  .opt.richtig{border-color:var(--gruen);background:#eef8f1}
+  .opt.falsch{border-color:#c0392b;background:#fff0ee}
+  .opt[disabled]{cursor:default}
+  .feedback{display:none;margin-top:10px;padding:12px 14px;border-radius:10px;font-size:14.5px}
+  .feedback.show{display:block}
+  .feedback.ok{background:#eef8f1;border:1px solid #bfe6cc} .feedback.nok{background:#fff0ee;border:1px solid #ffd2ca}
+  .quiz-ergebnis{display:none;margin-top:20px;padding:22px;border-radius:12px;background:var(--schwarz);color:#fff}
+  .quiz-ergebnis.show{display:block}
+  .quiz-ergebnis .zahl{font-size:44px;font-weight:800;line-height:1}
+  .quiz-ergebnis .zahl small{font-size:18px;font-weight:400;color:#bbb}
+  .merkkarte{background:var(--schwarz);color:#fff;border-radius:var(--radius);padding:34px 40px}
+  .merkkarte h2{margin:0 0 6px;font-size:28px}
+  .merkkarte ol{counter-reset:m;list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}
+  .merkkarte li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;font-size:17px}
+  .merkkarte li:before{counter-increment:m;content:counter(m);width:32px;height:32px;border-radius:50%;background:var(--haupt);display:flex;align-items:center;justify-content:center;font-weight:800}
+  .kontakt{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+  @media(max-width:720px){.kontakt{grid-template-columns:1fr} .merkkarte{padding:26px 22px}}
+  .kontakt div{background:#1c3327;border-radius:10px;padding:14px 16px;font-size:15px}
+  .kontakt b{display:block;color:#9fe0c0;font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+  .fuss{text-align:center;color:var(--grau);font-size:13px;margin-top:40px}
+  .modul-ende{margin-top:26px;padding-top:18px;border-top:1px dashed var(--linie);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  .modul-ende label{font-size:15px;display:flex;align-items:center;gap:8px;cursor:pointer}
+  .modul-ende input{width:20px;height:20px;accent-color:var(--gruen)}
+  .quelle{font-size:13px;color:var(--grau);margin-top:6px}
+  @media print{
+    header.top{position:static} .btn,.modul-ende,nav.module,.fortschritt{display:none!important}
+    section.modul,.hero,.merkkarte{break-inside:avoid;border:1px solid #ccc;box-shadow:none}
+    body{background:#fff;font-size:13px} .hero{color:#000;background:#eee} .hero:before{display:none} .hero p,.hero .meta,.hero .kicker{color:#222}
+    .fall .wahl{display:none} .fall .erkl{display:block} .feedback{display:block}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="wortmarke">GEKO <span>CLEAN</span></div>
+    <div class="titel">IMS-Refresher · ISO 9001 / 14001</div>
+    <div class="fortschritt"><div id="fortschritt"></div></div>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="start">
+    <div class="kicker">Integriertes Managementsystem · ISO 9001 / ISO 14001</div>
+    <h1>Fit fürs Audit: unser Managementsystem in 20 Minuten</h1>
+    <p>GEKO CLEAN ist nach ISO 9001 (Qualität) und ISO 14001 (Umwelt) zertifiziert – und das externe Audit zur Rezertifizierung steht an. Diese Auffrischung bringt in rund 20 Minuten alles Wichtige zurück ins Gedächtnis: warum wir das System haben, wo unsere Dokumente liegen, welche Regeln im Alltag bei Reinigung, Außenpflege und Winterdienst gelten und wie du dich im Audit verhältst.</p>
+    <a class="btn" href="#m1">Auffrischung starten</a>
+    <div class="meta" style="margin-top:18px">Grundlage: QM01 Management Handbuch · QM02 IMS-Politik · QP01–QP13 · Stand 10/2026 · © GEKO CLEAN GbR</div>
+  </div>
+
+  <nav class="module" id="modulnav">
+    <a href="#m1" data-m="1"><span class="nr">1</span>Kurz aufgefrischt</a>
+    <a href="#m2" data-m="2"><span class="nr">2</span>Zwei Normen, ein System</a>
+    <a href="#m3" data-m="3"><span class="nr">3</span>Politik, Ziele, Rollen</a>
+    <a href="#m4" data-m="4"><span class="nr">4</span>Dokumente &amp; Prozesse</a>
+    <a href="#m5" data-m="5"><span class="nr">5</span>Qualität im Alltag</a>
+    <a href="#m6" data-m="6"><span class="nr">6</span>Umwelt im Alltag</a>
+    <a href="#m7" data-m="7"><span class="nr">7</span>Melden &amp; Audit</a>
+    <a href="#m8" data-m="8"><span class="nr">8</span>Abschlusstest</a>
+  </nav>
+
+  <!-- ===================== MODUL 1 ===================== -->
+  <section class="modul" id="m1">
+    <div class="kap">Modul 1</div>
+    <h2>Kurz aufgefrischt: Warum haben wir ein IMS?</h2>
+    <p class="lead">Unser integriertes Managementsystem (IMS) beschreibt, wie wir bei GEKO CLEAN arbeiten – in der Gebäudereinigung, der Außenpflege und im Winterdienst. Es ist kein Papierstapel für den Auditor, sondern unsere gemeinsame Arbeitsweise.</p>
+    <div class="karten">
+      <div class="karte haupt"><div class="icon">🤝</div><b>Kunden verlangen es</b><p>Viele Auftraggeber – gerade größere Objekte und öffentliche Auftraggeber – vergeben Aufträge bevorzugt an zertifizierte Dienstleister. Das Zertifikat ist unser Nachweis, dass Qualität und Umweltschutz bei uns System haben.</p></div>
+      <div class="karte"><div class="icon">🔁</div><b>Gleiche Leistung, immer</b><p>Der Kunde soll dieselbe Sauberkeit bekommen, egal wer im Objekt eingesetzt ist. Dafür gibt es beschriebene Abläufe und Leistungsverzeichnisse – statt Wissen, das nur in Köpfen steckt.</p></div>
+      <div class="karte blau"><div class="icon">🌍</div><b>Umwelt im Blick</b><p>Reinigungsmittel, Wasser, Energie, Fahrten und Streugut wirken auf die Umwelt. Das IMS sorgt dafür, dass wir diese Auswirkungen kennen, steuern und verringern.</p></div>
+      <div class="karte schwarz"><div class="icon">📈</div><b>Besser werden</b><p>Reklamationen, Abweichungen und Kundenrückmeldungen werden erfasst und ausgewertet. Nur was gemeldet wird, kann verbessert werden.</p></div>
+    </div>
+    <h3>So funktioniert das System: der PDCA-Kreis</h3>
+    <div class="schritte">
+      <div class="schritt"><div class="n"></div><div><b>Planen (Plan)</b><p>Ziele und Kennzahlen festlegen, Risiken und Chancen bewerten, Abläufe beschreiben. Bei uns: QM02 IMS-Politik, QP02 IMS-Ziele und Kennzahlen, QP10 Risikobewertung, QF17 Chancen- und Risiko-Register.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Umsetzen (Do)</b><p>Nach den Anweisungen arbeiten, Formulare nutzen, Nachweise erzeugen. Das ist dein Alltag: Reinigung nach Leistungsverzeichnis, Leistungsnachweis QF06, Einarbeitung neuer Kolleginnen und Kollegen nach QF04.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Prüfen (Check)</b><p>Kennzahlen auswerten (QF19 Qualitäts-Report), interne Audits nach QP08, Kundenzufriedenheit mit QF09 abfragen, einmal im Jahr das Management Review (QP03, QF02).</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Verbessern (Act)</b><p>Maßnahmen aus Audits, Reklamationen und Vorschlägen umsetzen. Abweichungen landen im Abweichungsregister QF18 und werden nachverfolgt, bis sie wirksam erledigt sind.</p></div></div>
+    </div>
+    <div class="merke"><div class="i">💡</div><div><b>Was das für dich heißt:</b> Du musst keine Norm auswendig können. Du musst wissen, wo unsere Regeln stehen, sie anwenden und Abweichungen melden. Register, Audits und Auswertungen übernimmt die Leitung.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="1"> Modul 1 verstanden</label><a class="btn sekundaer" href="#m2">Weiter zu Modul 2 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 2 ===================== -->
+  <section class="modul" id="m2">
+    <div class="kap">Modul 2</div>
+    <h2>Zwei Normen, ein System</h2>
+    <p class="lead">Wir führen kein Qualitätssystem und kein Umweltsystem nebeneinander, sondern <b>ein integriertes Managementsystem</b>: ein Handbuch, eine Politik, ein Satz Anweisungen, ein Audit.</p>
+    <div class="karten">
+      <div class="karte haupt"><div class="icon">✅</div><b>ISO 9001:2015 · Qualität</b><p>Der Kunde bekommt, was vereinbart ist – vollständig, termingerecht, in gleichbleibender Qualität. Dafür: klare Prozesse, Einarbeitung, Leistungsnachweise, Umgang mit Reklamationen, Messung der Kundenzufriedenheit.</p></div>
+      <div class="karte blau"><div class="icon">🌍</div><b>ISO 14001:2015 · Umwelt</b><p>Wir kennen unsere Umweltauswirkungen und verringern sie. Bei uns vor allem: Reinigungsmittel und ihre Dosierung, Wasser- und Energieverbrauch, Abfall, Fahrten sowie Streugut im Winterdienst. Dazu die Einhaltung aller Umweltvorschriften (QF20 Bindende Verpflichtungen).</p></div>
+    </div>
+    <h3>Übung: Qualität oder Umwelt?</h3>
+    <p style="font-size:15px;color:#333">Ordne jede Situation dem passenden Bereich zu. Du bekommst sofort die Auflösung.</p>
+    <div class="sortier" id="sortier">
+      <div class="fall" data-antwort="Q"><div class="frage">Im Objekt wurde der Konferenzraum zwei Wochen lang nicht nach Leistungsverzeichnis gereinigt, der Kunde beschwert sich.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button></div><div class="ergebnis"></div><div class="erkl">Vereinbarte Leistung nicht erbracht = Reklamation, also Qualität (ISO 9001). Sie wird im Abweichungsregister QF18 erfasst und mit Maßnahmen abgestellt.</div></div>
+      <div class="fall" data-antwort="U"><div class="frage">Ein Kollege dosiert den Grundreiniger „nach Gefühl“ doppelt so stark wie auf dem Etikett angegeben.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button></div><div class="ergebnis"></div><div class="erkl">Überdosierung belastet Abwasser und Gesundheit und kostet Geld: Umwelt (ISO 14001). Immer nach Herstellerangabe bzw. Dosierhilfe dosieren.</div></div>
+      <div class="fall" data-antwort="U"><div class="frage">Beim Winterdienst wird auf einer privaten Fläche deutlich mehr Streugut ausgebracht als nötig und hinterher nicht beseitigt.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button></div><div class="ergebnis"></div><div class="erkl">Streugut ist einer unserer Umweltaspekte (QF08). Sparsam ausbringen und nach der Frostperiode beseitigen – das ist auch vertraglich zugesagt.</div></div>
+      <div class="fall" data-antwort="Q"><div class="frage">Nach Auftragsende bewertet der Kunde unsere Leistung im Fragebogen QF09.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button></div><div class="ergebnis"></div><div class="erkl">Kundenzufriedenheit messen ist eine Anforderung der ISO 9001. Die Ergebnisse gehen ins Management Review.</div></div>
+      <div class="fall" data-antwort="U"><div class="frage">Im Lager tropft ein Kanister Sanitärreiniger aus; die Flüssigkeit läuft Richtung Bodenablauf.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button></div><div class="erkl">Umweltvorfall: sofort stoppen und aufnehmen (Bindemittel), nichts in den Ablauf gelangen lassen, Vorfall nach QP11 melden und mit QF12 dokumentieren.</div><div class="ergebnis"></div></div>
+      <div class="fall" data-antwort="Q"><div class="frage">Eine neue Kollegin wird am ersten Tag ohne Einweisung allein ins Objekt geschickt.</div><div class="wahl"><button data-w="Q">Qualität</button><button data-w="U">Umwelt</button></div><div class="ergebnis"></div><div class="erkl">Ohne Einarbeitung (QF04 Einarbeitungscheckliste) keine gleichbleibende Qualität – und im Audit ein klassischer Befund. Qualität (ISO 9001).</div></div>
+    </div>
+    <div class="merke"><div class="i">🔗</div><div><b>Oft hängt beides zusammen.</b> Falsch dosiertes Reinigungsmittel schadet der Umwelt, kann aber auch Oberflächen angreifen – dann wird daraus eine Reklamation. Deshalb ein integriertes System.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="2"> Modul 2 verstanden</label><a class="btn sekundaer" href="#m3">Weiter zu Modul 3 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 3 ===================== -->
+  <section class="modul" id="m3">
+    <div class="kap">Modul 3</div>
+    <h2>Politik, Ziele und Rollen</h2>
+    <p class="lead">Die IMS-Politik (QM02) ist die Selbstverpflichtung der Geschäftsführung. Im Audit solltest du ihre Kernaussagen mit eigenen Worten wiedergeben können – auswendig lernen musst du nichts.</p>
+    <h3>Die Kernaussagen der IMS-Politik</h3>
+    <div class="karten">
+      <div class="karte"><b>Kundenorientierung</b><p>Hygienische und optische Sauberkeit, Werterhalt der Gebäude und Anlagen unserer Kunden – Kundenanforderungen verstehen, erfüllen und die Zufriedenheit überwachen.</p></div>
+      <div class="karte"><b>Umwelt- und Ressourcenschutz</b><p>Umweltschonende Reinigungsmittel, sparsamer Umgang mit Wasser und Energie, Vermeidung von Abfällen – und die Einhaltung aller bindenden Verpflichtungen.</p></div>
+      <div class="karte"><b>Messbare Ziele</b><p>Wir setzen uns Qualitäts- und Umweltziele mit Kennzahlen (QP02), prüfen sie regelmäßig und entwickeln das System daraus weiter.</p></div>
+      <div class="karte"><b>Risikobasiert arbeiten</b><p>Risiken und Chancen werden systematisch bewertet (QP10, QF17) – vom Personalausfall bis zur Chance auf neue Objekte durch Nachhaltigkeit.</p></div>
+      <div class="karte"><b>Verantwortung aller</b><p>Qualität und Umweltschutz sind Sache aller Mitarbeitenden. Jeder hält die definierten Prozesse ein und trägt zur Verbesserung bei.</p></div>
+      <div class="karte"><b>Kontinuierliche Verbesserung</b><p>Ergebnisse aus Messungen, Reklamationen, Audits und Reviews führen zu Maßnahmen. Stillstand ist keine Option.</p></div>
+    </div>
+    <h3>Wer ist wer im IMS?</h3>
+    <div class="tabwrap"><table>
+      <tr><th style="width:30%">Rolle</th><th>Aufgabe</th></tr>
+      <tr><td><b>Geschäftsführung</b></td><td>Trägt die Gesamtverantwortung, legt Politik und Ziele fest, stellt Ressourcen bereit, führt das jährliche Management Review durch.</td></tr>
+      <tr><td><b>Vertriebsleitung (IMS-Verantwortung)</b></td><td>Pflegt das System: Dokumentenlenkung (QP01), Register, interne Audits, Vorbereitung des Reviews. Erste Anlaufstelle für Meldungen und Fragen zum IMS.</td></tr>
+      <tr><td><b>Objektleitung / Vorarbeit</b></td><td>Einarbeitung und Einweisung vor Ort, Kontrolle der Leistung, Ansprechpartner für den Kunden im Objekt.</td></tr>
+      <tr><td><b>Du</b></td><td>Regeln kennen und anwenden, nach Leistungsverzeichnis arbeiten, richtig dosieren, Abweichungen und Vorfälle melden, Verbesserungen vorschlagen.</td></tr>
+    </table></div>
+    <p class="quelle">Quelle: QM01 Management Handbuch (Kap. 5), QM03 Organigramm. Namen und Vertretungen stehen im Organigramm.</p>
+    <div class="merke"><div class="i">📌</div><div><b>Fürs Audit:</b> Das Management Handbuch QM01 hängt als Ausdruck im Lager aus und steht allen zur Einsicht zur Verfügung. Wenn der Auditor fragt, wo du es findest – genau das ist die Antwort.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="3"> Modul 3 verstanden</label><a class="btn sekundaer" href="#m4">Weiter zu Modul 4 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 4 ===================== -->
+  <section class="modul" id="m4">
+    <div class="kap">Modul 4</div>
+    <h2>Unsere Dokumente und Prozesse</h2>
+    <p class="lead">Drei Buchstaben reichen, um dich in unseren Unterlagen zurechtzufinden. Die Übersicht über alles ist das Dokumentenverzeichnis QF01.</p>
+    <div class="karten">
+      <div class="karte schwarz"><b>QM · Managementdokumente</b><p>Der Rahmen: <b>QM01</b> Management Handbuch, <b>QM02</b> IMS-Politik, <b>QM03</b> Organigramm, <b>QM04</b> Kontext der Organisation.</p></div>
+      <div class="karte haupt"><b>QP · Anweisungen (Prozesse)</b><p>Wie etwas abläuft, QP01–QP13. Für dich am wichtigsten: <b>QP07</b> Dienstleistungserbringung, <b>QP09</b> Überwachung, Messung und Verbesserung, <b>QP11</b> Notfallvorsorge und Gefahrenabwehr, <b>QP12</b> Umweltaspekte.</p></div>
+      <div class="karte"><b>QF · Formulare und Register</b><p>Was ausgefüllt wird: <b>QF04</b> Einarbeitungscheckliste, <b>QF06</b> Leistungsnachweis, <b>QF09</b> Kundenzufriedenheit, <b>QF12</b> Notfall- und Gefährdungsbericht, Register <b>QF08</b> / <b>QF17</b> / <b>QF18</b>.</p></div>
+    </div>
+    <h3>Unser Kernprozess: vom Auftrag bis zur zufriedenen Kundschaft</h3>
+    <div class="flow">
+      <div class="node start"><div><b>Anfrage und Angebot</b><span class="t" style="color:#ddd">Anforderungen, Flächen und Intervalle werden geklärt, Angebot und Leistungsverzeichnis erstellt (QP05 Vertriebsprozess)</span></div><span class="wer" style="background:#333;color:#fff">Vertrieb / GF</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node"><div><b>Planung und Objekteinrichtung</b><span class="t">Personal, Material und Geräte werden geplant (QP04), Einkauf über QP06, neue Mitarbeitende werden nach QF04 eingearbeitet</span></div><span class="wer">Objektleitung</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Leistungserbringung vor Ort</b><span class="t">Reinigung, Außenpflege oder Winterdienst nach Leistungsverzeichnis und Anweisung (QP07) – richtig dosiert, sicher und umweltschonend</span></div><span class="wer">Du</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node du"><div><b>Nachweis und Kontrolle</b><span class="t">Leistungsnachweis QF06 führen, Objektkontrollen, Abweichungen sofort melden</span></div><span class="wer">Du + Objektleitung</span></div>
+      <div class="pfeil">↓</div>
+      <div class="node end"><div><b>Kundenzufriedenheit und Verbesserung</b><span class="t">Feedback über QF09, Reklamationen ins Abweichungsregister QF18, Auswertung im Qualitäts-Report QF19 und Management Review</span></div><span class="wer">Leitung</span></div>
+    </div>
+    <div class="zweispalt">
+      <div class="box"><h4>📁 Regeln für Dokumente (QP01)</h4><ul><li>Nur die <b>freigegebene Version</b> nutzen – keine veralteten eigenen Kopien.</li><li>Kein Dokument selbst ändern. Änderungswünsche an die Leitung, sie lenkt die neue Version.</li><li>Ausgefüllte Formulare sind <b>Nachweise</b>: vollständig, lesbar, mit Datum und Name.</li><li>Unklar, welches Dokument gilt? QF01 Dokumentenverzeichnis nachsehen oder fragen.</li></ul></div>
+      <div class="box"><h4>🛒 Material und Einkauf (QP06)</h4><p style="font-size:15px;margin:0">Reinigungsmittel, Geräte und Verbrauchsmaterial werden zentral beschafft – keine Einkäufe auf eigene Faust. So stellen wir sicher, dass nur geprüfte und möglichst umweltschonende Produkte im Einsatz sind und Sicherheitsdatenblätter vorliegen.</p></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="4"> Modul 4 verstanden</label><a class="btn sekundaer" href="#m5">Weiter zu Modul 5 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 5 ===================== -->
+  <section class="modul" id="m5">
+    <div class="kap">Modul 5</div>
+    <h2>Qualität im Alltag</h2>
+    <p class="lead">Qualität heißt bei uns: Der Kunde bekommt verlässlich die vereinbarte Sauberkeit. Vier Dinge machen den Unterschied.</p>
+    <div class="karten">
+      <div class="karte haupt"><div class="icon">📋</div><b>Leistungsverzeichnis kennen</b><p>Was, wie oft, in welchen Räumen – das steht im Leistungsverzeichnis des Objekts. Danach wird gearbeitet, nicht nach Gewohnheit.</p></div>
+      <div class="karte"><div class="icon">✍️</div><b>Leistungsnachweis führen</b><p>Erbrachte Leistungen werden im QF06 dokumentiert – vollständig, mit Datum und Unterschrift. Das ist unser Beleg gegenüber dem Kunden.</p></div>
+      <div class="karte"><div class="icon">🎓</div><b>Eingearbeitet starten</b><p>Neue Kolleginnen und Kollegen werden nach der Einarbeitungscheckliste QF04 eingewiesen, bevor sie allein arbeiten. Schulungen stehen in der Matrix QF03.</p></div>
+      <div class="karte schwarz"><div class="icon">📣</div><b>Abweichungen melden</b><p>Etwas nicht geschafft, Schlüssel defekt, Beschwerden im Objekt? Sofort an die Objektleitung melden – nicht aussitzen. Erfasst wird es im QF18.</p></div>
+    </div>
+    <h3>Szenario: Der Kunde reklamiert</h3>
+    <div class="szenario" data-sz="1">
+      <div class="sit"><b>Situation:</b> Die Ansprechpartnerin im Objekt spricht dich an: In der dritten Etage seien die Sanitärräume seit Tagen „nicht in Ordnung“. Sie ist sichtlich verärgert. Was tust du?</div>
+      <button class="opt" data-ok="0">Ich erkläre ihr, dass die dritte Etage nicht zu meinem Revier gehört und sie sich an die Firma wenden soll.</button>
+      <button class="opt" data-ok="1">Ich höre zu, notiere die Punkte, bedanke mich für den Hinweis und gebe die Reklamation noch am selben Tag an die Objektleitung weiter – ohne Zusagen zu Kosten oder Gutschriften zu machen.</button>
+      <button class="opt" data-ok="0">Ich verspreche ihr, dass wir ab morgen kostenlos eine Zusatzreinigung machen, damit sie zufrieden ist.</button>
+      <div class="feedback"></div>
+    </div>
+    <div class="merke"><div class="i">💡</div><div><b>Merksatz:</b> Reklamation = aufnehmen, weitergeben, Rückmeldung zusichern. Keine Schuldzuweisungen, keine Kostenzusagen – das entscheidet die Leitung.</div></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="5"> Modul 5 verstanden</label><a class="btn sekundaer" href="#m6">Weiter zu Modul 6 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 6 ===================== -->
+  <section class="modul" id="m6">
+    <div class="kap">Modul 6</div>
+    <h2>Umwelt im Alltag</h2>
+    <p class="lead">Unsere wichtigsten Umweltaspekte stehen im Register QF08 (nach QP12 bewertet). Das meiste davon entscheidet sich bei dir im Objekt – jeden Tag.</p>
+    <div class="karten">
+      <div class="karte blau"><div class="icon">🧴</div><b>Reinigungsmittel &amp; Dosierung</b><p>Immer nach Herstellerangabe bzw. Dosierhilfe dosieren. Überdosierung belastet das Abwasser, die Gesundheit und den Geldbeutel – und reinigt nicht besser.</p></div>
+      <div class="karte blau"><div class="icon">💧</div><b>Wasser &amp; Energie</b><p>Wasser nicht unnötig laufen lassen, Maschinen nach Gebrauch ausschalten, Licht in fertigen Bereichen löschen. Kleine Handgriffe, große Wirkung.</p></div>
+      <div class="karte blau"><div class="icon">🗑️</div><b>Abfall</b><p>Abfälle getrennt sammeln und entsorgen – auch die eigenen (leere Gebinde, Verpackungen). Leere Chemie-Kanister gehören nicht in den Restmüll des Kunden.</p></div>
+      <div class="karte blau"><div class="icon">❄️</div><b>Fahrten &amp; Winterdienst</b><p>Touren bündeln, vorausschauend fahren. Streugut sparsam und gezielt ausbringen und nach der Frostperiode beseitigen.</p></div>
+    </div>
+    <h3>Wenn etwas schiefgeht: Notfall und Umweltvorfall (QP11)</h3>
+    <div class="schritte">
+      <div class="schritt"><div class="n"></div><div><b>Stoppen und sichern</b><p>Auslaufende Chemie mit Bindemittel aufnehmen, nichts in Bodenabläufe oder Erdreich gelangen lassen. Eigene Sicherheit geht vor (Handschuhe, ggf. lüften).</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Melden</b><p>Sofort Objektleitung und Geschäftsführung informieren. Bei Gefahr für Boden, Gewässer oder Personen zusätzlich den Kunden vor Ort.</p></div></div>
+      <div class="schritt"><div class="n"></div><div><b>Dokumentieren</b><p>Vorfall mit dem Notfall- und Gefährdungsbericht QF12 festhalten – auch Beinahe-Vorfälle. Daraus lernen wir und passen Abläufe an.</p></div></div>
+    </div>
+    <h3>Szenario: Der Kanister</h3>
+    <div class="szenario" data-sz="2">
+      <div class="sit"><b>Situation:</b> Im Putzraum des Objekts entdeckst du einen umgekippten, undichten Kanister Grundreiniger. Ein Teil ist schon Richtung Bodenablauf gelaufen. Was tust du?</div>
+      <button class="opt" data-ok="0">Mit viel Wasser in den Ablauf nachspülen, dann ist die Lache weg und niemand rutscht aus.</button>
+      <button class="opt" data-ok="1">Kanister aufrichten, Flüssigkeit mit Bindemittel/Tüchern aufnehmen und als Abfall sichern, Objektleitung und Geschäftsführung melden, Vorfall mit QF12 dokumentieren.</button>
+      <button class="opt" data-ok="0">Den Putzraum abschließen und am Monatsende im Bericht erwähnen.</button>
+      <div class="feedback"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="6"> Modul 6 verstanden</label><a class="btn sekundaer" href="#m7">Weiter zu Modul 7 →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 7 ===================== -->
+  <section class="modul" id="m7">
+    <div class="kap">Modul 7</div>
+    <h2>Melden und Audit: was du konkret tun musst</h2>
+    <p class="lead">Beim externen Audit schaut sich ein Auditor an, ob wir so arbeiten, wie wir es beschrieben haben. Er spricht auch mit Mitarbeitenden – vielleicht mit dir. Das ist kein Verhör, sondern ein Gespräch über deine tägliche Arbeit.</p>
+    <div class="zweispalt">
+      <div class="box ja"><h4>✅ So läuft ein gutes Auditgespräch</h4><ul>
+        <li>Erzähl einfach, <b>wie du wirklich arbeitest</b> – Leistungsverzeichnis, Dosierung, Leistungsnachweis.</li>
+        <li>Weißt du etwas nicht? <b>Ehrlich sagen</b> und nennen, wen du fragen würdest (Objektleitung / Leitung).</li>
+        <li>Zeig, wo die Dokumente sind: QM01 hängt im Lager aus, Formulare bekommst du von der Objektleitung.</li>
+        <li>Abweichungen offen ansprechen – ein gelebtes System darf Fehler haben, es muss sie nur erkennen und abstellen.</li>
+      </ul></div>
+      <div class="box nein"><h4>❌ Das geht schief</h4><ul>
+        <li>Etwas erfinden, „damit es gut aussieht“ – fliegt auf und wirkt schlimmer als jede Wissenslücke.</li>
+        <li>„Das macht bei uns keiner so“ – wenn es stimmt, ist es eine Abweichung, die vorher gemeldet gehört.</li>
+        <li>Dokumente kurz vor dem Audit rückwirkend ausfüllen – Nachweise entstehen im Alltag, nicht am Vorabend.</li>
+      </ul></div>
+    </div>
+    <h3>Was wird immer gemeldet?</h3>
+    <div class="karten">
+      <div class="karte"><b>Reklamationen &amp; Abweichungen</b><p>Beschwerden, nicht erbrachte Leistungen, Schäden im Objekt → sofort an die Objektleitung, Erfassung im QF18.</p></div>
+      <div class="karte blau"><b>Umwelt- und Notfälle</b><p>Auslaufende Chemie, Unfälle, gefährliche Situationen → sofort melden, Dokumentation mit QF12 (QP11).</p></div>
+      <div class="karte haupt"><b>Verbesserungsideen</b><p>Du siehst jeden Tag, was besser gehen könnte – Material, Abläufe, Touren. Sag es der Leitung. Jede Idee zählt.</p></div>
+    </div>
+    <h3>Szenario: Die Auditorfrage</h3>
+    <div class="szenario" data-sz="3">
+      <div class="sit"><b>Situation:</b> Der Auditor fragt dich im Objekt: „Woher wissen Sie, welche Leistungen hier vereinbart sind, und was tun Sie, wenn Sie etwas nicht schaffen?“ Was antwortest du?</div>
+      <button class="opt" data-ok="1">„Das steht im Leistungsverzeichnis für dieses Objekt, das habe ich bei der Einarbeitung bekommen. Wenn ich etwas nicht schaffe, melde ich das noch am selben Tag der Objektleitung.“</button>
+      <button class="opt" data-ok="0">„Ich arbeite seit Jahren in der Reinigung, ich weiß einfach, was zu tun ist.“</button>
+      <button class="opt" data-ok="0">„Das regelt alles die Geschäftsführung, dazu kann ich nichts sagen.“</button>
+      <div class="feedback"></div>
+    </div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="7"> Modul 7 verstanden</label><a class="btn sekundaer" href="#m8">Weiter zum Abschlusstest →</a></div>
+  </section>
+
+  <!-- ===================== MODUL 8: TEST ===================== -->
+  <section class="modul" id="m8">
+    <div class="kap">Modul 8</div>
+    <h2>Abschlusstest</h2>
+    <p class="lead">Zehn Fragen. Bei 7 richtigen Antworten hast du bestanden. Du kannst den Test beliebig oft wiederholen.</p>
+    <div id="quiz"></div>
+    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn" id="auswerten">Test auswerten</button>
+      <button class="btn sekundaer" id="reset" style="display:none">Test wiederholen</button>
+    </div>
+    <div class="quiz-ergebnis" id="ergebnis"></div>
+    <div class="modul-ende"><label><input type="checkbox" data-done="8"> Abschlusstest gemacht</label><a class="btn sekundaer" href="#merk">Zur Merkkarte →</a></div>
+  </section>
+
+  <!-- ===================== MERKKARTE ===================== -->
+  <div class="merkkarte" id="merk">
+    <div class="kap" style="color:#9fe0c0;font-weight:700;letter-spacing:.1em;font-size:12px;text-transform:uppercase">Zum Mitnehmen</div>
+    <h2>Fünf Regeln für den Alltag im IMS</h2>
+    <ol>
+      <li><div><b>Nach Leistungsverzeichnis arbeiten.</b> Vereinbarte Leistung, vereinbarte Intervalle – und den Leistungsnachweis QF06 vollständig führen.</div></li>
+      <li><div><b>Richtig dosieren.</b> Reinigungsmittel nach Herstellerangabe, Wasser und Energie sparsam, Abfall getrennt entsorgen.</div></li>
+      <li><div><b>Abweichungen sofort melden.</b> Reklamationen, Schäden, nicht geschaffte Leistungen – noch am selben Tag an die Objektleitung.</div></li>
+      <li><div><b>Umweltvorfälle stoppen, melden, dokumentieren.</b> Nichts in Abläufe oder Erdreich, Meldung nach QP11, Bericht QF12.</div></li>
+      <li><div><b>Im Audit ehrlich sein.</b> Erzähl, wie du wirklich arbeitest. Wissenslücke? Sag, wen du fragen würdest.</div></li>
+    </ol>
+    <div class="kontakt">
+      <div><b>IMS / Fragen zum System</b>Vertriebsleitung bzw. deine Objektleitung</div>
+      <div><b>Geschäftsführung</b>GEKO CLEAN GbR</div>
+    </div>
+    <p style="margin:22px 0 0;font-size:14px;color:#bbb">Nachweis fürs Audit: Bitte nach der Schulung die <b>Teilnahmebestätigung</b> ausfüllen und an die Leitung geben (Ablage: Schulungsnachweise, Schulungs- und Qualifikationsmatrix QF03; Thema: „IMS-Refresher ISO 9001 / 14001“).</p>
+    <div style="margin-top:18px"><button class="btn" onclick="window.print()">Schulung drucken / als PDF sichern</button></div>
+  </div>
+
+  <div class="fuss">GEKO CLEAN GbR · Integriertes Managementsystem · Schulungsunterlage IMS-Refresher · Version 1 · Stand Oktober 2026<br>Mitgeltende Unterlagen: QM01, QM02, QM03, QM04, QP01–QP13, QF01, QF03, QF04, QF06, QF08, QF09, QF12, QF17, QF18, QF19, QF20</div>
+</main>
+
+<script>
+(function(){
+  /* ---------- Fortschritt ---------- */
+  const doneBoxes=[...document.querySelectorAll('input[data-done]')];
+  const nav=document.getElementById('modulnav');
+  function updateFortschritt(){
+    const n=doneBoxes.filter(b=>b.checked).length;
+    document.getElementById('fortschritt').style.width=(n/doneBoxes.length*100)+'%';
+    doneBoxes.forEach(b=>{const a=nav.querySelector('a[data-m="'+b.dataset.done+'"]'); if(a) a.classList.toggle('fertig',b.checked);});
+    try{localStorage.setItem('geko_ims_done',JSON.stringify(doneBoxes.map(b=>b.checked)));}catch(e){}
+  }
+  try{const s=JSON.parse(localStorage.getItem('geko_ims_done')||'[]'); doneBoxes.forEach((b,i)=>b.checked=!!s[i]);}catch(e){}
+  doneBoxes.forEach(b=>b.addEventListener('change',updateFortschritt)); updateFortschritt();
+
+  /* ---------- Sortier-Übung ---------- */
+  const normName={Q:'Qualität (ISO 9001)',U:'Umwelt (ISO 14001)'};
+  document.querySelectorAll('#sortier .fall').forEach(f=>{
+    f.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{
+      const ok=btn.dataset.w===f.dataset.antwort;
+      f.classList.add(ok?'richtig':'falsch');
+      f.querySelector('.ergebnis').textContent=ok?'✔ Richtig':'✘ Leider falsch. Richtig wäre: '+normName[f.dataset.antwort];
+    }));
+  });
+
+  /* ---------- Szenarien ---------- */
+  const fb={
+    1:{ok:'Genau so. Aufnehmen, bedanken, noch am selben Tag weitergeben – und keine Zusagen zu Kosten oder Gutschriften machen. Die Reklamation wird im QF18 erfasst und der Kunde bekommt eine Rückmeldung.',
+       nok:'Nicht optimal. Den Kunden wegschicken wirkt abweisend, und Kostenzusagen darfst du nicht machen – das entscheidet die Leitung. Richtig: zuhören, notieren, noch am selben Tag an die Objektleitung weitergeben.'},
+    2:{ok:'Richtig. Aufnehmen statt wegspülen: In den Ablauf gehört keine konzentrierte Chemie. Danach melden und mit QF12 dokumentieren – daraus lernen wir für die Lagerung.',
+       nok:'Nicht optimal. Nachspülen bringt die Chemie konzentriert ins Abwasser, Abschließen und Abwarten löst nichts. Richtig: aufnehmen und sichern, sofort melden, mit QF12 dokumentieren.'},
+    3:{ok:'Perfekte Audit-Antwort: Du nennst die Quelle (Leistungsverzeichnis, Einarbeitung) und den Meldeweg (Objektleitung, am selben Tag). Mehr will ein Auditor nicht hören.',
+       nok:'Nicht optimal. Erfahrung ersetzt das Leistungsverzeichnis nicht, und „dazu kann ich nichts sagen“ klingt, als würde das System nicht gelebt. Richtig: Leistungsverzeichnis nennen und den Meldeweg beschreiben.'}
+  };
+  document.querySelectorAll('.szenario[data-sz]').forEach(sz=>{
+    const id=sz.dataset.sz, opts=sz.querySelectorAll('.opt'), f=sz.querySelector('.feedback');
+    opts.forEach(o=>o.addEventListener('click',()=>{
+      const ok=o.dataset.ok==='1';
+      opts.forEach(x=>{x.disabled=true; if(x.dataset.ok==='1') x.classList.add('richtig');});
+      if(!ok) o.classList.add('falsch');
+      f.textContent=ok?fb[id].ok:fb[id].nok; f.className='feedback show '+(ok?'ok':'nok');
+    }));
+  });
+
+  /* ---------- Abschlusstest ---------- */
+  const fragen=[
+    {q:'Nach welchen Normen ist GEKO CLEAN zertifiziert?',a:['ISO 9001 (Qualität) und ISO 14001 (Umwelt)','ISO 9001 und ISO 45001','Nur ISO 14001','ISO 27001 und ISO 50001'],r:0},
+    {q:'Was beschreibt das Leistungsverzeichnis eines Objekts?',a:['Die Preise unserer Reinigungsmittel','Welche Leistungen wie oft und wo zu erbringen sind','Die Urlaubsplanung','Die Route des Winterdienstes aller Kunden'],r:1},
+    {q:'Wo kannst du das Management Handbuch QM01 jederzeit einsehen?',a:['Nur beim Auditor','Es ist geheim','Als Ausdruck im Lager, dort hängt es für alle aus','Beim Kunden an der Pforte'],r:2},
+    {q:'Ein Kunde reklamiert bei dir im Objekt. Was darfst du zusagen?',a:['Eine kostenlose Zusatzreinigung','Dass wir die Kosten übernehmen','Dass du es aufnimmst, weitergibst und der Kunde eine Rückmeldung bekommt','Gar nichts, am besten nicht reagieren'],r:2},
+    {q:'Wie wird Reinigungsmittel richtig dosiert?',a:['Nach Gefühl, viel hilft viel','Nach Herstellerangabe bzw. Dosierhilfe','Immer doppelt so stark wie angegeben','Gar nicht, nur Wasser verwenden'],r:1},
+    {q:'In welchem Register werden Reklamationen und Abweichungen erfasst?',a:['QF08 Register Umweltaspekte','QF18 Abweichungsregister','QF03 Schulungsmatrix','QF20 Bindende Verpflichtungen'],r:1},
+    {q:'Ein Kanister Reiniger läuft im Putzraum aus. Was ist richtig?',a:['Mit viel Wasser in den Ablauf spülen','Aufnehmen und sichern, sofort melden, mit QF12 dokumentieren','Am Monatsende im Bericht erwähnen','Tür zu und weiterarbeiten'],r:1},
+    {q:'Was gehört zu unseren wichtigsten Umweltaspekten?',a:['Reinigungsmittel, Wasser/Energie, Abfall, Fahrten und Streugut','Der Papierverbrauch des Kunden','Das Wetter','Die Farbe der Arbeitskleidung'],r:0},
+    {q:'Bevor eine neue Kollegin allein im Objekt arbeitet, muss sie …',a:['… mindestens fünf Jahre Berufserfahrung haben','… nach der Einarbeitungscheckliste QF04 eingewiesen worden sein','… den Auditor kennenlernen','… nichts Besonderes, Hauptsache pünktlich'],r:1},
+    {q:'Der Auditor stellt dir eine Frage, deren Antwort du nicht kennst. Was ist richtig?',a:['Etwas Plausibles erfinden, damit es gut aussieht','Ehrlich sagen, dass du es nicht weißt, und nennen, wen du fragen würdest','Das Gespräch abbrechen','Auf den Kunden verweisen'],r:1}
+  ];
+  const quiz=document.getElementById('quiz');
+  function baueQuiz(){
+    quiz.innerHTML='';
+    fragen.forEach((f,i)=>{
+      const d=document.createElement('div'); d.className='szenario'; d.dataset.q=i;
+      d.innerHTML='<div class="sit"><b>Frage '+(i+1)+' von '+fragen.length+'</b>'+f.q+'</div>'+f.a.map((t,j)=>'<label class="opt" style="display:flex;gap:10px;align-items:flex-start"><input type="radio" name="q'+i+'" value="'+j+'" style="margin-top:3px;accent-color:#0e7a4e"><span>'+t+'</span></label>').join('');
+      quiz.appendChild(d);
+    });
+    document.getElementById('ergebnis').className='quiz-ergebnis';
+    document.getElementById('auswerten').style.display='';
+    document.getElementById('reset').style.display='none';
+  }
+  baueQuiz();
+  document.getElementById('auswerten').addEventListener('click',()=>{
+    let richtig=0, offen=0;
+    fragen.forEach((f,i)=>{
+      const sel=quiz.querySelector('input[name="q'+i+'"]:checked');
+      const blk=quiz.querySelector('[data-q="'+i+'"]');
+      const labels=blk.querySelectorAll('label.opt');
+      if(!sel){offen++;}
+      labels.forEach((l,j)=>{l.classList.remove('richtig','falsch'); if(j===f.r) l.classList.add('richtig'); if(sel&&+sel.value===j&&j!==f.r) l.classList.add('falsch'); l.querySelector('input').disabled=true;});
+      if(sel&&+sel.value===f.r) richtig++;
+    });
+    if(offen>0 && !confirm(offen+' Frage(n) sind noch unbeantwortet. Trotzdem auswerten?')){ fragen.forEach((f,i)=>{quiz.querySelectorAll('[data-q="'+i+'"] label.opt').forEach(l=>{l.classList.remove('richtig','falsch'); l.querySelector('input').disabled=false;});}); return; }
+    const best=richtig>=7; if(window.qvmReport)qvmReport(best,richtig,fragen.length);
+    const e=document.getElementById('ergebnis');
+    e.innerHTML='<div class="zahl">'+richtig+' <small>von '+fragen.length+' richtig</small></div><p style="margin:10px 0 0;font-size:17px">'+(best?'✅ Bestanden. Bitte jetzt die Teilnahmebestätigung ausfüllen und an die Leitung geben.':'Noch nicht bestanden. Schau dir die markierten Antworten an, lies die betreffenden Module noch einmal und wiederhole den Test.')+'</p>';
+    e.className='quiz-ergebnis show';
+    document.getElementById('auswerten').style.display='none';
+    document.getElementById('reset').style.display='';
+    e.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('reset').addEventListener('click',baueQuiz);
+})();
+</script>
+<script>
+/* ---------- QVM-Portal-Brücke ----------
+   Läuft die Schulung im Lernbereich der QVM-App, meldet sie das Testergebnis
+   an die App zurück. Außerhalb der App passiert nichts. */
+(function(){
+  function send(m){ try{ if(window.parent&&window.parent!==window){ m.type='qvm-training'; window.parent.postMessage(m,'*'); } }catch(e){} }
+  window.qvmReport=function(passed,score,max){ send({event:'result',passed:!!passed,score:score,max:max}); };
+  send({event:'ready'});
+})();
+</script>
+</body>
+</html>
